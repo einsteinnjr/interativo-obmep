@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8" />
+	<title>70 - Caça-números</title>
+</head>
+<body>
+	<div id="t2">
+		<div>
+			<strong> Encontre todos os números primos da tabela: </strong>
+			<table> 
+				
+			</table>
+		</div>
+
+	</div>
+
+	<script src="src/js/teorema70.js"></script>
+	<script>
+		$(document).ready(function () {
+			//$('#t2').euclides();
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+var powers;
+var i,j, atual,log_="{";
+
+for(i=2; i<1000; i++){
+	atual=i;
+	sentence+="'".i.".";
+	for(j=0; atual<1000; atual*=i){
+		
+	}
+}
