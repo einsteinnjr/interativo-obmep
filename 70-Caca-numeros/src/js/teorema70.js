@@ -20,9 +20,7 @@ function generateNewTableHtml(){
 }
 
 function init(){
-	for(var i=0; i<primes.length; i++){
-		console.log(primes[i]);
-	};
+
 
 };
 
