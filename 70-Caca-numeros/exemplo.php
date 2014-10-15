@@ -7,7 +7,7 @@
 <body>
 	<div>
 		<strong> Encontre todos os números primos da tabela: </strong>
-		<table></table>			
+		<table id="gameTable"></table>			
 		<div> 
 		</div>
 	</div>
@@ -18,6 +18,7 @@
 	<script>
 		$(document).ready(function () {
 			init();
+			$("#gameTable").html(generateNewTableHtml());
 		});
 	</script>
 </body>
