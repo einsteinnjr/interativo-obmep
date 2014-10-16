@@ -2,10 +2,15 @@
 
 .table {
     width: 30%;
-    margin-left: auto;
+    margin-left: 20%;
     margin-right: auto;
 }
 
 td{
     text-align: center;
+}
+
+.table-striped>tbody>tr>td.mouse-over{
+    background-color: #58FAAC;
+    cursor:pointer;
 }
