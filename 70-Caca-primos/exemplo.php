@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<h4>Caça-Primos:</h4>
+	<h4><strong>Caça-Primos:</strong></h4>
 	<div>
 		<strong> Ache todos os números primos no tabuleiro abaixo. </strong>
 	</div>
