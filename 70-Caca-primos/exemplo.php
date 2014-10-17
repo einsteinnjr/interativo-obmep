@@ -4,6 +4,7 @@
 	<meta charset="utf-8" />
 	<title>70 - Caça-primos</title>
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
+        <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
 	<link rel="stylesheet" type="text/css" href="src/css/teorema70.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -38,7 +39,7 @@
 		</div>
 	</div>
 </br>
-	<button type="button" onClick="generateNewTable();">Novo Tabuleiro</button>
+	<button type="button" class="btn btn-default" onClick="generateNewTable();">Novo Tabuleiro</button>
 	<div class="table-responsive">	
 		<table id="gameTable" class="table table-striped table-bordered" ></table>			
 	</div>

@@ -1,14 +1,9 @@
 @charset "UTF-8";
 
-body {
-	background-color: #EFFBFB;
-}
-
 .table {
     width: 35%;
     margin-left: 20%;
     margin-right: auto;
-    background-color: #FFFFFF;
 }
 
 td{
