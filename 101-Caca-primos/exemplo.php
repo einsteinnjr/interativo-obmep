@@ -2,10 +2,10 @@
 <html lang="pt-BR">
 <head>
 	<meta charset="utf-8" />
-	<title>70 - Caça-primos</title>
+	<title>101 - Caça-primos</title>
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
         <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
-	<link rel="stylesheet" type="text/css" href="src/css/teorema70.css">
+	<link rel="stylesheet" type="text/css" href="src/css/teorema101.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -50,7 +50,7 @@
 		<strong>Total de primos é: </strong> <input disabled></input>			
 	</div>-->
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
-        <script type="text/javascript" src="src/js/teorema70.js"></script>	
+        <script type="text/javascript" src="src/js/teorema101.js"></script>	
 	<script>
 		$(document).ready(function () {
 			init();
