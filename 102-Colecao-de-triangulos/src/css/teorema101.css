@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+.table {
+    width: 35%;
+    margin-left: 20%;
+    margin-right: auto;
+}
+
+td{
+    text-align: center;
+}
+
+.table>tbody>tr>td.mouse-over{
+    border-style: double;
+    border-color: red;
+    background-color: #F3F781; /*yellow*/
+    cursor:pointer;
+}
+
+.table-striped>tbody>tr>td.correct-click{
+    background-color: #58FAAC; /*green*/
+}
+
+.table-striped>tbody>tr>td.wrong-click{
+    background-color: #F5A9A9; /*red*/
+}
+
+.glyphicon-home{
+    visibility: hidden;
+}
