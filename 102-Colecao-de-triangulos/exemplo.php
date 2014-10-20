@@ -65,7 +65,7 @@
 	<div id="answerBox"></div>
 	<script>
 		$(document).ready(function () {
-
+			openTriangleFigure();
 		});
 	</script>
 </body>
