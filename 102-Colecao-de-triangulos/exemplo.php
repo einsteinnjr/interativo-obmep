@@ -24,39 +24,39 @@
 	<div>
 		<div class="checkbox">
 		        <label>
-		            <input type="checkbox" name="cant_construct_a_triangle" value="c" /> Não é possível construir o triângulo.
+		            <input type="checkbox" name="cant_construct_a_triangle" value="c" onclick="disableTriangleConstruction(this)" /> Não é possível construir o triângulo.
 		        </label>
             	</div>
 	</div>
-	<div>
+	<div id="triangleConstructible">
 		<p><strong> Se for possível a construção do triângulo:</strong> </p>		
 		<div>
-			<strong> - Classifique-o quanto ao maior ângulo: </strong></br>
+			<strong> - Classifique-o quanto ao maior ângulo: </strong> </br>
 			<label class="radio-inline">
-			  <input type="radio" name="greaterAngleClass" value="acutangle"  onclick="decideSideLength(this)"> Acutângulo
+			  <input type="radio" name="greaterAngleClass" value="acutangle"> Acutângulo
 			</label>
 			<label class="radio-inline">
-			  <input type="radio" name="greaterAngleClass" value="rectangle" onclick="decideSideLength(this)" > Retângulo
+			  <input type="radio" name="greaterAngleClass" value="rectangle"> Retângulo
 			</label>
 			<label class="radio-inline">
-			  <input type="radio" name="greaterAngleClass" value="obtusangle" onclick="decideSideLength(this)" > Obtusângulo
+			  <input type="radio" name="greaterAngleClass" value="obtusangle"> Obtusângulo
 			</label>
 		</div>
 		<div>
 		<strong> - Classifique-o quanto aos lados: </strong></br>
 			<label class="radio-inline">
-			  <input type="radio" name="sidesClass" value="scalene"  onclick="decideSideLength(this)" > Escaleno
+			  <input type="radio" name="sidesClass" value="scalene"> Escaleno
 			</label>
 			<label class="radio-inline">
-			  <input type="radio" name="sidesClass" value="isosceles" onclick="decideSideLength(this)" > Isósceles
+			  <input type="radio" name="sidesClass" value="isosceles"> Isósceles
 			</label>
 			<label class="radio-inline">
-			  <input type="radio" name="sidesClass" value="equilatero" onclick="decideSideLength(this)" > Equilátero
+			  <input type="radio" name="sidesClass" value="equilatero"> Equilátero
 			</label>
 		</div>
 	</div>
 </br>
-	<button type="button" class="btn btn-default" onClick="revealAnswer()	;">Revelar Resposta</button>
+	<button type="button" class="btn btn-default" onClick="revealAnswer();">Revelar Resposta</button>
 
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
 	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
