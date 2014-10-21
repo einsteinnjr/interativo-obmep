@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+.table {
+    width: 35%;
+    margin-left: 20%;
+    margin-right: auto;
+}
+
 .jxgbox {
     width:350px; 
     height:350px;
@@ -18,5 +24,13 @@
 }
 
 .disabled{
-    color: #A4A4A4;
+    color: #A4A4A4;/*gray*/
+}
+
+.glyphicon-ok{
+    color: #04B431; /*dark green*/
+}
+
+.glyphicon-remove{
+    color: #FE2E2E; /*dark red*/
 }

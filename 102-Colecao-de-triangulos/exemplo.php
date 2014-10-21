@@ -8,6 +8,7 @@
         <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
 	<link rel="stylesheet" type="text/css" href="src/css/teorema102.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="src/js/teorema102.js"></script>
 </head>
 <body>
 	<h4><strong>Coleção de triângulos:</strong></h4>
@@ -16,16 +17,23 @@
 		<p><strong> Devido a ser muito organizado, Renato guarda sua coleção em grupos, dependendo do tipo de triângulo: equilátero, isósceles, acutângulo, etc. Ajude-o a classificar os grupos de 3 varetas, dentro de sua coleção ou informe que não é possivel fazer uma armação triangular com o grupo. </strong></p>
 	</div>
 		<div>
-		<table>
+			<table class="table table-bordered">
+				<tr>
+					<td id="sideA"></td>
+					<td id="sideB"></td>
+					<td id="sideC"></td>
+				</tr>
+			</table>
 		</div>	
 	<div>
-		<div id="questionBox" class="jxgbox"></div>
+		<div id="questionJXGBox" class="jxgbox"></div>
 	</div>	
 	<div>
 		<div class="checkbox">
 		        <label>
-		            <input type="checkbox" name="cant_construct_a_triangle" value="c" onclick="disableTriangleConstruction(this)" /> Não é possível construir o triângulo.
+		            <input type="checkbox" id="notConstructableCheckbox" onclick="disableTriangleConstruction(this)" /> Não é possível construir o triângulo.
 		        </label>
+			<a id="answerCheckbox" class="answer"></a>
             	</div>
 	</div>
 	<div id="triangleConstructible">
@@ -33,25 +41,25 @@
 		<div>
 			<strong> - Classifique-o quanto ao maior ângulo: </strong> </br>
 			<label class="radio-inline">
-			  <input type="radio" name="greaterAngleClass" value="acutangle"> Acutângulo
+			  <input type="radio" id="radioAcutangle" name="greaterAngleClass" value="acutangle"> Acutângulo
 			</label>
 			<label class="radio-inline">
-			  <input type="radio" name="greaterAngleClass" value="rectangle"> Retângulo
+			  <input type="radio" id="radioRectangle" name="greaterAngleClass" value="rectangle"> Retângulo
 			</label>
 			<label class="radio-inline">
-			  <input type="radio" name="greaterAngleClass" value="obtusangle"> Obtusângulo
+			  <input type="radio" id="radioObtusangle" name="greaterAngleClass" value="obtusangle"> Obtusângulo
 			</label>
 		</div>
 		<div>
 		<strong> - Classifique-o quanto aos lados: </strong></br>
 			<label class="radio-inline">
-			  <input type="radio" name="sidesClass" value="scalene"> Escaleno
+			  <input type="radio" id="radioScalene" name="sidesClass" value="scalene"> Escaleno
 			</label>
 			<label class="radio-inline">
-			  <input type="radio" name="sidesClass" value="isosceles"> Isósceles
+			  <input type="radio" id="radioIsosceles" name="sidesClass" value="isosceles"> Isósceles
 			</label>
 			<label class="radio-inline">
-			  <input type="radio" name="sidesClass" value="equilatero"> Equilátero
+			  <input type="radio" id="radioEquilateral" name="sidesClass" value="equilateral"> Equilátero
 			</label>
 		</div>
 	</div>
@@ -60,11 +68,12 @@
 
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
 	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
-        <script type="text/javascript" src="src/js/teorema102.js"></script>
-		
+	
+	<div id="answerJXGBox"></div>
 	<div id="answerBox"></div>
 	<script>
 		$(document).ready(function () {
+			generateRandomSides();
 			openTriangleFigure();
 		});
 	</script>
