@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+body{
+  margin-left: 20px;
+  padding:10px;
+}
+
 .table {
     width: 35%;
     margin-left: 20%;
@@ -17,10 +22,17 @@
 
 #triangleConstructible{
     width: 35%;
+}
+
+.rectangle{
     border-radius: 5px;
     border-width: 1px;
     border-style: solid;
     border-color: black;
+}
+
+.insideRectangle{
+  margin: 10px 20px 10px 20px;
 }
 
 .disabled{
@@ -34,3 +46,4 @@
 .glyphicon-remove{
     color: #FE2E2E; /*dark red*/
 }
+

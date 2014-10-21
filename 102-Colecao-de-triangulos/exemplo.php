@@ -36,31 +36,33 @@
 			<a id="answerCheckbox" class="answer"></a>
             	</div>
 	</div>
-	<div id="triangleConstructible">
-		<p><strong> Se for possível a construção do triângulo:</strong> </p>		
-		<div>
-			<strong> - Classifique-o quanto ao maior ângulo: </strong> </br>
-			<label class="radio-inline">
-			  <input type="radio" id="radioAcutangle" name="greaterAngleClass" value="acutangle"> Acutângulo
-			</label>
-			<label class="radio-inline">
-			  <input type="radio" id="radioRectangle" name="greaterAngleClass" value="rectangle"> Retângulo
-			</label>
-			<label class="radio-inline">
-			  <input type="radio" id="radioObtusangle" name="greaterAngleClass" value="obtusangle"> Obtusângulo
-			</label>
-		</div>
-		<div>
-		<strong> - Classifique-o quanto aos lados: </strong></br>
-			<label class="radio-inline">
-			  <input type="radio" id="radioScalene" name="sidesClass" value="scalene"> Escaleno
-			</label>
-			<label class="radio-inline">
-			  <input type="radio" id="radioIsosceles" name="sidesClass" value="isosceles"> Isósceles
-			</label>
-			<label class="radio-inline">
-			  <input type="radio" id="radioEquilateral" name="sidesClass" value="equilateral"> Equilátero
-			</label>
+	<div id="triangleConstructible" class="rectangle">
+		<div class="insideRectangle">
+			<p><strong> Se for possível a construção do triângulo:</strong> </p>		
+			<div>
+				<strong> - Classifique-o quanto ao maior ângulo: </strong> </br>
+				<label class="radio-inline">
+				  <input type="radio" id="radioAcutangle" name="greaterAngleClass" value="acutangle"> Acutângulo
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" id="radioRectangle" name="greaterAngleClass" value="rectangle"> Retângulo
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" id="radioObtusangle" name="greaterAngleClass" value="obtusangle"> Obtusângulo
+				</label>
+			</div>
+			<div>
+				<strong> - Classifique-o quanto aos lados: </strong></br>
+				<label class="radio-inline">
+				  <input type="radio" id="radioScalene" name="sidesClass" value="scalene"> Escaleno
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" id="radioIsosceles" name="sidesClass" value="isosceles"> Isósceles
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" id="radioEquilateral" name="sidesClass" value="equilateral"> Equilátero
+				</label>
+			</div>
 		</div>
 	</div>
 </br>
@@ -70,7 +72,13 @@
 	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
 	
 	<div id="answerJXGBox"></div>
-	<div id="answerBox"></div>
+
+	<div id="answerExplanation" class="rectangle">
+		<div class="insideRectangle">
+			<div id="answerTriangleConstructable"></div>
+			<div id="answerSidesRelationship"></div>
+		</div>
+	</div>
 	<script>
 		$(document).ready(function () {
 			generateRandomSides();

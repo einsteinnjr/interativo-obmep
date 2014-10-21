@@ -11,7 +11,7 @@ var RECTANGLE = 3;
 
 var typeOfAngle;
 
-var DEFAULT_DELTA = 5;
+var DELTA = 5;
 var MIN_SIDE=5;
 
 var x = Math.PI/3; //x=60 degrees
@@ -25,18 +25,33 @@ var max_y = Math.max(c*senx, b*senx)*aLittleMargin;
 var max_xy = Math.max(max_x, max_y);
 
 function generateRandomSides(){
-	typeOfAngle = 0;//Math.floor(Math.random()*GREATER_ANGLE_OPTIONS);
+	typeOfAngle = 1;//Math.floor(Math.random()*GREATER_ANGLE_OPTIONS);
 	switch(typeOfAngle){
 		case NO_TRIANGLE:
-			b=MIN_SIDE+Math.floor(Math.random()*DEFAULT_DELTA);
-			c=MIN_SIDE+Math.floor(Math.random()*DEFAULT_DELTA);
-			a=b+c+MIN_SIDE+Math.floor(Math.random()*DEFAULT_DELTA/2);;
+			b=MIN_SIDE+Math.floor(Math.random()*DELTA);
+			c=MIN_SIDE+Math.floor(Math.random()*DELTA);
+			a=b+c+MIN_SIDE+Math.floor(Math.random()*DELTA/2);
 		break;
 		case ACUTANGLE:
+			c=MIN_SIDE+Math.floor(Math.random()*DELTA/2);
+			b=c+1+Math.floor(Math.random()*DELTA/2);
+			minA=b+1;
+			maxAcuteA=Math.floor(Math.sqrt(b*b+c*c)-1);
+			a=minA+Math.floor(Math.random()*(maxAcuteA-minA));
 		break;
 		case OBTUSANGLE:
+			c=MIN_SIDE+Math.floor(Math.random()*DELTA/2);
+			b=c+1+Math.floor(Math.random()*DELTA/2);
+			maxA=b+c-1;
+			minObtuseA=Math.ceil(Math.sqrt(b*b+c*c)+1);
+			a=minObtuseA+Math.floor(Math.random()*(maxA-minObtuseA));
 		break;
 		case RECTANGLE:
+			var n=1+Math.floor(Math.random()*DELTA/2);
+			var m=n+1+Math.floor(Math.random()*DELTA/2);
+			b=(m*m-n*n);
+			c=(2*m*n);
+			a=(m*m+n*n);
 		break;
 	}
 	// no-triangle, acutangle (equilateral, isosceles, scalene), obtusangle (isosceles, scalene), rectangle, 
@@ -102,7 +117,7 @@ function disableTriangleConstruction(checkbox){
 
 function checkAnswers(){
 	checkTriangleConstructability();
-	//checkSidesRelation();
+	checkSidesRelationship();
 	//checkGreaterAngle();    
 }
 
@@ -111,24 +126,65 @@ function checkTriangleConstructability(){
 	if(matchedConstructabilityAndUserAnswer()){
 		$("#answerCheckbox").append("<i class='glyphicon glyphicon-ok'>Correto!</i>");
 	}
-	else $("#answerCheckbox").append("<i class='glyphicon glyphicon-remove'>Resposta Errada!</i>");
-}
+	else $("#answerCheckbox").append("<i class='glyphicon glyphicon-remove'>Errado!</i>");
 
+	$("#answerTriangleConstructable").empty();
+	var sum = parseInt(b)+parseInt(c);
+	if(typeOfAngle===NO_TRIANGLE){
+		$("#answerTriangleConstructable").html("<strong>a)</strong>Analisando utilizando a Desigualdade Triangular relativa ao maior lado (a="+a+"):<br/> Para existir triângulo deve ser verdade a desigualdade:<br/> b + c > a, ou seja, "+b+" + "+c+" > "+a+", ou seja, "+sum+">"+a+" <i class='glyphicon glyphicon-remove'>Falso!</i> <br/> Logo, NÃO é possível construir triângulo com as 3 varetas dadas: a="+a+", b="+b+", c="+c+".");
+	}else{
+		$("#answerTriangleConstructable").html("<strong>a)</strong>Analisando utilizando a Desigualdade Triangular relativa ao maior lado (a="+a+"):<br/> Para existir triângulo deve ser verdade a desigualdade:<br/> b + c > a, ou seja, "+b+" + "+c+" > "+a+", ou seja, "+sum+">"+a+" <i class='glyphicon glyphicon-ok'>Verdade!</i> <br/> Logo, <strong>É possível construir triângulo</strong> com as 3 varetas dadas: a="+a+", b="+b+", c="+c+".");
+	}
+}
 
 function matchedConstructabilityAndUserAnswer(){
-	console.log("typeOfAngle===NO_TRIANGLE"+typeOfAngle===NO_TRIANGLE);
-	console.log("document.getElementById('notConstructableCheckbox').checked"+document.getElementById('notConstructableCheckbox').checked);
-
 	return (typeOfAngle===NO_TRIANGLE && document.getElementById('notConstructableCheckbox').checked) ||
-		(!typeOfAngle===NO_TRIANGLE && !document.getElementById('notConstructableCheckbox').checked)
+		(!(typeOfAngle===NO_TRIANGLE) && !document.getElementById('notConstructableCheckbox').checked)
 }
 
-function revealAnswer(){
-	$("#answerBox").addClass("jxgbox");
-	//scroll to the answer
+/*
+function checkSidesRelationship(){
+	$("#answerSidesRadio").empty();
+	if(matchedSidesRelationshipAndUserAnswer()){
+		$("#answerSidesRadio").append("<i class='glyphicon glyphicon-ok'>Correto!</i>");
+	}
+	else $("#answerCheckbox").append("<i class='glyphicon glyphicon-remove'>Errado!</i>");
+
+	$("#answerTriangleConstructable").empty();
+	var sum = parseInt(b)+parseInt(c);
+	var inequalityDeduction = "<strong>a)</strong>Analisando utilizando a Desigualdade Triangular relativa ao maior lado (a="+a+"):<br/> Para existir triângulo deve ser verdade a desigualdade:<br/> b + c > a, ou seja, "+b+" + "+c+" > "+a+", ou seja, "+sum+">"+a;
+	if(typeOfAngle===NO_TRIANGLE){
+		$("#answerTriangleConstructable").html(inequalityDeduction+" <i class='glyphicon glyphicon-remove'>Falso!</i> <br/> Logo, NÃO é possível construir triângulo com as 3 varetas dadas: a="+a+", b="+b+", c="+c+".");
+	}else{
+		$("#answerTriangleConstructable").html(inequalityDeduction+" <i class='glyphicon glyphicon-ok'>Verdade!</i> <br/> Logo, <strong>É possível construir triângulo</strong> com as 3 varetas dadas: a="+a+", b="+b+", c="+c+".");
+	}
+}
+
+function matchedSidesRelationshipAndUserAnswer(){
+	var angleClassRadios = document.getElementByName("greaterAngleClass");
+	for(radio in angleClassRadios){
+		if(radio.checked === true){
+			console.log(radio.value);
+		}
+	}
+}
+*/
+
+function scrollToTheAnswer(){
 	$('html, body').animate({
 	        scrollTop: $("#answerCheckbox").offset().top 
 	}, 1000);
+}
+
+function drawTriangleIfExists(){
+	if(!typeOfAngle === NO_TRIANGLE){
+		$("#answerJXGBox").addClass("jxgbox");
+		closedTriangleFigure();
+	}
+}
+
+function revealAnswer(){
+	scrollToTheAnswer()
 	checkAnswers();
-	closedTriangleFigure();
+	drawTriangleIfExists()
 }
