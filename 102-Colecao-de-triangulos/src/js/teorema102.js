@@ -3,7 +3,7 @@ var a,//greater side
     b, 
     c;
 
-var GREATER_ANGLE_OPTIONS = 7;// no-triangle, acutangle(equilateral, isosceles, scalene), 
+var TRIANGLE_OPTIONS = 7;// no-triangle, acutangle(equilateral, isosceles, scalene), 
 				// obtusangle(isosceles, scalene), rectangle.
 var NO_TRIANGLE = 0;
 var ACUTANGLE_EQUILATERAL = 1;
@@ -27,49 +27,51 @@ var aLittleSpace = 0.2;
 var max_x;
 var max_y;
 var max_xy;
+var sum;
+var aboard;
 
 function generateRandomSides(){
-	typeOfTriangle = 1;//Math.floor(Math.random()*GREATER_ANGLE_OPTIONS);
+	typeOfTriangle = Math.floor(Math.random()*TRIANGLE_OPTIONS);
 	switch(typeOfTriangle){
-		case NO_TRIANGLE:
+		case NO_TRIANGLE://0
 			b=MIN_SIDE+Math.floor(Math.random()*DELTA);
 			c=MIN_SIDE+Math.floor(Math.random()*DELTA);
 			a=b+c+MIN_SIDE+Math.floor(Math.random()*DELTA/2);
 		break;
-		case ACUTANGLE_EQUILATERAL:
+		case ACUTANGLE_EQUILATERAL://1
 			c=MIN_SIDE+Math.floor(Math.random()*DELTA);
 			b=c;
 			a=c;
 		break;
-		case ACUTANGLE_ISOSCELES:
+		case ACUTANGLE_ISOSCELES://2
 			c=MIN_SIDE+Math.floor(Math.random()*DELTA/2);
 			b=c;
 			minA=b+1;
 			maxAcuteA=Math.floor(Math.sqrt(b*b+c*c)-1);
 			a=minA+Math.floor(Math.random()*(Math.abs(maxAcuteA-minA)));
 		break;
-		case ACUTANGLE_SCALENE:
+		case ACUTANGLE_SCALENE://3
 			c=MIN_SIDE+Math.floor(Math.random()*DELTA/2);
 			b=c+1+Math.floor(Math.random()*DELTA/2);
 			minA=b+1;
 			maxAcuteA=Math.floor(Math.sqrt(b*b+c*c)-1);
 			a=minA+Math.floor(Math.random()*(Math.abs(maxAcuteA-minA)));
 		break;
-		case OBTUSANGLE_ISOSCELES:
+		case OBTUSANGLE_ISOSCELES://4
 			c=MIN_SIDE+Math.floor(Math.random()*DELTA);
 			b=c;
 			maxA=b+c-1;
 			minObtuseA=Math.ceil(Math.sqrt(b*b+c*c)+1);
 			a=minObtuseA+Math.floor(Math.random()*(Math.abs(maxA-minObtuseA)));
 		break;
-		case OBTUSANGLE_SCALENE:
+		case OBTUSANGLE_SCALENE://5
 			c=MIN_SIDE+Math.floor(Math.random()*DELTA/2);
 			b=c+1+Math.floor(Math.random()*DELTA/2);
 			maxA=b+c-1;
 			minObtuseA=Math.ceil(Math.sqrt(b*b+c*c)+1);
 			a=minObtuseA+Math.floor(Math.random()*(Math.abs(maxA-minObtuseA)));
 		break;
-		case RECTANGLE:
+		case RECTANGLE://6
 			var n=1+Math.floor(Math.random()*DELTA/2);
 			var m=n+1+Math.floor(Math.random()*DELTA/2);
 			b=(m*m-n*n);
@@ -95,8 +97,6 @@ function generateMaxValues(){
 };
 
 function openTriangleFigure(){
-
-	generateMaxValues();
 	
 	/*console.log("a "+a);
 	console.log("b "+a);
@@ -136,7 +136,7 @@ function closedTriangleFigure(){
 	var senb=h_a/c;
 	var cosb=Math.sqrt(1-senb*senb);
 	
-	var aboard = JXG.JSXGraph.initBoard('answerJXGBox', {boundingbox: [-max_xy, max_xy, max_xy, -max_xy*aLittleSpace], keepaspectratio: true, showcopyright: false});
+	aboard = JXG.JSXGraph.initBoard('answerJXGBox', {boundingbox: [-max_xy, max_xy, max_xy, -max_xy*aLittleSpace], keepaspectratio: true, showcopyright: false});
 
 	//Coordinates: A=[0, h_a], B=[-c*senb, 0], C=[0, a-c*senb];        
 	var A = aboard.create('point', [0, h_a], {name:'A', strokecolor:'red', fixed:true});
@@ -162,12 +162,10 @@ function disableTriangleConstruction(){
 }
 
 function checkAnswers(){
-		console.log("checkAnswers()");
 	checkAnswerTriangleConstructability();
 	if(!(document.getElementById('notConstructableCheckbox').checked)){
-		console.log("dentro do IF");
 		checkAnswerSidesRelationship();
-		//checkAnswerGreaterAngle(); 
+		checkAnswerGreaterAngle(); 
 	}   
 }
 
@@ -181,7 +179,7 @@ function checkAnswerTriangleConstructability(){
 
 function fillAnswerTriangleConstructable(){
 	$("#answerTriangleConstructable").empty();
-	var sum = parseInt(b)+parseInt(c);
+	sum = parseInt(b)+parseInt(c);
 	if(typeOfTriangle===NO_TRIANGLE){
 		$("#answerTriangleConstructable").html("<strong>a)</strong> Analisando utilizando a Desigualdade Triangular relativa ao maior lado (a="+a+"):<br/> Para existir triângulo, deve ser verdade a desigualdade:<br/> b + c > a, ou seja, "+b+" + "+c+" > "+a+", ou seja, "+sum+" > "+a+" <i class='glyphicon glyphicon-remove'>Falso!</i> <br/> Logo, NÃO é possível construir triângulo com as 3 varetas dadas: a="+a+", b="+b+", c="+c+".");
 	}else{
@@ -195,8 +193,50 @@ function matchedConstructabilityAndUserAnswer(){
 }
 
 
+function checkAnswerGreaterAngle(){
+	$("#validationAngleRadio").empty();
+	if(matchedGreaterAngleAndUserAnswer()){
+		$("#validationAngleRadio").append("<i class='glyphicon glyphicon-ok'>Correto!</i>");
+	}
+	else $("#validationAngleRadio").append("<i class='glyphicon glyphicon-remove'>Errado!</i>");	
+}
+
+function fillAnswerGreaterAngle(){
+	$("#answerGreaterAngle").empty();
+	sum=square(b)+square(c);
+	if(typeOfTriangle === ACUTANGLE_EQUILATERAL ||
+	    typeOfTriangle === ACUTANGLE_ISOSCELES || 
+	    typeOfTriangle === ACUTANGLE_SCALENE) {
+		$("#answerGreaterAngle").html("<strong>c)</strong> Utilizaremos a Lei dos Cossenos relativa ao maior lado (a="+a+").<br/>a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A).</br>Note que, A < 90<sup>o</sup>, equivale a 0 < cos(A) <u><</u> 1.<br/> Assim, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bc*cos(A) <u><</u> b<sup>2</sup> + c<sup>2</sup> - 2bc < b<sup>2</sup> + c<sup>2</sup>.<br/> Assim, um triângulo é Acutângulo, se e somente se, a<sup>2</sup> < b<sup>2</sup> + c<sup>2</sup>.<br/>Testando para o nosso exemplo: a<sup>2</sup> = "+square(a)+" < b<sup>2</sup> + c<sup>2</sup> = "+square(b)+" + "+square(c)+" = "+sum+".<br/> Assim, o nosso triângulo é <b>Acutângulo</b>.");
+	}
+	else if(typeOfTriangle === OBTUSANGLE_SCALENE ||
+		   typeOfTriangle === OBTUSANGLE_ISOSCELES) {
+			$("#answerGreaterAngle").html("<strong>c)</strong> Utilizaremos a Lei dos Cossenos relativa ao maior lado (a="+a+").<br/>a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A).</br>Note que, A > 90<sup>o</sup>, equivale a -1 <u><</u> cos(A) < 0.<br/> Assim, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bc*cos(A) <u>></u> b<sup>2</sup> + c<sup>2</sup> + 2bc > b<sup>2</sup> + c<sup>2</sup>.<br/> Assim, um triângulo é Obtusângulo, se e somente se, a<sup>2</sup> > b<sup>2</sup> + c<sup>2</sup>.<br/>Testando para o nosso exemplo: a<sup>2</sup> = "+square(a)+" > b<sup>2</sup> + c<sup>2</sup> = "+square(b)+" + "+square(c)+" = "+sum+".<br/> Assim, o nosso triângulo é <b>Obtusângulo</b>.");
+	}
+	else if( typeOfTriangle === RECTANGLE ) {
+		$("#answerGreaterAngle").html("<strong>c)</strong> Utilizaremos a Lei dos Cossenos relativa ao maior lado (a="+a+").<br/>a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A).</br>Note que, A = 90<sup>o</sup>, equivale a cos(A) = 0.<br/> Assim, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bc*cos(A) = b<sup>2</sup> + c<sup>2</sup>.<br/> Assim, um triângulo é Retângulo, se e somente se, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup>. (ou Teorema de Pitágoras)<br/>Testando para o nosso exemplo: a<sup>2</sup> = "+square(a)+" = b<sup>2</sup> + c<sup>2</sup> = "+square(b)+" + "+square(c)+" = "+sum+".<br/> Assim, o nosso triângulo é <b>Retângulo</b>.");		
+	}
+}
+
+function square(x){
+	return parseInt(x)*parseInt(x);
+}
+
+function matchedGreaterAngleAndUserAnswer(){
+	if( (typeOfTriangle === ACUTANGLE_EQUILATERAL ||
+	    typeOfTriangle === ACUTANGLE_ISOSCELES || 
+	    typeOfTriangle === ACUTANGLE_SCALENE) && 
+		document.getElementById("radioAcutangle").checked === true) return true;
+	else if( ( typeOfTriangle === OBTUSANGLE_SCALENE ||
+		   typeOfTriangle === OBTUSANGLE_ISOSCELES) && 
+		document.getElementById("radioObtusangle").checked === true) return true;
+	else if(typeOfTriangle===RECTANGLE && 
+		document.getElementById("radioRectangle").checked === true) return true;
+	else return false;
+	 
+}
+
 function checkAnswerSidesRelationship(){
-	console.log("checkAnswerSidesRelationship()");
 	$("#validationSidesRadio").empty();
 	if(matchedSidesRelationshipAndUserAnswer()){
 		$("#validationSidesRadio").append("<i class='glyphicon glyphicon-ok'>Correto!</i>");
@@ -205,7 +245,6 @@ function checkAnswerSidesRelationship(){
 }
 
 function fillAnswerSidesRelationship(){
-	console.log("fillAnswerSidesRelationship()");
 	$("#answerSidesRelationship").empty();
 	
 	if(typeOfTriangle===ACUTANGLE_EQUILATERAL) {
@@ -252,15 +291,19 @@ function checkIfUserAnsweredGreaterAngle(){
 		document.getElementById("radioObtusangle").checked);	
 }
 
-function scrollToTheAnswer(){
+function scrollTo(tag){
 	$('html, body').animate({
-	        scrollTop: $("#validationConstructabilityCheckbox").offset().top 
+	        scrollTop: $(tag).offset().top
 	}, 1000);
 }
 
 function drawTriangleIfExists(){
+	//always add border to Explanation
+	$("#answerExplanation").addClass("rectangle");
 	if(!(typeOfTriangle === NO_TRIANGLE)){
-		$("#answerJXGBox").addClass("jxgbox");
+		$("#answerJXGBox").addClass("jxgbox2");
+		$("#answerJXGBox, #answerExplanation").addClass("rectangle");
+		$("#answerJXGBox, #answerExplanation").addClass("rectangle-jsx");
 		closedTriangleFigure();
 	}
 }
@@ -269,27 +312,57 @@ function fillAnswersExplanation(){
 	fillAnswerTriangleConstructable();
 	if(!(typeOfTriangle===NO_TRIANGLE)){
 		fillAnswerSidesRelationship();
+		fillAnswerGreaterAngle();
 	}
+}
+
+function resetUserAnswersAndTheirValidations(){
+	//clean userAnswers
+	$('input[type=radio]').attr('disabled',false);
+	$('input[type=radio]').attr('checked',false);
+	$('input[type=checkbox]').attr('checked',false);
+	$("#triangleConstructible").removeClass("disabled");
+	//clean validations
+	$("#validationConstructabilityCheckbox").empty();
+	$("#validationSidesRadio").empty();
+	$("#validationAngleRadio").empty();
 }
 
 function cleanValidationsAndAnswerExplanations(){
 	$("#validationUserAnswered").empty();
-	//remove JXGBox	
-	$("#answerJXGBox").removeClass("jxgbox");
+	//remove answerJXGBox	
+	if(aboard!=null) {
+		JXG.JSXGraph.freeBoard(aboard);
+		aboard=null;
+	}
+	$("#answerJXGBox").removeClass("jxgbox2");
+	$("#answerJXGBox, #answerExplanation").removeClass("rectangle");
+	$("#answerJXGBox, #answerExplanation").removeClass("rectangle-jsx");
+
 	$("#answerTriangleConstructable").empty();
 	$("#answerSidesRelationship").empty();
+	$("#answerGreaterAngle").empty();
 }
 
 function revealAnswer(){
 	cleanValidationsAndAnswerExplanations();
 	if(checkIfUserAnswered()){
-		scrollToTheAnswer();
+		scrollTo("#notConstructableCheckbox");//answer
 		checkAnswers();
 		drawTriangleIfExists();
 		fillAnswersExplanation();
 	}
 	else {
-		 $("#validationUserAnswered").append("<i class='glyphicon glyphicon-remove'> Classifique o triângulo quanto aos lados e o maior ângulo ou assinale que não pode ser construído.</i> ");
+		 $("#validationUserAnswered").append("<i class='glyphicon glyphicon-remove'>Classifique o triângulo quanto aos lados e o maior ângulo ou assinale que não pode ser construído.</i> ");
 	}
 	
+}
+
+function generateNewTriangle(tagToScroll){
+	resetUserAnswersAndTheirValidations();
+	cleanValidationsAndAnswerExplanations();
+	generateRandomSides();
+	generateSidesTable();
+	generateMaxValues();
+	openTriangleFigure();
 }

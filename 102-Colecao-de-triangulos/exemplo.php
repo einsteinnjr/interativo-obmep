@@ -17,7 +17,7 @@
 		<p><strong> Devido a ser muito organizado, Renato guarda sua coleção em grupos, dependendo do tipo de triângulo: equilátero, isósceles, acutângulo, etc. Ajude-o a classificar os grupos de 3 varetas, dentro de sua coleção ou informe que não é possivel fazer uma armação triangular com o grupo. </strong></p>
 	</div>
 		<div>
-			<table class="table table-bordered">
+			<table id="sidesTable" class="table table-bordered">
 				<tr>
 					<td id="sideA"></td>
 					<td id="sideB"></td>
@@ -29,6 +29,7 @@
 		<div id="questionJXGBox" class="jxgbox"></div>
 	</div>	
 	<div>
+		<strong>Responda os itens abaixo:</strong>
 		<div class="checkbox">
 		        <label>
 		            <input type="checkbox" id="notConstructableCheckbox" onclick="disableTriangleConstruction(this)" /> Não é possível construir o triângulo.
@@ -38,6 +39,19 @@
 	</div>
 	<div id="triangleConstructible" class="rectangle">	
 			<p><strong> Se for possível a construção do triângulo:</strong> </p>		
+			<div>
+				<strong> - Classifique-o quanto aos lados: </strong></br>
+				<label class="radio-inline">
+				  <input type="radio" id="radioScalene" name="sidesClass" value="scalene"> Escaleno
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" id="radioIsosceles" name="sidesClass" value="isosceles"> Isósceles
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" id="radioEquilateral" name="sidesClass" value="equilateral"> Equilátero
+				</label>
+				<a id="validationSidesRadio"></a>
+			</div>			
 			<div>
 				<strong> - Classifique-o quanto ao maior ângulo: </strong> </br>
 				<label class="radio-inline">
@@ -51,38 +65,33 @@
 				</label>
 				<a id="validationAngleRadio"></a>
 			</div>
-			<div>
-				<strong> - Classifique-o quanto aos lados: </strong></br>
-				<label class="radio-inline">
-				  <input type="radio" id="radioScalene" name="sidesClass" value="scalene"> Escaleno
-				</label>
-				<label class="radio-inline">
-				  <input type="radio" id="radioIsosceles" name="sidesClass" value="isosceles"> Isósceles
-				</label>
-				<label class="radio-inline">
-				  <input type="radio" id="radioEquilateral" name="sidesClass" value="equilateral"> Equilátero
-				</label>
-				<a id="validationSidesRadio"></a>
-			</div>
 	</div>
 </br>
-	<button type="button" class="btn btn-default" onClick="revealAnswer();">Revelar Resposta</button> 
-	<a id="validationUserAnswered"></a>
+		
+	
+	
+<div class="btn-group">
+  <button type="button" class="btn btn-default btn-primary" onClick="revealAnswer();">Revelar Resposta</button> 
+  <button type="button" class="btn btn-default" onClick="generateNewTriangle();scrollTo('#sidesTable');">Novo Triângulo</button> 
+</div> 
+<a id="validationUserAnswered"></a>
 
+	
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
 	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
 	
-	<div id="answerJXGBox"></div>
-
-	<div id="answerExplanation" class="rectangle">
-			<div id="answerTriangleConstructable"></div>
-			<div id="answerSidesRelationship"></div>
+	<div>
+		<div id="answerJXGBox" class="rectangle2"></div>
+		<div id="answerExplanation" class="rectangle2">
+				<div id="answerTriangleConstructable"></div>
+				<div id="answerSidesRelationship"></div>
+				<div id="answerGreaterAngle"></div>
+		</div>
 	</div>
 	<script>
 		$(document).ready(function () {
-			generateRandomSides();
-			generateSidesTable();
-			openTriangleFigure();
+			generateNewTriangle();
+			scrollTo("body");
 		});
 	</script>
 </body>
