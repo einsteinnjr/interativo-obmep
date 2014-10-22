@@ -33,11 +33,10 @@
 		        <label>
 		            <input type="checkbox" id="notConstructableCheckbox" onclick="disableTriangleConstruction(this)" /> Não é possível construir o triângulo.
 		        </label>
-			<a id="answerCheckbox" class="answer"></a>
+			<a id="validationConstructabilityCheckbox"></a>
             	</div>
 	</div>
-	<div id="triangleConstructible" class="rectangle">
-		<div class="insideRectangle">
+	<div id="triangleConstructible" class="rectangle">	
 			<p><strong> Se for possível a construção do triângulo:</strong> </p>		
 			<div>
 				<strong> - Classifique-o quanto ao maior ângulo: </strong> </br>
@@ -50,6 +49,7 @@
 				<label class="radio-inline">
 				  <input type="radio" id="radioObtusangle" name="greaterAngleClass" value="obtusangle"> Obtusângulo
 				</label>
+				<a id="validationAngleRadio"></a>
 			</div>
 			<div>
 				<strong> - Classifique-o quanto aos lados: </strong></br>
@@ -62,11 +62,12 @@
 				<label class="radio-inline">
 				  <input type="radio" id="radioEquilateral" name="sidesClass" value="equilateral"> Equilátero
 				</label>
+				<a id="validationSidesRadio"></a>
 			</div>
-		</div>
 	</div>
 </br>
-	<button type="button" class="btn btn-default" onClick="revealAnswer();">Revelar Resposta</button>
+	<button type="button" class="btn btn-default" onClick="revealAnswer();">Revelar Resposta</button> 
+	<a id="validationUserAnswered"></a>
 
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
 	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
@@ -74,14 +75,13 @@
 	<div id="answerJXGBox"></div>
 
 	<div id="answerExplanation" class="rectangle">
-		<div class="insideRectangle">
 			<div id="answerTriangleConstructable"></div>
 			<div id="answerSidesRelationship"></div>
-		</div>
 	</div>
 	<script>
 		$(document).ready(function () {
 			generateRandomSides();
+			generateSidesTable();
 			openTriangleFigure();
 		});
 	</script>
