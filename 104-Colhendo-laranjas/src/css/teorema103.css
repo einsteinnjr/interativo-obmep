@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+body{
+  margin: 10px;
+  padding:10px;
+}
+
+.column-left{
+  top:-100px;	
+  width: 300px;
+  margin-right: 2%;
+  float:left;
+}
+
+.column-right{
+  width: 600px;
+ display:inline-block;
+}
+
+div button{
+	margin:4px;
+}
+
+table{
+	margin:4px;
+}
+
+td{
+	padding:4px;
+	text-align: center;
+	border:2px solid gray !important;
+}
+
+.bordered{
+	padding:4px;
+	border:2px solid gray !important;
+	position:relative;
+	top:+5px;
+	border-radius:5px;
+	clear:both;
+}
+
+.bordered p {
+	text-align: justify;
+}
+
+#requisites{
+  width:250px;
+}
+
+#revealExplanation{
+  float:right;
+}
+
+.glyphicon-ok{
+    color: #04B431; /*dark green*/
+}
+
+.glyphicon-remove{
+    color: #FE2E2E; /*dark red*/
+}
