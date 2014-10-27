@@ -1,147 +1,207 @@
-var MAX_NUMBER = 100;
-var NUMBER_OF_QUESTIONS= 7;
+var NUMBER_OF_LINES=4;
+var INITIAL_NUMBER=1;
+var FINAL_NUMBER=10;
+var matrix;
+var i, j, k, sum, line, orchard;
+var maxSumNeighborMatrix;
+var maxSumIndexesMatrix;
+var log_;
+var maxPathSum;
+var actualSum;
+var left, right;
 
-var thinkedNumber;
-var actualQuestion = 1;
-var numberAsked;
-var guessedNumber;
-
-function thinkNumber(){
-	thinkedNumber=Math.floor(Math.random()*MAX_NUMBER);
-	//alert("thinked "+thinkedNumber);
+function createOrchard(){
+	matrix=new Array();
+	for(i=0; i<NUMBER_OF_LINES; i++){
+		matrix[i]=new Array();
+		for(j=0; j<NUMBER_OF_LINES; j++){
+			matrix[i][j]=INITIAL_NUMBER+Math.floor(Math.random()*(FINAL_NUMBER-INITIAL_NUMBER));
+		}
+	}	
 };
 
-function isValidNumberAsked(){
-	numberAsked = document.getElementById("number_asked_"+actualQuestion).value;
-	//take out leading and trailing spaces.	
-	numberAsked=numberAsked.trim();
-	if(numberAsked.length===0 ||isNaN(numberAsked)) return false;
-	else return true;
-};
 
-function sendQuestion(){	
-	if(isValidNumberAsked()){
-		$("#answer_"+actualQuestion).empty();
-		answerQuestion();
-		actualQuestion++;
-		if(actualQuestion<=NUMBER_OF_QUESTIONS) generateQuestionLine();
-		else generateGuessLine(); //ended all questions.
+
+function printOrchard(){
+	orchard="";
+	for(sum=0; sum<NUMBER_OF_LINES; sum++){	
+		for(i=0; i<=sum; i++){
+			j=sum-i;
+			orchard+="<span id='"+i+"_"+j+"' class='num'>"+matrix[i][j]+"</span><span class='tab'/>";	
+		}
+		orchard+="</br>";
 	}
-	else {
-		alert("O valor digitado "+numberAsked+" não é um número válido. Favor, digite um número.");
-		document.getElementById("number_asked_"+actualQuestion).value="";	
-	}
+	return orchard;
 };
 
-function answerQuestion(){
-	var x = document.getElementById("select_"+actualQuestion).selectedIndex;
-	numberAsked = document.getElementById("number_asked_"+actualQuestion).value;
-	switch(document.getElementsByTagName("option")[x].value){
-		case "greater_than":
-			if(thinkedNumber > numberAsked) $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-ok'>Sim!</i>");
-			else $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-remove'>Não!</i>");
-	break;
-		case "greater_or_equal":
-			if(thinkedNumber >= numberAsked) $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-ok'>Sim!</i>");
-			else $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-remove'>Não!</i>");
-	break;
-		case "less_than":
-			if(thinkedNumber < numberAsked) $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-ok'>Sim!</i>");
-			else $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-remove'>Não!</i>");
-	break;
-		case "less_or_equal":
-			if(thinkedNumber <= numberAsked) $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-ok'>Sim!</i>");
-			else $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-remove'>Não!</i>");
-	break;
-	}
-	document.getElementById("number_asked_"+actualQuestion).disabled=true;
-	document.getElementById("select_"+actualQuestion).disabled=true;
-};
-
-function generateInterval(){
-	$("#interval").empty();
-	$("#interval").html("1 a "+MAX_NUMBER);
-};
-
-function generateNumberOfQuestions(){
-	$("#numberOfQuestions").empty();
-	$("#numberOfQuestions").html(NUMBER_OF_QUESTIONS);
-};
-
-function resetTableAndFields(){
-	$("#guess").remove();
-	$("#secret").remove();	
-	$("#questions").empty();
-	$("#questions").append("<tr id='thead'>"+
-			     "<td>Pergunta (n<sup>o</sup>)</td>"+
-			     "<td>Tipo de pergunta</td>"+
-			     "<td>Valor</td>"+
-			     "<td>Resposta</td>"+
-			       "</tr>");
-	document.getElementById("revealExplanation").disabled=false;	
-	
-};
-
-function generateQuestionLine(){
-	$("#questions").append(" <tr>"+
-			"<td id='"+actualQuestion+"'>"+actualQuestion+"<sup>a</sup></td>"+
-			   "<td><select id='select_"+actualQuestion+"'>"+
-			  "<option value='greater_than'>É maior que </option>"+
-			  "<option value='greater_or_equal'>É maior ou igual a </option>"+
-			  "<option value='less_than'>É menor que </option>"+
-			  "<option value='less_or_equal'>É menor ou igual a </option>"+
-					"</select> </td>"+
-			   "<td><input id='number_asked_"+actualQuestion+"' required placeholder='Escolha um número'></input>?</td>"+
-			"<td id='answer_"+actualQuestion+"'><button type='button' class='btn btn-default' onClick='sendQuestion();'>Enviar Pergunta</button></td>"+
-			"</tr>");	
-};
-
-function generateGuessLine(){
-	$("#questions").after("<div id='guess'>"+
-				"<p>As perguntas esgotaram. Qual o número que Bernardo pensou?</p>"+
-				"<input id='guessedNumber' required></input>"+
-				"<button type='button' class='btn btn-default' onClick='guessNumber();'>Adivinhar número</button>"+
-				"</div>");
-	
-};
-
-function guessNumber(){
-	var playAgain;
-	guessedNumber=document.getElementById("guessedNumber").value;
-	if(parseInt(guessedNumber) === parseInt(thinkedNumber)) {
-		playAgain = confirm("Parabéns! Você acertou o número de Bernardo! É "+thinkedNumber+". Deseja jogar novamente?");
-	}
-	else {
-		playAgain = confirm("Que Pena! Você errou. O número pensado por Bernardo foi "+thinkedNumber+". Deseja jogar novamente?"); 
-	}
-	if(playAgain === true){
-		generateNewGame(); 
+function validateAtMostOneInThatLine(it){
+	var id = $(it).attr('id');
+	var idx = String(id).split('_');
+	sum = parseInt(idx[0])+parseInt(idx[1]);
+	for(i=0; i<=sum; i++){
+		j=sum-i;
+		if(i!==parseInt(idx[0]) &&
+			$('#'+i+'_'+j).hasClass('selected')){//if it already has a selected, change to our actual 
+				$('#'+i+'_'+j).toggleClass('selected');
+		}
+			
 	}
 }
 
-function scrollTo(tag){
-	$('html, body').animate({
-	        scrollTop: $(tag).offset().top
-	}, 1000);
+function calculateMaxPath(){
+	maxSumNeighborMatrix = new Array();
+	maxSumIndexesMatrix = new Array();
+	line = NUMBER_OF_LINES-1;
+	
+	//init Sum Matrix
+	for(i=0; i<NUMBER_OF_LINES; i++){
+		maxSumNeighborMatrix[i] = new Array();
+		maxSumIndexesMatrix[i] = new Array();
+	}
+	log_="";
+	//init last line sum;
+	for(i=0; i<NUMBER_OF_LINES; i++){
+		maxSumNeighborMatrix[line][i]=matrix[i][line-i];
+		log_+="line "+line+" i "+i+" "+maxSumNeighborMatrix[line][i]+" # ";
+	}
+	//console.log("init "+log_);
+	
+	while( line > 0 ){
+		var aux = line-1;
+		//console.log("line "+aux);
+		log_="";
+		for(i=0; i<line; i++){
+			if(matrix[i][line-1-i]+maxSumNeighborMatrix[line][i] > matrix[i][line-1-i]+maxSumNeighborMatrix[line][i+1]){
+				maxSumNeighborMatrix[line-1][i] = matrix[i][line-1-i]+maxSumNeighborMatrix[line][i];
+				maxSumIndexesMatrix[line-1][i] = i;
+				log_+="sum "+maxSumNeighborMatrix[line-1][i]+" idx "+maxSumIndexesMatrix[line-1][i]+" @ ";
+			}
+			else {
+				maxSumNeighborMatrix[line-1][i] = matrix[i][line-1-i]+maxSumNeighborMatrix[line][i+1];
+				maxSumIndexesMatrix[line-1][i] = i+1;
+				log_+="sum "+maxSumNeighborMatrix[line-1][i]+" idx "+maxSumIndexesMatrix[line-1][i]+" @ ";
+			}
+		}
+		//console.log(log_);
+		line--;			
+	}
+	maxPathSum=maxSumNeighborMatrix[0][0];
+	//console.log("MaxSum "+maxPathSum);
 }
 
-function revealExplanation(){
-$("#revealExplanation").after("<div id='secret' class='bordered'><p>-Note que a cada pergunta de Sim ou Não, alguns números são descartados serem o de Bernardo. Depois da 1a pergunta, dados os "+MAX_NUMBER+" números, e perguntarmos, por exemplo: É maior ou igual a 9? Em caso de Sim, a quantidade de números válidos seriam x. Em caso de Não como resposta, a quantidade de números válidos seria "+MAX_NUMBER+"-x. Seria interessante se escolhêssemos perguntas onde conseguíssemos excluir o máximo de números, para que ficasse mais fácil adivinhar. </p>"+
-		    "<p>-Note também que para uma mesma pergunta, a resposta obviamente vai diferir, dependendo do número pensado por Bernardo. Sendo assim, temos que trabalhar com o PIOR caso da nossa estratégia.</p>"+
-		"<p>-Uma estratégia interessante é perguntar pelo número que se encontra na metade do intervalo restante. Por exemplo, se o intervalo for de 37 a 56, teremos um total de 20 números aí. Caso questionássemos se, por exemplo, é maior que 47, teríamos como resposta de Sim e Não, 2 intervalos com apenas 10 números (os intervalos de [37,47] e ]47,57]. Dessa maneira, não importando a resposta de Bernardo (se sim ou não), conseguiríamos diminuir o espaço de busca pela metade. Estratégia que poderíamos sempre seguir.</p>"+
-		"<p>-Essa estratégia para buscar um número, é denominado 'Busca Binária', pois sempre dividimos o espaço de busca pela metade. Tente aplicá-lo no problema.</p> </div>");
-	$("#secret").addClass("bordered");
-	scrollTo("#secret");
-	document.getElementById("revealExplanation").disabled=true;
+function showMaxPath(){
+	line=0;	
+	i=0;
+	j=line-i;
+	while(line < NUMBER_OF_LINES){
+		$('#'+i+'_'+j).addClass('solution');
+		i = maxSumIndexesMatrix[line][i];
+		line++;
+		j= line-i;		
+	}
+
+}
+
+function validateIfItIsMaxPath(){
+	if(!validateExactOnePerLine()){
+		alert("O caminho não é válido. Não existe número escolhido na linha "+sum+".");
+	}
+	else if(!validateIfItIsAPath()){
+		if( !left && !right || sum === 0) alert("O caminho não é válido. O caminho começado na linha 0(zero) se interrompe na linha "+sum+".");
+	}
+	else if(actualSum !== maxPathSum){
+		alert("O caminho é válido, mas não é máximo. Existe caminho com soma maior que "+actualSum+".");	
+	}
+	else{
+		showMaxPath();		
+		alert("Parabéns! Você achou o caminho de soma máxima "+maxPathSum+".");	
+	}
+	
+}
+
+function validateIfItIsAPath(){
+
+	i=0; 
+	j=0;
+	var chosen_i, chosen_j;
+	var i_, j_;
+	sum=-1;
+	actualSum=0;
+	while( i+j < NUMBER_OF_LINES && //not left orchard yet
+		$('#'+i+'_'+j).hasClass('selected')){ //selected
+		actualSum+=parseInt($('#'+i+'_'+j).text());
+		chosen_i = -1;
+		chosen_j = -1;
+		left = false;
+		right = false;
+		
+		// look to their neighbors
+		i_ = i+1;
+		j_ = j+1;
+		
+		if(i+j+1 === NUMBER_OF_LINES){//neighbors are out of the orchard
+			//console.log("It is a path!");
+			return true;
+		}
+		//left neighbor	
+		if($('#'+i+'_'+j_).hasClass('selected')){
+			chosen_i = i;
+			chosen_j = j_;
+			left=true;
+		}
+
+		//right neighbor
+		if($('#'+i_+'_'+j).hasClass('selected')){
+			chosen_i = i_;
+			chosen_j = j;
+			right=true;
+		}
+
+		if(!left && !right) {
+			sum=i+j+1;
+			//console.log("both selected notAPath sum "+sum);
+			return false; // both selected
+		}
+		else if(left && right) {
+			sum=i+j+1;			
+			//console.log("none selected notAPath sum "+sum);
+			return false;// none selected
+		}
+		i=chosen_i;
+		j=chosen_j;
+	}
+	sum=i+j;
+	if(!$('#'+i+'_'+j).hasClass('selected')) {
+		//console.log("i "+i+" j "+j+" notAPath sum "+sum);
+		return false;
+	}
+}
+
+function validateExactOnePerLine(){
+	var qnt;
+	for(sum=0; sum<NUMBER_OF_LINES; sum++){
+		qnt=0;	
+		for(i=0; i<=sum; i++){
+			j=sum-i;
+			if($('#'+i+'_'+j).hasClass('selected')) qnt++;	
+		}
+		
+		if(qnt!=1) {
+			//console.log("Na linha "+sum+" nao existem numeros selecionados.");
+			return false;
+		}
+	}
+	//console.log("Existe um número selecionado por linha");
+	return true;
 }
 
 function generateNewGame(){
-	actualQuestion=1;
-	thinkNumber();
-	generateInterval();
-	generateNumberOfQuestions();
-	resetTableAndFields();
-	generateQuestionLine();
+	createOrchard();
+	$("#orchard").html(printOrchard());
+	$(".num").click(function(){
+		validateAtMostOneInThatLine(this);
+		$(this).toggleClass("selected");
+	});
+	actualSum=0;
+	calculateMaxPath();
 };
-
-

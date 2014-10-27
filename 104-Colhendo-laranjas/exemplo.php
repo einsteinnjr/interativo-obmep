@@ -16,12 +16,15 @@
 		<p><strong>Bernardo deseja descobrir qual o caminho deve fazer, partindo da laranjeira mais alta e seguindo apenas para laranjeiras vizinhas para baixo, de forma a conseguir colher o maior número de laranjas, chegando a última linha. 
 		<p><strong>Clique nas laranjeiras de forma a definir o caminho. Assim que tiver um caminho completo (com uma laranjeira por linha), você pode testar se achou o caminho com maior número de laranjas. </strong></p>
 	</div>
-	<div class="orchard">
-
+	<button id="newGame" type="button" class="btn btn-default" onClick="generateNewGame();">Novo Jogo</button>
+	<div id="orchard"></div>	
+	
+	<div class="btn-group">
+		<button id="testPath" type="button" class="btn btn-default" onClick="validateIfItIsMaxPath();">Testar Caminho</button>
+		<button id="testPath" type="button" class="btn btn-default btn-primary" onClick="showMaxPath();">Mostrar Caminho Maximo</button>	
 	</div>	
-	
-	
-	<p>fonte do problema: <a href="https://projecteuler.net/problem=18">Project Euler</a></p>
+
+	<p id="source">fonte do problema: <a href="https://projecteuler.net/problem=18">Project Euler</a></p>
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="src/js/teorema104.js"></script>
 	
