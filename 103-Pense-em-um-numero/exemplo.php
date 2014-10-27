@@ -37,7 +37,7 @@
 		</table>
 	</div>
 	<div>
-	  <button id="revealSecret" type="button" class="btn btn-default btn-primary" onClick="revealSecret();">Revelar Segredo</button> 
+	  <button id="revealExplanation" type="button" class="btn btn-default btn-primary" onClick="revealExplanation();">Revelar Explicação</button> 
 	  <div id="secret" class="bordered">
 	  </div>
 	</div>

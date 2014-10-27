@@ -35,7 +35,7 @@ td{
 	padding:4px;
 	border:2px solid gray !important;
 	position:relative;
-	top:+40px;
+	top:+5px;
 	border-radius:5px;
 	clear:both;
 }
@@ -48,7 +48,7 @@ td{
   width:250px;
 }
 
-#revealSecret{
+#revealExplanation{
   float:right;
 }
 
