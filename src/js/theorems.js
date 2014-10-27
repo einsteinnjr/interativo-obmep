@@ -13,7 +13,7 @@ $.address.init(function () {
 	}
 	boards = [];
 
-	$container.loader('show').load( "101-caca-primos.php"/*'teoremas' + ( $link.size() ? event.value + '.php' : '/404.php'*/ ), function ( HTML, textStatus ) {
+	$container.loader('show').load( 'teoremas' + ( $link.size() ? event.value + '.php' : '/404.php' ), function ( HTML, textStatus ) {
 		$container.loader('hide');
 
 		if ( textStatus == 'success' && $link.size() ) {

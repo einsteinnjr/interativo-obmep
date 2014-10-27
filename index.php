@@ -57,7 +57,7 @@
             <a href="101-Caca-primos/exemplo.php" class="list-group-item active">101- Caça-primos</a>
             <a href="102-Colecao-de-triangulos/exemplo.php" class="list-group-item">102- Coleção de Triângulos</a>
             <a href="103-Pense-em-um-numero/exemplo.php" class="list-group-item">103- Pense em um número</a>
-            <a href="#" class="list-group-item">104- Colhendo laranjas</a>
+            <a href="#" class="list-group-item"><i class='glyphicon glyphicon-cog' title="Em desenvolvimento"></i> 104- Colhendo laranjas</a>
           </div>
         </div><!--/span-->
 
