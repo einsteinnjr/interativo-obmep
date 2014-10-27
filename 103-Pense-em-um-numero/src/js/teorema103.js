@@ -38,20 +38,20 @@ function answerQuestion(){
 	numberAsked = document.getElementById("number_asked_"+actualQuestion).value;
 	switch(document.getElementsByTagName("option")[x].value){
 		case "greater_than":
-			if(thinkedNumber > numberAsked) $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-ok'>Verdade!</i>");
-			else $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-remove'>Falso!</i>");
+			if(thinkedNumber > numberAsked) $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-ok'>Sim!</i>");
+			else $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-remove'>Não!</i>");
 	break;
 		case "greater_or_equal":
-			if(thinkedNumber >= numberAsked) $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-ok'>Verdade!</i>");
-			else $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-remove'>Falso!</i>");
+			if(thinkedNumber >= numberAsked) $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-ok'>Sim!</i>");
+			else $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-remove'>Não!</i>");
 	break;
 		case "less_than":
-			if(thinkedNumber < numberAsked) $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-ok'>Verdade!</i>");
-			else $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-remove'>Falso!</i>");
+			if(thinkedNumber < numberAsked) $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-ok'>Sim!</i>");
+			else $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-remove'>Não!</i>");
 	break;
 		case "less_or_equal":
-			if(thinkedNumber <= numberAsked) $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-ok'>Verdade!</i>");
-			else $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-remove'>Falso!</i>");
+			if(thinkedNumber <= numberAsked) $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-ok'>Sim!</i>");
+			else $("#answer_"+actualQuestion).html("<i class='glyphicon glyphicon-remove'>Não!</i>");
 	break;
 	}
 	document.getElementById("number_asked_"+actualQuestion).disabled=true;
@@ -68,7 +68,9 @@ function generateNumberOfQuestions(){
 	$("#numberOfQuestions").html(NUMBER_OF_QUESTIONS);
 };
 
-function resetTable(){
+function resetTableAndFields(){
+	$("#guess").remove();
+	$("#secret").remove();	
 	$("#questions").empty();
 	$("#questions").append("<tr id='thead'>"+
 			     "<td>Pergunta (n<sup>o</sup>)</td>"+
@@ -76,7 +78,8 @@ function resetTable(){
 			     "<td>Valor</td>"+
 			     "<td>Resposta</td>"+
 			       "</tr>");
-	$("#guess").remove();
+	document.getElementById("revealSecret").disabled=false;	
+	
 };
 
 function generateQuestionLine(){
@@ -105,8 +108,6 @@ function generateGuessLine(){
 function guessNumber(){
 	var playAgain;
 	guessedNumber=document.getElementById("guessedNumber").value;
-	console.log("guessedNumber "+guessedNumber);
-	console.log("thinkedNumber "+thinkedNumber);
 	if(parseInt(guessedNumber) === parseInt(thinkedNumber)) {
 		playAgain = confirm("Parabéns! Você acertou o número de Bernardo! É "+thinkedNumber+". Deseja jogar novamente?");
 	}
@@ -118,12 +119,28 @@ function guessNumber(){
 	}
 }
 
+function scrollTo(tag){
+	$('html, body').animate({
+	        scrollTop: $(tag).offset().top
+	}, 1000);
+}
+
+function revealSecret(){
+$("#revealSecret").after("<div id='secret' class='bordered'><p>-Note que a cada pergunta de Sim ou Não, alguns números são descartados serem o de Bernardo. Depois da 1a pergunta, dados os "+MAX_NUMBER+" números, e perguntarmos, por exemplo: É maior ou igual a 9? Em caso de Sim, a quantidade de números válidos seriam x. Em caso de Não como resposta, a quantidade de números válidos seria "+MAX_NUMBER+"-x. Seria interessante se escolhêssemos perguntas onde conseguíssemos excluir o máximo de números, para que ficasse mais fácil adivinhar. </p>"+
+		    "<p>-Note também que para uma mesma pergunta, a resposta obviamente vai diferir, dependendo do número pensado por Bernardo. Sendo assim, temos que trabalhar com o PIOR caso da nossa estratégia.</p>"+
+		"<p>-Uma estratégia interessante é perguntar pelo número que se encontra na metade do intervalo restante. Por exemplo, se o intervalo for de 37 a 56, teremos um total de 20 números aí. Caso questionássemos se, por exemplo, é maior que 47, teríamos como resposta de Sim e Não, 2 intervalos com apenas 10 números (os intervalos de [37,47] e ]47,57]. Dessa maneira, não importando a resposta de Bernardo (se sim ou não), conseguiríamos diminuir o espaço de busca pela metade. Estratégia que poderíamos sempre seguir.</p>"+
+		"<p>-Essa estratégia para buscar um número, é denominado 'Busca Binária', pois sempre dividimos o espaço de busca pela metade. Tente aplicá-lo no problema.</p> </div>");
+	$("#secret").addClass("bordered");
+	scrollTo("#secret");
+	document.getElementById("revealSecret").disabled=true;
+}
+
 function generateNewGame(){
 	actualQuestion=1;
 	thinkNumber();
 	generateInterval();
 	generateNumberOfQuestions();
-	resetTable();
+	resetTableAndFields();
 	generateQuestionLine();
 };
 

@@ -6,15 +6,19 @@ body{
 }
 
 .column-left{
+  top:-100px;	
   width: 300px;
   margin-right: 2%;
-  display:inline-block;
+  float:left;
 }
 
 .column-right{
   width: 600px;
-  margin-right: 2%;
-  display:inline-block;
+ display:inline-block;
+}
+
+div button{
+	margin:4px;
 }
 
 table{
@@ -27,9 +31,25 @@ td{
 	border:2px solid gray !important;
 }
 
+.bordered{
+	padding:4px;
+	border:2px solid gray !important;
+	position:relative;
+	top:+40px;
+	border-radius:5px;
+	clear:both;
+}
+
+.bordered p {
+	text-align: justify;
+}
+
 #requisites{
   width:250px;
-  margin: auto;/*centralized*/
+}
+
+#revealSecret{
+  float:right;
 }
 
 .glyphicon-ok{
