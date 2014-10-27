@@ -9,11 +9,16 @@ body{
   text-align: center;
 }
 
+p {
+  text-align: justify;
+}
+
 span.tab{
   padding: 0 10px; /* Or desired space*/
 }
 
 .num{
+  font-size: 16px;
   padding:1px;
   cursor:pointer;
 }
@@ -26,6 +31,6 @@ span.tab{
   border: 1px solid #04B431; /*dark green*/
 }
 
-#source{
+.spaced{
 	margin:10px;
 }

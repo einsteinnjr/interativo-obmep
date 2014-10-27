@@ -12,19 +12,33 @@
 <body>
 	<h4><strong>Colhendo laranjas:</strong></h4>
 	<div>
-		<p><strong> Bernardo costuma colher laranjas em um pomar de formato triangular. Ele é repleto de laranjeiras dispostas em linhas horizontais, de forma que cada linha tem uma laranjeira a menos que a linha debaixo dela. Além disso, a laranjeira é dita vizinha de suas 2 vizinhas imediatamente abaixo delas (diagonal esquerda e diagonal direita). Os números representam a quantidade de laranjas em cada uma delas. </strong></p>
-		<p><strong>Bernardo deseja descobrir qual o caminho deve fazer, partindo da laranjeira mais alta e seguindo apenas para laranjeiras vizinhas para baixo, de forma a conseguir colher o maior número de laranjas, chegando a última linha. 
-		<p><strong>Clique nas laranjeiras de forma a definir o caminho. Assim que tiver um caminho completo (com uma laranjeira por linha), você pode testar se achou o caminho com maior número de laranjas. </strong></p>
+		<p><strong> Bernardo costuma colher laranjas em um pomar de formato triangular. Ele é repleto de laranjeiras dispostas em linhas horizontais, de forma que cada linha tem uma laranjeira a menos que a linha abaixo dela. Duas laranjeiras são vizinhas, se estiverem uma imediatamente abaixo da outra (diagonal inferior esquerda e diagonal inferior direita). Os números representam a quantidade de laranjas em cada uma delas. </strong></p>
+		<p><strong>Bernardo deseja descobrir qual o caminho deve fazer partindo da laranjeira mais alta e chegando até a última linha, seguindo apenas laranjeiras vizinhas e de maneira a colher o maior número de laranjas possível. 
+		<p><strong>Clique nas laranjeiras de forma a definir o caminho. Assim que tiver um caminho completo, com uma laranjeira por linha, você pode testar se achou o de maior número de laranjas. Utilize os botões abaixo. </strong></p>
+	</div>
+	<div class="spaced">
+		<strong>- Escolha o nivel desejado: </strong>
+		<div>
+			<label class="radio-inline">
+			  <input type="radio" name="gameLevel" value="easy" checked> Fácil
+			</label>
+			<label class="radio-inline">
+			  <input type="radio" name="gameLevel" value="medium"> Médio
+			</label>
+			<label class="radio-inline">
+			  <input type="radio" name="gameLevel" value="hard"> Difícil
+			</label>
+		</div>
 	</div>
 	<button id="newGame" type="button" class="btn btn-default" onClick="generateNewGame();">Novo Jogo</button>
 	<div id="orchard"></div>	
 	
 	<div class="btn-group">
 		<button id="testPath" type="button" class="btn btn-default" onClick="validateIfItIsMaxPath();">Testar Caminho</button>
-		<button id="testPath" type="button" class="btn btn-default btn-primary" onClick="showMaxPath();">Mostrar Caminho Maximo</button>	
+		<button id="testPath" type="button" class="btn btn-default btn-primary" onClick="showMaxPath();">Mostrar Caminho Máximo</button>	
 	</div>	
 
-	<p id="source">fonte do problema: <a href="https://projecteuler.net/problem=18">Project Euler</a></p>
+	<p class="spaced">fonte do problema: <a href="https://projecteuler.net/problem=18">Project Euler</a></p>
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="src/js/teorema104.js"></script>
 	

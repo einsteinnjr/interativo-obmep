@@ -1,6 +1,21 @@
-var NUMBER_OF_LINES=4;
-var INITIAL_NUMBER=1;
-var FINAL_NUMBER=10;
+
+//Constants
+var NUMBER_OF_LINES_EASY = 5;
+var INITIAL_NUMBER_EASY = 1;
+var FINAL_NUMBER_EASY = 10;
+
+var NUMBER_OF_LINES_MEDIUM = 4;
+var INITIAL_NUMBER_MEDIUM = 10;
+var FINAL_NUMBER_MEDIUM = 100;
+
+var NUMBER_OF_LINES_HARD = 8;
+var INITIAL_NUMBER_HARD = 10;
+var FINAL_NUMBER_HARD = 100;
+
+
+var numberOfLines;
+var initialNumber;
+var finalNumber;
 var matrix;
 var i, j, k, sum, line, orchard;
 var maxSumNeighborMatrix;
@@ -10,21 +25,38 @@ var maxPathSum;
 var actualSum;
 var left, right;
 
+function decideGameLevel(){
+	console.log($('input[name=gameLevel]:checked').val());
+	if($('input[name=gameLevel]:checked').val() === "easy") {//one-digit number. Table with 4 lines.
+		numberOfLines = NUMBER_OF_LINES_EASY;
+		initialNumber = INITIAL_NUMBER_EASY;
+		finalNumber = FINAL_NUMBER_EASY;
+	}
+	else if($('input[name=gameLevel]:checked').val() === "medium") {//one-digit number. Table with 8 lines.
+		numberOfLines = NUMBER_OF_LINES_MEDIUM;
+		initialNumber = INITIAL_NUMBER_MEDIUM;
+		finalNumber = FINAL_NUMBER_MEDIUM;
+	}
+	else if($('input[name=gameLevel]:checked').val() === "hard") {//two-digit number. Table with 8 lines.
+		numberOfLines = NUMBER_OF_LINES_HARD;
+		initialNumber = INITIAL_NUMBER_HARD;
+		finalNumber = FINAL_NUMBER_HARD;
+	}	
+}
+
 function createOrchard(){
 	matrix=new Array();
-	for(i=0; i<NUMBER_OF_LINES; i++){
+	for(i=0; i<numberOfLines; i++){
 		matrix[i]=new Array();
-		for(j=0; j<NUMBER_OF_LINES; j++){
-			matrix[i][j]=INITIAL_NUMBER+Math.floor(Math.random()*(FINAL_NUMBER-INITIAL_NUMBER));
+		for(j=0; j<numberOfLines; j++){
+			matrix[i][j]=initialNumber+Math.floor(Math.random()*(finalNumber-initialNumber));
 		}
 	}	
 };
 
-
-
 function printOrchard(){
 	orchard="";
-	for(sum=0; sum<NUMBER_OF_LINES; sum++){	
+	for(sum=0; sum<numberOfLines; sum++){	
 		for(i=0; i<=sum; i++){
 			j=sum-i;
 			orchard+="<span id='"+i+"_"+j+"' class='num'>"+matrix[i][j]+"</span><span class='tab'/>";	
@@ -51,16 +83,16 @@ function validateAtMostOneInThatLine(it){
 function calculateMaxPath(){
 	maxSumNeighborMatrix = new Array();
 	maxSumIndexesMatrix = new Array();
-	line = NUMBER_OF_LINES-1;
+	line = numberOfLines-1;
 	
 	//init Sum Matrix
-	for(i=0; i<NUMBER_OF_LINES; i++){
+	for(i=0; i<numberOfLines; i++){
 		maxSumNeighborMatrix[i] = new Array();
 		maxSumIndexesMatrix[i] = new Array();
 	}
 	log_="";
 	//init last line sum;
-	for(i=0; i<NUMBER_OF_LINES; i++){
+	for(i=0; i<numberOfLines; i++){
 		maxSumNeighborMatrix[line][i]=matrix[i][line-i];
 		log_+="line "+line+" i "+i+" "+maxSumNeighborMatrix[line][i]+" # ";
 	}
@@ -93,7 +125,7 @@ function showMaxPath(){
 	line=0;	
 	i=0;
 	j=line-i;
-	while(line < NUMBER_OF_LINES){
+	while(line < numberOfLines){
 		$('#'+i+'_'+j).addClass('solution');
 		i = maxSumIndexesMatrix[line][i];
 		line++;
@@ -127,7 +159,7 @@ function validateIfItIsAPath(){
 	var i_, j_;
 	sum=-1;
 	actualSum=0;
-	while( i+j < NUMBER_OF_LINES && //not left orchard yet
+	while( i+j < numberOfLines && //not left orchard yet
 		$('#'+i+'_'+j).hasClass('selected')){ //selected
 		actualSum+=parseInt($('#'+i+'_'+j).text());
 		chosen_i = -1;
@@ -139,7 +171,7 @@ function validateIfItIsAPath(){
 		i_ = i+1;
 		j_ = j+1;
 		
-		if(i+j+1 === NUMBER_OF_LINES){//neighbors are out of the orchard
+		if(i+j+1 === numberOfLines){//neighbors are out of the orchard
 			//console.log("It is a path!");
 			return true;
 		}
@@ -179,7 +211,7 @@ function validateIfItIsAPath(){
 
 function validateExactOnePerLine(){
 	var qnt;
-	for(sum=0; sum<NUMBER_OF_LINES; sum++){
+	for(sum=0; sum<numberOfLines; sum++){
 		qnt=0;	
 		for(i=0; i<=sum; i++){
 			j=sum-i;
@@ -196,6 +228,7 @@ function validateExactOnePerLine(){
 }
 
 function generateNewGame(){
+	decideGameLevel();
 	createOrchard();
 	$("#orchard").html(printOrchard());
 	$(".num").click(function(){
