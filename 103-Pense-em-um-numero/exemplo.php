@@ -2,96 +2,53 @@
 <html lang="pt-BR">
 <head>
 	<meta charset="utf-8" />
-	<title>102 - Coleção de triângulos</title>
+	<title>103 - Pense em um número</title>
 	<link rel="stylesheet" type="text/css" href="assets/jsxgraph/css/jsxgraph.css">
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
         <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
-	<link rel="stylesheet" type="text/css" href="src/css/teorema102.css">
+	<link rel="stylesheet" type="text/css" href="src/css/teorema103.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script type="text/javascript" src="src/js/teorema102.js"></script>
+
 </head>
 <body>
-	<h4><strong>Coleção de triângulos:</strong></h4>
+	<h4><strong>Pense em um número:</strong></h4>
 	<div>
-		<p><strong> Renato, desde criança, sempre gostou de geometria. E, por isso, faz coleção de armações triangulares. Seu tio, sabendo da paixão do sobrinho, permitiu que ele fosse a seu galpão antigo e recolhesse varetas de metais de forma a construir mais triângulos para sua coleção. </strong></p>
-		<p><strong> Devido a ser muito organizado, Renato guarda sua coleção em grupos, dependendo do tipo de triângulo: equilátero, isósceles, acutângulo, etc. Ajude-o a classificar os grupos de 3 varetas, dentro de sua coleção ou informe que não é possivel fazer uma armação triangular com o grupo. </strong></p>
+		<p><strong> Bruno e Bernardo gostavam de jogar um jogo de adivinhação. Bruno pedia que Bernardo pensasse em um número de 1 a 100, por exemplo. Bruno, então, tentaria adivinhar o número após uma série de perguntas a Bernardo com respostas sim ou não. (exemplo: O número que você pensou é menor ou igual a 17?).  </strong></p>
+		<p><strong> Depois de algum tempo jogando, eles descobriram que havia um número mínimo de perguntas que se poderia fazer para que sempre fosse possível acertar o número de Bernardo. E você? Consegue descobrir o número pensado por Bernardo fazendo somente um número pequeno de perguntas? </strong></p>
 	</div>
-		<div>
-			<table id="sidesTable" class="table table-bordered">
+	<div>
+		<div class="column-left">
+				<div>
+				<button type="button" class="btn btn-default" onClick="generateNewGame();">Novo Jogo</button> 
+				</div>
+				<table id="requisites" class="table table-bordered">
 				<tr>
-					<td id="sideA"></td>
-					<td id="sideB"></td>
-					<td id="sideC"></td>
+					<td><b>Intervalo de números:</b></td>
+					<td id="interval"></td>
 				</tr>
-			</table>
-		</div>	
-	<div>
-		<div id="questionJXGBox" class="jxgbox"></div>
-	</div>	
-	<div>
-		<strong>Responda os itens abaixo:</strong>
-		<div class="checkbox">
-		        <label>
-		            <input type="checkbox" id="notConstructableCheckbox" onclick="disableTriangleConstruction(this)" /> Não é possível construir o triângulo.
-		        </label>
-			<a id="validationConstructabilityCheckbox"></a>
-            	</div>
-	</div>
-	<div id="triangleConstructible" class="rectangle">	
-			<p><strong> Se for possível a construção do triângulo:</strong> </p>		
-			<div>
-				<strong> - Classifique-o quanto aos lados: </strong></br>
-				<label class="radio-inline">
-				  <input type="radio" id="radioScalene" name="sidesClass" value="scalene"> Escaleno
-				</label>
-				<label class="radio-inline">
-				  <input type="radio" id="radioIsosceles" name="sidesClass" value="isosceles"> Isósceles
-				</label>
-				<label class="radio-inline">
-				  <input type="radio" id="radioEquilateral" name="sidesClass" value="equilateral"> Equilátero
-				</label>
-				<a id="validationSidesRadio"></a>
-			</div>			
-			<div>
-				<strong> - Classifique-o quanto ao maior ângulo: </strong> </br>
-				<label class="radio-inline">
-				  <input type="radio" id="radioAcutangle" name="greaterAngleClass" value="acutangle"> Acutângulo
-				</label>
-				<label class="radio-inline">
-				  <input type="radio" id="radioRectangle" name="greaterAngleClass" value="rectangle"> Retângulo
-				</label>
-				<label class="radio-inline">
-				  <input type="radio" id="radioObtusangle" name="greaterAngleClass" value="obtusangle"> Obtusângulo
-				</label>
-				<a id="validationAngleRadio"></a>
-			</div>
-	</div>
-</br>
+				<tr>
+					<td><b>Número de Perguntas:</b></td>
+					<td id="numberOfQuestions"></td>
+				</tr>
+			</table>	
 		
-	
-	
-<div class="btn-group">
-  <button type="button" class="btn btn-default btn-primary" onClick="revealAnswer();">Revelar Resposta</button> 
-  <button type="button" class="btn btn-default" onClick="generateNewTriangle();scrollTo('#sidesTable');">Novo Triângulo</button> 
-</div> 
-<a id="validationUserAnswered"></a>
-
-	
-	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
-	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
-	
-	<div>
-		<div id="answerJXGBox" class="rectangle2"></div>
-		<div id="answerExplanation" class="rectangle2">
-				<div id="answerTriangleConstructable"></div>
-				<div id="answerSidesRelationship"></div>
-				<div id="answerGreaterAngle"></div>
+		</div>	
+		<div class="column-right">
+			<table id="questions" class="table table-striped table-bordered">
+			</table>
 		</div>
 	</div>
+<div>
+  <button type="button" class="btn btn-default btn-primary" onClick="revealSecret();">Revelar Segredo</button> 
+</div>
+
+	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
+	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
+        <script type="text/javascript" src="src/js/teorema103.js"></script>
+	
 	<script>
 		$(document).ready(function () {
-			generateNewTriangle();
-			scrollTo("body");
+			generateNewGame();
 		});
 	</script>
 </body>

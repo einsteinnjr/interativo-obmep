@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+body{
+  margin: 10px;
+  padding:10px;
+}
+
+.column-left{
+  width: 300px;
+  margin-right: 2%;
+  display:inline-block;
+}
+
+.column-right{
+  width: 600px;
+  margin-right: 2%;
+  display:inline-block;
+}
+
+table{
+	margin:4px;
+}
+
+td{
+	padding:4px;
+	text-align: center;
+	border:2px solid gray !important;
+}
+
+#requisites{
+  width:250px;
+  margin: auto;/*centralized*/
+}
+
+.glyphicon-ok{
+    color: #04B431; /*dark green*/
+}
+
+.glyphicon-remove{
+    color: #FE2E2E; /*dark red*/
+}
