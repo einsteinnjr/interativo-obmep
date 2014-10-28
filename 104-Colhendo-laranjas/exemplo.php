@@ -12,9 +12,9 @@
 <body>
 	<h4><strong>Colhendo laranjas:</strong></h4>
 	<div>
-		<p><strong> Bernardo costuma colher laranjas em um pomar de formato triangular. Ele é repleto de laranjeiras dispostas em linhas horizontais, de forma que cada linha tem uma laranjeira a menos que a linha abaixo dela. Duas laranjeiras são vizinhas, se estiverem uma imediatamente abaixo da outra (diagonal inferior esquerda e diagonal inferior direita). Os números representam a quantidade de laranjas em cada uma delas. </strong></p>
-		<p><strong>Bernardo deseja descobrir qual o caminho deve fazer partindo da laranjeira mais alta e chegando até a última linha, seguindo apenas laranjeiras vizinhas e de maneira a colher o maior número de laranjas possível. 
-		<p><strong>Clique nas laranjeiras de forma a definir o caminho. Assim que tiver um caminho completo, com uma laranjeira por linha, você pode testar se achou o de maior número de laranjas. Utilize os botões abaixo. </strong></p>
+		<p><strong> Bernardo costuma colher laranjas em um pomar de formato triangular, como o abaixo. Os números representam a quantidade de frutos em cada uma delas. </strong></p>		
+		<p><strong>Deseja-se descobrir qual o caminho deve fazer partindo da laranjeira mais alta e chegando até a última linha, apenas seguindo direções inferior esquerda ou inferior direita e de maneira a colher o maior número de laranjas possível. 
+		<p><strong>Clique nas árvores de forma a definir o caminho. Assim que tiver um caminho completo, com uma laranjeira por linha, você pode testar se achou a solução. Utilize os botões abaixo. </strong></p>
 	</div>
 	<div class="spaced">
 		<strong>- Escolha o nivel desejado: </strong>
