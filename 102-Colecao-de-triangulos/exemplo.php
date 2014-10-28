@@ -26,23 +26,23 @@
 			<a id="validationConstructabilityCheckbox"></a>
             	</div>
 	
-		<div id="triangleConstructible" class="rectangle medium">	
+		<div id="triangleConstructible" class="rectangle large">	
 			<p><strong> Se for possível a construção do triângulo:</strong> </p>		
 			<div>
-				<strong> - Classifique-o quanto aos lados: </strong></br>
-				<label class="radio-inline">
-				  <input type="radio" id="radioScalene" name="sidesClass" value="scalene"> Escaleno
-				</label>
-				<label class="radio-inline">
-				  <input type="radio" id="radioIsosceles" name="sidesClass" value="isosceles"> Isósceles
-				</label>
+				<strong>- Classifique-o quanto aos lados: </strong></br>
 				<label class="radio-inline">
 				  <input type="radio" id="radioEquilateral" name="sidesClass" value="equilateral"> Equilátero
+				</label>				
+				<label class="radio-inline">
+				  <input type="radio" id="radioIsosceles" name="sidesClass" value="isosceles"> Isósceles (não-equilátero)
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" id="radioScalene" name="sidesClass" value="scalene"> Escaleno
 				</label>
 				<a id="validationSidesRadio"></a>
 			</div>			
 			<div>
-				<strong> - Classifique-o quanto ao maior ângulo: </strong> </br>
+				<strong>- Classifique-o quanto ao maior ângulo: </strong> </br>
 				<label class="radio-inline">
 				  <input type="radio" id="radioAcutangle" name="greaterAngleClass" value="acutangle"> Acutângulo
 				</label>
