@@ -40,6 +40,10 @@ p{
     border-color: black;
 }
 
+.x-large{
+    width:550px;
+}
+
 .large{
     width:500px;
 }
@@ -50,6 +54,14 @@ p{
 
 .small{
     width:350px;
+}
+
+.center{
+   text-align:center;
+}
+
+span.tab{
+  padding: 0 5px; /* Or desired space*/
 }
 
 .rectangle-jsx{

@@ -80,7 +80,7 @@
 	
 	<div>
 		<div id="answerJXGBox" class="small"></div>
-		<div id="answerExplanation" class="large">
+		<div id="answerExplanation" class="x-large">
 				<div id="answerTriangleConstructable"></div>
 				<div id="answerSidesRelationship"></div>
 				<div id="answerGreaterAngle"></div>
