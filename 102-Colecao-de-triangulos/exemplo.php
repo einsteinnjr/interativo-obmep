@@ -16,19 +16,8 @@
 		<p><strong> Renato, desde criança, sempre gostou de geometria. E, por isso, faz coleção de armações triangulares. Seu tio, sabendo da paixão do sobrinho, permitiu que ele fosse a seu galpão antigo e recolhesse varetas de metais de forma a construir mais triângulos para sua coleção. </strong></p>
 		<p><strong> Devido a ser muito organizado, Renato guarda sua coleção em grupos, dependendo do tipo de triângulo: equilátero, isósceles, acutângulo, etc. Ajude-o a classificar os grupos de 3 varetas, dentro de sua coleção ou informe que não é possivel fazer uma armação triangular com o grupo. </strong></p>
 	</div>
-		<div>
-			<table id="sidesTable" class="table table-bordered">
-				<tr>
-					<td id="sideA"></td>
-					<td id="sideB"></td>
-					<td id="sideC"></td>
-				</tr>
-			</table>
-		</div>	
-	<div>
-		<div id="questionJXGBox" class="jxgbox"></div>
-	</div>	
-	<div>
+
+	<div id="column-left">
 		<strong>Responda os itens abaixo:</strong>
 		<div class="checkbox">
 		        <label>
@@ -36,8 +25,8 @@
 		        </label>
 			<a id="validationConstructabilityCheckbox"></a>
             	</div>
-	</div>
-	<div id="triangleConstructible" class="rectangle">	
+	
+		<div id="triangleConstructible" class="rectangle medium">	
 			<p><strong> Se for possível a construção do triângulo:</strong> </p>		
 			<div>
 				<strong> - Classifique-o quanto aos lados: </strong></br>
@@ -65,24 +54,33 @@
 				</label>
 				<a id="validationAngleRadio"></a>
 			</div>
+		</div>
 	</div>
+	<div id="column-right">
+		<table id="sidesTable" class="table table-bordered">
+			<tr>
+				<td id="sideA"></td>
+				<td id="sideB"></td>
+				<td id="sideC"></td>
+			</tr>
+		</table>
+	
+		<div id="questionJXGBox" class="jxgbox"></div>
+	</div>	
 </br>
-		
-	
-	
+
 <div class="btn-group">
   <button type="button" class="btn btn-default btn-primary" onClick="revealAnswer();">Revelar Resposta</button> 
   <button type="button" class="btn btn-default" onClick="generateNewTriangle();scrollTo('#sidesTable');">Novo Triângulo</button> 
 </div> 
 <a id="validationUserAnswered"></a>
-
 	
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
 	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
 	
 	<div>
-		<div id="answerJXGBox" class="rectangle2"></div>
-		<div id="answerExplanation" class="rectangle2">
+		<div id="answerJXGBox" class="small"></div>
+		<div id="answerExplanation" class="large">
 				<div id="answerTriangleConstructable"></div>
 				<div id="answerSidesRelationship"></div>
 				<div id="answerGreaterAngle"></div>

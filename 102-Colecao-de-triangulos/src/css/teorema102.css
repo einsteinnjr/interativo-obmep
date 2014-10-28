@@ -6,26 +6,50 @@ body{
 }
 
 .table {
-    width: 35%;
-    margin: 10px auto;
+    width: 350px;
+    text-align:center;
+}
+
+p{
+    text-align:justify;
+}
+
+#column-left{
+	float:left;
+	margin:10px;
+}
+
+#column-right{
+	display:inline-block;
+	margin:10px;
 }
 
 .jxgbox {
     width:350px; 
     height:350px;
 
-    width: 35%;
     margin: 10px auto;/*centralized*/
 }
 
 .rectangle{
     margin-top: 10px;
     padding: 10px;
-    width: 45%;
     border-radius: 5px;
     border-width: 1px;
     border-style: solid;
     border-color: black;
+}
+
+.large{
+    width:500px;
+}
+
+.medium{
+    width:400px;
+}
+
+.small{
+    width:350px;
 }
 
 .rectangle-jsx{

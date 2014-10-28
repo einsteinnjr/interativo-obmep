@@ -105,13 +105,15 @@ function openTriangleFigure(){
 	console.log("max_y "+max_y);
 	console.log("max_xy "+max_xy);*/
 
-	var qboard = JXG.JSXGraph.initBoard('questionJXGBox', {boundingbox: [-max_xy, max_xy, max_xy, -max_xy*aLittleSpace],  keepaspectratio: true, showcopyright: false});
+	var qboard = JXG.JSXGraph.initBoard('questionJXGBox', {boundingbox: [-max_xy, max_xy, max_xy, -max_xy],  keepaspectratio: true, showcopyright: false});
+	
+	var rand=Math.floor(Math.random()*2)===0?-1:1; // sides up or down
 
 	//Coordinates: A1=[-a/2-c*senx, c*senx], B=[-a/2, 0], C=[a/2, 0], A2=[a/2+b*cosx, b*senx];
         var A1 = qboard.create('point', [-a/2-c*cosx, c*senx], {withLabel:false, strokecolor:'red', fixed:true});
 	var B = qboard.create('point', [-a/2, 0], {withLabel:false, strokecolor:'red', fixed:true});
 	var C = qboard.create('point', [a/2, 0], {withLabel:false, strokecolor:'red', fixed:true});	
-	var A2 = qboard.create('point', [a/2+b*cosx, b*senx], {withLabel:false, strokecolor:'red', fixed:true});	
+	var A2 = qboard.create('point', [a/2+b*cosx, rand*b*senx], {withLabel:false, strokecolor:'red', fixed:true});	
 
 	//var line_a = qboard.create('line', [B, C], { strokecolor:'blue', fixed:true});
 
