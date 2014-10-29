@@ -183,9 +183,9 @@ function fillAnswerTriangleConstructable(){
 	$("#answerTriangleConstructable").empty();
 	sum = parseInt(b)+parseInt(c);
 	if(typeOfTriangle===NO_TRIANGLE){
-		$("#answerTriangleConstructable").html("<strong>a)</strong> Utilizando a Desigualdade Triangular relativa ao maior lado (a="+a+"):<br/> Para existir triângulo, deve ser verdade a desigualdade: <div class='center'> b + c > a </div ><div class='center'> "+b+" + "+c+" > "+a+" </div><div class='center'> "+sum+" > "+a+" </div> <div class='center'><i class='glyphicon glyphicon-remove'>Falso!</i></div> Logo, NÃO é possível construir triângulo com as 3 varetas dadas: a="+a+", b="+b+", c="+c+".");
+		$("#answerTriangleConstructable").html("<strong>a)</strong> Utilizando a Desigualdade Triangular relativa ao maior lado (a="+a+"), caso exista o triângulo, devemos ter: <div class='center'> "+a+"= a < b + c = "+b+" + "+c+" = "+sum+" <i class='glyphicon glyphicon-remove'>Falso!</i></div > Logo, NÃO é possível construir triângulo com as 3 varetas dadas: a="+a+", b="+b+", c="+c+".");
 	}else{
-		$("#answerTriangleConstructable").html("<strong>a)</strong> Utilizando a Desigualdade Triangular relativa ao maior lado (a="+a+"):<br/> Para existir triângulo, deve ser verdade a desigualdade: <div class='center'> b + c > a </div ><div class='center'> "+b+" + "+c+" > "+a+" </div><div class='center'> "+sum+" > "+a+"  </div><div class='center'><i class=' center glyphicon glyphicon-ok'>Verdade!</i></div>Logo, <strong>É possível construir triângulo</strong> com as 3 varetas dadas: a="+a+", b="+b+", c="+c+".");
+		$("#answerTriangleConstructable").html("<strong>a)</strong> Utilizando a Desigualdade Triangular relativa ao maior lado (a="+a+"), caso exista o triângulo, devemos ter: <div class='center'> "+a+"= a < b + c = "+b+" + "+c+" = "+sum+" <i class=' center glyphicon glyphicon-ok'>Verdade!</i></div >Logo, <strong>É possível construir triângulo</strong> com as 3 varetas dadas: a="+a+", b="+b+", c="+c+".");
 	}
 }
 
