@@ -13,7 +13,7 @@ body{
 }
 
 .column-right{
-  width: 600px;
+  width: 650px;
  display:inline-block;
 }
 
@@ -40,8 +40,13 @@ td{
 	clear:both;
 }
 
-.bordered p {
+p {
 	text-align: justify;
+	margin:4px;
+}
+
+.center{
+	text-align:center;
 }
 
 #requisites{
