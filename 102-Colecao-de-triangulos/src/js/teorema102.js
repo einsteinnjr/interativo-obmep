@@ -183,9 +183,9 @@ function fillAnswerTriangleConstructable(){
 	$("#answerTriangleConstructable").empty();
 	sum = parseInt(b)+parseInt(c);
 	if(typeOfTriangle===NO_TRIANGLE){
-		$("#answerTriangleConstructable").html("<strong>a)</strong> Utilizando a Desigualdade Triangular relativa ao maior lado (a="+a+"), caso exista o triângulo, devemos ter: <div class='center'> "+a+"= a < b + c = "+b+" + "+c+" = "+sum+" <i class='glyphicon glyphicon-remove'>Falso!</i></div > Logo, NÃO é possível construir triângulo com as 3 varetas dadas: a="+a+", b="+b+", c="+c+".");
+		$("#answerTriangleConstructable").html("<strong>a)</strong> Utilizando a Desigualdade Triangular relativa ao maior lado (a="+a+"), caso exista o triângulo, devemos ter: <div class='center'> "+a+"= a < b + c = "+b+" + "+c+" = "+sum+" <i class='glyphicon glyphicon-remove'>Falso!</i></div > Logo, <strong>NÃO</strong> é possível construir triângulo com as 3 varetas dadas: a="+a+", b="+b+", c="+c+".");
 	}else{
-		$("#answerTriangleConstructable").html("<strong>a)</strong> Utilizando a Desigualdade Triangular relativa ao maior lado (a="+a+"), caso exista o triângulo, devemos ter: <div class='center'> "+a+"= a < b + c = "+b+" + "+c+" = "+sum+" <i class=' center glyphicon glyphicon-ok'>Verdade!</i></div >Logo, <strong>É possível construir triângulo</strong> com as 3 varetas dadas: a="+a+", b="+b+", c="+c+".");
+		$("#answerTriangleConstructable").html("<strong>a)</strong> Utilizando a Desigualdade Triangular relativa ao maior lado (a="+a+"), caso exista o triângulo, devemos ter: <div class='center'> "+a+"= a < b + c = "+b+" + "+c+" = "+sum+" <i class=' center glyphicon glyphicon-ok'>Verdade!</i></div >Logo, <strong>é possível construir triângulo</strong> com as 3 varetas dadas: a="+a+", b="+b+", c="+c+".");
 	}
 }
 
@@ -209,14 +209,14 @@ function fillAnswerGreaterAngle(){
 	if(typeOfTriangle === ACUTANGLE_EQUILATERAL ||
 	    typeOfTriangle === ACUTANGLE_ISOSCELES || 
 	    typeOfTriangle === ACUTANGLE_SCALENE) {
-		$("#answerGreaterAngle").html("<strong>c)</strong> Utilizaremos a Lei dos Cossenos relativa ao maior lado (a="+a+").<div class='center'>a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A)</div>Note que, A < 90<sup>o</sup>, equivale a 0 < cos(A) <u><</u> 1.<br/> Assim, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A) <u><</u> b<sup>2</sup> + c<sup>2</sup> - 2bc < b<sup>2</sup> + c<sup>2</sup>.<br/> Assim, um triângulo é Acutângulo, se e somente se, a<sup>2</sup> < b<sup>2</sup> + c<sup>2</sup>.<br/>Testando para o nosso exemplo: a<sup>2</sup> = "+square(a)+" < b<sup>2</sup> + c<sup>2</sup> = "+square(b)+" + "+square(c)+" = "+sum+".<br/> Assim, o nosso triângulo é <b>Acutângulo</b>.");
+		$("#answerGreaterAngle").html("<strong>c)</strong> Utilizaremos a Lei dos Cossenos relativa ao maior lado (a="+a+").<div class='center'>a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A)</div>Note que A < 90<sup>o</sup>, equivale a 0 < cos(A) <u><</u> 1.<br/> Assim, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A) <u><</u> b<sup>2</sup> + c<sup>2</sup> - 2bc < b<sup>2</sup> + c<sup>2</sup>.<br/> Um triângulo é Acutângulo se, e somente se, a<sup>2</sup> < b<sup>2</sup> + c<sup>2</sup>.<br/>Testando para o nosso exemplo: a<sup>2</sup> = "+square(a)+" < b<sup>2</sup> + c<sup>2</sup> = "+square(b)+" + "+square(c)+" = "+sum+".<br/> Portanto, o nosso triângulo é <b>Acutângulo</b>.");
 	}
 	else if(typeOfTriangle === OBTUSANGLE_SCALENE ||
 		   typeOfTriangle === OBTUSANGLE_ISOSCELES) {
-			$("#answerGreaterAngle").html("<strong>c)</strong> Utilizaremos a Lei dos Cossenos relativa ao maior lado (a="+a+").<div class='center'>a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A)</div>Note que, A > 90<sup>o</sup>, equivale a -1 <u><</u> cos(A) < 0.<br/> Assim, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A) <u>></u> b<sup>2</sup> + c<sup>2</sup> + 2bc > b<sup>2</sup> + c<sup>2</sup>.<br/> Assim, um triângulo é Obtusângulo, se e somente se, a<sup>2</sup> > b<sup>2</sup> + c<sup>2</sup>.<br/>Testando para o nosso exemplo: a<sup>2</sup> = "+square(a)+" > b<sup>2</sup> + c<sup>2</sup> = "+square(b)+" + "+square(c)+" = "+sum+".<br/> Assim, o nosso triângulo é <b>Obtusângulo</b>.");
+			$("#answerGreaterAngle").html("<strong>c)</strong> Utilizaremos a Lei dos Cossenos relativa ao maior lado (a="+a+").<div class='center'>a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A)</div>Note que A > 90<sup>o</sup>, equivale a -1 <u><</u> cos(A) < 0.<br/> Assim, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A) <u>></u> b<sup>2</sup> + c<sup>2</sup> + 2bc > b<sup>2</sup> + c<sup>2</sup>.<br/> Um triângulo é Obtusângulo se, e somente se, a<sup>2</sup> > b<sup>2</sup> + c<sup>2</sup>.<br/>Testando para o nosso exemplo: a<sup>2</sup> = "+square(a)+" > b<sup>2</sup> + c<sup>2</sup> = "+square(b)+" + "+square(c)+" = "+sum+".<br/> Portanto, o nosso triângulo é <b>Obtusângulo</b>.");
 	}
 	else if( typeOfTriangle === RECTANGLE ) {
-		$("#answerGreaterAngle").html("<strong>c)</strong> Utilizaremos a Lei dos Cossenos relativa ao maior lado (a="+a+").<br/>a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A).</br>Note que, A = 90<sup>o</sup>, equivale a cos(A) = 0.<br/> Assim, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A) = b<sup>2</sup> + c<sup>2</sup>.<br/> Assim, um triângulo é Retângulo, se e somente se, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup>. (ou Teorema de Pitágoras)<br/>Testando para o nosso exemplo: a<sup>2</sup> = "+square(a)+" = b<sup>2</sup> + c<sup>2</sup> = "+square(b)+" + "+square(c)+" = "+sum+".<br/> Assim, o nosso triângulo é <b>Retângulo</b>.");		
+		$("#answerGreaterAngle").html("<strong>c)</strong> Utilizaremos a Lei dos Cossenos relativa ao maior lado (a="+a+").<br/>a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A).</br>Note que A = 90<sup>o</sup>, equivale a cos(A) = 0.<br/> Assim, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A) = b<sup>2</sup> + c<sup>2</sup>.<br/> Um triângulo é Retângulo se, e somente se, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup>. (ou Teorema de Pitágoras)<br/>Testando para o nosso exemplo: a<sup>2</sup> = "+square(a)+" = b<sup>2</sup> + c<sup>2</sup> = "+square(b)+" + "+square(c)+" = "+sum+".<br/> Portanto, o nosso triângulo é <b>Retângulo</b>.");		
 	}
 }
 
@@ -250,16 +250,16 @@ function fillAnswerSidesRelationship(){
 	$("#answerSidesRelationship").empty();
 	
 	if(typeOfTriangle===ACUTANGLE_EQUILATERAL) {
-		$("#answerSidesRelationship").html("<strong>b)</strong> Como todos os lados são iguais: a=b=c="+a+", então o triângulo é <strong>Equilátero</strong>.");
+		$("#answerSidesRelationship").html("<strong>b)</strong> Como todos os lados são iguais, a=b=c="+a+", então o triângulo é <strong>Equilátero</strong>.");
 	}
 	else if(typeOfTriangle===ACUTANGLE_ISOSCELES || 
 		typeOfTriangle===OBTUSANGLE_ISOSCELES) {
-		$("#answerSidesRelationship").html("<strong>b)</strong> Como 2 dos lados são iguais: b=c="+b+", então o triângulo é <strong>Isósceles</strong>.");
+		$("#answerSidesRelationship").html("<strong>b)</strong> Como 2 dos lados são iguais, b=c="+b+", então o triângulo é <strong>Isósceles</strong>.");
 	}
 	else if(typeOfTriangle===ACUTANGLE_SCALENE || 
 		typeOfTriangle===OBTUSANGLE_SCALENE  || 
 		typeOfTriangle===RECTANGLE) {
-		$("#answerSidesRelationship").html("<strong>b)</strong> Como os 3 lados são diferentes: a="+a+", b="+b+", c="+c+", então o triângulo é <strong>Escaleno</strong>.");		
+		$("#answerSidesRelationship").html("<strong>b)</strong> Como os 3 lados são diferentes, a="+a+", b="+b+", c="+c+", então o triângulo é <strong>Escaleno</strong>.");		
 	}
 }
 
