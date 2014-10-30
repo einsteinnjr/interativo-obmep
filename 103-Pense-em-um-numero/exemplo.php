@@ -20,7 +20,7 @@
 			<div>
 			<button type="button" class="btn btn-default" onClick="generateNewGame();">Novo Jogo</button> 
 			</div>
-			<table id="requisites" class="table table-bordered">
+			<table id="requisites" class="table table-bordered hidden">
 			<tr>
 				<td><b>Intervalo de números:</b></td>
 				<td id="interval"></td>
@@ -37,8 +37,8 @@
 		</table>
 	</div>
 	<div>
-	  <button id="revealExplanation" type="button" class="btn btn-default btn-primary" onClick="revealExplanation();">Revelar Explicação</button> 
-	  <div id="secret" class="bordered">
+	  <button id="revealExplanation" type="button" class="btn btn-default btn-primary hidden" onClick="revealExplanation();">Revelar Explicação</button> 
+	  <div id="secret">
 	  </div>
 	</div>
 	
