@@ -15,6 +15,18 @@ td{
     text-align: center;
 }
 
+#primesFound{
+	color: #04B431;  /*dark green*/
+}
+
+#numberOfPrimes{
+	width:10%;
+}
+
+#hint{
+	margin-top: 5px;
+}
+
 .table>tbody>tr>td.mouse-over{
     border-style: double;
     border-color: red;

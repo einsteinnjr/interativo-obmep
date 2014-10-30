@@ -146,9 +146,39 @@ function decideSideLength(myRadio){
 	else if(myRadio.value==="large") sideLength=7;
 }
 
-function generateNewTable(){
+function generateNewGame(){
 	$("#gameTable").html(generateNewTableHtml(sideLength));
 	mouseEventsOnTable();
+	clearPrimesFoundsAndInfo();
+}
+
+function printPrimesFound(){
+	var listOfPrimesFound="[";
+	$("#primesFound").empty();
+	for(i=0; i< arrayOfPrimesFound.length; i++){
+		listOfPrimesFound+=" "+arrayOfPrimesFound[i];
+		if(i!=arrayOfPrimesFound.length-1) listOfPrimesFound+=",";
+	}
+	listOfPrimesFound+="]";	
+	$("#primesFound").html(arrayOfPrimesFound.length+" "+listOfPrimesFound);
+}
+
+function clearPrimesFoundsAndInfo(){
+	$("#primesFound").empty();
+	$("#primesFound").html("0");
+	
+	$("#numberOfPrimes").attr("disabled", true);
+	$("#numberOfPrimes").attr("readonly", false);
+	$("#numberOfPrimes").attr("value", "");	
+
+	$("hintButton").attr("disabled", false);	
+}
+
+function tellNumberOfPrimes(){
+	$("#numberOfPrimes").attr("disabled", false);
+	$("#numberOfPrimes").attr("readonly", true);
+	$("#numberOfPrimes").attr("value", numberOfPrimes);
+	$("hintButton").attr("disabled", true);
 }
 
 function mouseEventsOnTable(){
@@ -175,9 +205,10 @@ function mouseEventsOnTable(){
                                 $i.addClass("glyphicon-ok")
 				arrayOfPrimesFound.push(parseInt($(this).attr("value")));
 				arrayOfPrimesFound.sort(compare);
+				printPrimesFound();
 				if(numberOfPrimes === arrayOfPrimesFound.length){
 					var playAgain = confirm("Parabéns! Você achou todos os "+numberOfPrimes+ " primos do tabuleiro!\n Deseja jogar novamente?");	
-					if(playAgain) generateNewTable();
+					if(playAgain) generateNewGame();
 				}		
 			}
 			else{//it is not a special number.
@@ -195,6 +226,6 @@ function mouseEventsOnTable(){
 function init(){
 	//we need to create array Others before anything
 	generateOthers();
-	generateNewTable();
+	generateNewGame();
 };
 

@@ -39,16 +39,17 @@
 		</div>
 	</div>
 </br>
-	<button type="button" class="btn btn-default" onClick="generateNewTable();">Novo Tabuleiro</button>
+	<button type="button" class="btn btn-default" onClick="generateNewGame();">Novo Jogo</button>
 	<div class="table-responsive">	
 		<table id="gameTable" class="table table-striped table-bordered" ></table>			
 	</div>
-	<!--<div>	
-		<strong>Números de primos achados: []</strong>
-</br>
-		<button type="button" onClick="generateNewTable();">Revelar Dica</button>		
-		<strong>Total de primos é: </strong> <input disabled></input>			
-	</div>-->
+	<div id="result">
+		<strong>Primos achados: <span id=primesFound>0</span> </strong>
+	</div>	
+	<div id="hint" class="form-inline">
+		<button id="hintButton" type="button" class="btn btn-default" onClick="tellNumberOfPrimes();">Revelar Dica</button>		
+		<strong>Total de primos é: </strong> <input id="numberOfPrimes" type="text" class="form-control" disabled></input>
+	</div>	
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="src/js/teorema101.js"></script>	
 	<script>
