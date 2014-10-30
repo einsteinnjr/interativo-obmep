@@ -59,9 +59,9 @@
 	<div id="column-right">
 		<table id="sidesTable" class="table table-bordered">
 			<tr>
-				<td id="sideA"></td>
-				<td id="sideB"></td>
-				<td id="sideC"></td>
+				<td id="sideA">a= cm</td>
+				<td id="sideB">b= cm</td>
+				<td id="sideC">c= cm</td>
 			</tr>
 		</table>
 	
