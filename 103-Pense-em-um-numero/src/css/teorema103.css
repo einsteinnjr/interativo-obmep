@@ -17,12 +17,8 @@ body{
  display:inline-block;
 }
 
-div button{
-	margin:4px;
-}
-
-table{
-	margin:4px;
+.spaced{
+	margin: 5px;
 }
 
 td{

@@ -17,10 +17,24 @@
 		<p><strong> Depois de algum tempo jogando, eles descobriram que havia um número mínimo de perguntas que se poderia fazer para que sempre fosse possível acertar o número de Bernardo. E você? Consegue descobrir o número pensado por Bernardo fazendo somente um número pequeno de perguntas? </strong></p>
 	</div>
 	<div class="column-left">
+		<div class="spaced">
+			<strong>- Escolha o nivel desejado: </strong>
 			<div>
-			<button type="button" class="btn btn-default" onClick="generateNewGame();">Novo Jogo</button> 
+				<label class="radio-inline">
+				  <input type="radio" name="gameLevel" value="easy" checked> Fácil
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" name="gameLevel" value="medium"> Médio
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" name="gameLevel" value="hard"> Difícil
+				</label>
 			</div>
-			<table id="requisites" class="table table-bordered hidden">
+		</div>
+		<div>
+			<button type="button" class="btn btn-default spaced" onClick="generateNewGame();">Novo Jogo</button> 
+		</div>
+		<table id="requisites" class="table table-bordered hidden spaced">
 			<tr>
 				<td><b>Intervalo de números:</b></td>
 				<td id="interval"></td>
@@ -30,14 +44,13 @@
 				<td id="numberOfQuestions"></td>
 			</tr>
 		</table>	
-	
 	</div>	
 	<div class="column-right">
-		<table id="questions" class="table table-striped table-bordered">
+		<table id="questions" class="table table-striped table-bordered spaced">
 		</table>
 	</div>
 	<div>
-	  <button id="revealExplanation" type="button" class="btn btn-default btn-primary hidden" onClick="revealExplanation();">Revelar Explicação</button> 
+	  <button id="revealExplanation" type="button" class="btn btn-default btn-primary hidden spaced" onClick="revealExplanation();">Revelar Explicação</button> 
 	  <div id="secret">
 	  </div>
 	</div>
