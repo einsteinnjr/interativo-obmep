@@ -2,8 +2,7 @@
 <html lang="pt-BR">
 <head>
 	<meta charset="utf-8" />
-	<title>103 - Pense em um número</title>
-	<link rel="stylesheet" type="text/css" href="assets/jsxgraph/css/jsxgraph.css">
+	<title>103 - Pense em um número</title>	
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
         <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
 	<link rel="stylesheet" type="text/css" href="src/css/teorema103.css">
@@ -57,7 +56,6 @@
 	
 
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
-	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
         <script type="text/javascript" src="src/js/teorema103.js"></script>
 	
 	<script>
