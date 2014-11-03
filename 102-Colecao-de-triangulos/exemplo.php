@@ -34,7 +34,7 @@
 				  <input type="radio" id="radioEquilateral" name="sidesClass" value="equilateral"> Equilátero
 				</label>				
 				<label class="radio-inline">
-				  <input type="radio" id="radioIsosceles" name="sidesClass" value="isosceles"> Isósceles (não-equilátero)
+				  <input type="radio" id="radioIsosceles" name="sidesClass" value="isosceles"> Isósceles, mas não equilátero
 				</label>
 				<label class="radio-inline">
 				  <input type="radio" id="radioScalene" name="sidesClass" value="scalene"> Escaleno

@@ -124,9 +124,9 @@ function openTriangleFigure(){
 	A2.makeGlider(c2);	
 
 
-        var AB = qboard.create('segment', [A1, B], { name: "c="+c, withLabel:true, strokecolor:'black', scalable: false});
-	var BC = qboard.create('segment', [B, C], {  name: "a="+a, withLabel:true, strokecolor:'black', fixed:true});
-	var CA = qboard.create('segment', [C, A2], {  name: "b="+b, withLabel:true, strokecolor:'black', scalable: false});
+        var AB = qboard.create('segment', [A1, B], { name: "c="+c, withLabel:true, color:'black'});
+	var BC = qboard.create('segment', [B, C], {  name: "a="+a, withLabel:true, color:'black', fixed:true});
+	var CA = qboard.create('segment', [C, A2], {  name: "b="+b, withLabel:true, color:'black'});
 };
 
 function closedTriangleFigure(){
@@ -148,12 +148,12 @@ function closedTriangleFigure(){
 	aboard = JXG.JSXGraph.initBoard('answerJXGBox', {boundingbox: [-max_xy, max_xy, max_xy, -max_xy*aLittleSpace], keepaspectratio: true, showcopyright: false});
 
 	//Coordinates: A=[0, h_a], B=[-c*senb, 0], C=[0, a-c*senb];        
-	var A = aboard.create('point', [0, h_a], {name:'A', strokecolor:'red', fixed:true});
-	var B1 = aboard.create('point', [-c*cosb, 0], {name:'B', strokecolor:'red', fixed:true});
-	var C1 = aboard.create('point', [a-c*cosb, 0], {name:'C', strokecolor:'red', fixed:true});
-	var AB1 = aboard.create('segment', [A, B1], { name: c, withLabel:true, strokecolor:'black', fixed:true});
-	var BC1 = aboard.create('segment', [B1, C1], {  name: a, withLabel:true, strokecolor:'black', fixed:true});
-	var CA1 = aboard.create('segment', [C1, A], {  name: b, withLabel:true, strokecolor:'black', fixed:true});
+	var A = aboard.create('point', [0, h_a], {name:'A', color:'blue', fixed:true});
+	var B1 = aboard.create('point', [-c*cosb, 0], {name:'B', color:'blue', fixed:true});
+	var C1 = aboard.create('point', [a-c*cosb, 0], {name:'C', color:'blue', fixed:true});
+	var AB1 = aboard.create('segment', [A, B1], { name: c, withLabel:true, color:'black', fixed:true});
+	var BC1 = aboard.create('segment', [B1, C1], {  name: a, withLabel:true, color:'black', fixed:true});
+	var CA1 = aboard.create('segment', [C1, A], {  name: b, withLabel:true, color:'black', fixed:true});
 
 };
 
