@@ -56,7 +56,7 @@
   	 <div class="list-group">
             <a href="101-Caca-primos/exemplo.php" class="list-group-item active">101- Caça-primos</a>
             <a href="102-Colecao-de-triangulos/exemplo.php" class="list-group-item">102- Coleção de Triângulos</a>
-            <a href="103-Pense-em-um-numero/exemplo.php" class="list-group-item">103- Pense em um número</a>
+            <a href="103-Descubra-o-numero/exemplo.php" class="list-group-item">103- Descubra o número</a>
             <a href="104-Colhendo-laranjas/exemplo.php" class="list-group-item"></i> 104- Colhendo laranjas</a>
           </div>
         </div><!--/span-->
