@@ -73,7 +73,7 @@
   <button type="button" class="btn btn-default btn-primary" onClick="revealAnswer();">Revelar Resposta</button> 
   <button type="button" class="btn btn-default" onClick="generateNewTriangle();scrollTo('#sidesTable');">Novo Triângulo</button> 
 </div> 
-<a id="validationUserAnswered"></a>
+<span id="validationUserAnswered"></span>
 	
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
 	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>

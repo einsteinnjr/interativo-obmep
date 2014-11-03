@@ -82,3 +82,8 @@ span.tab{
     color: #FE2E2E; /*dark red*/
 }
 
+.warning {
+    color: #FE2E2E; /*dark red*/
+    text-decoration: none; /*no underline for a link*/
+}
+

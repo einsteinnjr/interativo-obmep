@@ -110,16 +110,23 @@ function openTriangleFigure(){
 	var rand=Math.floor(Math.random()*2)===0?-1:1; // sides up or down
 
 	//Coordinates: A1=[-a/2-c*senx, c*senx], B=[-a/2, 0], C=[a/2, 0], A2=[a/2+b*cosx, b*senx];
-        var A1 = qboard.create('point', [-a/2-c*cosx, c*senx], {withLabel:false, strokecolor:'red', fixed:true});
-	var B = qboard.create('point', [-a/2, 0], {withLabel:false, strokecolor:'red', fixed:true});
-	var C = qboard.create('point', [a/2, 0], {withLabel:false, strokecolor:'red', fixed:true});	
-	var A2 = qboard.create('point', [a/2+b*cosx, rand*b*senx], {withLabel:false, strokecolor:'red', fixed:true});	
+        var A1 = qboard.create('point', [-a/2-c*cosx, c*senx], {withLabel:false, color:'red'});
+	var B = qboard.create('point', [-a/2, 0], {withLabel:false, color:'blue', fixed:true});
+	var C = qboard.create('point', [a/2, 0], {withLabel:false, color:'blue', fixed:true});	
+	var A2 = qboard.create('point', [a/2+b*cosx, rand*b*senx], {withLabel:false, color:'red'});
 
-	//var line_a = qboard.create('line', [B, C], { strokecolor:'blue', fixed:true});
+	//make A1 run only above circle c1 (fixed radius c)
+	var c1 = qboard.create('circle', [B, c], {strokeColor:'white'});	
+	A1.makeGlider(c1);	
 
-        var AB = qboard.create('segment', [A1, B], { name: "c="+c, withLabel:true, strokecolor:'black', fixed:true});
+	//make A2 run only above circle c2 (fixed radius b)
+	var c2 = qboard.create('circle', [C, b], {strokeColor:'white'});	
+	A2.makeGlider(c2);	
+
+
+        var AB = qboard.create('segment', [A1, B], { name: "c="+c, withLabel:true, strokecolor:'black', scalable: false});
 	var BC = qboard.create('segment', [B, C], {  name: "a="+a, withLabel:true, strokecolor:'black', fixed:true});
-	var CA = qboard.create('segment', [C, A2], {  name: "b="+b, withLabel:true, strokecolor:'black', fixed:true});
+	var CA = qboard.create('segment', [C, A2], {  name: "b="+b, withLabel:true, strokecolor:'black', scalable: false});
 };
 
 function closedTriangleFigure(){
@@ -355,7 +362,7 @@ function revealAnswer(){
 		fillAnswersExplanation();
 	}
 	else {
-		 $("#validationUserAnswered").append("<i class='glyphicon glyphicon-remove'>Classifique o triângulo quanto aos lados e o maior ângulo ou assinale que não pode ser construído.</i> ");
+		 $("#validationUserAnswered").append("<i class='glyphicon glyphicon-remove'/> <span class='warning'>Classifique o triângulo quanto aos lados e o maior ângulo ou assinale que não pode ser construído.</span> ");
 	}
 	
 }
