@@ -5,9 +5,6 @@ body{
   padding:10px;
 }
 
-#orchard {
-  text-align: center;
-}
 
 p {
   text-align: justify;
@@ -17,20 +14,48 @@ span.tab{
   padding: 0 10px; /* Or desired space*/
 }
 
-.num{
-  font-size: 16px;
-  padding:1px;
-  cursor:pointer;
+.disabled{
+  color: gray;
 }
 
-.selected{
-  color: #FE2E2E; /*dark red*/
+.ui-state-default{
+  background: #f6f6f6; !important
 }
 
-.solution{
-  border: 1px solid #04B431; /*dark green*/
+.wrong{
+    background-color: #F5A9A9; /*red*/ 
+}
+
+.correct{ 
+    background-color: #58FAAC; /*green*/
+}
+
+.glyphicon-ok{
+    color: #04B431; /*dark green*/
+}
+
+.glyphicon-remove{
+    color: #FE2E2E; /*dark red*/
 }
 
 .spaced{
 	margin:10px;
 }
+
+ul .horizontalList { 
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0; 
+}
+
+.horizontalList li { 
+	display: inline-block; 
+	text-align: center; 
+	margin: 3px; 
+	padding: 10px; 
+	width: auto; 
+	cursor:pointer;
+}
+
+
+

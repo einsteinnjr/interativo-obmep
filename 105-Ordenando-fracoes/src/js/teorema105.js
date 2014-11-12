@@ -1,240 +1,256 @@
-
 //Constants
-var NUMBER_OF_LINES_EASY = 5;
-var INITIAL_NUMBER_EASY = 1;
-var FINAL_NUMBER_EASY = 10;
+NUMBER_OF_FRACTIONS = 5;
+INITIAL_PART_UNITY = 1;
+INITIAL_PART_DECIMAL = 10;
+MAX_PART_UNITY = 9;
+MAX_PART_DECIMAL = 29;
 
-var NUMBER_OF_LINES_MEDIUM = 9;
-var INITIAL_NUMBER_MEDIUM = 1;
-var FINAL_NUMBER_MEDIUM = 10;
+NUMBER_OF_FRACTIONS_EASY = 5;
+NUMBER_OF_TWO_DIGITS_EASY = 0;
 
-var NUMBER_OF_LINES_HARD = 6;
-var INITIAL_NUMBER_HARD = 10;
-var FINAL_NUMBER_HARD = 100;
+NUMBER_OF_FRACTIONS_MEDIUM = 7;
+NUMBER_OF_TWO_DIGITS_MEDIUM = 2;
+
+NUMBER_OF_FRACTIONS_HARD = 9;
+NUMBER_OF_TWO_DIGITS_HARD = 4;
 
 
-var numberOfLines;
-var initialNumber;
-var finalNumber;
-var matrix;
-var i, j, k, sum, line, orchard;
-var maxSumNeighborMatrix;
-var maxSumIndexesMatrix;
-var log_;
-var maxPathSum;
-var actualSum;
-var left, right;
+var numberOfFractions = NUMBER_OF_FRACTIONS_EASY;
+var numberOfTwoDigits = NUMBER_OF_TWO_DIGITS_EASY;
+var maxPart;
+
+var i, j;
+var fractions=[];
+var lcm;
+
+function Fraction(numerator, denominator) {
+	this.label = numerator+"/"+denominator;
+	//console.log("label "+this.label);
+	this.value = numerator/denominator;
+	//console.log("value "+this.value);
+	this.numerator = numerator;
+	//console.log("numerator "+numerator);
+	this.denominator = denominator;
+	//console.log("denominator "+denominator);
+}
+
+function fillFractionsListHtml(){
+	$("#fractionsList").empty();
+	$("#fractionsList").html(generateFractionsListHtml());
+} 
+
+function generateFractionsListHtml(){
+	var fractionsListHtml = "";
+	var numerator, denominator;
+	var auxFraction;
+	fractions = [];
+	var alreadyThere = false;
+	j=0;
+	for(i=0; i< numberOfFractions; i++){
+
+		// grant number of two digits, to be more difficult
+		if( Math.random() < numberOfTwoDigits/numberOfFractions //percentage of TwoDigits
+						&& j < numberOfTwoDigits ) {
+			maxPart = MAX_PART_DECIMAL;
+			initialPart = INITIAL_PART_DECIMAL;
+			j++;
+		}
+		else {
+			maxPart = MAX_PART_UNITY;
+			initialPart = INITIAL_PART_UNITY;
+		}		
+		numerator = Math.floor( Math.random() * maxPart); 
+		do{denominator = initialPart + Math.floor( Math.random() * (maxPart-initialPart)); //on decimal: above 10.
+			//console.log("denominator"+denominator);		
+		}
+		while(denominator===0);
+		auxFraction = new Fraction(numerator, denominator);
+		
+		alreadyThere = false;		
+		for(i=0; i< fractions.length; i++){
+			//console.log(" fractions "+ auxFraction.label+" "+fractions[i].label+" "+compareFraction(fractions[i], auxFraction));
+			if(compareFraction(fractions[i], auxFraction)===0) alreadyThere=true;
+		}
+		if(alreadyThere){ //do not put the same fraction
+			//console.log("fraction repeated: "+ auxFraction.label);
+			i--;
+			continue;
+		}
+		//console.log("fraction added: "+ auxFraction.label);
+		fractions.push(auxFraction);
+		fractionsListHtml += "<li id='"+i+"' label='"+fractions[i].label+"' class='ui-state-default'> `"+fractions[i].label+"` </li>";
+		
+	}
+	return fractionsListHtml;
+}
+
+// for sort of an array objs.
+// just call as objs.sort(compare);
+function compareFraction(a, b) {
+  if ( a.value < b.value )
+    return -1;
+  else if ( a.value > b.value )
+    return 1;
+  else if ( a.value === b.value )
+    return 0;
+  return 0;
+}
 
 function decideGameLevel(){
-	console.log($('input[name=gameLevel]:checked').val());
-	if($('input[name=gameLevel]:checked').val() === "easy") {//one-digit number. Table with 4 lines.
-		numberOfLines = NUMBER_OF_LINES_EASY;
-		initialNumber = INITIAL_NUMBER_EASY;
-		finalNumber = FINAL_NUMBER_EASY;
+	//console.log($('input[name=gameLevel]:checked').val());
+	if($('input[name=gameLevel]:checked').val() === "easy") {
+		numberOfFractions= NUMBER_OF_FRACTIONS_EASY;
+		numberOfTwoDigits = NUMBER_OF_TWO_DIGITS_EASY;
 	}
-	else if($('input[name=gameLevel]:checked').val() === "medium") {//one-digit number. Table with 8 lines.
-		numberOfLines = NUMBER_OF_LINES_MEDIUM;
-		initialNumber = INITIAL_NUMBER_MEDIUM;
-		finalNumber = FINAL_NUMBER_MEDIUM;
+	else if($('input[name=gameLevel]:checked').val() === "medium") {
+		numberOfFractions= NUMBER_OF_FRACTIONS_MEDIUM;
+		numberOfTwoDigits = NUMBER_OF_TWO_DIGITS_MEDIUM;
 	}
-	else if($('input[name=gameLevel]:checked').val() === "hard") {//two-digit number. Table with 8 lines.
-		numberOfLines = NUMBER_OF_LINES_HARD;
-		initialNumber = INITIAL_NUMBER_HARD;
-		finalNumber = FINAL_NUMBER_HARD;
+	else if($('input[name=gameLevel]:checked').val() === "hard") {
+		numberOfFractions= NUMBER_OF_FRACTIONS_HARD;
+		numberOfTwoDigits = NUMBER_OF_TWO_DIGITS_HARD;
 	}	
 }
 
-function createOrchard(){
-	matrix=new Array();
-	for(i=0; i<numberOfLines; i++){
-		matrix[i]=new Array();
-		for(j=0; j<numberOfLines; j++){
-			matrix[i][j]=initialNumber+Math.floor(Math.random()*(finalNumber-initialNumber));
-		}
-	}	
-};
-
-function printOrchard(){
-	orchard="";
-	for(sum=0; sum<numberOfLines; sum++){	
-		for(i=0; i<=sum; i++){
-			j=sum-i;
-			orchard+="<span id='"+i+"_"+j+"' class='num'>"+matrix[i][j]+"</span><span class='tab'/>";	
-		}
-		orchard+="</br>";
-	}
-	return orchard;
-};
-
-function validateAtMostOneInThatLine(it){
-	var id = $(it).attr('id');
-	var idx = String(id).split('_');
-	sum = parseInt(idx[0])+parseInt(idx[1]);
-	for(i=0; i<=sum; i++){
-		j=sum-i;
-		if(i!==parseInt(idx[0]) &&
-			$('#'+i+'_'+j).hasClass('selected')){//if it already has a selected, change to our actual 
-				$('#'+i+'_'+j).toggleClass('selected');
-		}
-			
-	}
+/**
+ * url: http://oli.me.uk/2013/06/08/searching-javascript-arrays-with-a-binary-search/
+ * Performs a binary search on the host array. This method can either be
+ * injected into Array.prototype or called with a specified scope like this:
+ * binaryIndexOf.call(someArray, searchElement);
+ *
+ * @param {*} searchElement The item to search for within the array.
+ * @return {Number} The index of the element which defaults to -1 when not found.
+ */
+function binaryIndexOf(myArray, searchElement) {
+    'use strict';
+ 
+    var minIndex = 0;
+    var maxIndex = myArray.length - 1;
+    var currentIndex;
+    var currentElement;
+ 
+    while (minIndex <= maxIndex) {
+        currentIndex = (minIndex + maxIndex) / 2 | 0;
+        currentElement = myArray[currentIndex];
+ 
+        if (compareFraction(currentElement, searchElement) === -1) {  //currentElement < searchElement
+            minIndex = currentIndex + 1;
+        }
+        else if (compareFraction(currentElement, searchElement) === 1) { //currentElement > searchElement
+            maxIndex = currentIndex - 1;
+        }
+        else {
+            return currentIndex;
+        }
+    }
+ 
+    return -1;
 }
 
-function calculateMaxPath(){
-	maxSumNeighborMatrix = new Array();
-	maxSumIndexesMatrix = new Array();
-	line = numberOfLines-1;
+function fillSortedListHtml(){
+	$("#sortedList").empty();
 	
-	//init Sum Matrix
-	for(i=0; i<numberOfLines; i++){
-		maxSumNeighborMatrix[i] = new Array();
-		maxSumIndexesMatrix[i] = new Array();
+	var sortedListHtml = "";
+	for(i=0; i< numberOfFractions; i++){
+		sortedListHtml += "<li id='"+i+"' label='"+fractions[i].label+"' class='ui-state-default'> `"+fractions[i].label+"` </li>";
+		
 	}
-	log_="";
-	//init last line sum;
-	for(i=0; i<numberOfLines; i++){
-		maxSumNeighborMatrix[line][i]=matrix[i][line-i];
-		log_+="line "+line+" i "+i+" "+maxSumNeighborMatrix[line][i]+" # ";
-	}
-	//console.log("init "+log_);
-	
-	while( line > 0 ){
-		var aux = line-1;
-		//console.log("line "+aux);
-		log_="";
-		for(i=0; i<line; i++){
-			if(matrix[i][line-1-i]+maxSumNeighborMatrix[line][i] > matrix[i][line-1-i]+maxSumNeighborMatrix[line][i+1]){
-				maxSumNeighborMatrix[line-1][i] = matrix[i][line-1-i]+maxSumNeighborMatrix[line][i];
-				maxSumIndexesMatrix[line-1][i] = i;
-				log_+="sum "+maxSumNeighborMatrix[line-1][i]+" idx "+maxSumIndexesMatrix[line-1][i]+" @ ";
-			}
-			else {
-				maxSumNeighborMatrix[line-1][i] = matrix[i][line-1-i]+maxSumNeighborMatrix[line][i+1];
-				maxSumIndexesMatrix[line-1][i] = i+1;
-				log_+="sum "+maxSumNeighborMatrix[line-1][i]+" idx "+maxSumIndexesMatrix[line-1][i]+" @ ";
-			}
-		}
-		//console.log(log_);
-		line--;			
-	}
-	maxPathSum=maxSumNeighborMatrix[0][0];
-	//console.log("MaxSum "+maxPathSum);
+	$("#sortedList").html(sortedListHtml);
 }
 
-function showMaxPath(){
-	line=0;	
+function fillReducedSortedListHtml(){
+	$("#reducedSortedList").empty();
+	var newNumerator;
+	var newDenominator;
+	var reducedSortedListHtml = "";
+	for(i=0; i< numberOfFractions; i++){
+		newDenominator = lcm;
+		newNumerator = lcm * fractions[i].numerator/ fractions[i].denominator;
+		
+		reducedSortedListHtml += "<li id='"+i+"' label='"+fractions[i].label+"' class='ui-state-default'> `"+newNumerator+'/'+newDenominator+"` </li>";
+		
+	}
+	$("#reducedSortedList").html(reducedSortedListHtml);
+}
+
+function validateSorting(){
+	findLeastCommonMultipleInFractions();
+	toggleDisableOnListAndButtons(true);
+	checkCorrectPositions();
+	fillSolution();
+	fillSortedListHtml();
+	fillReducedSortedListHtml();
+	compileMathJaxCode();
+};
+
+function findLeastCommonMultipleInFractions(){
+	lcm = 1;
+	for( i=0; i<fractions.length; i++){
+		lcm = fractions[i].denominator*lcm /greatestCommonDivisor(lcm, fractions[i].denominator);
+	}
+	//console.log("lcm "+lcm);
+	return lcm;
+}
+
+function greatestCommonDivisor(a, b){// 3 and 5
+	if(b < a) return greatestCommonDivisor(b,a);	
+	//So a<=b
+	if(b%a === 0) return a;
+	else return greatestCommonDivisor(b%a, a);
+}
+
+function checkCorrectPositions(){
+	var list = $("#fractionsList").find("li");
+	var isCorrectList = true;
+	fractions.sort(compareFraction);
+
+	//console.log(list.length);
 	i=0;
-	j=line-i;
-	while(line < numberOfLines){
-		$('#'+i+'_'+j).addClass('solution');
-		i = maxSumIndexesMatrix[line][i];
-		line++;
-		j= line-i;		
-	}
+   	$(list).each(function () {
+		//console.log("comparing: "+$(this).attr("label")+ " "+ fractions[i].label);
+		if($(this).attr("label")!=fractions[i].label){
+			$(this).addClass("wrong");
+			isCorrectList = false;
+		}
+		else{
+			$(this).addClass("correct");
+		}
+		i++;
+    	});
+	answerIfListIsCorrect(isCorrectList);
+};
 
+function answerIfListIsCorrect(isCorrectList){
+	if(isCorrectList){
+		$("#fractionsList").append("<i class='glyphicon glyphicon-ok'>Correto!</i>");
+	}
+	else $("#fractionsList").append("<i class='glyphicon glyphicon-remove'>Errado!</i>");
 }
 
-function validateIfItIsMaxPath(){
-	if(!validateExactOnePerLine()){
-		alert("O caminho não é válido. Não existe número escolhido na linha "+sum+".");
-	}
-	else if(!validateIfItIsAPath()){
-		if( !left && !right || sum === 0) alert("O caminho não é válido. O caminho começado na linha 0(zero) se interrompe na linha "+sum+".");
-	}
-	else if(actualSum !== maxPathSum){
-		alert("O caminho é válido, mas não é máximo. Existe caminho com soma maior que "+actualSum+".");	
-	}
-	else{
-		showMaxPath();		
-		alert("Parabéns! Você achou o caminho de soma máxima "+maxPathSum+".");	
-	}
-	
+function fillSolution(){
+	$("#solution").html("<div> <strong> Solução:</strong> </br>A lista em ordem crescente é: <ul id='sortedList' class='horizontalList'></ul></div>"+
+	"<div>O que pode ser constatado reduzindo todas as frações a um mesmo denominador comum, por exemplo, mmc = "+lcm+" :<ul id='reducedSortedList' class='horizontalList'></ul></div>");
 }
 
-function validateIfItIsAPath(){
-
-	i=0; 
-	j=0;
-	var chosen_i, chosen_j;
-	var i_, j_;
-	sum=-1;
-	actualSum=0;
-	while( i+j < numberOfLines && //not left orchard yet
-		$('#'+i+'_'+j).hasClass('selected')){ //selected
-		actualSum+=parseInt($('#'+i+'_'+j).text());
-		chosen_i = -1;
-		chosen_j = -1;
-		left = false;
-		right = false;
-		
-		// look to their neighbors
-		i_ = i+1;
-		j_ = j+1;
-		
-		if(i+j+1 === numberOfLines){//neighbors are out of the orchard
-			//console.log("It is a path!");
-			return true;
-		}
-		//left neighbor	
-		if($('#'+i+'_'+j_).hasClass('selected')){
-			chosen_i = i;
-			chosen_j = j_;
-			left=true;
-		}
-
-		//right neighbor
-		if($('#'+i_+'_'+j).hasClass('selected')){
-			chosen_i = i_;
-			chosen_j = j;
-			right=true;
-		}
-
-		if(!left && !right) {
-			sum=i+j+1;
-			//console.log("both selected notAPath sum "+sum);
-			return false; // both selected
-		}
-		else if(left && right) {
-			sum=i+j+1;			
-			//console.log("none selected notAPath sum "+sum);
-			return false;// none selected
-		}
-		i=chosen_i;
-		j=chosen_j;
-	}
-	sum=i+j;
-	if(!$('#'+i+'_'+j).hasClass('selected')) {
-		//console.log("i "+i+" j "+j+" notAPath sum "+sum);
-		return false;
-	}
+function toggleDisableOnListAndButtons(bool){
+	$("#fractionsList").sortable({disabled:bool});
+	$("#fractionsList li").toggleClass("disabled",bool);
+	$("#testSorting").attr("disabled",bool);
 }
 
-function validateExactOnePerLine(){
-	var qnt;
-	for(sum=0; sum<numberOfLines; sum++){
-		qnt=0;	
-		for(i=0; i<=sum; i++){
-			j=sum-i;
-			if($('#'+i+'_'+j).hasClass('selected')) qnt++;	
-		}
-		
-		if(qnt!=1) {
-			//console.log("Na linha "+sum+" nao existem numeros selecionados.");
-			return false;
-		}
-	}
-	//console.log("Existe um número selecionado por linha");
-	return true;
+
+function cleanValidationsAndAnswerExplanations(){
+	$("#solution").empty();
 }
 
 function generateNewGame(){
+	cleanValidationsAndAnswerExplanations();
 	decideGameLevel();
-	createOrchard();
-	$("#orchard").html(printOrchard());
-	$(".num").click(function(){
-		validateAtMostOneInThatLine(this);
-		$(this).toggleClass("selected");
-	});
-	actualSum=0;
-	calculateMaxPath();
+	fillFractionsListHtml();
+	compileMathJaxCode();
+	toggleDisableOnListAndButtons(false);
 };
+
+function compileMathJaxCode(){
+	MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+}
