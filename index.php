@@ -17,6 +17,8 @@
     <!-- Custom styles for this template -->
     <link href="src/css/offcanvas.css" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="assets/jquery-ui/css/jquery-ui.min.css">
+    <link href="src/css/landingpage.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -48,21 +50,20 @@
 
     <div class="container">
 
-
-
       <div class="row row-offcanvas row-offcanvas-right">
-        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-         <h4>Outubro 2014</h4> 
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas accordion" id="sidebar" role="navigation">
+	<h3>Novembro 2014</h3> 
   	 <div class="list-group">
-            <a href="101-Caca-primos/exemplo.php" class="list-group-item active">101- Caça-primos</a>
-            <a href="102-Colecao-de-triangulos/exemplo.php" class="list-group-item">102- Coleção de Triângulos</a>
-            <a href="103-Descubra-o-numero/exemplo.php" class="list-group-item">103- Descubra o número</a>
-            <a href="104-Colhendo-laranjas/exemplo.php" class="list-group-item"> 104- Colhendo laranjas</a>
-          </div>
-	<h4>Novembro 2014</h4> 
+            <a href="105-Ordenando-fracoes/exemplo.php" class="list-group-item">105- Ordenando frações</a>
+          </div>         
+	<h3>Outubro 2014</h3> 
   	 <div class="list-group">
-            <a href="105-Ordenando-fracoes/exemplo.php" class="list-group-item active">105- Ordenando frações</a>
+		<a href="104-Colhendo-laranjas/exemplo.php" class="list-group-item"> 104- Colhendo laranjas</a>
+		<a href="103-Descubra-o-numero/exemplo.php" class="list-group-item">103- Descubra o número</a>
+		<a href="102-Colecao-de-triangulos/exemplo.php" class="list-group-item">102- Coleção de Triângulos</a>
+		<a href="101-Caca-primos/exemplo.php" class="list-group-item">101- Caça-primos</a>
           </div>
+	  
         </div><!--/span-->
 
         <div class="col-xs-12 col-sm-9">
@@ -99,9 +100,18 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-
+    <script src="assets/jquery-ui/js/jquery-ui.min.js"></script>
     <script src="src/js/offcanvas.js"></script>
-    <script src="src/js/theorems.js"></script>
+   <!-- <script src="src/js/theorems.js"></script> -->
+
+      <script>
+	  $(function() {
+	    $( ".accordion" ).accordion({
+      		collapsible: true,
+		heightStyle: "content"
+	    });
+	  });
+  </script>
   </body>
 </html>
 
