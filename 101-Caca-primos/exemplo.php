@@ -14,8 +14,10 @@
 		<strong> Ache todos os números primos no tabuleiro abaixo. </strong>
 	</div>
 	<div>
-		<strong>- Escolha o nivel desejado: </strong>
-		<div>
+		<div class="spaced">
+			<div>
+				<b>- Escolha o nivel desejado:</b>
+			</div>
 			<label class="radio-inline">
 			  <input type="radio" name="gameLevel" value="easy"  onclick="decideGameLevel(this)" checked> Fácil
 			</label>
@@ -23,10 +25,11 @@
 			  <input type="radio" name="gameLevel" value="hard" onclick="decideGameLevel(this)" > Difícil
 			</label>
 		</div>
-	</div>
-	<div>
-		<strong>- Escolha o tamanho do tabuleiro: </strong>
-		<div>
+		
+		<div class="spaced">
+			<div>
+				<b>- Escolha o tamanho do tabuleiro:</b>
+			</div>
 			<label class="radio-inline">
 			  <input type="radio" name="tableSize" value="small"  onclick="decideSideLength(this)" checked> Pequeno
 			</label>
@@ -37,9 +40,8 @@
 			  <input type="radio" name="tableSize" value="large" onclick="decideSideLength(this)" > Grande
 			</label>
 		</div>
-	</div>
-</br>
-	<button type="button" class="btn btn-default" onClick="generateNewGame();">Novo Jogo</button>
+		<button type="button" class="btn btn-default spaced" onClick="generateNewGame();">Novo Jogo</button>
+	</div>	
 	<div class="table-responsive">	
 		<table id="gameTable" class="table table-striped table-bordered" ></table>			
 	</div>
