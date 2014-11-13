@@ -44,11 +44,11 @@
 		<table id="gameTable" class="table table-striped table-bordered" ></table>			
 	</div>
 	<div id="result">
-		<strong>Primos achados: <span id=primesFound>0</span> </strong>
+		<strong>Primos achados: <span id="primesFound" class="correct">0</span> </strong>
 	</div>	
-	<div id="hint" class="form-inline">
+	<div class="spaced">
 		<button id="hintButton" type="button" class="btn btn-default" onClick="tellNumberOfPrimes();">Revelar Dica</button>		
-		<strong>Total de primos é: </strong> <input id="numberOfPrimes" type="text" class="form-control" disabled></input>
+		<span id="hint"> </span>
 	</div>	
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="src/js/teorema101.js"></script>	

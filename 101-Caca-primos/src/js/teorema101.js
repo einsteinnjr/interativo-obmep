@@ -73,9 +73,9 @@ function generateArrayOfRandomNumbers( quantityOfPositions, maxValue){
 			arrayOfPrimeRandomPositions.push(parseInt(num));
 		}	
 	}
-	for(var i=0; i<arrayOfPrimeRandomPositions.length; i++){
+	/*for(var i=0; i<arrayOfPrimeRandomPositions.length; i++){
 		console.log(arrayOfPrimeRandomPositions[i]);
-	}
+	}*/
 
 	//ascending sort prime random positions.
 	arrayOfPrimeRandomPositions.sort(compare);
@@ -167,18 +167,15 @@ function clearPrimesFoundsAndInfo(){
 	$("#primesFound").empty();
 	$("#primesFound").html("0");
 	
-	$("#numberOfPrimes").attr("disabled", true);
-	$("#numberOfPrimes").attr("readonly", false);
-	$("#numberOfPrimes").attr("value", "");	
+	$("#hint").empty();	
 
-	$("hintButton").attr("disabled", false);	
+	$("#hintButton").attr("disabled", false);	
 }
 
 function tellNumberOfPrimes(){
-	$("#numberOfPrimes").attr("disabled", false);
-	$("#numberOfPrimes").attr("readonly", true);
-	$("#numberOfPrimes").attr("value", numberOfPrimes);
-	$("hintButton").attr("disabled", true);
+	var hintHtml = "<b>Total de primos é: <span class='correct'>"+numberOfPrimes+"</span></b>"
+	$("#hint").html(hintHtml);
+	$("#hintButton").attr("disabled", true);
 }
 
 function mouseEventsOnTable(){
