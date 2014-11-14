@@ -40,7 +40,7 @@
 			  <input type="radio" name="tableSize" value="large" onclick="decideSideLength(this)" > Grande
 			</label>
 		</div>
-		<button type="button" class="btn btn-default spaced" onClick="generateNewGame();">Novo Jogo</button>
+		<button type="button" class="btn btn-default btn-primary spaced" onClick="generateNewGame();">Novo Jogo</button>
 	</div>	
 	<div class="table-responsive">	
 		<table id="gameTable" class="table table-striped table-bordered" ></table>			
@@ -68,8 +68,8 @@
 		<p><b>Parabéns! Você achou todos os <span id='modalNumberOfPrimes'></span> primos do tabuleiro! Deseja jogar novamente?</b></p>
 	      </div>
 	      <div class="modal-footer">
-		<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-		<button type="button" class="btn btn-primary" onclick="closeModalGameOverAndNewGame()">Ok</button>
+		<button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+		<button type="button" class="btn btn-primary" onclick="closeModalGameOverAndNewGame()">Sim</button>
 	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
