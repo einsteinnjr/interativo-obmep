@@ -69,9 +69,9 @@
 	</div>	
 </br>
 
-<div class="btn-group">
-  <button type="button" class="btn btn-default btn-primary" onClick="revealAnswer();">Revelar Resposta</button> 
-  <button type="button" class="btn btn-default" onClick="generateNewTriangle();scrollTo('#sidesTable');">Novo Triângulo</button> 
+<div>
+  <button type="button" class="btn btn-default" onClick="revealAnswer();">Revelar Resposta</button> 
+  <button type="button" class="btn btn-default  btn-primary" onClick="generateNewTriangle();scrollTo('#sidesTable');">Novo Triângulo</button> 
 </div> 
 <span id="validationUserAnswered"></span>
 	
