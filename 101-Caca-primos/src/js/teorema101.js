@@ -14,6 +14,7 @@ var NUMBER_OF_PRIMES_LESS_THAN_1000 = 168;
 var sideLength = 3;
 var arrayOfPrimesFound = [];
 var numberOfPrimes=0;
+var numberOfErrors=0;
 var primesLength = NUMBER_OF_PRIMES_LESS_THAN_100;
 var othersLength = MAX_NUMBER_EASY - primesLength;
 
@@ -169,6 +170,10 @@ function clearPrimesFoundsAndInfo(){
 	$("#numberOfPrimesFound").empty();
 	$("#numberOfPrimesFound").html("0");
 	$("#primesFound").remove();
+
+	$("#numberOfErrors").empty();
+	$("#numberOfErrors").html("0");
+	numberOfErrors=0;
 	
 	$("#hint").empty();	
 
@@ -215,7 +220,10 @@ function mouseEventsOnTable(){
 				$(this).addClass("wrong-click");
 				$i = $(this).find("i");
 				$i.removeClass("glyphicon-home");
-                                $i.addClass("glyphicon-remove")
+                                $i.addClass("glyphicon-remove");
+				numberOfErrors++;
+				$("#numberOfErrors").empty();
+				$("#numberOfErrors").html(numberOfErrors);
 			}
 			//mark cell as clicked
 			$(this).addClass("already-clicked");
