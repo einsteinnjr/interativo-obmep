@@ -3,6 +3,7 @@
 //168 primes less than 1000
 var primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563, 569, 571, 577, 587, 593, 599, 601, 607, 613, 617, 619, 631, 641, 643, 647, 653, 659, 661, 673, 677, 683, 691, 701, 709, 719, 727, 733, 739, 743, 751, 757, 761, 769, 773, 787, 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859, 863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997];
 
+//all numbers not primes until Max_number
 var others = [];
 
 var MAX_NUMBER_EASY = 100;
@@ -112,15 +113,15 @@ function generateNewTableHtml(n){
 function generateOthers(){
 	var i=0, j=1;
 	while(i<primes.length){
-		if(j<primes[i]){ //se j não estiver no array primes, adicione em others
+		if(j<primes[i]){ //if j isnt on array primes, add on others
 			others.push(j);
 		}
-		else{//se j tiver chegado no valor do primes[i], podemos ir ao proximo valor.
+		else{//if j arrives at value primes[i], we can go to the next prime
 			i++;		
 		}
-		j++;//ande ao proximo numero.
+		j++;//go to the next number
 	}
-	while(j<=MAX_NUMBER_HARD){// preencha others até o MAX_NUMBER_HARD
+	while(j<=MAX_NUMBER_HARD){// fill array others until MAX_NUMBER_HARD
 		others.push(j);		
 		j++;
 	}
@@ -153,19 +154,21 @@ function generateNewGame(){
 }
 
 function printPrimesFound(){
-	var listOfPrimesFound="[";
-	$("#primesFound").empty();
+	var listOfPrimesFound="";
+	$("#numberOfPrimesFound").empty();
+	$("#primesFound").remove();//it will be recreated;
 	for(i=0; i< arrayOfPrimesFound.length; i++){
 		listOfPrimesFound+=" "+arrayOfPrimesFound[i];
 		if(i!=arrayOfPrimesFound.length-1) listOfPrimesFound+=",";
 	}
-	listOfPrimesFound+="]";	
-	$("#primesFound").html(arrayOfPrimesFound.length+" "+listOfPrimesFound);
+	$("#numberOfPrimesFound").html(arrayOfPrimesFound.length);
+	$("#lPrimesFound").append("<input id='primesFound' type='text' class='form-control' value ='"+listOfPrimesFound+"' size='"+listOfPrimesFound.length*2/3+"' disabled></input>");
 }
 
 function clearPrimesFoundsAndInfo(){
-	$("#primesFound").empty();
-	$("#primesFound").html("0");
+	$("#numberOfPrimesFound").empty();
+	$("#numberOfPrimesFound").html("0");
+	$("#primesFound").remove();
 	
 	$("#hint").empty();	
 

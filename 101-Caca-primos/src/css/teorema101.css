@@ -6,13 +6,14 @@ body{
 }
 
 .table {
-    width: 35%;
-    margin-left: 20%;
+    width: auto;
+    margin-left: auto;
     margin-right: auto;
 }
 
 td{
-    text-align: center;
+	padding:10px;
+	text-align: center;
 }
 
 .correct{
@@ -24,7 +25,8 @@ td{
 }
 
 #numberOfPrimes{
-	width:10%;
+	padding:1px;
+	margin:5px;
 }
 
 .spaced{

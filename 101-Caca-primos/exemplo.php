@@ -45,8 +45,8 @@
 	<div class="table-responsive">	
 		<table id="gameTable" class="table table-striped table-bordered" ></table>			
 	</div>
-	<div id="result">
-		<strong>Primos achados: <span id="primesFound" class="correct">0</span> </strong>
+	<div id="result" class="form-inline">
+		<label id="lPrimesFound"><b>Primos achados: <span id="numberOfPrimesFound" class="correct">0</span> </b></label>
 	</div>	
 	<div class="spaced">
 		<button id="hintButton" type="button" class="btn btn-default" onClick="tellNumberOfPrimes();">Revelar Dica</button>		
