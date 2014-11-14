@@ -163,7 +163,7 @@ function printPrimesFound(){
 		if(i!=arrayOfPrimesFound.length-1) listOfPrimesFound+=",";
 	}
 	$("#numberOfPrimesFound").html(arrayOfPrimesFound.length);
-	$("#lPrimesFound").append("<input id='primesFound' type='text' class='form-control' value ='"+listOfPrimesFound+"' size='"+listOfPrimesFound.length*2/3+"' disabled></input>");
+	$("#lPrimesFound").append("<input id='primesFound' type='text' class='form-control' value ='"+listOfPrimesFound+"' size='"+listOfPrimesFound.length+"' disabled></input>");
 }
 
 function clearPrimesFoundsAndInfo(){
@@ -212,8 +212,8 @@ function mouseEventsOnTable(){
 				arrayOfPrimesFound.sort(compare);
 				printPrimesFound();
 				if(numberOfPrimes === arrayOfPrimesFound.length){
-					var playAgain = confirm("Parabéns! Você achou todos os "+numberOfPrimes+ " primos do tabuleiro!\n Deseja jogar novamente?");	
-					if(playAgain) generateNewGame();
+					
+					showModalGameOver();	
 				}		
 			}
 			else{//it is not a special number.
@@ -229,6 +229,17 @@ function mouseEventsOnTable(){
 			$(this).addClass("already-clicked");
 		}
 	});	
+}
+
+function closeModalGameOverAndNewGame(){
+	$('#modalGameOver').modal('hide');
+	generateNewGame();
+}
+
+
+function showModalGameOver(){
+	$("#modalNumberOfPrimes").html(numberOfPrimes);
+	$('#modalGameOver').modal('show');
 }
 
 function init(){
