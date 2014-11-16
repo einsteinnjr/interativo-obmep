@@ -53,10 +53,6 @@ p {
   width:250px;
 }
 
-#revealExplanation{
-  float:right;
-}
-
 .glyphicon-ok{
     color: #04B431; /*dark green*/
 }
