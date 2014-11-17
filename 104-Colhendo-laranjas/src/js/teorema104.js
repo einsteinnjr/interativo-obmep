@@ -17,7 +17,7 @@ var numberOfLines;
 var initialNumber;
 var finalNumber;
 var matrix;
-var i, j, k, line, orchard, lineNumber; //lineNumber is 0-indexed
+var i, j, k, orchard, lineNumber; //lineNumber is 0-indexed
 var maxSumNeighborMatrix;
 var maxSumIndexesMatrix;
 var log_;
@@ -27,17 +27,17 @@ var left, right;
 
 function decideGameLevel(){
 	console.log($('input[name=gameLevel]:checked').val());
-	if($('input[name=gameLevel]:checked').val() === "easy") {//one-digit number. Table with 4 lines.
+	if($('input[name=gameLevel]:checked').val() === "easy") {
 		numberOfLines = NUMBER_OF_LINES_EASY;
 		initialNumber = INITIAL_NUMBER_EASY;
 		finalNumber = FINAL_NUMBER_EASY;
 	}
-	else if($('input[name=gameLevel]:checked').val() === "medium") {//one-digit number. Table with 8 lines.
+	else if($('input[name=gameLevel]:checked').val() === "medium") {
 		numberOfLines = NUMBER_OF_LINES_MEDIUM;
 		initialNumber = INITIAL_NUMBER_MEDIUM;
 		finalNumber = FINAL_NUMBER_MEDIUM;
 	}
-	else if($('input[name=gameLevel]:checked').val() === "hard") {//two-digit number. Table with 8 lines.
+	else if($('input[name=gameLevel]:checked').val() === "hard") {
 		numberOfLines = NUMBER_OF_LINES_HARD;
 		initialNumber = INITIAL_NUMBER_HARD;
 		finalNumber = FINAL_NUMBER_HARD;
@@ -83,7 +83,7 @@ function validateAtMostOneInThatLine(it){
 function calculateMaxPath(){
 	maxSumNeighborMatrix = new Array();
 	maxSumIndexesMatrix = new Array();
-	line = numberOfLines-1;
+	lineNumber = numberOfLines-1;
 	
 	//init Sum Matrix
 	for(i=0; i<numberOfLines; i++){
@@ -93,43 +93,41 @@ function calculateMaxPath(){
 	//log_="";
 	//init last line sum;
 	for(i=0; i<numberOfLines; i++){
-		maxSumNeighborMatrix[line][i]=matrix[i][line-i];
-		//log_+="line "+line+" i "+i+" "+maxSumNeighborMatrix[line][i]+" # ";
+		maxSumNeighborMatrix[lineNumber][i]=matrix[i][lineNumber-i];
+		//log_+="lineNumber "+lineNumber+" i "+i+" "+maxSumNeighborMatrix[lineNumber][i]+" # ";
 	}
 	//console.log("init "+log_);
 	
-	while( line > 0 ){
-		var aux = line-1;
-		//console.log("line "+aux);
+	while( lineNumber > 0 ){
 		//log_="";
-		for(i=0; i<line; i++){
-			if(matrix[i][line-1-i]+maxSumNeighborMatrix[line][i] > matrix[i][line-1-i]+maxSumNeighborMatrix[line][i+1]){
-				maxSumNeighborMatrix[line-1][i] = matrix[i][line-1-i]+maxSumNeighborMatrix[line][i];
-				maxSumIndexesMatrix[line-1][i] = i;
-				//log_+="sum "+maxSumNeighborMatrix[line-1][i]+" idx "+maxSumIndexesMatrix[line-1][i]+" @ ";
+		for(i=0; i<lineNumber; i++){
+			if(matrix[i][lineNumber-1-i]+maxSumNeighborMatrix[lineNumber][i] > matrix[i][lineNumber-1-i]+maxSumNeighborMatrix[lineNumber][i+1]){
+				maxSumNeighborMatrix[lineNumber-1][i] = matrix[i][lineNumber-1-i]+maxSumNeighborMatrix[lineNumber][i];
+				maxSumIndexesMatrix[lineNumber-1][i] = i;
+				//log_+="sum "+maxSumNeighborMatrix[lineNumber-1][i]+" idx "+maxSumIndexesMatrix[lineNumber-1][i]+" @ ";
 			}
 			else {
-				maxSumNeighborMatrix[line-1][i] = matrix[i][line-1-i]+maxSumNeighborMatrix[line][i+1];
-				maxSumIndexesMatrix[line-1][i] = i+1;
-				//log_+="sum "+maxSumNeighborMatrix[line-1][i]+" idx "+maxSumIndexesMatrix[line-1][i]+" @ ";
+				maxSumNeighborMatrix[lineNumber-1][i] = matrix[i][lineNumber-1-i]+maxSumNeighborMatrix[lineNumber][i+1];
+				maxSumIndexesMatrix[lineNumber-1][i] = i+1;
+				//log_+="sum "+maxSumNeighborMatrix[lineNumber-1][i]+" idx "+maxSumIndexesMatrix[lineNumber-1][i]+" @ ";
 			}
 		}
 		//console.log(log_);
-		line--;			
+		lineNumber--;			
 	}
 	maxPathSum=maxSumNeighborMatrix[0][0];
 	//console.log("MaxSum "+maxPathSum);
 }
 
 function showMaxPath(){
-	line=0;	
+	lineNumber=0;	
 	i=0;
-	j=line-i;
-	while(line < numberOfLines){
+	j=lineNumber-i;
+	while(lineNumber < numberOfLines){
 		$('#'+i+'_'+j).addClass('solution');
-		i = maxSumIndexesMatrix[line][i];
-		line++;
-		j= line-i;		
+		i = maxSumIndexesMatrix[lineNumber][i];
+		lineNumber++;
+		j= lineNumber-i;		
 	}
 
 }
