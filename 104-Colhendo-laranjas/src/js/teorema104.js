@@ -110,6 +110,14 @@ function updateIdActualSum(){
 	$('#actualSum').html(actualSum);
 }
 
+function showDMaxPathSum(){
+	$('#actualSum').after("<div id='dMaxPathSum' class='solution'><label><b>Soma Máxima: <span class='actual'>"+maxPathSum+"</span> </b></label></div>");
+}
+
+function removeDMaxPathSum(){
+	$('#dMaxPathSum').remove();
+}
+
 function calculateMaxPath(){
 	maxSumNeighborMatrix = new Array();
 	maxSumIndexesMatrix = new Array();
@@ -160,6 +168,7 @@ function showMaxPath(){
 		j= lineNumber-i;		
 	}
 	setDisabledStatusToPathButtons(true);
+	showDMaxPathSum();
 }
 
 function validateIfItIsMaxPath(){
@@ -266,4 +275,5 @@ function generateNewGame(){
 	updateIdActualSum();
 	calculateMaxPath();
 	setDisabledStatusToPathButtons(false);
+	removeDMaxPathSum();
 };
