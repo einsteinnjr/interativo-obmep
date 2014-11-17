@@ -17,7 +17,7 @@ var numberOfLines;
 var initialNumber;
 var finalNumber;
 var matrix;
-var i, j, k, sum, line, orchard;
+var i, j, k, line, orchard, lineNumber; //lineNumber is 0-indexed
 var maxSumNeighborMatrix;
 var maxSumIndexesMatrix;
 var log_;
@@ -56,9 +56,9 @@ function createOrchard(){
 
 function printOrchard(){
 	orchard="";
-	for(sum=0; sum<numberOfLines; sum++){	
-		for(i=0; i<=sum; i++){
-			j=sum-i;
+	for(lineNumber=0; lineNumber < numberOfLines; lineNumber++){	
+		for(i=0; i <= lineNumber; i++){
+			j = lineNumber-i;
 			orchard+="<span id='"+i+"_"+j+"' class='num'>"+matrix[i][j]+"</span><span class='tab'/>";	
 		}
 		orchard+="</br>";
@@ -69,9 +69,9 @@ function printOrchard(){
 function validateAtMostOneInThatLine(it){
 	var id = $(it).attr('id');
 	var idx = String(id).split('_');
-	sum = parseInt(idx[0])+parseInt(idx[1]);
-	for(i=0; i<=sum; i++){
-		j=sum-i;
+	lineNumber = parseInt(idx[0])+parseInt(idx[1]);
+	for(i=0; i<=lineNumber; i++){
+		j=lineNumber-i;
 		if(i!==parseInt(idx[0]) &&
 			$('#'+i+'_'+j).hasClass('selected')){//if it already has a selected, change to our actual 
 				$('#'+i+'_'+j).toggleClass('selected');
@@ -90,28 +90,28 @@ function calculateMaxPath(){
 		maxSumNeighborMatrix[i] = new Array();
 		maxSumIndexesMatrix[i] = new Array();
 	}
-	log_="";
+	//log_="";
 	//init last line sum;
 	for(i=0; i<numberOfLines; i++){
 		maxSumNeighborMatrix[line][i]=matrix[i][line-i];
-		log_+="line "+line+" i "+i+" "+maxSumNeighborMatrix[line][i]+" # ";
+		//log_+="line "+line+" i "+i+" "+maxSumNeighborMatrix[line][i]+" # ";
 	}
 	//console.log("init "+log_);
 	
 	while( line > 0 ){
 		var aux = line-1;
 		//console.log("line "+aux);
-		log_="";
+		//log_="";
 		for(i=0; i<line; i++){
 			if(matrix[i][line-1-i]+maxSumNeighborMatrix[line][i] > matrix[i][line-1-i]+maxSumNeighborMatrix[line][i+1]){
 				maxSumNeighborMatrix[line-1][i] = matrix[i][line-1-i]+maxSumNeighborMatrix[line][i];
 				maxSumIndexesMatrix[line-1][i] = i;
-				log_+="sum "+maxSumNeighborMatrix[line-1][i]+" idx "+maxSumIndexesMatrix[line-1][i]+" @ ";
+				//log_+="sum "+maxSumNeighborMatrix[line-1][i]+" idx "+maxSumIndexesMatrix[line-1][i]+" @ ";
 			}
 			else {
 				maxSumNeighborMatrix[line-1][i] = matrix[i][line-1-i]+maxSumNeighborMatrix[line][i+1];
 				maxSumIndexesMatrix[line-1][i] = i+1;
-				log_+="sum "+maxSumNeighborMatrix[line-1][i]+" idx "+maxSumIndexesMatrix[line-1][i]+" @ ";
+				//log_+="sum "+maxSumNeighborMatrix[line-1][i]+" idx "+maxSumIndexesMatrix[line-1][i]+" @ ";
 			}
 		}
 		//console.log(log_);
@@ -136,10 +136,10 @@ function showMaxPath(){
 
 function validateIfItIsMaxPath(){
 	if(!validateExactOnePerLine()){
-		alert("O caminho não é válido. Não existe número escolhido na linha "+sum+".");
+		alert("O caminho não é válido. Não existe número escolhido na linha "+(lineNumber+1)+"."); //for the user, lineNumber must be 1-indexed.
 	}
 	else if(!validateIfItIsAPath()){
-		if( !left && !right || sum === 0) alert("O caminho não é válido. O caminho começado na linha 0(zero) se interrompe na linha "+sum+".");
+		if( !left && !right || lineNumber === 0) alert("O caminho não é válido. O caminho começado na linha 1 se interrompe na linha "+(lineNumber+1)+"."); //for the user, lineNumber must be 1-indexed.
 	}
 	else if(actualSum !== maxPathSum){
 		alert("O caminho é válido, mas não é máximo. Existe caminho com soma maior que "+actualSum+".");	
@@ -157,7 +157,7 @@ function validateIfItIsAPath(){
 	j=0;
 	var chosen_i, chosen_j;
 	var i_, j_;
-	sum=-1;
+	lineNumber=-1;
 	actualSum=0;
 	while( i+j < numberOfLines && //not left orchard yet
 		$('#'+i+'_'+j).hasClass('selected')){ //selected
@@ -190,36 +190,36 @@ function validateIfItIsAPath(){
 		}
 
 		if(!left && !right) {
-			sum=i+j+1;
-			//console.log("both selected notAPath sum "+sum);
+			lineNumber=i+j+1;
+			//console.log("both selected notAPath lineNumber "+lineNumber);
 			return false; // both selected
 		}
 		else if(left && right) {
-			sum=i+j+1;			
-			//console.log("none selected notAPath sum "+sum);
+			lineNumber=i+j+1;			
+			//console.log("none selected notAPath lineNumber "+lineNumber);
 			return false;// none selected
 		}
 		i=chosen_i;
 		j=chosen_j;
 	}
-	sum=i+j;
+	lineNumber=i+j;
 	if(!$('#'+i+'_'+j).hasClass('selected')) {
-		//console.log("i "+i+" j "+j+" notAPath sum "+sum);
+		//console.log("i "+i+" j "+j+" notAPath lineNumber "+lineNumber);
 		return false;
 	}
 }
 
 function validateExactOnePerLine(){
 	var qnt;
-	for(sum=0; sum<numberOfLines; sum++){
+	for(lineNumber=0; lineNumber<numberOfLines; lineNumber++){
 		qnt=0;	
-		for(i=0; i<=sum; i++){
-			j=sum-i;
+		for(i=0; i<=lineNumber; i++){
+			j=lineNumber-i;
 			if($('#'+i+'_'+j).hasClass('selected')) qnt++;	
 		}
 		
 		if(qnt!=1) {
-			//console.log("Na linha "+sum+" nao existem numeros selecionados.");
+			//console.log("Na linha "+lineNumber+" nao existem numeros selecionados.");
 			return false;
 		}
 	}
