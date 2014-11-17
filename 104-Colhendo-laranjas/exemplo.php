@@ -30,15 +30,15 @@
 			</label>
 		</div>
 	</div>
-	<button id="newGame" type="button" class="btn btn-default spaced" onClick="generateNewGame();">Novo Jogo</button>
+	<button id="newGame" type="button" class="btn btn-default btn-primary spaced" onClick="generateNewGame();">Novo Jogo</button>
 	<div id="orchard"></div>
 
 	<div class="spaced">
-		<label id="lActualSum"><b>Soma atual: <span id="actualSum" class="correct">0</span> </b></label>
+		<label id="lActualSum"><b>Soma Atual: <span id="actualSum" class="actual">0</span> </b></label>
 	</div>
-	<div class="btn-group spaced">
+	<div class="spaced">
 		<button id="testPath" type="button" class="btn btn-default" onClick="validateIfItIsMaxPath();">Testar Caminho</button>
-		<button id="showMaxPath" type="button" class="btn btn-default btn-primary" onClick="showMaxPath();">Mostrar Caminho Máximo</button>	
+		<button id="showMaxPath" type="button" class="btn btn-default" onClick="showMaxPath();">Mostrar Caminho Máximo</button>	
 	</div>	
 
 	<p class="spaced">fonte do problema: <a href="https://projecteuler.net/problem=18">Project Euler</a></p>
