@@ -32,5 +32,9 @@ span.tab{
 }
 
 .spaced{
-	margin:10px;
+	margin:5px;
+}
+
+.correct{
+	color: #04B431;  /*dark green*/
 }

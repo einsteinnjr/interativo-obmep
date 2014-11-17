@@ -30,10 +30,13 @@
 			</label>
 		</div>
 	</div>
-	<button id="newGame" type="button" class="btn btn-default" onClick="generateNewGame();">Novo Jogo</button>
-	<div id="orchard"></div>	
-	
-	<div class="btn-group">
+	<button id="newGame" type="button" class="btn btn-default spaced" onClick="generateNewGame();">Novo Jogo</button>
+	<div id="orchard"></div>
+
+	<div class="spaced">
+		<label id="lActualSum"><b>Soma atual: <span id="actualSum" class="correct">0</span> </b></label>
+	</div>
+	<div class="btn-group spaced">
 		<button id="testPath" type="button" class="btn btn-default" onClick="validateIfItIsMaxPath();">Testar Caminho</button>
 		<button id="showMaxPath" type="button" class="btn btn-default btn-primary" onClick="showMaxPath();">Mostrar Caminho Máximo</button>	
 	</div>	

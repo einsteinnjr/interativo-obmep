@@ -26,7 +26,7 @@ var actualSum;
 var left, right;
 
 function decideGameLevel(){
-	console.log($('input[name=gameLevel]:checked').val());
+	//console.log($('input[name=gameLevel]:checked').val());
 	if($('input[name=gameLevel]:checked').val() === "easy") {
 		numberOfLines = NUMBER_OF_LINES_EASY;
 		initialNumber = INITIAL_NUMBER_EASY;
@@ -51,10 +51,10 @@ function createOrchard(){
 		for(j=0; j<numberOfLines; j++){
 			matrix[i][j]=initialNumber+Math.floor(Math.random()*(finalNumber-initialNumber));
 		}
-	}	
+	}
 };
 
-function printOrchard(){
+function printOrchardHtml(){
 	orchard="";
 	for(lineNumber=0; lineNumber < numberOfLines; lineNumber++){	
 		for(i=0; i <= lineNumber; i++){
@@ -66,7 +66,20 @@ function printOrchard(){
 	return orchard;
 };
 
-function validateAtMostOneInThatLine(it){
+function generateOrchard(){
+	createOrchard();
+	$("#orchard").html(printOrchardHtml());	
+}
+
+function actionsWhenClickingANumber(){
+	$(".num").click(function(){
+		unselectAllFromItsLine(this);
+		toggleItsStatus(this);
+		updateIdActualSum();
+	});
+}
+
+function unselectAllFromItsLine(it){
 	var id = $(it).attr('id');
 	var idx = String(id).split('_');
 	lineNumber = parseInt(idx[0])+parseInt(idx[1]);
@@ -75,9 +88,26 @@ function validateAtMostOneInThatLine(it){
 		if(i!==parseInt(idx[0]) &&
 			$('#'+i+'_'+j).hasClass('selected')){//if it already has a selected, change to our actual 
 				$('#'+i+'_'+j).toggleClass('selected');
+				//decrement its value from sum.
+				actualSum-=parseInt($('#'+i+'_'+j).text());
 		}
 			
 	}
+}
+
+function toggleItsStatus(it){
+	if($(it).hasClass('selected')){//if already selected, decrement
+		actualSum-=parseInt($(it).text());
+	}
+	else{//if not selected, increment
+		actualSum+=parseInt($(it).text());
+	}
+	$(it).toggleClass("selected");
+}
+
+function updateIdActualSum(){
+	$('#actualSum').empty();
+	$('#actualSum').html(actualSum);
 }
 
 function calculateMaxPath(){
@@ -129,11 +159,11 @@ function showMaxPath(){
 		lineNumber++;
 		j= lineNumber-i;		
 	}
-	document.getElementById("testPath").disabled=true;
-	document.getElementById("showMaxPath").disabled=true;
+	setDisabledStatusToPathButtons(true);
 }
 
 function validateIfItIsMaxPath(){
+	//console.log('actualSum '+actualSum+' maxPathSum '+maxPathSum);
 	if(!validateExactOnePerLine()){
 		alert("O caminho não é válido. Não existe número escolhido na linha "+(lineNumber+1)+"."); //for the user, lineNumber must be 1-indexed.
 	}
@@ -151,16 +181,13 @@ function validateIfItIsMaxPath(){
 }
 
 function validateIfItIsAPath(){
-
 	i=0; 
 	j=0;
 	var chosen_i, chosen_j;
 	var i_, j_;
 	lineNumber=-1;
-	actualSum=0;
 	while( i+j < numberOfLines && //not left orchard yet
 		$('#'+i+'_'+j).hasClass('selected')){ //selected
-		actualSum+=parseInt($('#'+i+'_'+j).text());
 		chosen_i = -1;
 		chosen_j = -1;
 		left = false;
@@ -226,16 +253,17 @@ function validateExactOnePerLine(){
 	return true;
 }
 
+function setDisabledStatusToPathButtons(bool){
+	document.getElementById("testPath").disabled=bool;
+	document.getElementById("showMaxPath").disabled=bool;
+}
+
 function generateNewGame(){
 	decideGameLevel();
-	createOrchard();
-	$("#orchard").html(printOrchard());
-	$(".num").click(function(){
-		validateAtMostOneInThatLine(this);
-		$(this).toggleClass("selected");
-	});
+	generateOrchard();
+	actionsWhenClickingANumber();
 	actualSum=0;
+	updateIdActualSum();
 	calculateMaxPath();
-	document.getElementById("testPath").disabled=false;
-	document.getElementById("showMaxPath").disabled=false;
+	setDisabledStatusToPathButtons(false);
 };
