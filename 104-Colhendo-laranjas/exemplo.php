@@ -35,7 +35,7 @@
 	
 	<div class="btn-group">
 		<button id="testPath" type="button" class="btn btn-default" onClick="validateIfItIsMaxPath();">Testar Caminho</button>
-		<button id="testPath" type="button" class="btn btn-default btn-primary" onClick="showMaxPath();">Mostrar Caminho Máximo</button>	
+		<button id="showMaxPath" type="button" class="btn btn-default btn-primary" onClick="showMaxPath();">Mostrar Caminho Máximo</button>	
 	</div>	
 
 	<p class="spaced">fonte do problema: <a href="https://projecteuler.net/problem=18">Project Euler</a></p>

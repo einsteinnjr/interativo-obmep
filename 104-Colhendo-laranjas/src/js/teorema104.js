@@ -129,7 +129,8 @@ function showMaxPath(){
 		lineNumber++;
 		j= lineNumber-i;		
 	}
-
+	document.getElementById("testPath").disabled=true;
+	document.getElementById("showMaxPath").disabled=true;
 }
 
 function validateIfItIsMaxPath(){
@@ -235,4 +236,6 @@ function generateNewGame(){
 	});
 	actualSum=0;
 	calculateMaxPath();
+	document.getElementById("testPath").disabled=false;
+	document.getElementById("showMaxPath").disabled=false;
 };
