@@ -29,6 +29,10 @@ span.tab{
 
 .solution{
   border: 1px solid #04B431; /*dark green*/
+} 
+
+.gray{
+  color: #BDBDBD; /*light gray */
 }
 
 .spaced{

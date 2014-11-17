@@ -74,6 +74,7 @@ function generateOrchard(){
 function actionsWhenClickingANumber(){
 	$(".num").click(function(){
 		unselectAllFromItsLine(this);
+		toggleGrayToNotClicked(this);
 		toggleItsStatus(this);
 		updateIdActualSum();
 	});
@@ -95,6 +96,24 @@ function unselectAllFromItsLine(it){
 	}
 }
 
+function toggleGrayToNotClicked(it){
+	var gray;
+	if($(it).hasClass("selected")) setToGray = false;//if already selected, do not set others to gray.
+	else setToGray = true;// if not selected, set others to gray.
+
+	var id = $(it).attr('id');
+	var idx = String(id).split('_');
+	lineNumber = parseInt(idx[0])+parseInt(idx[1]);
+	
+	for(i=0; i<=lineNumber; i++){
+		j=lineNumber-i;
+		if(i!==parseInt(idx[0])){
+			$('#'+i+'_'+j).toggleClass('gray', setToGray);
+		}
+			
+	}
+}
+
 function toggleItsStatus(it){
 	if($(it).hasClass('selected')){//if already selected, decrement
 		actualSum-=parseInt($(it).text());
@@ -102,8 +121,10 @@ function toggleItsStatus(it){
 	else{//if not selected, increment
 		actualSum+=parseInt($(it).text());
 	}
+	$(it).toggleClass('gray', false);
 	$(it).toggleClass("selected");
 }
+
 
 function updateIdActualSum(){
 	$('#actualSum').empty();
