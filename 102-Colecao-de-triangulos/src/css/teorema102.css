@@ -74,12 +74,20 @@ span.tab{
     color: #A4A4A4;/*gray*/
 }
 
-.glyphicon-ok{
+.correct{
     color: #04B431; /*dark green*/
 }
 
-.glyphicon-remove{
+.error{
     color: #FE2E2E; /*dark red*/
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.inline{
+	display:inline-block;
 }
 
 .warning {

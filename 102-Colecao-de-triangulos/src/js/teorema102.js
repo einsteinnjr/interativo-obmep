@@ -159,55 +159,58 @@ function closedTriangleFigure(){
 
 function disableTriangleConstruction(){
 	//if noTriangle is possible	
-	if(document.getElementById('notConstructableCheckbox').checked===true){
-		$("#triangleConstructible").addClass("disabled");
-		$('input[type=radio]').attr('disabled',true);
-		$('input[type=radio]').attr('checked',false);
+	if(document.getElementById('notConstructableRadio').checked===true){
+		$("#triangleConstructible").addClass("hidden");
+		$('input[name="sidesClass"]').attr('disabled',true);
+		$('input[name="sidesClass"]').attr('checked',false);
+		$('input[name="greaterAngleClass"]').attr('disabled',true);
+		$('input[name="greaterAngleClass"]').attr('checked',false);
 	}
-	else{
-		$("#triangleConstructible").removeClass("disabled");
-		$('input[type=radio]').attr('disabled',false);
+	if(document.getElementById('constructableRadio').checked===true){
+		$("#triangleConstructible").removeClass("hidden");
+		$('input[name="sidesClass"]').attr('disabled',false);
+		$('input[name="greaterAngleClass"]').attr('disabled',false);
 	}
 }
 
 function checkAnswers(){
 	checkAnswerTriangleConstructability();
-	if(!(document.getElementById('notConstructableCheckbox').checked)){
+	if(!(document.getElementById('notConstructableRadio').checked)){
 		checkAnswerSidesRelationship();
 		checkAnswerGreaterAngle(); 
 	}   
 }
 
 function checkAnswerTriangleConstructability(){
-	$("#validationConstructabilityCheckbox").empty();
+	$("#validationConstructabilityRadio").empty();
 	if(matchedConstructabilityAndUserAnswer()){
-		$("#validationConstructabilityCheckbox").append("<i class='glyphicon glyphicon-ok'>Correto!</i>");
+		$("#validationConstructabilityRadio").append("<i class='glyphicon glyphicon-ok correct'>Correto!</i>");
 	}
-	else $("#validationConstructabilityCheckbox").append("<i class='glyphicon glyphicon-remove'>Errado!</i>");
+	else $("#validationConstructabilityRadio").append("<i class='glyphicon glyphicon-remove error'>Errado!</i>");
 }
 
 function fillAnswerTriangleConstructable(){
 	$("#answerTriangleConstructable").empty();
 	sum = parseInt(b)+parseInt(c);
 	if(typeOfTriangle===NO_TRIANGLE){
-		$("#answerTriangleConstructable").html("<strong>a)</strong> Utilizando a Desigualdade Triangular relativa ao maior lado (a="+a+"), caso exista o triângulo, devemos ter: <div class='center'> "+a+"= a < b + c = "+b+" + "+c+" = "+sum+" <i class='glyphicon glyphicon-remove'>Falso!</i></div > Logo, <strong>NÃO</strong> é possível construir triângulo com as 3 varetas dadas: a="+a+", b="+b+", c="+c+".");
+		$("#answerTriangleConstructable").html("<strong>a)</strong> Utilizando a Desigualdade Triangular relativa ao maior lado (a="+a+"), caso exista o triângulo, devemos ter: <div class='center'> "+a+"= a < b + c = "+b+" + "+c+" = "+sum+" (<i class='glyphicon glyphicon-remove'>Falso!</i>)</div > Logo, <strong>NÃO</strong> é possível construir triângulo com as 3 varetas dadas: a="+a+", b="+b+", c="+c+".");
 	}else{
-		$("#answerTriangleConstructable").html("<strong>a)</strong> Utilizando a Desigualdade Triangular relativa ao maior lado (a="+a+"), caso exista o triângulo, devemos ter: <div class='center'> "+a+"= a < b + c = "+b+" + "+c+" = "+sum+" <i class=' center glyphicon glyphicon-ok'>Verdade!</i></div >Logo, <strong>é possível construir triângulo</strong> com as 3 varetas dadas: a="+a+", b="+b+", c="+c+".");
+		$("#answerTriangleConstructable").html("<strong>a)</strong> Utilizando a Desigualdade Triangular relativa ao maior lado (a="+a+"), caso exista o triângulo, devemos ter: <div class='center'> "+a+"= a < b + c = "+b+" + "+c+" = "+sum+" (<i class=' center glyphicon glyphicon-ok'>Verdade!</i>)</div >Logo, <strong>é possível construir triângulo</strong> com as 3 varetas dadas: a="+a+", b="+b+", c="+c+".");
 	}
 }
 
 function matchedConstructabilityAndUserAnswer(){
-	return (typeOfTriangle===NO_TRIANGLE && document.getElementById('notConstructableCheckbox').checked) ||
-		(!(typeOfTriangle===NO_TRIANGLE) && !document.getElementById('notConstructableCheckbox').checked)
+	return (typeOfTriangle===NO_TRIANGLE && document.getElementById('notConstructableRadio').checked) ||
+		(!(typeOfTriangle===NO_TRIANGLE) && document.getElementById('constructableRadio').checked)
 }
 
 
 function checkAnswerGreaterAngle(){
 	$("#validationAngleRadio").empty();
 	if(matchedGreaterAngleAndUserAnswer()){
-		$("#validationAngleRadio").append("<i class='glyphicon glyphicon-ok'>Correto!</i>");
+		$("#validationAngleRadio").append("<i class='glyphicon glyphicon-ok correct'>Correto!</i>");
 	}
-	else $("#validationAngleRadio").append("<i class='glyphicon glyphicon-remove'>Errado!</i>");	
+	else $("#validationAngleRadio").append("<i class='glyphicon glyphicon-remove error'>Errado!</i>");	
 }
 
 function fillAnswerGreaterAngle(){
@@ -248,9 +251,9 @@ function matchedGreaterAngleAndUserAnswer(){
 function checkAnswerSidesRelationship(){
 	$("#validationSidesRadio").empty();
 	if(matchedSidesRelationshipAndUserAnswer()){
-		$("#validationSidesRadio").append("<i class='glyphicon glyphicon-ok'>Correto!</i>");
+		$("#validationSidesRadio").append("<i class='glyphicon glyphicon-ok correct'>Correto!</i>");
 	}
-	else $("#validationSidesRadio").append("<i class='glyphicon glyphicon-remove'>Errado!</i>");	
+	else $("#validationSidesRadio").append("<i class='glyphicon glyphicon-remove error'>Errado!</i>");	
 }
 
 function fillAnswerSidesRelationship(){
@@ -279,22 +282,35 @@ function matchedSidesRelationshipAndUserAnswer(){
 }
 
 function checkIfUserAnswered(){
-	return (checkIfUserAnsweredIsConstructableCheckbox()||
-		(checkIfUserAnsweredSidesRelationship()&&
+	return (checkIfUserAnsweredIsNotConstructable()||
+		(checkIfUserAnsweredIsConstructable()&&
+		checkIfUserAnsweredSidesRelationship()&&
 		checkIfUserAnsweredGreaterAngle())); 
 }
 
-function checkIfUserAnsweredIsConstructableCheckbox(){
-	return document.getElementById('notConstructableCheckbox').checked;
+function checkIfUserAnsweredIsNotConstructable(){
+	//console.log("notConstructableRadio "+document.getElementById('notConstructableRadio').checked);
+	return document.getElementById('notConstructableRadio').checked;
+}
+
+function checkIfUserAnsweredIsConstructable(){
+	//console.log("constructableRadio "+document.getElementById('constructableRadio').checked);
+	return document.getElementById('constructableRadio').checked;
 }
 
 function checkIfUserAnsweredSidesRelationship(){
+	/*console.log("radioScalene "+document.getElementById('radioScalene').checked+
+			"radioIsosceles "+document.getElementById('radioIsosceles').checked+
+			"radioEquilateral "+document.getElementById('radioEquilateral').checked);*/
 	return (document.getElementById("radioScalene").checked ||
 		document.getElementById("radioIsosceles").checked ||
 		document.getElementById("radioEquilateral").checked);	
 }
 
 function checkIfUserAnsweredGreaterAngle(){
+	/*console.log("radioAcutangle "+document.getElementById('radioAcutangle').checked+
+			"radioRectangle "+document.getElementById('radioRectangle').checked+
+			"radioObtusangle "+document.getElementById('radioObtusangle').checked);*/
 	return (document.getElementById("radioAcutangle").checked ||
 		document.getElementById("radioRectangle").checked ||
 		document.getElementById("radioObtusangle").checked);	
@@ -329,15 +345,17 @@ function resetUserAnswersAndTheirValidations(){
 	//clean userAnswers
 	$('input[type=radio]').attr('disabled',false);
 	$('input[type=radio]').attr('checked',false);
-	$('input[type=checkbox]').attr('checked',false);
 	$("#triangleConstructible").removeClass("disabled");
 	//clean validations
-	$("#validationConstructabilityCheckbox").empty();
+	$("#validationConstructabilityRadio").empty();
 	$("#validationSidesRadio").empty();
 	$("#validationAngleRadio").empty();
+
+	$("#revealAnswer").attr('disabled',false);
 }
 
 function cleanValidationsAndAnswerExplanations(){
+	$("#triangleConstructible").removeClass("hidden");	
 	$("#validationUserAnswered").empty();
 	//remove answerJXGBox	
 	if(aboard!=null) {
@@ -354,15 +372,19 @@ function cleanValidationsAndAnswerExplanations(){
 }
 
 function revealAnswer(){
-	cleanValidationsAndAnswerExplanations();
 	if(checkIfUserAnswered()){
-		scrollTo("#notConstructableCheckbox");//answer
+		$("#revealAnswer").attr('disabled',true);
+		$("#validationUserAnswered").empty();
+		scrollTo("#notConstructableRadio");//answer
 		checkAnswers();
 		drawTriangleIfExists();
 		fillAnswersExplanation();
 	}
 	else {
-		 $("#validationUserAnswered").append("<i class='glyphicon glyphicon-remove'/> <span class='warning'>Classifique o triângulo quanto aos lados e o maior ângulo ou assinale que não pode ser construído.</span> ");
+		//console.log("validationUserAnswered "+$("#validationUserAnswered").has("i").length);
+		if($("#validationUserAnswered").has("i").length===0){//if already has a warning, to not add again.
+			 $("#validationUserAnswered").append("<i class='glyphicon glyphicon-remove'/> <span>Assinale uma opção em cada uma das questões.</span> ");
+		}
 	}
 	
 }

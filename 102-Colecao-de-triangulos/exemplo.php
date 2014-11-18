@@ -17,19 +17,23 @@
 		<p><strong> Por ser muito organizado, Renato guarda sua coleção em grupos, dependendo do tipo de triângulo: equilátero, isósceles, acutângulo, etc. Ajude-o a classificar os grupos de 3 varetas, dentro de sua coleção ou informe que não é possivel fazer uma armação triangular com o grupo. </strong></p>
 	</div>
 
-	<div id="column-left">
-		<strong>Responda os itens abaixo:</strong>
-		<div class="checkbox">
-		        <label>
-		            <input type="checkbox" id="notConstructableCheckbox" onclick="disableTriangleConstruction(this)" /> Não é possível construir o triângulo.
+	<div id="column-left" class="large">
+		<div><b>Responda os itens abaixo:</b></div>
+		<div><b>a) É possível construir um triângulo com esses lados?</b></div>
+		<div >
+			<label class="radio-inline">
+		            <input type="radio" id="constructableRadio" name="constructableClass" onclick="disableTriangleConstruction(this)"/> Sim
 		        </label>
-			<a id="validationConstructabilityCheckbox"></a>
+		        <label class="radio-inline">
+		            <input type="radio" id="notConstructableRadio" name="constructableClass" onclick="disableTriangleConstruction(this)" /> Não
+		        </label>
+			<a id="validationConstructabilityRadio"></a>
             	</div>
 	
 		<div id="triangleConstructible" class="rectangle large">	
-			<p><strong> Se for possível a construção do triângulo:</strong> </p>		
+			<p><b> Se for possível a construção do triângulo:</b> </p>		
 			<div>
-				<strong>- Classifique-o quanto aos lados: </strong></br>
+				<b>b) Classifique-o quanto aos lados: </b></br>
 				<label class="radio-inline">
 				  <input type="radio" id="radioEquilateral" name="sidesClass" value="equilateral"> Equilátero
 				</label>				
@@ -42,7 +46,7 @@
 				<a id="validationSidesRadio"></a>
 			</div>			
 			<div>
-				<strong>- Classifique-o quanto ao maior ângulo: </strong> </br>
+				<b>c) Classifique-o quanto ao maior ângulo: </b> </br>
 				<label class="radio-inline">
 				  <input type="radio" id="radioAcutangle" name="greaterAngleClass" value="acutangle"> Acutângulo
 				</label>
@@ -69,11 +73,11 @@
 	</div>	
 </br>
 
-<div>
-  <button type="button" class="btn btn-default" onClick="revealAnswer();">Revelar Resposta</button> 
+<div class="inline">
+  <button id="revealAnswer" type="button" class="btn btn-default" onClick="revealAnswer();">Revelar Resposta</button> 
   <button type="button" class="btn btn-default  btn-primary" onClick="generateNewTriangle();scrollTo('#sidesTable');">Novo Triângulo</button> 
 </div> 
-<span id="validationUserAnswered"></span>
+<span id="validationUserAnswered" class='warning inline'></span>
 	
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
 	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
