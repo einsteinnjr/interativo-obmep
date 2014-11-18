@@ -192,20 +192,32 @@ function showMaxPath(){
 	showDMaxPathSum();
 }
 
+function fillAndShowModal(title, body){
+		$(".modal-title").html(title);
+		$(".modal-body").html(body);
+		$("#modalInfo").modal('show');
+}
+
 function validateIfItIsMaxPath(){
 	//console.log('actualSum '+actualSum+' maxPathSum '+maxPathSum);
 	if(!validateExactOnePerLine()){
-		alert("O caminho não é válido. Não existe número escolhido na linha "+(lineNumber+1)+"."); //for the user, lineNumber must be 1-indexed.
+		fillAndShowModal("Atenção:",
+				"<p><b>O caminho não é válido. Não existe número escolhido na linha "+(lineNumber+1)+".</b></p>");//for the user, lineNumber must be 1-indexed.
 	}
 	else if(!validateIfItIsAPath()){
-		if( !left && !right || lineNumber === 0) alert("O caminho não é válido. O caminho começado na linha 1 se interrompe na linha "+(lineNumber+1)+"."); //for the user, lineNumber must be 1-indexed.
+		if( !left && !right || lineNumber === 0) {
+			fillAndShowModal("Atenção:",
+				"<p><b>O caminho não é válido. O caminho começado na linha 1 se interrompe na linha "+(lineNumber+1)+".</b></p>");//for the user, lineNumber must be 1-indexed.
+		}
 	}
 	else if(actualSum !== maxPathSum){
-		alert("O caminho é válido, mas não é máximo. Existe caminho com soma maior que "+actualSum+".");	
+			fillAndShowModal("Atenção:",
+				"<p><b>O caminho é válido, mas não é máximo. Existe caminho com soma maior que "+actualSum+".</b></p>");
 	}
 	else{
-		showMaxPath();		
-		alert("Parabéns! Você achou o caminho de soma máxima "+maxPathSum+".");	
+		showMaxPath();	
+		fillAndShowModal("Fim de Jogo!",
+				"<p><b>Parabéns! Você achou o caminho de soma máxima "+maxPathSum+".</b></p>");	
 	}
 	
 }
