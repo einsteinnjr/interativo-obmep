@@ -59,7 +59,9 @@ function sendQuestion(){
 		else generateGameOverLine(); //ended all questions.
 	}
 	else {
-		alert("O valor digitado "+numberAsked+" não é um número válido. Favor, digite um número.");
+		fillAndShowModal('Atenção:',
+				 "O valor digitado <b>'"+numberAsked+"'</b> não é um número válido. Favor, digite um número.", 
+				true);
 		document.getElementById("number_asked_"+actualQuestion).value="";	
 	}
 };
@@ -67,7 +69,9 @@ function sendQuestion(){
 function sendValidGuess(){
 	numberGuessed = document.getElementById("guessedNumber").value;	
 	if(!isValidNumberGuessed()) {
-		alert("O valor digitado "+numberGuessed+" não é um número válido. Favor, digite um número.");
+		fillAndShowModal('Atenção:',
+				 "O valor digitado <b>'"+numberGuessed+"'</b> não é um número válido. Favor, digite um número.", 
+				true);
 		document.getElementById("guessedNumber").value="";
 		return false;	
 	}
@@ -156,6 +160,21 @@ function generateGameOverLine(){
 	
 };
 
+function fillAndShowModal(title, body, isAlert){
+	$(".modal-title").html(title);
+	$(".modal-body").html(body);
+	$("#modalInfo").modal('show');
+
+	if(isAlert){
+		$("#noButton").html('Ok');
+		$("#yesButton").addClass('hidden');
+	}
+	else{
+		$("#noButton").html('Não');
+		$("#yesButton").removeClass('hidden');
+	}
+}
+
 function guessNumber(){
 	var playAgain;
 	if(!sendValidGuess()) return;
@@ -164,13 +183,14 @@ function guessNumber(){
 	document.getElementById("guessButton").disabled=true;
 
 	if(parseInt(guessedNumber) === parseInt(thinkedNumber)) {
-		playAgain = confirm("Parabéns! Você acertou o número de Bernardo! É "+thinkedNumber+". Deseja jogar novamente?");
+		fillAndShowModal("Fim de Jogo!",
+				 "Parabéns! Você acertou o número de Bernardo! É <b>"+thinkedNumber+"</b>. Deseja jogar novamente?</b>", 
+				false);
 	}
 	else {
-		playAgain = confirm("Que Pena! Você errou. O número pensado por Bernardo foi "+thinkedNumber+". Deseja jogar novamente?"); 
-	}
-	if(playAgain === true){
-		generateNewGame(); 
+		fillAndShowModal("Fim de Jogo!",
+				 "Que Pena! Você errou. O número pensado por Bernardo foi <b>"+thinkedNumber+"</b>. Deseja jogar novamente?", 
+				false); 
 	}
 }
 
