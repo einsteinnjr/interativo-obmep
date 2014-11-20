@@ -36,7 +36,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Interativo</a>
+          <a class="navbar-brand" href="">Interativo</a>
         </div>
         <!--<div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -51,29 +51,22 @@
     <div class="container">
 
       <div class="row row-offcanvas row-offcanvas-right">
-        <div class="col-xs-6 col-sm-3 sidebar-offcanvas accordion" id="sidebar" role="navigation">
-	<h3>Novembro 2014</h3> 
-  	 <div class="list-group">
-            <a href="105-Ordenando-fracoes/exemplo.php" class="list-group-item">105- Ordenando frações</a>
-          </div>         
-	<h3>Outubro 2014</h3> 
-  	 <div class="list-group">
-		<a href="104-Colhendo-laranjas/exemplo.php" class="list-group-item"> 104- Colhendo laranjas</a>
-		<a href="103-Descubra-o-numero/exemplo.php" class="list-group-item">103- Descubra o número</a>
-		<a href="102-Colecao-de-triangulos/exemplo.php" class="list-group-item">102- Coleção de Triângulos</a>
-		<a href="101-Caca-primos/exemplo.php" class="list-group-item">101- Caça-primos</a>
-          </div>
-	  
-        </div><!--/span-->
 
-        <div class="col-xs-12 col-sm-9">
+        <div id='showView' class="col-xs-12 col-sm-9">
           <p class="pull-right visible-xs">
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p>
-          <div class="jumbotron">
-            <h1>Exercícios Interativos</h1>
-            <p>Navegue por eles através do menu lateral.</p>
+          <div id="iframes" class="hidden">	
+		<h3 id="iframeViewTitle" class="main-title"></h3>
+		<div id="dHowToUseA"><h5><b>Como usar:</b></h5>
+			<div id="howToUseA"> </div>
+		</div>
+		<iframe id="iframeA" name="iframeA" class="iframe" frameborder='0'> </iframe>
           </div>
+	  <div id="dummy" class="jumbotron">
+	     <h1>Exercícios Interativos</h1>
+            <p>Navegue por eles através do menu lateral.</p>
+	  </div>
           <div class="row">
             <!--<div class="col-6 col-sm-6 col-lg-4">
               <h2>Heading</h2>
@@ -82,6 +75,20 @@
             </div>--><!--/span-->
           </div><!--/row-->
         </div><!--/span-->
+	<div class="col-xs-6 col-sm-3 sidebar-offcanvas accordion" id="sidebar" role="navigation">
+	<h3>Novembro 2014</h3> 
+  	 <div class="list-group">
+            <a href="105-Ordenando-fracoes/exemplo.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">105- Ordenando frações</a>
+          </div>         
+	<h3>Outubro 2014</h3> 
+  	 <div class="list-group">
+		<a href="104-Colhendo-laranjas/exemplo.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)"> 104- Colhendo laranjas</a>
+		<a href="103-Descubra-o-numero/exemplo.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">103- Descubra o número</a>
+		<a href="102-Colecao-de-triangulos/exemplo.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">102- Coleção de Triângulos</a>
+		<a href="101-Caca-primos/exemplo.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">101- Caça-primos</a>
+          </div>
+	  
+        </div><!--/sidebar-->
 
       </div><!--/row-->
 
@@ -105,6 +112,28 @@
    <!-- <script src="src/js/theorems.js"></script> -->
 
       <script>
+
+	function showInIframe(it){
+		$("#dummy").addClass("hidden");
+		$("#iframes").removeClass("hidden");		
+		
+		$("#iframeViewTitle").html($(it).html());
+		pathParts = $(it).attr("href").split('/');
+
+		getUrl(pathParts[0]+"/"+"como_usar.txt"); //p.e.: pathParts[0]='101-Caca-primos'
+		
+	}
+
+	function getUrl(url){
+		$.get( url, function( data, success, dataType ) {
+			$("#dHowToUseA").removeClass("hidden");			
+			$("#howToUseA").html(data);
+		}).fail(function(){ 
+			  // 404-error, for example:
+			$("#dHowToUseA").addClass("hidden");	
+		});
+	}
+
 	  $(function() {
 	    $( ".accordion" ).accordion({
       		collapsible: true,

@@ -2,3 +2,29 @@
 .ui-accordion .ui-accordion-content {
 padding: initial;
 }
+
+.iframe{
+	width:100%;
+	height:1000px;
+}
+
+.hidden{
+	visibility:hidden;
+}
+
+.main-title {
+	margin-top: 0;
+	margin-bottom: 30px;
+	padding-bottom: 11px;
+	border-bottom: 1px solid #dedede;
+}
+
+#sidebar {
+	width:20%;
+}
+
+#showView {
+	width:80%;
+}
+
+
