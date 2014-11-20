@@ -8,13 +8,17 @@ padding: initial;
 	height:1000px;
 }
 
+.spaced-v{
+	margin-top:5px;
+}
+
 .hidden{
 	visibility:hidden;
 }
 
 .main-title {
 	margin-top: 0;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 	padding-bottom: 11px;
 	border-bottom: 1px solid #dedede;
 }
