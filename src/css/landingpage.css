@@ -23,6 +23,10 @@ padding: initial;
 	border-bottom: 1px solid #dedede;
 }
 
+.justify{
+	text-align:justify;
+}
+
 #sidebar {
 	width:20%;
 }

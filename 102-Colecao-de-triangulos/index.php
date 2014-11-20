@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
 	<meta charset="utf-8" />
-	<title>102 - Coleção de triângulos</title>
 	<link rel="stylesheet" type="text/css" href="assets/jsxgraph/css/jsxgraph.css">
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
         <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
@@ -11,12 +10,6 @@
         <script type="text/javascript" src="src/js/teorema102.js"></script>
 </head>
 <body>
-	<h4><strong>Coleção de triângulos:</strong></h4>
-	<div>
-		<p><strong> Renato, desde criança, sempre gostou de geometria. E, por isso, faz coleção de armações triangulares. Seu tio, sabendo da paixão do sobrinho, permitiu que ele fosse a seu galpão antigo e recolhesse varetas de metais de forma a construir mais triângulos para sua coleção. </strong></p>
-		<p><strong> Por ser muito organizado, Renato guarda sua coleção em grupos, dependendo do tipo de triângulo: equilátero, isósceles, acutângulo, etc. Ajude-o a classificar os grupos de 3 varetas, dentro de sua coleção ou informe que não é possivel fazer uma armação triangular com o grupo. </strong></p>
-	</div>
-
 	<div class="large column-left">
 		<div><b>Responda os itens abaixo:</b></div>
 		<div><b>a) É possível construir um triângulo com esses lados?</b></div>

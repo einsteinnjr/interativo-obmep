@@ -1,0 +1,1 @@
+O quanto você sabe de triângulos? Nesse interativo, exercitam-se as condições de existência de um triângulo com determinados lados, além da classificação do mesmo com respeito ao comprimento de seus lados e ângulos.
