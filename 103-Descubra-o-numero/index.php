@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-	<meta charset="utf-8" />
-	<title>103 - Descubra o número</title>	
+	<meta charset="utf-8" />	
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
         <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
 	<link rel="stylesheet" type="text/css" href="src/css/teorema103.css">
@@ -10,11 +9,6 @@
 
 </head>
 <body>
-	<h4><strong>Descubra o número:</strong></h4>
-	<div>
-		<p><strong> Bruno e Bernardo gostavam de jogar um jogo de adivinhação. Bruno pedia que Bernardo pensasse em um número de 1 a 100, por exemplo. Bruno, então, tentaria adivinhar o número após uma série de perguntas a Bernardo com respostas sim ou não. (exemplo: O número que você pensou é menor ou igual a 17?).  </strong></p>
-		<p><strong> Depois de algum tempo jogando, eles descobriram que havia um número mínimo de perguntas que se poderia fazer para que sempre fosse possível acertar o número de Bernardo. E você? Consegue descobrir o número pensado por Bernardo fazendo somente um número pequeno de perguntas? </strong></p>
-	</div>
 	<div id="columns">
 		<div class="column-left">
 			<div class="spaced-v">
