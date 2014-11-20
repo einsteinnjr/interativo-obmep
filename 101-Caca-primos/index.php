@@ -2,44 +2,39 @@
 <html lang="pt-BR">
 <head>
 	<meta charset="utf-8" />
-	<title>101 - Caça-primos</title>
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
         <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
 	<link rel="stylesheet" type="text/css" href="src/css/teorema101.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<h4><strong>Caça-Primos:</strong></h4>
-	<div>
-		<strong> Ache todos os números primos no tabuleiro abaixo. </strong>
+	<div class="spaced">
+		<div>
+			<b>- Escolha o nivel desejado:</b>
+		</div>
+		<label class="radio-inline">
+		  <input type="radio" name="gameLevel" value="easy"  onclick="decideGameLevel(this)" checked> Fácil
+		</label>
+		<label class="radio-inline">
+		  <input type="radio" name="gameLevel" value="hard" onclick="decideGameLevel(this)" > Difícil
+		</label>
+	</div>
+	
+	<div class="spaced">
+		<div>
+			<b>- Escolha o tamanho do tabuleiro:</b>
+		</div>
+		<label class="radio-inline">
+		  <input type="radio" name="tableSize" value="small"  onclick="decideSideLength(this)" checked> Pequeno
+		</label>
+		<label class="radio-inline">
+		  <input type="radio" name="tableSize" value="medium" onclick="decideSideLength(this)" > Médio
+		</label>
+		<label class="radio-inline">
+		  <input type="radio" name="tableSize" value="large" onclick="decideSideLength(this)" > Grande
+		</label>
 	</div>
 	<div>
-		<div class="spaced">
-			<div>
-				<b>- Escolha o nivel desejado:</b>
-			</div>
-			<label class="radio-inline">
-			  <input type="radio" name="gameLevel" value="easy"  onclick="decideGameLevel(this)" checked> Fácil
-			</label>
-			<label class="radio-inline">
-			  <input type="radio" name="gameLevel" value="hard" onclick="decideGameLevel(this)" > Difícil
-			</label>
-		</div>
-		
-		<div class="spaced">
-			<div>
-				<b>- Escolha o tamanho do tabuleiro:</b>
-			</div>
-			<label class="radio-inline">
-			  <input type="radio" name="tableSize" value="small"  onclick="decideSideLength(this)" checked> Pequeno
-			</label>
-			<label class="radio-inline">
-			  <input type="radio" name="tableSize" value="medium" onclick="decideSideLength(this)" > Médio
-			</label>
-			<label class="radio-inline">
-			  <input type="radio" name="tableSize" value="large" onclick="decideSideLength(this)" > Grande
-			</label>
-		</div>
 		<button type="button" class="btn btn-default btn-primary spaced" onClick="generateNewGame();">Novo Jogo</button>
 	</div>	
 	<div class="table-responsive">	

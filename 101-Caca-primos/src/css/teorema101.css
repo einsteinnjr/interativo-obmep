@@ -1,8 +1,7 @@
 @charset "UTF-8";
 
 body{
-  margin: 10px;
-  padding:10px;
+  padding:5px;
 }
 
 .table {
@@ -25,12 +24,11 @@ td{
 }
 
 #numberOfPrimes{
-	padding:1px;
 	margin:5px;
 }
 
 .spaced{
-	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .table>tbody>tr>td.mouse-over{

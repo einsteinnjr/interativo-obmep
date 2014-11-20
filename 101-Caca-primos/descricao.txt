@@ -1,0 +1,1 @@
+Será que você é capaz de achar todos os primos de um tabuleiro? Esse é um jogo para exercitar os diversos critérios de divisibilidade de uma maneira lúdica, além da detecção de números primos. Permite a escolha de diversos níveis de dificuldade.
