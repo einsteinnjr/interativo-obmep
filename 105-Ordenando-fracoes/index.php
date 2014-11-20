@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
 	<meta charset="utf-8" />
-	<title>105 - Ordenando frações</title>
         <link rel="stylesheet" type="text/css" href="assets/jquery-ui/css/jquery-ui.min.css">
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
         <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
@@ -11,14 +10,7 @@
 </script>
 	
 </head>
-<body>
-	<h4><strong>Ordenando frações:</strong></h4>
-	<div>
-		<p><strong> Ordene as frações abaixo da menor para a maior: </strong></p>		
-	</div>
-	<div>
-	<ul id="fractionsList" class="horizontalList spaced"></ul>
-	</div>	
+<body>	
 	<div class="spaced">
 		<strong>- Escolha o nivel desejado: </strong>
 		<div>
@@ -34,8 +26,13 @@
 		</div>
 	</div>	
 	<div class="spaced">
-		<button id="testSorting" type="button" class="btn btn-default" onClick="validateSorting();">Testar Ordenação</button>
 		<button id="newFractionList" type="button" class="btn btn-default btn-primary" onClick="generateNewGame();">Nova Lista</button>	
+	</div>	
+	<div>
+	<ul id="fractionsList" class="horizontalList spaced"></ul>
+	</div>
+	<div class="spaced">
+		<button id="testSorting" type="button" class="btn btn-default" onClick="validateSorting();">Testar Ordenação</button>
 	</div>	
 	<div id="solution" class="spaced"> </div>
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>

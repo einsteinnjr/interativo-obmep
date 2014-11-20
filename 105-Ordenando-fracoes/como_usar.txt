@@ -1,0 +1,1 @@
+Você deve ordenar as frações de maneira crescente, bastando clicar nos cartões com frações abaixo e arrastá-los para outras posições da lista. Assim que estiver com uma ordenação satisfatória, você pode testar a solução clicando em "Testar Ordenação". É possivel, também, selecionar o nivel de dificuldade desejado para um novo desafio, e, posteriormente, clicar em "Nova Lista".

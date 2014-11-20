@@ -81,7 +81,7 @@
 	<div class="col-xs-6 col-sm-3 sidebar-offcanvas accordion" id="sidebar" role="navigation">
 	<h3>Novembro 2014</h3> 
   	 <div class="list-group">
-            <a href="105-Ordenando-fracoes/exemplo.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">105 - Ordenando frações</a>
+            <a href="105-Ordenando-fracoes/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">105 - Ordenando frações</a>
           </div>         
 	<h3>Outubro 2014</h3> 
   	 <div class="list-group">
