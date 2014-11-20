@@ -326,9 +326,8 @@ function drawTriangleIfExists(){
 	//always add border to Explanation
 	$("#answerExplanation").addClass("rectangle");
 	if(!(typeOfTriangle === NO_TRIANGLE)){
-		$("#answerJXGBox").addClass("jxgbox2");
+		$("#answerJXGBox").addClass("jxgbox");
 		$("#answerJXGBox, #answerExplanation").addClass("rectangle");
-		$("#answerJXGBox, #answerExplanation").addClass("rectangle-jsx");
 		closedTriangleFigure();
 	}
 }
@@ -362,9 +361,8 @@ function cleanValidationsAndAnswerExplanations(){
 		JXG.JSXGraph.freeBoard(aboard);
 		aboard=null;
 	}
-	$("#answerJXGBox").removeClass("jxgbox2");
+	$("#answerJXGBox").removeClass("jxgbox");
 	$("#answerJXGBox, #answerExplanation").removeClass("rectangle");
-	$("#answerJXGBox, #answerExplanation").removeClass("rectangle-jsx");
 
 	$("#answerTriangleConstructable").empty();
 	$("#answerSidesRelationship").empty();

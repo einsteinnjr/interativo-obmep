@@ -17,7 +17,7 @@
 		<p><strong> Por ser muito organizado, Renato guarda sua coleção em grupos, dependendo do tipo de triângulo: equilátero, isósceles, acutângulo, etc. Ajude-o a classificar os grupos de 3 varetas, dentro de sua coleção ou informe que não é possivel fazer uma armação triangular com o grupo. </strong></p>
 	</div>
 
-	<div id="column-left" class="large">
+	<div class="large column-left">
 		<div><b>Responda os itens abaixo:</b></div>
 		<div><b>a) É possível construir um triângulo com esses lados?</b></div>
 		<div >
@@ -60,7 +60,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="column-right">
+	<div class="column-right">
 		<table id="sidesTable" class="table table-bordered">
 			<tr>
 				<td id="sideA">a= cm</td>
@@ -83,8 +83,8 @@
 	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
 	
 	<div>
-		<div id="answerJXGBox" class="small"></div>
-		<div id="answerExplanation" class="large">
+		<div id="answerJXGBox" class="column-left"></div>
+		<div id="answerExplanation" class="large column-right height-350">
 				<div id="answerTriangleConstructable"></div>
 				<div id="answerSidesRelationship"></div>
 				<div id="answerGreaterAngle"></div>

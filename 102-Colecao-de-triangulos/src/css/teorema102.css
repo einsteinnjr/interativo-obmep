@@ -1,8 +1,7 @@
 @charset "UTF-8";
 
 body{
-  margin: 10px;
-  padding:10px;
+  padding:5px;
 }
 
 .table {
@@ -14,21 +13,19 @@ p{
     text-align:justify;
 }
 
-#column-left{
+.column-left{
 	float:left;
-	margin:10px;
+	margin-top:5px;
+	margin-right:2%;
 }
 
-#column-right{
+.column-right{
 	display:inline-block;
-	margin:10px;
 }
 
 .jxgbox {
     width:350px; 
     height:350px;
-
-    margin: 10px auto;/*centralized*/
 }
 
 .rectangle{
@@ -64,10 +61,8 @@ span.tab{
   padding: 0 5px; /* Or desired space*/
 }
 
-.rectangle-jsx{
-    float: left;
+.height-350{
     height:350px;
-    margin-right: 1%;
 }
 
 .disabled{
