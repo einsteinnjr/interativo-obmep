@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
 	<meta charset="utf-8" />
-	<title>104 - Colhendo laranjas</title>
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
         <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
 	<link rel="stylesheet" type="text/css" href="src/css/teorema104.css">
@@ -10,12 +9,6 @@
 
 </head>
 <body>
-	<h4><strong>Colhendo laranjas:</strong></h4>
-	<div>
-		<p><strong> Bernardo costuma colher laranjas em um pomar de formato triangular, como o abaixo. Os números representam a quantidade de frutos em cada uma delas. </strong></p>		
-		<p><strong>Deseja-se descobrir qual o caminho deve fazer partindo da laranjeira mais alta e chegando até a última linha, apenas seguindo direções inferior esquerda ou inferior direita e de maneira a colher o maior número de laranjas possível. 
-		<p><strong>Clique nas árvores de forma a definir o caminho. Assim que tiver um caminho completo, com uma laranjeira por linha, você pode testar se achou a solução. Utilize os botões abaixo. </strong></p>
-	</div>
 	<div class="spaced">
 		<strong>- Escolha o nivel desejado: </strong>
 		<div>

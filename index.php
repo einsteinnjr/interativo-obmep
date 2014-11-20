@@ -85,7 +85,7 @@
           </div>         
 	<h3>Outubro 2014</h3> 
   	 <div class="list-group">
-		<a href="104-Colhendo-laranjas/exemplo.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">104 - Colhendo laranjas</a>
+		<a href="104-Colhendo-laranjas/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">104 - Colhendo laranjas</a>
 		<a href="103-Descubra-o-numero/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">103 - Descubra o número</a>
 		<a href="102-Colecao-de-triangulos/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">102 - Coleção de Triângulos</a>
 		<a href="101-Caca-primos/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">101 - Caça-primos</a>
