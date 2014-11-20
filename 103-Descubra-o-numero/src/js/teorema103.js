@@ -133,7 +133,7 @@ function resetTableAndFields(){
 			       "</tr>");
 	$("#questions").after("<div id='guess' class='spaced'>"+
 				"<input id='guessedNumber' required></input>"+
-				"<button id='guessButton' type='button' class='btn btn-default spaced' onClick='guessNumber();'>Adivinhar número</button>"+
+				"<button id='guessButton' type='button' class='btn btn-default spaced-h' onClick='guessNumber();'>Adivinhar número</button>"+
 				"</div>");
 	document.getElementById("revealExplanation").disabled=false;	
 	
@@ -148,7 +148,7 @@ function generateQuestionLine(){
 			  "<option value='less_than'>É menor que </option>"+
 			  "<option value='less_or_equal'>É menor ou igual a </option>"+
 					"</select> </td>"+
-			   "<td><input id='number_asked_"+actualQuestion+"' required placeholder='Escolha um número'></input>?</td>"+
+			   "<td><input id='number_asked_"+actualQuestion+"' required placeholder='Escolha um número' size=15></input>?</td>"+
 			"<td id='answer_"+actualQuestion+"'><button type='button' class='btn btn-default' onClick='sendQuestion();'>Enviar Pergunta</button></td>"+
 			"</tr>");	
 };

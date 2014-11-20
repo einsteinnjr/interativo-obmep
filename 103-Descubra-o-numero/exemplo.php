@@ -17,7 +17,7 @@
 	</div>
 	<div id="columns">
 		<div class="column-left">
-			<div class="spaced">
+			<div class="spaced-v">
 				<strong>- Escolha o nivel desejado: </strong>
 				<div>
 					<label class="radio-inline">
@@ -32,9 +32,9 @@
 				</div>
 			</div>
 			<div>
-				<button type="button" class="btn btn-default btn-primary spaced" onClick="generateNewGame();">Novo Jogo</button> 
+				<button type="button" class="btn btn-default btn-primary spaced-v" onClick="generateNewGame();">Novo Jogo</button> 
 			</div>
-			<table id="requisites" class="table table-bordered hidden spaced">
+			<table id="requisites" class="table table-bordered hidden spaced-v">
 				<tr>
 					<td><b>Intervalo de números:</b></td>
 					<td id="interval"></td>
@@ -45,12 +45,12 @@
 				</tr>
 			</table>
 			<div>
-			  <button id="revealExplanation" type="button" class="btn btn-default hidden spaced" onClick="revealExplanation();">Revelar Explicação</button> 
+			  <button id="revealExplanation" type="button" class="btn btn-default hidden spaced-v" onClick="revealExplanation();">Revelar Explicação</button> 
 			  <div id="secret"></div>
 			</div>	
 		</div>	
 		<div class="column-right">
-			<table id="questions" class="table table-striped table-bordered spaced">
+			<table id="questions" class="table table-striped table-bordered spaced-v">
 			</table>
 		</div>
 	</div>
