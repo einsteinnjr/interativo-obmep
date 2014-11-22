@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+body{
+  padding:5px;
+}
+
+
+p {
+  text-align: justify;
+}
+
+span.tab{
+  padding: 0 10px; /* Or desired space*/
+}
+
+.disabled{
+  color: gray;
+}
+
+.ui-state-default{
+  background: #f6f6f6; !important
+}
+
+.wrong{
+    background-color: #F5A9A9; /*red*/ 
+}
+
+.correct{ 
+    background-color: #58FAAC; /*green*/
+}
+
+.glyphicon-ok{
+    color: #04B431; /*dark green*/
+}
+
+.glyphicon-remove{
+    color: #FE2E2E; /*dark red*/
+}
+
+.spaced{
+	margin-bottom:10px;
+}
+
+ul .horizontalList { 
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0; 
+}
+
+.horizontalList li { 
+	display: inline-block; 
+	text-align: center; 
+	margin: 3px; 
+	padding: 10px; 
+	width: auto; 
+	cursor:pointer;
+}
+
+
+
