@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="assets/jquery-ui/css/jquery-ui.min.css">
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
         <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
-	<link rel="stylesheet" type="text/css" href="src/css/teorema105.css">
+	<link rel="stylesheet" type="text/css" href="src/css/teorema106.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </script>
 	
@@ -37,19 +37,11 @@
 	<div id="solution" class="spaced"> </div>
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
 	<script src="assets/jquery-ui/js/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="src/js/teorema105.js"></script>
-	<script type="text/javascript" src="assets/MathJax/MathJax.js"></script>
-
+        <script type="text/javascript" src="src/js/teorema106.js"></script>
 
 	<script>
 	$(document).ready(function () {
 		generateNewGame();
-	});
-	MathJax.Hub.Config({
-	  config: ["MMLorHTML.js"],
-	  jax: ["input/AsciiMath","output/HTML-CSS","output/NativeMML"],
-	  extensions: ["asciimath2jax.js","MathMenu.js","MathZoom.js"],
-	  imageFont: null
 	});
 	</script>
 </body>
