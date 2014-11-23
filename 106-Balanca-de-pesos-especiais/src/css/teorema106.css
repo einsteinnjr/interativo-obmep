@@ -8,13 +8,21 @@ body{
 	display: inline-block; 
 }
 
+.float{
+	display:inline-table; 
+	float:left;
+}
+
+.weight-span{
+	text-align:center;
+    	display: table-cell;
+    	vertical-align: middle;
+}
+
 .weight{
 	width:40px;
 	height:60px;
 	border: solid 1px gray;
-	text-align:center;
-    	display: table-cell;
-    	vertical-align: middle;
 	cursor:pointer;
 }
 
@@ -56,6 +64,5 @@ body{
 	width:10px;
 	height:250px;
 }
-
 
 

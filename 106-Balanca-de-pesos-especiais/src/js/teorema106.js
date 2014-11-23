@@ -69,10 +69,10 @@ function weightPlates(){
 }
 
 function generateWeights(){
-	weightsHtml="<li id='x' class='inline weight blue'><b>X</b></li>";
+	weightsHtml="<li id='x' class='weight float blue'><span class='weight-span'><b>X</b></span></li>";
 	actualPowerOf3=1;
 	for(i=0; i<NUMBER_OF_WEIGHTS; i++){
-		weightsHtml+="<li class='inline weight lgray' value='"+actualPowerOf3+"'>"+actualPowerOf3+"kg</li>";
+		weightsHtml+="<li class='weight float lgray' value='"+actualPowerOf3+"'><span class='weight-span'>"+actualPowerOf3+"kg</span></li>";
 		actualPowerOf3*=3;
 	}
 	$("#weights").html(weightsHtml);

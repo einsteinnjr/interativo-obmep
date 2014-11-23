@@ -34,14 +34,14 @@
         <script type="text/javascript" src="src/js/teorema106.js"></script>
 
 	<script>
-
 	$(function() {
 		$( "#weights, #p1, #p2" ).sortable({
-			helper:"clone",		//without that, it was buggy. Getting weight would move others to line below.	
+			revert:true,			
 			connectWith: ".connectedSortable",
 			update: function(){weightPlates();}
 		}).disableSelection();
 	});
+        
 	
 	$(document).ready(function () {
 		generateNewGame();
