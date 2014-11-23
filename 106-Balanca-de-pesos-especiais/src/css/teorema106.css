@@ -47,8 +47,8 @@ body{
 	width:250px;
 	height:80px;
 	border-bottom: solid 20px #909090;
-	border-bottom-left-radius:30px; 
-	border-bottom-right-radius:30px; 
+	border-bottom-left-radius:20px; 
+	border-bottom-right-radius:20px; 
 }
 
 .column{
