@@ -12,13 +12,7 @@
 </head>
 <body>	
 	<div>
-	<ul id="ws" class="weights connectedSortable inline">
-		<li id='x' class="inline weight blue" value="0"><b>X</b></li>
-		<li id='w1' class="inline weight lgray" value="1">1kg</li>
-		<li id='w3' class="inline weight lgray" value="3">3kg</li>
-		<li id='w9' class="inline weight lgray" value="9">9kg</li>
-		<li id='w27' class="inline weight lgray" value="27">27kg</li>
-	<ul>
+	<ul id="weights" class="inline connectedSortable"><ul>
 	</div>	
 	<div id="balance" class="inline">
 		<div class="inline side"> 
@@ -32,7 +26,7 @@
 		</div>
 	</div>	
 	<div class="spaced">
-		<button id="testSorting" type="button" class="btn btn-default" onClick="validateSorting();">Testar Ordenação</button>
+		<button id="newWeighing" type="button" class="btn btn-default" onClick="generateNewGame();">Nova Pesagem</button>
 	</div>	
 	<div id="solution" class="spaced"> </div>
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
@@ -42,7 +36,7 @@
 	<script>
 
 	$(function() {
-		$( "#ws, #p1, #p2" ).sortable({
+		$( "#weights, #p1, #p2" ).sortable({	
 			connectWith: ".connectedSortable",
 			update: function(){weightPlates();}
 		}).disableSelection();

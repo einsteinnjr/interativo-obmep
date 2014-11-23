@@ -1,4 +1,5 @@
 MAX_WEIGHT = 40;
+NUMBER_OF_WEIGHTS = 4;
 
 blockWeight=0;
 height =100;
@@ -9,7 +10,7 @@ top_plateHalf = $("#p1").offset().top-height/2;
 
 function generateBlockWeight(){
 	blockWeight = Math.floor( Math.random() * MAX_WEIGHT);
-	console.log("bloco "+blockWeight); 
+	//console.log("block "+blockWeight); 
 }
 
 function sumOfWeightsOfAPlate(id){
@@ -23,7 +24,7 @@ function sumOfWeightsOfAPlate(id){
 			hasBlock=true;
 		}
 		else weightSum += parseInt($(this).attr("value"));
-		console.log(id+" "+weightSum);
+		//console.log(id+" "+weightSum);
     	});
 	updateSumOfWeightsLabel(id, weightSum, hasBlock);
 	return weightSum;
@@ -44,21 +45,21 @@ function updateSumOfWeightsLabel(id, weightSum, hasBlock){
 
 function compareAndMovePlates(p1Total, p2Total){
 	if(p1Total > p2Total){
-		console.log("p1 down");
+		//console.log("p1 down");
 		$("#p1").offset({top:top_plateDown});
 		$("#p2").offset({top:top_plateUp});
 	}
 	else if(p1Total < p2Total){
-		console.log("p2 down");
+		//console.log("p2 down");
 		$("#p1").offset({top:top_plateUp});
 		$("#p2").offset({top:top_plateDown});
 	}
 	else if(p1Total === p2Total){
-		console.log("p1 and p2 equal");
+		//console.log("p1 and p2 equal");
 		$("#p1").offset({top:top_plateHalf});
 		$("#p2").offset({top:top_plateHalf});
 	}
-	else console.log("FODEO!");
+	//else console.log("FODEO!");
 }
 
 function weightPlates(){
@@ -67,14 +68,28 @@ function weightPlates(){
 	compareAndMovePlates(p1Total, p2Total);
 }
 
+function generateWeights(){
+	weightsHtml="<li id='x' class='inline weight blue'><b>X</b></li>";
+	actualPowerOf3=1;
+	for(i=0; i<NUMBER_OF_WEIGHTS; i++){
+		weightsHtml+="<li class='inline weight lgray' value='"+actualPowerOf3+"'>"+actualPowerOf3+"kg</li>";
+		actualPowerOf3*=3;
+	}
+	$("#weights").html(weightsHtml);
+}
+
 function resetConditions(){
-	$("#p1").offset({top:top_plateHalf});
-	$("#p2").offset({top:top_plateHalf});
+	//take out the weights of both plates and initial list.
+	$("#p1").empty();
+	$("#p2").empty();
+	$("#weights").empty();
+	
+	generateWeights();
+	weightPlates();
 }
 
 function generateNewGame(){
 	resetConditions();
 	generateBlockWeight();
-	
 };
 
