@@ -21,11 +21,11 @@ body{
 .side{
 	text-align:center;
 	width:250px;
-	height:200px;	
+	height:250px;	
 }
 
 .plate_label{
-	margin-bottom:70px;	
+	margin-bottom:120px;	
 }
 
 .lgray{
@@ -54,7 +54,7 @@ body{
 .column{
 	background-color: #909090; /*gray*/
 	width:10px;
-	height:200px;
+	height:250px;
 }
 
 

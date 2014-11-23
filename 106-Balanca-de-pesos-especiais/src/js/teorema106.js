@@ -1,7 +1,7 @@
 MAX_WEIGHT = 40;
 
 blockWeight=0;
-height =50;
+height =100;
 top_plateDown = $("#p1").offset().top;
 top_plateUp = $("#p1").offset().top-height;
 top_plateHalf = $("#p1").offset().top-height/2;
