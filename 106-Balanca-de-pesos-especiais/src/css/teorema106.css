@@ -10,7 +10,7 @@ body{
 }
 
 #columns{
-	width:510px;
+	width:520px;
 }
 
 #dRequisites{
@@ -87,13 +87,14 @@ td{
 	width:210px;
 }
 
-.hard-w{
+.large-w{
 	width:250px;
 }
 
 .plate{
 	width:250px;
 	height:80px;
+	padding-left:5px;
 	border-bottom: solid 20px #909090;
 	border-bottom-left-radius:20px; 
 	border-bottom-right-radius:20px; 
