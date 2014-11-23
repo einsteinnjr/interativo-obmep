@@ -9,7 +9,7 @@ top_plateHalf = $("#p1").offset().top-height/2;
 
 
 function generateBlockWeight(){
-	blockWeight = Math.floor( Math.random() * MAX_WEIGHT);
+	blockWeight = 1+Math.floor( Math.random() * MAX_WEIGHT);
 	//console.log("block "+blockWeight); 
 }
 
