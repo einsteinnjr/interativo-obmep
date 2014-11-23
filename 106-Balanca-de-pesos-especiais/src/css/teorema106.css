@@ -4,56 +4,57 @@ body{
   padding:5px;
 }
 
-
-p {
-  text-align: justify;
-}
-
-span.tab{
-  padding: 0 10px; /* Or desired space*/
-}
-
-.disabled{
-  color: gray;
-}
-
-.ui-state-default{
-  background: #f6f6f6; !important
-}
-
-.wrong{
-    background-color: #F5A9A9; /*red*/ 
-}
-
-.correct{ 
-    background-color: #58FAAC; /*green*/
-}
-
-.glyphicon-ok{
-    color: #04B431; /*dark green*/
-}
-
-.glyphicon-remove{
-    color: #FE2E2E; /*dark red*/
-}
-
-.spaced{
-	margin-bottom:10px;
-}
-
-ul .horizontalList { 
-	list-style-type: none; 
-	margin: 0; 
-	padding: 0; 
-}
-
-.horizontalList li { 
+.inline{
 	display: inline-block; 
-	text-align: center; 
-	margin: 3px; 
-	padding: 10px; 
-	width: auto; 
+}
+
+.weight{
+	width:40px;
+	height:60px;
+	border: solid 1px gray;
+	text-align:center;
+    	display: table-cell;
+    	vertical-align: middle;
 	cursor:pointer;
+}
+
+.side{
+	text-align:center;
+	width:250px;
+	height:250px;	
+}
+
+.plate_label{
+	margin-bottom:70px;	
+}
+
+.lgray{
+	background-color: #f6f6f6; /*light-gray*/
+}
+
+.blue{
+	background-color: #2ECCFA; /*light-blue*/
+}
+
+.weights{
+	padding:10px;
+	width:220px;
+	height:80px;
+	background-color: yellow;
+}
+
+.plate{
+	width:250px;
+	height:80px;
+	border-bottom: solid 20px #909090;
+	border-bottom-left-radius:30px; 
+	border-bottom-right-radius:30px; 
+}
+
+.column{
+	background-color: #909090; /*gray*/
+	width:10px;
+	height:200px;
 }
 
 
