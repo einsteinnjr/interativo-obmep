@@ -4,6 +4,33 @@ body{
   padding:5px;
 }
 
+#requisites{
+	width:250px;
+	margin-top:4px;
+}
+
+#columns{
+	width:510px;
+}
+
+#dRequisites{
+	float:right;
+}
+
+.reqValues{
+	width:70px;
+}
+
+.spaced{
+	margin:5px;
+}
+
+td{
+	padding:5px;
+	text-align: center;
+	border:2px solid gray;
+}
+
 .inline{
 	display: inline-block; 
 }
@@ -47,18 +74,20 @@ body{
 #weights{
 	height:70px;
 	padding:0px;
+	margin-right:10px;
+	margin-bottom:0px;
 	border:5px solid yellow;
 }
 
-.small{
-	width:160px;
+.small-w{
+	width:170px;
 }
 
-.medium{
+.medium-w{
 	width:210px;
 }
 
-.big{
+.hard-w{
 	width:250px;
 }
 

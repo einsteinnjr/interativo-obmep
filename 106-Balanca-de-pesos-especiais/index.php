@@ -11,10 +11,42 @@
 	
 </head>
 <body>	
-	<div>
-	<ul id="weights" class="inline connectedSortable medium"><ul>
+	<div class="spaced">
+		<strong>- Escolha o nivel desejado: </strong>
+		<div>
+			<label class="radio-inline">
+			  <input type="radio" name="gameLevel" value="easy" checked> Fácil
+			</label>
+			<label class="radio-inline">
+			  <input type="radio" name="gameLevel" value="medium"> Médio
+			</label>
+			<label class="radio-inline">
+			  <input type="radio" name="gameLevel" value="hard"> Difícil
+			</label>
+		</div>
 	</div>	
-	<div id="balance" class="inline">
+	<div class="spaced">
+		<button id="newWeighing" type="button" class="btn btn-default btn-primary" onClick="generateNewGame();">Nova Pesagem</button>
+	</div>	
+	<div><b>Pesos:</b></div>
+	<div id="columns">
+		<div class="inline">
+			<ul id="weights" class="inline connectedSortable"><ul>
+		</div>
+		<div id="dRequisites" class="inline">
+			<table id="requisites">
+				<tr>
+					<td><b>Intervalo de Pesagem:</b></td>
+					<td id="weightInterval" class="reqValues"></td>
+				</tr>
+				<tr>
+					<td><b>Peso de X:</b></td>
+					<td id="xWeight" class="reqValues"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div id="balance">
 		<div class="inline side"> 
 			<div ><h4 id="p1SumOfWeights" class="plate_label">0kg</h4></div>
 			<ul id="p1" class="plate inline connectedSortable"></ul>
@@ -24,9 +56,6 @@
 			<div ><h4 id="p2SumOfWeights" class="plate_label">0kg</h4></div>
 			<ul id="p2" class="plate inline connectedSortable"></ul>
 		</div>
-	</div>	
-	<div class="spaced">
-		<button id="newWeighing" type="button" class="btn btn-default" onClick="generateNewGame();">Nova Pesagem</button>
 	</div>	
 	<div id="solution" class="spaced"> </div>
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>

@@ -1,6 +1,14 @@
-MAX_WEIGHT = 40;
-NUMBER_OF_WEIGHTS = 4;
+MAX_WEIGHT_EASY = 13;
+NUMBER_OF_WEIGHTS_EASY = 3;
 
+MAX_WEIGHT_MEDIUM = 40;
+NUMBER_OF_WEIGHTS_MEDIUM = 4;
+
+MAX_WEIGHT_HARD = 121;
+NUMBER_OF_WEIGHTS_HARD = 5;
+
+maxWeight=0;
+numberOfWeights=0;
 blockWeight=0;
 height =100;
 top_plateDown = $("#p1").offset().top;
@@ -9,8 +17,26 @@ top_plateHalf = $("#p1").offset().top-height/2;
 
 
 function generateBlockWeight(){
-	blockWeight = 1+Math.floor( Math.random() * MAX_WEIGHT);
+	blockWeight = 1+Math.floor( Math.random() * maxWeight);
 	//console.log("block "+blockWeight); 
+}
+
+function decideGameLevel(){
+	if($('input[name=gameLevel]:checked').val() === "easy") {
+		maxWeight = MAX_WEIGHT_EASY;
+		numberOfWeights = NUMBER_OF_WEIGHTS_EASY;
+		$("#weights").addClass("small-w");
+	}
+	else if($('input[name=gameLevel]:checked').val() === "medium") {
+		maxWeight = MAX_WEIGHT_MEDIUM;
+		numberOfWeights = NUMBER_OF_WEIGHTS_MEDIUM;
+		$("#weights").addClass("medium-w");
+	}
+	else if($('input[name=gameLevel]:checked').val() === "hard") {
+		maxWeight = MAX_WEIGHT_HARD;
+		numberOfWeights = NUMBER_OF_WEIGHTS_HARD;
+		$("#weights").addClass("large-w");
+	}	
 }
 
 function sumOfWeightsOfAPlate(id){
@@ -71,11 +97,19 @@ function weightPlates(){
 function generateWeights(){
 	weightsHtml="<li id='x' class='weight float blue'><span class='weight-span'><b>X</b></span></li>";
 	actualPowerOf3=1;
-	for(i=0; i<NUMBER_OF_WEIGHTS; i++){
+	for(i=0; i<numberOfWeights; i++){
 		weightsHtml+="<li class='weight float lgray' value='"+actualPowerOf3+"'><span class='weight-span'>"+actualPowerOf3+"kg</span></li>";
 		actualPowerOf3*=3;
 	}
 	$("#weights").html(weightsHtml);
+}
+
+function fillRequisites(){
+	$("#weightInterval").empty();
+	$("#weightInterval").html("1 a "+maxWeight);
+
+	$("#xWeight").empty();
+	$("#xWeight").html(blockWeight);
 }
 
 function resetConditions(){
@@ -83,13 +117,19 @@ function resetConditions(){
 	$("#p1").empty();
 	$("#p2").empty();
 	$("#weights").empty();
-	
+	$("#weights").removeClass("small-w medium-w large-w");
+}
+
+function fillConditions(){
+	fillRequisites();
 	generateWeights();
 	weightPlates();
 }
 
 function generateNewGame(){
 	resetConditions();
-	generateBlockWeight();
+	decideGameLevel();
+	generateBlockWeight();	
+	fillConditions();
 };
 
