@@ -36,7 +36,8 @@
 	<script>
 
 	$(function() {
-		$( "#weights, #p1, #p2" ).sortable({	
+		$( "#weights, #p1, #p2" ).sortable({
+			helper:"clone",		//without that, it was buggy. Getting weight would move others to line below.	
 			connectWith: ".connectedSortable",
 			update: function(){weightPlates();}
 		}).disableSelection();
