@@ -40,7 +40,7 @@
 					<td id="weightInterval" class="reqValues"></td>
 				</tr>
 				<tr>
-					<td><b>Peso de X:</b></td>
+					<td><b>Suposto Peso de X:</b></td>
 					<td id="xWeight" class="reqValues"></td>
 				</tr>
 			</table>

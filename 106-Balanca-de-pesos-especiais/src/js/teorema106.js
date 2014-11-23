@@ -106,10 +106,10 @@ function generateWeights(){
 
 function fillRequisites(){
 	$("#weightInterval").empty();
-	$("#weightInterval").html("1 a "+maxWeight);
+	$("#weightInterval").html("1 a "+maxWeight+"kg");
 
 	$("#xWeight").empty();
-	$("#xWeight").html(blockWeight);
+	$("#xWeight").html(blockWeight+"kg");
 }
 
 function resetConditions(){
