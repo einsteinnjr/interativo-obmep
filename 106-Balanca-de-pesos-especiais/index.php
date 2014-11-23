@@ -12,7 +12,7 @@
 </head>
 <body>	
 	<div>
-	<ul id="weights" class="inline connectedSortable"><ul>
+	<ul id="weights" class="inline connectedSortable medium"><ul>
 	</div>	
 	<div id="balance" class="inline">
 		<div class="inline side"> 
