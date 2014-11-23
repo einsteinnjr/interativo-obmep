@@ -12,7 +12,7 @@
 </head>
 <body>	
 	<div>
-	<ul id="ws" class="weights connectedSortable">
+	<ul id="ws" class="weights connectedSortable inline">
 		<li id='x' class="inline weight blue" value="0"><b>X</b></li>
 		<li id='w1' class="inline weight lgray" value="1">1kg</li>
 		<li id='w3' class="inline weight lgray" value="3">3kg</li>
@@ -22,10 +22,12 @@
 	</div>	
 	<div id="balance" class="inline">
 		<div class="inline side"> 
+			<div ><h4 id="p1SumOfWeights" class="plate_label">0kg</h4></div>
 			<ul id="p1" class="plate inline connectedSortable"></ul>
 		</div>	
 		<div id='c' class="inline column"></div>
 		<div class="inline side">
+			<div ><h4 id="p2SumOfWeights" class="plate_label">0kg</h4></div>
 			<ul id="p2" class="plate inline connectedSortable"></ul>
 		</div>
 	</div>	

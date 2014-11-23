@@ -15,13 +15,31 @@ function generateBlockWeight(){
 function sumOfWeightsOfAPlate(id){
 	var list = $("#"+id).find("li");
 
-	ws=0;
+	weightSum=0;
+	hasBlock=false;
    	$(list).each(function () {
-		if($(this).attr("id")==="x") ws += blockWeight;
-		else ws += parseInt($(this).attr("value"));
-		console.log(id+" "+ws);
+		if($(this).attr("id")==="x") {
+			weightSum += blockWeight;
+			hasBlock=true;
+		}
+		else weightSum += parseInt($(this).attr("value"));
+		console.log(id+" "+weightSum);
     	});
-	return ws;
+	updateSumOfWeightsLabel(id, weightSum, hasBlock);
+	return weightSum;
+}
+
+function updateSumOfWeightsLabel(id, weightSum, hasBlock){
+	$("#"+id+"SumOfWeights").empty();
+	weightLabel="";
+	auxSum=weightSum;
+	if(hasBlock) {
+		weightLabel+="X";
+		auxSum-=blockWeight;// label won't show block's weight
+		if(auxSum!=0) weightLabel+="+"+auxSum+"kg";
+	}
+	else weightLabel+=auxSum+"kg";//hasn't block;
+	$("#"+id+"SumOfWeights").html(weightLabel);
 }
 
 function compareAndMovePlates(p1Total, p2Total){
