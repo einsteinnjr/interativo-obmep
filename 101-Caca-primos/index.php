@@ -37,8 +37,8 @@
 	<div>
 		<button type="button" class="btn btn-default btn-primary spaced" onClick="generateNewGame();">Novo Jogo</button>
 	</div>	
-	<div class="table-responsive">	
-		<table id="gameTable" class="table table-striped table-bordered" ></table>			
+	<div class="spaced">	
+		<table id="gameTable" class="table-striped" ></table>			
 	</div>
 	<div id="result" class="form-inline">
 		<div>

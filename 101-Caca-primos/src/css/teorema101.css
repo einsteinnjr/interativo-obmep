@@ -4,7 +4,7 @@ body{
   padding:5px;
 }
 
-.table {
+#gameTable {
     width: auto;
     margin-left: auto;
     margin-right: auto;
@@ -13,6 +13,7 @@ body{
 td{
 	padding:10px;
 	text-align: center;
+	border: 1px solid gray; /*light-gray*/
 }
 
 .correct{
