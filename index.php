@@ -82,6 +82,7 @@
 	<h3>Novembro 2014</h3> 
   	 <div class="list-group">
             <a href="105-Ordenando-fracoes/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">105 - Ordenando frações</a>
+	    <a href="106-Balanca-de-pratos/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">106 - Balança de Pratos</a>
           </div>         
 	<h3>Outubro 2014</h3> 
   	 <div class="list-group">
