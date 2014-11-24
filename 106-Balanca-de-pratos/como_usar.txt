@@ -1,0 +1,3 @@
+Devemos confirmar um suposto peso do bloco X com base na pesagem dos demais pesos conhecidos (que são potências distintas de 3).
+Arraste o bloco X e os pesos com o mouse para os pratos da balança. Os pratos somente se equilibrarão caso ambos os pratos estejam com soma de seus pesos iguais, podendo-se, assim, determinar o peso real do bloco X.
+É possível escolher outros níveis de dificuldade e jogá-los clicando em "Nova Pesagem".

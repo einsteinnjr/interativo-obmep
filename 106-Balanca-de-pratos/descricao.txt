@@ -1,0 +1,1 @@
+Balanças de pratos eram bastante usadas antigamente. A maneira que as utilizamos permite-nos explorar um problema interessante envolvendo representação dos números como soma ou diferença de potências de 3 distintas. Conhece?
