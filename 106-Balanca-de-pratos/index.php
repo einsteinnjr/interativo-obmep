@@ -57,9 +57,27 @@
 			<ul id="p2" class="plate inline connectedSortable"></ul>
 		</div>
 	</div>	
-	<div id="solution" class="spaced"> </div>
+
+	<div id="modalInfo" class="modal fade">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+		<h4 class="modal-title"></h4>
+	      </div>
+	      <div class="modal-body">
+	      </div>
+	      <div class="modal-footer">
+		<button id='noButton' type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+		<button id='yesButton' type="button" class="btn btn-primary" data-dismiss="modal" onclick="generateNewGame()">Sim</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->	
+
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
 	<script src="assets/jquery-ui/js/jquery-ui.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="src/js/teorema106.js"></script>
 
 	<script>

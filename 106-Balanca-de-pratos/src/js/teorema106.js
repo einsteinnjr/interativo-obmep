@@ -56,6 +56,18 @@ function sumOfWeightsOfAPlate(id){
 	return weightSum;
 }
 
+function hasBlockOnPlate(id){
+	var list = $("#"+id).find("li");
+
+	hasBlock=false;
+   	$(list).each(function () {
+		if($(this).attr("id")==="x") {
+			hasBlock=true;
+		}
+    	});
+	return hasBlock;
+}
+
 function updateSumOfWeightsLabel(id, weightSum, hasBlock){
 	$("#"+id+"SumOfWeights").empty();
 	weightLabel="";
@@ -74,25 +86,40 @@ function compareAndMovePlates(p1Total, p2Total){
 		//console.log("p1 down");
 		$("#p1").offset({top:top_plateDown});
 		$("#p2").offset({top:top_plateUp});
+		return -1;
 	}
 	else if(p1Total < p2Total){
 		//console.log("p2 down");
 		$("#p1").offset({top:top_plateUp});
 		$("#p2").offset({top:top_plateDown});
+		return 1;
 	}
 	else if(p1Total === p2Total){
 		//console.log("p1 and p2 equal");
 		$("#p1").offset({top:top_plateHalf});
 		$("#p2").offset({top:top_plateHalf});
+		return 0;
 	}
-	//else console.log("FODEO!");
+	//else console.log("iih!");
 }
 
 function weightPlates(){
 	p1Total = sumOfWeightsOfAPlate("p1");
 	p2Total = sumOfWeightsOfAPlate("p2");
 	compareAndMovePlates(p1Total, p2Total);
+	if((hasBlockOnPlate("p1")||
+		hasBlockOnPlate("p2"))&&
+		p1Total === p2Total) {
+			$(".modal-title").html("Parabéns!");
+			$(".modal-body").html("O peso do bloco X realmente é <b>"+blockWeight+"kg</b>. <br/>"+
+						"Essa também é uma maneira de representar o valor X como "+
+						"soma e subtração de potências de 3 distintas. Deseja "+
+						"realizar uma nova pesagem?");
+			$("#modalInfo").modal("show");
+				
+	}
 }
+
 
 function generateWeights(){
 	weightsHtml="<li id='x' class='weight float blue'><span class='weight-span'><b>X</b></span></li>";
