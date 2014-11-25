@@ -1,3 +1,3 @@
 Você deve achar todos os números primos do tabuleiro abaixo clicando neles. A medida que forem sendo descobertos, os primos serão contabilizados, assim como possíveis erros. 
 É possivel selecionar o nível de dificuldade e o tamanho do tabuleiro em que se deseja jogar. Depois da escolha, pode-se clicar em "Novo Jogo" para uma nova partida. 
-Caso deseje, em qualquer momento do jogo, pode-se clicar no botão "Revelar dica" para descobrir a quantidade de números primos do tabuleiro atual.
+Caso deseje, em qualquer momento do jogo, pode-se clicar no botão "Mostrar dica" para descobrir a quantidade de números primos do tabuleiro atual.
