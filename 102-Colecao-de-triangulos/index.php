@@ -14,7 +14,7 @@
   <button type="button" class="btn btn-default  btn-primary" onClick="generateNewTriangle();scrollTo('#sidesTable');">Novo Triângulo</button>
 </div>
 <div class="spaced-v">
-	<table id="sidesTable" class="spaced-v">
+	<table id="sidesTable" class="spaced-v center-img">
 		<tr>
 			<td id="sideA">a= cm</td>
 			<td id="sideB">b= cm</td>
@@ -22,7 +22,7 @@
 		</tr>
 	</table>
 
-	<div id="questionJXGBox" class="jxgbox"></div>
+	<div id="questionJXGBox" class="jxgbox center-img"></div>
 </div>	
 	<div class="spaced-v">
 		<div><b>Responda os itens abaixo:</b></div>
@@ -70,8 +70,8 @@
 	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
 	
 	<div>
-		<div id="answerJXGBox" class="spaced-v"></div>
-		<div id="answerExplanation" class="medium height-auto">
+		<div id="answerJXGBox" class="center-img"></div>
+		<div id="answerExplanation" class="height-auto">
 				<div id="answerTriangleConstructable" class="spaced-v"></div>
 				<div id="answerSidesRelationship" class="spaced-v"></div>
 				<div id="answerGreaterAngle" class="spaced-v"></div>
