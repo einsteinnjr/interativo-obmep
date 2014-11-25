@@ -49,7 +49,7 @@
 		</div>	
 	</div>	
 	<div class="spaced">
-		<button id="hintButton" type="button" class="btn btn-default" onClick="tellNumberOfPrimes();">Revelar Dica</button>		
+		<button id="hintButton" type="button" class="btn btn-default" onClick="tellNumberOfPrimes();">Mostrar Dica</button>		
 		<span id="hint"> </span>
 	</div>
 	<div id="modalGameOver" class="modal fade">
