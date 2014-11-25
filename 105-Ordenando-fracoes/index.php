@@ -28,11 +28,11 @@
 	<div class="spaced">
 		<button id="newFractionList" type="button" class="btn btn-default btn-primary" onClick="generateNewGame();">Nova Lista</button>	
 	</div>	
-	<div>
+	<div class="spaced">
 	<ul id="fractionsList" class="horizontalList spaced"></ul>
 	</div>
 	<div class="spaced">
-		<button id="testSorting" type="button" class="btn btn-default" onClick="validateSorting();">Testar Ordenação</button>
+		<button id="testSorting" type="button" class="btn btn-default btn-success" onClick="validateSorting();">Testar Ordenação</button>
 	</div>	
 	<div id="solution" class="spaced"> </div>
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>

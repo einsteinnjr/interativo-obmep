@@ -41,10 +41,10 @@ span.tab{
 	margin-bottom:10px;
 }
 
-ul .horizontalList { 
+.horizontalList { 
 	list-style-type: none; 
 	margin: 0; 
-	padding: 0; 
+	padding: 0;
 }
 
 .horizontalList li { 
