@@ -1,5 +1,5 @@
 Bernardo costuma colher laranjas em um pomar de formato triangular, como o abaixo. Os números representam a quantidade de frutos em cada uma das árvores. Deseja-se descobrir qual o caminho deve fazer partindo da laranjeira mais alta e chegando até a última linha, apenas seguindo direções inferior esquerda ou inferior direita e de maneira a colher o maior número de laranjas possível. 
 Para montar um caminho, clique nas árvores, que ficarão coloridas de vermelho e a soma da quantidade de laranjas colhidas será atualizada. Com um caminho completo, uma árvore selecionada por linha, pode-se clicar em "Testar Caminho", para saber se a solução foi encontrada.
-Para descobrir uma solução e a soma máxima, clique em "Mostrar Caminho Máximo".
+Para descobrir uma solução e a soma máxima, clique em "Mostrar Solução".
 É possível escolher um nível de dificuldade diferente e tentar um novo desafio, ao clicar em "Novo Jogo".
 

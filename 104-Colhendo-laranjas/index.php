@@ -31,7 +31,7 @@
 	</div>
 	<div class="spaced">
 		<button id="testPath" type="button" class="btn btn-default" onClick="validateIfItIsMaxPath();">Testar Caminho</button>
-		<button id="showMaxPath" type="button" class="btn btn-default" onClick="showMaxPath();">Mostrar Caminho Máximo</button>	
+		<button id="showMaxPath" type="button" class="btn btn-default btn-success" onClick="showMaxPath();">Mostrar Solução</button>	
 	</div>	
 
 	<div id="modalInfo" class="modal fade">
