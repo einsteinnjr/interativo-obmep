@@ -24,8 +24,8 @@ var cosx=Math.cos(x);
 var aLittleMargin = 1.05;
 var aLittleSpace = 0.2;
 
-var max_x;
-var max_y;
+var max_x, max_y;
+var closed_max_y;
 var max_xy;
 var sum;
 var aboard;
@@ -93,6 +93,7 @@ function generateSidesTable(){
 function generateMaxValues(){
 	max_x = Math.max(a/2+c, a/2+b)*aLittleMargin;
 	max_y = Math.max(c*senx, b*senx)*aLittleMargin;
+	closed_max_y = Math.max(c, b);
 	max_xy = Math.max(max_x, max_y);
 };
 
@@ -145,7 +146,7 @@ function closedTriangleFigure(){
 	var senb=h_a/c;
 	var cosb=Math.sqrt(1-senb*senb);
 	
-	aboard = JXG.JSXGraph.initBoard('answerJXGBox', {boundingbox: [-max_xy, max_xy, max_xy, -max_xy*aLittleSpace], keepaspectratio: true, showcopyright: false});
+	aboard = JXG.JSXGraph.initBoard('answerJXGBox', {boundingbox: [-a*aLittleMargin, closed_max_y*aLittleMargin, a*aLittleMargin, -closed_max_y*aLittleSpace], keepaspectratio: true, showcopyright: false});
 
 	//Coordinates: A=[0, h_a], B=[-c*senb, 0], C=[0, a-c*senb];        
 	var A = aboard.create('point', [0, h_a], {name:'A', color:'blue', fixed:true});
@@ -219,14 +220,14 @@ function fillAnswerGreaterAngle(){
 	if(typeOfTriangle === ACUTANGLE_EQUILATERAL ||
 	    typeOfTriangle === ACUTANGLE_ISOSCELES || 
 	    typeOfTriangle === ACUTANGLE_SCALENE) {
-		$("#answerGreaterAngle").html("<strong>c)</strong> Utilizaremos a Lei dos Cossenos relativa ao maior lado (a="+a+").<div class='center'>a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A)</div>Note que A < 90<sup>o</sup>, equivale a 0 < cos(A) <u><</u> 1.<br/> Assim, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A) <u><</u> b<sup>2</sup> + c<sup>2</sup> - 2bc < b<sup>2</sup> + c<sup>2</sup>.<br/> Um triângulo é Acutângulo se, e somente se, a<sup>2</sup> < b<sup>2</sup> + c<sup>2</sup>.<br/>Testando para o nosso exemplo: a<sup>2</sup> = "+square(a)+" < b<sup>2</sup> + c<sup>2</sup> = "+square(b)+" + "+square(c)+" = "+sum+".<br/> Portanto, o nosso triângulo é <b>Acutângulo</b>.");
+		$("#answerGreaterAngle").html("<strong>c)</strong> Utilizando a Lei dos Cossenos relativa ao maior lado (a="+a+").<div class='center'>a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A)</div>Note que A < 90<sup>o</sup>, equivale a 0 < cos(A) <u><</u> 1.<br/> Assim, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A) <u><</u> b<sup>2</sup> + c<sup>2</sup> - 2bc < b<sup>2</sup> + c<sup>2</sup>.<br/> Um triângulo é Acutângulo se, e somente se, a<sup>2</sup> < b<sup>2</sup> + c<sup>2</sup>.<br/>Testando para o nosso exemplo: <div class='center'>a<sup>2</sup> = "+square(a)+" < b<sup>2</sup> + c<sup>2</sup> = "+square(b)+" + "+square(c)+" = "+sum+"</div>Portanto, o nosso triângulo é <b>Acutângulo</b>.");
 	}
 	else if(typeOfTriangle === OBTUSANGLE_SCALENE ||
 		   typeOfTriangle === OBTUSANGLE_ISOSCELES) {
-			$("#answerGreaterAngle").html("<strong>c)</strong> Utilizaremos a Lei dos Cossenos relativa ao maior lado (a="+a+").<div class='center'>a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A)</div>Note que A > 90<sup>o</sup>, equivale a -1 <u><</u> cos(A) < 0.<br/> Assim, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A) <u>></u> b<sup>2</sup> + c<sup>2</sup> + 2bc > b<sup>2</sup> + c<sup>2</sup>.<br/> Um triângulo é Obtusângulo se, e somente se, a<sup>2</sup> > b<sup>2</sup> + c<sup>2</sup>.<br/>Testando para o nosso exemplo: a<sup>2</sup> = "+square(a)+" > b<sup>2</sup> + c<sup>2</sup> = "+square(b)+" + "+square(c)+" = "+sum+".<br/> Portanto, o nosso triângulo é <b>Obtusângulo</b>.");
+			$("#answerGreaterAngle").html("<strong>c)</strong> Utilizando a Lei dos Cossenos relativa ao maior lado (a="+a+").<div class='center'>a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A)</div>Note que A > 90<sup>o</sup>, equivale a -1 <u><</u> cos(A) < 0.<br/> Assim, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A) <u>></u> b<sup>2</sup> + c<sup>2</sup> + 2bc > b<sup>2</sup> + c<sup>2</sup>.<br/> Um triângulo é Obtusângulo se, e somente se, a<sup>2</sup> > b<sup>2</sup> + c<sup>2</sup>.<br/>Testando para o nosso exemplo: <div class='center'>a<sup>2</sup> = "+square(a)+" > b<sup>2</sup> + c<sup>2</sup> = "+square(b)+" + "+square(c)+" = "+sum+"</div>Portanto, o nosso triângulo é <b>Obtusângulo</b>.");
 	}
 	else if( typeOfTriangle === RECTANGLE ) {
-		$("#answerGreaterAngle").html("<strong>c)</strong> Utilizaremos a Lei dos Cossenos relativa ao maior lado (a="+a+").<br/>a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A).</br>Note que A = 90<sup>o</sup>, equivale a cos(A) = 0.<br/> Assim, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A) = b<sup>2</sup> + c<sup>2</sup>.<br/> Um triângulo é Retângulo se, e somente se, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup>. (ou Teorema de Pitágoras)<br/>Testando para o nosso exemplo: a<sup>2</sup> = "+square(a)+" = b<sup>2</sup> + c<sup>2</sup> = "+square(b)+" + "+square(c)+" = "+sum+".<br/> Portanto, o nosso triângulo é <b>Retângulo</b>.");		
+		$("#answerGreaterAngle").html("<strong>c)</strong> Utilizando a Lei dos Cossenos relativa ao maior lado (a="+a+").<div class='center'>a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A)</div>Note que A = 90<sup>o</sup>, equivale a cos(A) = 0.<br/> Assim, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> - 2bccos(A) = b<sup>2</sup> + c<sup>2</sup>.<br/> Um triângulo é Retângulo se, e somente se, a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup>. (ou Teorema de Pitágoras)<br/>Testando para o nosso exemplo: <div class='center'>a<sup>2</sup> = "+square(a)+" = b<sup>2</sup> + c<sup>2</sup> = "+square(b)+" + "+square(c)+" = "+sum+"</div>Portanto, o nosso triângulo é <b>Retângulo</b>.");		
 	}
 }
 
@@ -381,7 +382,7 @@ function revealAnswer(){
 	else {
 		//console.log("validationUserAnswered "+$("#validationUserAnswered").has("i").length);
 		if($("#validationUserAnswered").has("i").length===0){//if already has a warning, to not add again.
-			 $("#validationUserAnswered").append("<i class='glyphicon glyphicon-remove'/> <span>Assinale uma opção em cada uma das questões.</span> ");
+			 $("#validationUserAnswered").append("<i class='glyphicon glyphicon-remove'/> <span>Assinale uma opção em cada uma <br/>das questões.</span> ");
 		}
 	}
 	
