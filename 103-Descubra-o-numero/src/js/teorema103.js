@@ -131,7 +131,7 @@ function resetTableAndFields(){
 			     "<td>Valor</td>"+
 			     "<td>Resposta</td>"+
 			       "</tr>");
-	$("#questions").after("<div id='guess' class='width'>"+
+	$("#questions").after("<div id='guess' class='width center-img'>"+
 				"<b>Palpite:</b> <input id='guessedNumber' required class='spaced-h'></input>"+
 				"<button id='guessButton' type='button' class='btn btn-default  btn-success spaced-h' onClick='guessNumber();'>Adivinhar número</button>"+
 				"</div>");
@@ -203,7 +203,7 @@ function scrollTo(tag){
 function showExplanation(){
 
 	var aux = numberOfQuestions-1;
-$("#showExplanation").after("<div id='explanation' class='bordered justify width'><p>Após cada pergunta, existem 2 possibilidades de resposta. Assim, temos, depois de k perguntas: 2 · 2 · . . . · 2 = 2<sup>k</sup> possibilidades de conclusões para o número de Bernardo. Por exemplo, se fizermos 3 perguntas, as 3 respostas consecutivas podem ser associadas às sequências de símbolos abaixo: <div class='center'>(>, >, >), (>, >, ≤), (>, ≤, >), (>, ≤, ≤), (≤, >, >), (≤, >, ≤), (≤, ≤, >), (≤, ≤, ≤) </div>"+
+$("#showExplanation").after("<div id='explanation' class='bordered justify'><p>Após cada pergunta, existem 2 possibilidades de resposta. Assim, temos, depois de k perguntas: 2 · 2 · . . . · 2 = 2<sup>k</sup> possibilidades de conclusões para o número de Bernardo. Por exemplo, se fizermos 3 perguntas, as 3 respostas consecutivas podem ser associadas às sequências de símbolos abaixo: <div class='center'>(>, >, >), (>, >, ≤), (>, ≤, >), (>, ≤, ≤), (≤, >, >), (≤, >, ≤), (≤, ≤, >), (≤, ≤, ≤) </div>"+
 		    "<p>Cada sequência de símbolos pode fornecer, no máximo, um número como conclusão final. Portanto, se o conjunto de possíveis respostas tiver mais de 2<sup>k</sup> possibilidades, k perguntas não serão suficientes para achar o número de Bernardo.</p>"+
 		"<p>Dado que 2<sup>"+aux+"</sup> < "+maxNumber+" <u><</u> 2<sup>"+numberOfQuestions+"</sup> , é natural imaginarmos que "+numberOfQuestions+" perguntas seriam suficientes. Mostraremos, então, que é possível com tal quantidade de perguntas. </p>"+
 "<p> Dependendo do nosso número de corte x (com a pergunta: É maior ou igual a x?), o tamanho do espaço de busca pode diminuir muito ou não, já que depende da resposta de Bernardo. Por exemplo, sabendo que o número está no intervalo {1, 2, . . . , 11} com 11 elementos, escolhendo número de corte 3, nos restam 2 intervalos: {1, 2, 3} e {4, 5, ..., 11}. Um com 3 elementos e outro com 8. Na melhor das hipóteses, o número de Bernardo estaria no menor conjunto (de 3 elementos). Já na pior, no de 8 elementos. Assim, para diminuirmos ao máximo o nosso espaço de busca, independente da resposta de Bernardo, o ideal é que escolhamos um número de corte que iguale (ou aproxime) o número de elementos dos 2 intervalos restantes. No conjunto {1, 2, ..., 11}, é ideal que cortemos no número 5, restando os intervalos: {1, 2, ..., 5} e {6, ..., 11}. Assim, após a resposta de Bernardo, teremos sempre um conjunto com, no máximo, 6 elementos.</p>"+
