@@ -4,46 +4,41 @@ body{
   padding:5px;
 }
 
-.column-left{
-  top:-100px;	
-  width: 250px;
-  margin-right: 2%;
-  float:left;
+.width{
+	width: 610px;
 }
 
-.column-right{
-  width: 610px;
- display:inline-block;
+.float-l{
+	float:left;
+}
+
+.float-r{
+	float:right;
 }
 
 .spaced-v{
-	margin-top: 5px;
 	margin-bottom: 5px;
 }
 
 .spaced-h{
-	margin-left: 5px;
 	margin-right: 5px;
 }
 
+.requisiteValues{
+	width:80px;
+}
+
 td{
-	padding:4px;
+	padding:5px;
 	text-align: center;
-	border:2px solid gray !important;
+	border:2px solid gray;
 }
 
 .bordered{
-	padding:4px;
-	border:2px solid gray !important;
-	position:relative;
-	top:+5px;
+	padding:5px;
+	border:2px solid gray;
 	border-radius:5px;
 	clear:both;
-}
-
-p {
-	text-align: justify;
-	margin:4px;
 }
 
 .hidden{
@@ -54,8 +49,13 @@ p {
 	text-align:center;
 }
 
+.justify{
+	text-align:justify;
+}
+
 #requisites{
-  width:250px;
+  width:270px;
+  margin-bottom:5px;
 }
 
 .glyphicon-ok{

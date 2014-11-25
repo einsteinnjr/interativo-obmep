@@ -9,8 +9,8 @@
 
 </head>
 <body>
-	<div id="columns">
-		<div class="column-left">
+	<div class="width">	
+		<div class="float-l">
 			<div class="spaced-v">
 				<strong>- Escolha o nivel desejado: </strong>
 				<div>
@@ -28,26 +28,28 @@
 			<div>
 				<button type="button" class="btn btn-default btn-primary spaced-v" onClick="generateNewGame();">Novo Jogo</button> 
 			</div>
-			<table id="requisites" class="table table-bordered hidden spaced-v">
+		</div>
+		<div class="float-r spaced-v">
+			<table id="requisites" class="table bordered hidden">
 				<tr>
 					<td><b>Intervalo de números:</b></td>
-					<td id="interval"></td>
+					<td id="interval" class="requisiteValues"></td>
 				</tr>
 				<tr>
 					<td><b>Número de Perguntas:</b></td>
-					<td id="numberOfQuestions"></td>
+					<td id="numberOfQuestions" class="requisiteValues"></td>
 				</tr>
 			</table>
-			<div>
-			  <button id="revealExplanation" type="button" class="btn btn-default hidden spaced-v" onClick="revealExplanation();">Revelar Explicação</button> 
-			  <div id="secret"></div>
-			</div>	
-		</div>	
-		<div class="column-right">
-			<table id="questions" class="table table-striped table-bordered spaced-v">
-			</table>
 		</div>
+	</div>	
+	<div>
+		<table id="questions" class="table table-striped bordered spaced-v width">
+		</table>
 	</div>
+	<div>
+	  <button id="showExplanation" type="button" class="btn btn-default hidden spaced-v" onClick="showExplanation();">Mostrar Explicação</button> 
+	  <div id="explanation"></div>
+	</div>	
 
 	<div id="modalInfo" class="modal fade">
 	  <div class="modal-dialog">
