@@ -12,7 +12,8 @@ body{
 
 td{
     padding:4px;
-    border: 1px solid gray;
+    border: 1px solid #356AA0;
+;
 }
 
 .spaced-v{
@@ -35,7 +36,8 @@ p{
 .rectangle{
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid #356AA0;
+;
 }
 
 .x-large{

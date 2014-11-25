@@ -63,7 +63,7 @@
 		</div>
 	</div>
 <div class="spaced-v">
-  <button id="revealAnswer" type="button" class="btn btn-default spaced-h" onClick="revealAnswer();">Revelar Resposta</button> <div class="inline"> <span id="validationUserAnswered" class='warning'></span></div>
+  <button id="showAnswer" type="button" class="btn btn-default btn-success spaced-h" onClick="showAnswer();">Mostrar Resposta</button> <div class="inline"> <span id="validationUserAnswered" class='warning'></span></div>
 </div> 
 
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>

@@ -351,7 +351,7 @@ function resetUserAnswersAndTheirValidations(){
 	$("#validationSidesRadio").empty();
 	$("#validationAngleRadio").empty();
 
-	$("#revealAnswer").attr('disabled',false);
+	$("#showAnswer").attr('disabled',false);
 }
 
 function cleanValidationsAndAnswerExplanations(){
@@ -370,9 +370,9 @@ function cleanValidationsAndAnswerExplanations(){
 	$("#answerGreaterAngle").empty();
 }
 
-function revealAnswer(){
+function showAnswer(){
 	if(checkIfUserAnswered()){
-		$("#revealAnswer").attr('disabled',true);
+		$("#showAnswer").attr('disabled',true);
 		$("#validationUserAnswered").empty();
 		scrollTo("#notConstructableRadio");//answer
 		checkAnswers();
