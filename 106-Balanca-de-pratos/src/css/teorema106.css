@@ -34,6 +34,12 @@ td{
 	border:2px solid gray;
 }
 
+.bordered{
+	padding:5px;
+	border:1px solid gray;
+	border-radius:5px;
+}
+
 .inline{
 	display: inline-block; 
 }
