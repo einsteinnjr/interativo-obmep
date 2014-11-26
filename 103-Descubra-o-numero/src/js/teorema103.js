@@ -154,7 +154,7 @@ function generateQuestionLine(){
 };
 
 function generateGameOverLine(){
-	$("#guess").before("<div id='gameOver' class='spaced-v'>"+
+	$("#guess").before("<div id='gameOver' class='spaced-v width center-img'>"+
 				"<b>As perguntas esgotaram. Qual o número que Bernardo pensou?</b>"+
 				"</div>");
 	
