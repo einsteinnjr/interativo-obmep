@@ -24,15 +24,15 @@
 
 	<div id="questionJXGBox" class="jxgbox center-img"></div>
 </div>	
-	<div class="spaced-v">
+	<div class="spaced-v rectangle medium">
 		<div><b>Responda os itens abaixo:</b></div>
 		<div><b>a) Pode se construir um triângulo com esses lados?</b> <a id="validationConstructabilityRadio"></a></div>
 		<div>
 			<input type="radio" id="constructableRadio" name="constructableClass" onclick="disableTriangleConstruction(this)"/> Sim </input>
 		</div>
 		<div>
-		        <input type="radio" id="notConstructableRadio" name="constructableClass" onclick="disableTriangleConstruction(this)" /> Não </input>	
-            	</div>
+			<input type="radio" id="notConstructableRadio" name="constructableClass" onclick="disableTriangleConstruction(this)" /> Não </input>	
+	    	</div>
 	</div>
 	<div id="triangleConstructible" class="rectangle medium spaced-v">	
 		<div><b>Se for possível a construção do triângulo:</b></div>		

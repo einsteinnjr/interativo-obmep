@@ -7,7 +7,7 @@ body{
 }
 
 #sidesTable {
-    width: 400px;
+    width: 430px;
     text-align:center;
 }
 
@@ -29,8 +29,8 @@ p{
 }
 
 .jxgbox {
-    width:400px; 
-    height:400px;
+    width:430px; 
+    height:430px;
 }
 
 .rectangle{
@@ -49,7 +49,7 @@ p{
 }
 
 .medium{
-    width:400px;
+    width:430px;
 }
 
 .small{
@@ -58,7 +58,7 @@ p{
 
 .center-img{
 	margin:5px auto;
-	min-width:400px;
+	min-width:430px;
 }
 
 .center{
@@ -66,7 +66,7 @@ p{
 }
 
 #answerExplanation{
-	min-width:400px;
+	min-width:430px;
 	background-color: #fbf0cc; /*light-orange*/
 }
 
