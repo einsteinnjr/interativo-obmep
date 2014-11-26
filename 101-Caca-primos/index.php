@@ -50,10 +50,10 @@
 				<label id="lErrors"><b>Erros: <span id="numberOfErrors" class="error">0</span> </b></label>
 			</div>	
 		</div>	
-	</div>
-	<div class="spaced">
-		<button id="hintButton" type="button" class="btn btn-default" onClick="tellNumberOfPrimes();">Mostrar Dica</button>		
-		<span id="hint"> </span>
+		<div class="spaced">
+			<button id="hintButton" type="button" class="btn btn-default" onClick="tellNumberOfPrimes();">Mostrar Dica</button>		
+			<span id="hint"> </span>
+		</div>
 	</div>
 	<div id="modalGameOver" class="modal fade">
 	  <div class="modal-dialog">
