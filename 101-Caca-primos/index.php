@@ -8,31 +8,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<div class="spaced">
-		<div>
-			<b>- Escolha o nivel desejado:</b>
+	<div>
+		<div class="spaced bordered inline">
+			<div>
+				<b>- Escolha o nivel desejado:</b>
+			</div>
+			<label class="radio-inline">
+			  <input type="radio" name="gameLevel" value="easy"  onclick="decideGameLevel(this)" checked> Fácil
+			</label>
+			<label class="radio-inline">
+			  <input type="radio" name="gameLevel" value="hard" onclick="decideGameLevel(this)" > Difícil
+			</label>
 		</div>
-		<label class="radio-inline">
-		  <input type="radio" name="gameLevel" value="easy"  onclick="decideGameLevel(this)" checked> Fácil
-		</label>
-		<label class="radio-inline">
-		  <input type="radio" name="gameLevel" value="hard" onclick="decideGameLevel(this)" > Difícil
-		</label>
 	</div>
-	
-	<div class="spaced">
-		<div>
-			<b>- Escolha o tamanho do tabuleiro:</b>
+	<div>
+		<div class="spaced bordered inline">
+			<div>
+				<b>- Escolha o tamanho do tabuleiro:</b>
+			</div>
+			<label class="radio-inline">
+			  <input type="radio" name="tableSize" value="small"  onclick="decideSideLength(this)" checked> Pequeno
+			</label>
+			<label class="radio-inline">
+			  <input type="radio" name="tableSize" value="medium" onclick="decideSideLength(this)" > Médio
+			</label>
+			<label class="radio-inline">
+			  <input type="radio" name="tableSize" value="large" onclick="decideSideLength(this)" > Grande
+			</label>
 		</div>
-		<label class="radio-inline">
-		  <input type="radio" name="tableSize" value="small"  onclick="decideSideLength(this)" checked> Pequeno
-		</label>
-		<label class="radio-inline">
-		  <input type="radio" name="tableSize" value="medium" onclick="decideSideLength(this)" > Médio
-		</label>
-		<label class="radio-inline">
-		  <input type="radio" name="tableSize" value="large" onclick="decideSideLength(this)" > Grande
-		</label>
 	</div>
 	<div>
 		<button type="button" class="btn btn-default btn-primary spaced" onClick="generateNewGame();">Novo Jogo</button>
@@ -40,17 +43,19 @@
 	<div class="spaced">	
 		<table id="gameTable" class="table-striped" ></table>			
 	</div>
-	<div id="result" class="form-inline">
-		<div>
-			<label id="lPrimesFound"><b>Primos achados: <span id="numberOfPrimesFound" class="correct">0</span> </b></label>
-		</div>
-		<div>
-			<label id="lErrors"><b>Erros: <span id="numberOfErrors" class="error">0</span> </b></label>
+	<div class="bordered inline">
+		<div id="result" class="form-inline">
+			<div>
+				<label id="lPrimesFound"><b>Primos achados: <span id="numberOfPrimesFound" class="correct">0</span> </b></label>
+			</div>
+			<div>
+				<label id="lErrors"><b>Erros: <span id="numberOfErrors" class="error">0</span> </b></label>
+			</div>	
 		</div>	
-	</div>	
-	<div class="spaced">
-		<button id="hintButton" type="button" class="btn btn-default" onClick="tellNumberOfPrimes();">Mostrar Dica</button>		
-		<span id="hint"> </span>
+		<div class="spaced">
+			<button id="hintButton" type="button" class="btn btn-default" onClick="tellNumberOfPrimes();">Mostrar Dica</button>		
+			<span id="hint"> </span>
+		</div>
 	</div>
 	<div id="modalGameOver" class="modal fade">
 	  <div class="modal-dialog">
