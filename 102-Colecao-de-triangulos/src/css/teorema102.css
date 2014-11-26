@@ -2,12 +2,13 @@
 
 body{
   padding:5px;
+  font-family: "PT Serif", serif;
+  font-size: 15px;
 }
 
 #sidesTable {
     width: 400px;
     text-align:center;
-
 }
 
 td{
@@ -66,6 +67,7 @@ p{
 
 #answerExplanation{
 	min-width:400px;
+	background-color: #fbf0cc; /*light-orange*/
 }
 
 span.tab{

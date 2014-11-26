@@ -34,7 +34,8 @@
 	<div class="spaced">
 		<button id="testSorting" type="button" class="btn btn-default btn-success" onClick="validateSorting();">Testar Ordenação</button>
 	</div>	
-	<div id="solution" class="spaced"> </div>
+	<div id="solution" class="spaced hidden"> </div>
+
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
 	<script src="assets/jquery-ui/js/jquery-ui.min.js"></script>
         <script type="text/javascript" src="src/js/teorema105.js"></script>

@@ -2,6 +2,8 @@
 
 body{
   padding:5px;
+  font-family: "PT Serif", serif;
+  font-size: 15px;
 }
 
 
@@ -41,6 +43,10 @@ span.tab{
 	margin-bottom:10px;
 }
 
+.hidden{
+    visibility: hidden;
+}
+
 .horizontalList { 
 	list-style-type: none; 
 	margin: 0; 
@@ -54,6 +60,13 @@ span.tab{
 	padding: 10px; 
 	width: auto; 
 	cursor:pointer;
+}
+
+#solution{
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 5px;
+	background-color: #fbf0cc; /*light-orange*/
 }
 
 

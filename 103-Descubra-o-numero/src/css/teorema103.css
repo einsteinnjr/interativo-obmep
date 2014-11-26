@@ -2,6 +2,8 @@
 
 body{
   padding:5px;
+  font-family: "PT Serif", serif;
+  font-size: 15px;
 }
 
 .width{
@@ -60,6 +62,10 @@ td{
 #requisites{
   width:270px;
   margin-bottom:5px;
+}
+
+#explanation{
+	background-color: #fbf0cc; /*light-orange*/
 }
 
 .glyphicon-ok{

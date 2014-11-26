@@ -228,6 +228,7 @@ function answerIfListIsCorrect(isCorrectList){
 }
 
 function fillSolution(){
+	$("#solution").removeClass("hidden");
 	$("#solution").html("<div> <strong> Solução:</strong> </br>A lista em ordem crescente é: <ul id='sortedList' class='horizontalList'></ul></div>"+
 	"<div>O que pode ser constatado reduzindo todas as frações a um mesmo denominador comum, por exemplo, mmc = "+lcm+" :<ul id='reducedSortedList' class='horizontalList'></ul></div>");
 }
@@ -240,6 +241,7 @@ function toggleDisableOnListAndButtons(bool){
 
 
 function cleanValidationsAndAnswerExplanations(){
+	$("#solution").addClass("hidden");
 	$("#solution").empty();
 }
 
