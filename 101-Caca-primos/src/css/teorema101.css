@@ -53,12 +53,8 @@ td{
     visibility: hidden;
 }
 
-.inline{
-	display:inline-block;
-	padding:5px 10px;
-	border-radius: 5px;
-}
-
 .bordered{
 	border: 1px solid gray; /*light-gray*/
+	padding:5px 10px;
+	border-radius: 5px;
 }

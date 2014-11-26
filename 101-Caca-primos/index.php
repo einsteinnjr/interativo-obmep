@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<div>
-		<div class="spaced bordered inline">
+	<div class="spaced bordered">
+		<div class="spaced">
 			<div>
 				<b>- Escolha o nivel desejado:</b>
 			</div>
@@ -20,9 +20,7 @@
 			  <input type="radio" name="gameLevel" value="hard" onclick="decideGameLevel(this)" > Difícil
 			</label>
 		</div>
-	</div>
-	<div>
-		<div class="spaced bordered inline">
+		<div class="spaced">
 			<div>
 				<b>- Escolha o tamanho do tabuleiro:</b>
 			</div>
@@ -40,10 +38,10 @@
 	<div>
 		<button type="button" class="btn btn-default btn-primary spaced" onClick="generateNewGame();">Novo Jogo</button>
 	</div>	
-	<div class="spaced">	
+	<div class="spaced  bordered">	
 		<table id="gameTable" class="table-striped" ></table>			
 	</div>
-	<div class="bordered inline">
+	<div class="spaced bordered">
 		<div id="result" class="form-inline">
 			<div>
 				<label id="lPrimesFound"><b>Primos achados: <span id="numberOfPrimesFound" class="correct">0</span> </b></label>
@@ -52,10 +50,10 @@
 				<label id="lErrors"><b>Erros: <span id="numberOfErrors" class="error">0</span> </b></label>
 			</div>	
 		</div>	
-		<div class="spaced">
-			<button id="hintButton" type="button" class="btn btn-default" onClick="tellNumberOfPrimes();">Mostrar Dica</button>		
-			<span id="hint"> </span>
-		</div>
+	</div>
+	<div class="spaced">
+		<button id="hintButton" type="button" class="btn btn-default" onClick="tellNumberOfPrimes();">Mostrar Dica</button>		
+		<span id="hint"> </span>
 	</div>
 	<div id="modalGameOver" class="modal fade">
 	  <div class="modal-dialog">
