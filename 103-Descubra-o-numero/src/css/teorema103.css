@@ -10,8 +10,8 @@ body{
 	width: 610px;
 }
 
-.float-l{
-	float:left;
+.inline{
+	display:inline-block;
 }
 
 .float-r{
@@ -43,7 +43,10 @@ td{
 .bordered{
 	padding:5px;
 	border:2px solid gray;
-	border-radius:5px;
+	border-radius:5px;	
+}
+
+.clear-b{
 	clear:both;
 }
 

@@ -9,8 +9,8 @@
 
 </head>
 <body>
-	<div>	
-		<div class="float-l">
+	<div class="bordered spaced-v">	
+		<div class="inline">
 			<div class="spaced-v">
 				<strong>- Escolha o nivel desejado: </strong>
 				<div>
@@ -42,7 +42,7 @@
 			</table>
 		</div>
 	</div>	
-	<div>
+	<div class="bordered clear-b spaced-v">
 		<table id="questions" class="table table-striped bordered width center-img">
 		</table>
 	</div>
