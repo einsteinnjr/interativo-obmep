@@ -12,8 +12,9 @@ body{
 }
 
 #columns{
-	width:520px;
+	min-width:520px;
 }
+
 
 #dRequisites{
 	float:right;
@@ -91,6 +92,11 @@ td{
 
 .large-w{
 	width:250px;
+}
+
+#balance{
+	width:520px;
+	margin:0 auto;
 }
 
 .plate{
