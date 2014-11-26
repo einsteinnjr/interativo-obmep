@@ -9,30 +9,37 @@
 
 </head>
 <body>
-	<div class="spaced">
-		<strong>- Escolha o nivel desejado: </strong>
-		<div>
-			<label class="radio-inline">
-			  <input type="radio" name="gameLevel" value="easy" checked> Fácil
-			</label>
-			<label class="radio-inline">
-			  <input type="radio" name="gameLevel" value="medium"> Médio
-			</label>
-			<label class="radio-inline">
-			  <input type="radio" name="gameLevel" value="hard"> Difícil
-			</label>
+	<div class="spaced bordered">	
+		<div class="spaced">
+			<strong>- Escolha o nivel desejado: </strong>
+			<div>
+				<label class="radio-inline">
+				  <input type="radio" name="gameLevel" value="easy" checked> Fácil
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" name="gameLevel" value="medium"> Médio
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" name="gameLevel" value="hard"> Difícil
+				</label>
+			</div>
 		</div>
-	</div>
-	<button id="newGame" type="button" class="btn btn-default btn-primary spaced" onClick="generateNewGame();">Novo Jogo</button>
-	<div id="orchard"></div>
-
-	<div class="spaced">
-		<label id="lActualSum"><b>Soma Atual: <span id="actualSum" class="actual">0</span> </b></label>
-	</div>
-	<div class="spaced">
-		<button id="testPath" type="button" class="btn btn-default" onClick="validateIfItIsMaxPath();">Testar Caminho</button>
-		<button id="showMaxPath" type="button" class="btn btn-default btn-success" onClick="showMaxPath();">Mostrar Solução</button>	
+		<button id="newGame" type="button" class="btn btn-default btn-primary spaced" onClick="generateNewGame();">Novo Jogo</button>
 	</div>	
+
+	<div class="spaced bordered">
+		<div id="orchard"></div>
+	</div>
+
+	<div class="spaced bordered">	
+		<div class="spaced">
+			<label id="lActualSum"><b>Soma Atual: <span id="actualSum" class="actual">0</span> </b></label>
+		</div>
+		<div class="spaced">
+			<button id="testPath" type="button" class="btn btn-default" onClick="validateIfItIsMaxPath();">Testar Caminho</button>
+			<button id="showMaxPath" type="button" class="btn btn-default btn-success" onClick="showMaxPath();">Mostrar Solução</button>	
+		</div>	
+	</div>
 
 	<div id="modalInfo" class="modal fade">
 	  <div class="modal-dialog">

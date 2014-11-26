@@ -18,6 +18,12 @@ span.tab{
   padding: 0 10px; /* Or desired space*/
 }
 
+.bordered{
+	padding:5px;
+	border:1px solid gray;
+	border-radius:5px;	
+}
+
 .num{
   font-size: 16px;
   padding:1px;
