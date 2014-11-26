@@ -325,10 +325,10 @@ function scrollTo(tag){
 
 function drawTriangleIfExists(){
 	//always add border to Explanation
-	$("#answerExplanation").addClass("rectangle");
+	$("#answerExplanation").addClass("bordered");
 	if(!(typeOfTriangle === NO_TRIANGLE)){
 		$("#answerJXGBox").addClass("jxgbox");
-		$("#answerJXGBox, #answerExplanation").addClass("rectangle");
+		$("#answerJXGBox, #dAnswerJXGBox").addClass("bordered");
 		closedTriangleFigure();
 	}
 }
@@ -363,7 +363,7 @@ function cleanValidationsAndAnswerExplanations(){
 		aboard=null;
 	}
 	$("#answerJXGBox").removeClass("jxgbox");
-	$("#answerJXGBox, #answerExplanation").removeClass("rectangle");
+	$("#answerJXGBox, #dAnswerJXGBox, #answerExplanation").removeClass("bordered");
 
 	$("#answerTriangleConstructable").empty();
 	$("#answerSidesRelationship").empty();

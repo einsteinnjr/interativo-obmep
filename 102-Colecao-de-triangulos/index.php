@@ -13,7 +13,7 @@
 <div class="spaced-v">
   <button type="button" class="btn btn-default  btn-primary" onClick="generateNewTriangle();scrollTo('#sidesTable');">Novo Triângulo</button>
 </div>
-<div class="spaced-v">
+<div class="spaced-v bordered">
 	<table id="sidesTable" class="spaced-v center-img">
 		<tr>
 			<td id="sideA">a= cm</td>
@@ -24,7 +24,7 @@
 
 	<div id="questionJXGBox" class="jxgbox center-img"></div>
 </div>	
-	<div class="spaced-v rectangle medium">
+	<div class="spaced-v bordered">
 		<div><b>Responda os itens abaixo:</b></div>
 		<div><b>a) Pode se construir um triângulo com esses lados?</b> <a id="validationConstructabilityRadio"></a></div>
 		<div>
@@ -34,7 +34,7 @@
 			<input type="radio" id="notConstructableRadio" name="constructableClass" onclick="disableTriangleConstruction(this)" /> Não </input>	
 	    	</div>
 	</div>
-	<div id="triangleConstructible" class="rectangle medium spaced-v">	
+	<div id="triangleConstructible" class="spaced-v bordered">	
 		<div><b>Se for possível a construção do triângulo:</b></div>		
 		<div>
 			<div><b>b) Classifique-o quanto aos lados:</b> <a id="validationSidesRadio"></a></div>
@@ -70,7 +70,9 @@
 	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
 	
 	<div>
+		<div id="dAnswerJXGBox" class="spaced-v bordered">		
 		<div id="answerJXGBox" class="center-img"></div>
+		</div>		
 		<div id="answerExplanation" class="height-auto">
 				<div id="answerTriangleConstructable" class="spaced-v"></div>
 				<div id="answerSidesRelationship" class="spaced-v"></div>
