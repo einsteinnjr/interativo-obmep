@@ -64,7 +64,7 @@
 		<div id="howToUseAD" class="spaced-v justify"><h5><b>Como usar:</b></h5>
 			<div id="howToUseA"> </div>
 		</div>
-		<iframe id="iframeA" name="iframeA" class="iframe spaced-v" scrolling="no"> </iframe>
+		<iframe id="iframeA" name="iframeA" class="iframe spaced-v" scrolling="yes"> </iframe>
           </div>
 	  <div id="dummy" class="jumbotron">
 	     <h1>Exercícios Interativos</h1>
