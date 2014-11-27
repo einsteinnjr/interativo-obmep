@@ -1,0 +1,48 @@
+## name ##
+101 - Caça-Primos
+
+
+## module to be inserted ##
+Série:EF6
+Módulo: Divisibilidade/Sexto ano
+aula: Critérios de divisibilidade
+http://matematica.obmep.org.br/index.php/modulo/ver?modulo=23
+
+
+## libraries used, on folder "assets" ##
+assets:
+bootstrap
+jquery
+
+assets/bootstrap/css:
+bootstrap.css.map
+bootstrap.min.css
+bootstrap-theme.css.map
+bootstrap-theme.min.css
+
+assets/bootstrap/fonts:
+glyphicons-halflings-regular.eot
+glyphicons-halflings-regular.svg
+glyphicons-halflings-regular.ttf
+glyphicons-halflings-regular.woff
+
+assets/bootstrap/js:
+bootstrap.min.js
+
+assets/jquery:
+jquery-1.10.2.min.js
+jquery-1.10.2.min.map
+
+
+## specific files for that interactive, on folder "src" ##
+src/css:
+teorema101.css
+
+src/js:
+teorema101.js
+
+
+## minimum height ##
+650px;
+
+
