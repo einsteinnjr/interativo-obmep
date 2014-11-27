@@ -20,7 +20,7 @@
 			  <input type="radio" name="gameLevel" value="hard" onclick="decideGameLevel(this)" > Difícil
 			</label>
 		</div>
-		<div class="spaced">
+		<div id="dTableSize" class="spaced inline">
 			<div>
 				<b>- Escolha o tamanho do tabuleiro:</b>
 			</div>
@@ -38,7 +38,7 @@
 	<div>
 		<button type="button" class="btn btn-default btn-primary spaced" onClick="generateNewGame();">Novo Jogo</button>
 	</div>	
-	<div class="spaced  bordered">	
+	<div id="dGameTable" class="spaced  bordered">	
 		<table id="gameTable" class="table-striped" ></table>			
 	</div>
 	<div class="spaced bordered">

@@ -148,8 +148,20 @@ function decideSideLength(myRadio){
 	else if(myRadio.value==="large") sideLength=7;
 }
 
+function setAMinimumWidthToBody(){
+	maxWidth=(getFullWidth("gameTable")>getFullWidth("dTableSize"))?getFullWidth("gameTable"):getFullWidth("dTableSize");
+	
+	$("body").attr("style","min-width:"+maxWidth+"px");
+
+}
+
+function getFullWidth(id){
+	//console.log("fullWidth "+id+" 	"+(parseInt($("#"+id).css("width"))+parseInt($("#"+id).css("padding-left"))+parseInt($("#"+id).css("padding-right"))+2*10));
+	return (parseInt($("#"+id).css("width"))+parseInt($("#"+id).css("padding-left"))+parseInt($("#"+id).css("padding-right"))+2*10); //how #gameTable has margin:auto, we can't add margin, as the way it is. put 2*10px
+}
 function generateNewGame(){
 	$("#gameTable").html(generateNewTableHtml(sideLength));
+	setAMinimumWidthToBody();
 	mouseEventsOnTable();
 	clearPrimesFoundsAndInfo();
 }

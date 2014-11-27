@@ -12,10 +12,16 @@ body{
     margin-right: auto;
 }
 
+.inline{
+	display:inline-block;
+}
+
 td{
 	padding:10px;
 	text-align: center;
 	border: 1px solid gray; /*light-gray*/
+	min-width:59px;
+	min-height:42px;
 }
 
 .correct{
