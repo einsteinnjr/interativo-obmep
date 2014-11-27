@@ -10,6 +10,10 @@ body{
 	width: 610px;
 }
 
+.min-width{
+	min-width: 610px;
+}
+
 .inline{
 	display:inline-block;
 }

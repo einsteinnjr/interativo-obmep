@@ -9,7 +9,7 @@
 
 </head>
 <body>
-	<div class="bordered spaced-v">	
+	<div class="bordered spaced-v min-width">	
 		<div class="inline">
 			<div class="spaced-v">
 				<strong>- Escolha o nivel desejado: </strong>
@@ -42,7 +42,7 @@
 			</table>
 		</div>
 	</div>	
-	<div class="bordered clear-b spaced-v">
+	<div class="bordered clear-b spaced-v min-width">
 		<table id="questions" class="table table-striped bordered width center-img">
 		</table>
 	</div>
