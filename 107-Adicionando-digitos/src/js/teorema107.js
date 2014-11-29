@@ -1,5 +1,12 @@
-var NUMBER_OF_DIGITS_OF_ORIGINAL_NUMBER=6;
-var NUMBER_OF_NEW_DIGITS=3;
+var NUMBER_OF_DIGITS_OF_ORIGINAL_NUMBER_EASY=4;
+var NUMBER_OF_NEW_DIGITS_EASY=2;
+
+var NUMBER_OF_DIGITS_OF_ORIGINAL_NUMBER_MEDIUM=8;
+var NUMBER_OF_NEW_DIGITS_MEDIUM=4;
+
+var NUMBER_OF_DIGITS_OF_ORIGINAL_NUMBER_HARD=12;
+var NUMBER_OF_NEW_DIGITS_HARD=6;
+
 var MAX_NUMBER = 10;
 
 var numberOfDigitsOfOriginalNumber;
@@ -15,6 +22,24 @@ function generateNewDigit(){
 	return digit;
 }
 
+
+function decideGameLevel(){
+	//console.log($('input[name=gameLevel]:checked').val());
+	if($('input[name=gameLevel]:checked').val() === "easy") {
+		numberOfDigitsOfOriginalNumber = NUMBER_OF_DIGITS_OF_ORIGINAL_NUMBER_EASY;
+		numberOfNewDigits = NUMBER_OF_NEW_DIGITS_EASY;
+	}
+	else if($('input[name=gameLevel]:checked').val() === "medium") {
+		numberOfDigitsOfOriginalNumber = NUMBER_OF_DIGITS_OF_ORIGINAL_NUMBER_MEDIUM;
+		numberOfNewDigits = NUMBER_OF_NEW_DIGITS_MEDIUM;
+	}
+	else if($('input[name=gameLevel]:checked').val() === "hard") {
+		numberOfDigitsOfOriginalNumber = NUMBER_OF_DIGITS_OF_ORIGINAL_NUMBER_HARD;
+		numberOfNewDigits = NUMBER_OF_NEW_DIGITS_HARD;
+	}	
+}
+
+
 function generateOriginalNumber(){
 	$("#minorNumber").empty();
 	$("#originalNumber").empty();
@@ -23,7 +48,7 @@ function generateOriginalNumber(){
 	var newDigit;
 	originalNumber=[];
 	//console.log("originalNumber");
-	for(i=0; i< NUMBER_OF_DIGITS_OF_ORIGINAL_NUMBER; i++){
+	for(i=0; i< numberOfDigitsOfOriginalNumber; i++){
 		newDigit = generateNewDigit();
 		if(i===0) {//1st digit is nonzero;
 			while(newDigit===0) {
@@ -45,7 +70,7 @@ function generateNewDigits(){
 	var newDigit;
 	newDigits=[];
 	//console.log("newDigits");
-	for(i=0; i< NUMBER_OF_NEW_DIGITS; i++){
+	for(i=0; i< numberOfNewDigits; i++){
 		//none of new digits is zero.		
 		do{
 			newDigit = generateNewDigit();
@@ -183,6 +208,7 @@ function cleanAnswer(){
 
 function generateNewGame(){
 	cleanAnswer();
+	decideGameLevel();
 	generateOriginalNumber();
 	generateNewDigits();
 	

@@ -27,6 +27,7 @@ body{
 
 .ui-state-disabled{
 	opacity: 1;
+	margin:1px;
 }
 
 .spaced{
