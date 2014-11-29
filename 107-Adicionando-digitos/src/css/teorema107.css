@@ -25,6 +25,11 @@ body{
 	border: 1px solid black;
 }
 
+#majorNumber{
+	padding: 3px;
+	border: 1px solid black;
+}
+
 .ui-state-disabled{
 	opacity: 1;
 	margin:1px;
@@ -61,19 +66,19 @@ body{
 	background-color: #fbf0cc; /*light-orange*/
 }
 
-.wrong{
+.bg-red{
     background-color: #F5A9A9; /*red*/ 
 }
 
-.correct{ 
+.bg-green{ 
     background-color: #58FAAC; /*green*/
 }
 
-.glyphicon-ok{
+.green{
     color: #04B431; /*dark green*/
 }
 
-.glyphicon-remove{
+.red{
     color: #FE2E2E; /*dark red*/
 }
 

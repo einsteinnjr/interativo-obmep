@@ -11,9 +11,9 @@ var MAX_NUMBER = 10;
 
 var numberOfDigitsOfOriginalNumber;
 var numberOfNewDigits;
-var newDigits;
+var minorNewDigits, majorNewDigits;
 var originalNumber;
-var minorNumber;
+var minorNumber, majorNumber;
 var auxArray;
 var i, j, k, found;
 
@@ -42,8 +42,10 @@ function decideGameLevel(){
 
 function generateOriginalNumber(){
 	$("#minorNumber").empty();
+	$("#majorNumber").empty();
 	$("#originalNumber").empty();
 	var minorNumberHtml="";
+	var majorNumberHtml="";
 	var originalNumberString = "";
 	var newDigit;
 	originalNumber=[];
@@ -59,16 +61,21 @@ function generateOriginalNumber(){
 		originalNumber.push(newDigit);
 		originalNumberString+=newDigit;
 		minorNumberHtml+="<li class='ui-state-disabled' value='"+newDigit+"'>"+newDigit+"</li>";
+		majorNumberHtml+="<li class='ui-state-disabled' value='"+newDigit+"'>"+newDigit+"</li>";
 	}
 	$("#minorNumber").html(minorNumberHtml);
+	$("#majorNumber").html(majorNumberHtml);
 	$("#originalNumber").html(originalNumberString);
 }
 
 function generateNewDigits(){
-	$("#newDigits").empty();
-	var newDigitsHtml="";
+	$("#minorNewDigits").empty();
+	$("#majorNewDigits").empty();
+	var minorNewDigitsHtml="";
+	var majorNewDigitsHtml="";
 	var newDigit;
-	newDigits=[];
+	minorNewDigits=[];
+	majorNewDigits=[];
 	//console.log("newDigits");
 	for(i=0; i< numberOfNewDigits; i++){
 		//none of new digits is zero.		
@@ -77,10 +84,13 @@ function generateNewDigits(){
 		}
 		while(newDigit===0); 
 		//console.log(newDigit);
-		newDigits.push(newDigit);
-		newDigitsHtml+="<li class='ui-state-default' value='"+newDigit+"'>"+newDigit+"</li>";
+		minorNewDigits.push(newDigit);
+		majorNewDigits.push(newDigit);
+		minorNewDigitsHtml+="<li class='ui-state-default' value='"+newDigit+"'>"+newDigit+"</li>";
+		majorNewDigitsHtml+="<li class='ui-state-default' value='"+newDigit+"'>"+newDigit+"</li>";
 	}
-	$("#newDigits").html(newDigitsHtml);
+	$("#minorNewDigits").html(minorNewDigitsHtml);
+	$("#majorNewDigits").html(majorNewDigitsHtml);
 }
 
 function appendArray(origin, destination, index){
@@ -108,25 +118,25 @@ function descendingCompare(a,b){
 }
 
 function calculateMinorNumber(){	
-	newDigits.sort(ascendingCompare);
-	//console.log("newDigits");
-	//printArray(newDigits);
+	minorNewDigits.sort(ascendingCompare);
+	//console.log("minorNewDigits");
+	//printArray(minorNewDigits);
 	minorNumber=[];
 	appendArray(originalNumber, minorNumber, 0);
-	
-	for(i=0; i<newDigits.length; i++){
+	var i,j;
+	for(i=0; i<minorNewDigits.length; i++){
 		auxArray=[];
 		found=false;
 		for(j=0; j<minorNumber.length; j++){
-			if(newDigits[i]>=minorNumber[j]) {//always push smaller
+			if(minorNewDigits[i]>=minorNumber[j]) {//always push smaller
 				auxArray.push(minorNumber[j]);
 			}
 			else{
-				break; //moment to add newDigits[i] 
+				break; //moment to add minorNewDigits[i] 
 			}
 		}
-		//moment to add newDigits[i]: or newDigits[i] < minorNumber[j] or minorNumber ended.
-		auxArray.push(newDigits[i]);
+		//moment to add minorNewDigits[i]: or minorNewDigits[i] < minorNumber[j] or minorNumber ended.
+		auxArray.push(minorNewDigits[i]);
 		appendArray(minorNumber, auxArray, j);
 		minorNumber=[];
 		appendArray(auxArray, minorNumber, 0);
@@ -135,21 +145,61 @@ function calculateMinorNumber(){
 	}	
 }
 
+function calculateMajorNumber(){	
+	majorNewDigits.sort(descendingCompare);
+	//console.log("majorNewDigits");
+	//printArray(majorNewDigits);
+	majorNumber=[];
+	appendArray(originalNumber, majorNumber, 0);
+	var i,j;
+	for(i=0; i<majorNewDigits.length; i++){
+		auxArray=[];
+		found=false;
+		for(j=0; j<majorNumber.length; j++){
+			if(majorNewDigits[i]<=majorNumber[j]) {//always push larger
+				auxArray.push(majorNumber[j]);
+			}
+			else{
+				break; //moment to add majorNewDigits[i] 
+			}
+		}
+		//moment to add majorNewDigits[i]: or majorNewDigits[i] > majorNumber[j] or majorNumber ended.
+		auxArray.push(majorNewDigits[i]);
+		appendArray(majorNumber, auxArray, j);
+		majorNumber=[];
+		appendArray(auxArray, majorNumber, 0);
+		//console.log("majorNumber "+i);
+		//printArray(majorNumber);
+	}	
+}
+
 function answerIfListIsCorrect(id, isCorrectList){
 	if(isCorrectList){
-		$("#"+id).after("<i class='glyphicon glyphicon-ok checks'>Correto!</i>");
+		$("#"+id).after("<i class='glyphicon glyphicon-ok green checks'>Correto!</i>");
 	}
-	else $("#"+id).after("<i class='glyphicon glyphicon-remove checks'>Errado!</i>");
+	else $("#"+id).after("<i class='glyphicon glyphicon-remove red checks'>Errado!</i>");
 }
 
 function alreadyPositionedNewDigits(){
-	var list = $("#newDigits").find("li");
-	console.log(list.length);	
-	if(list.length>0){
+	var minorList = $("#minorNewDigits").find("li");
+	var majorList = $("#majorNewDigits").find("li");
+	console.log("minorList "+minorList.length);
+	console.log("majorList "+majorList.length);
+	bodyMsg="";
+	showModal=false;	
+	if(minorList.length>0){
+		bodyMsg+="-Há "+minorList.length+" novo(s) dígito(s) que não foram usados no Menor Número.<br/>";
+		showModal=true;
+	}
+	if(majorList.length>0){
+		bodyMsg+="-Há "+majorList.length+" novo(s) dígito(s) que não foram usados no Maior Número.<br/>";
+		showModal=true;
+	}
+	if(showModal){
 		$(".modal-title").html("Atenção:");
 		$("#yesButton").addClass("hidden");
 		$("#noButton").html("Ok");
-		$(".modal-body").html("Há "+list.length+" novo(s) dígito(s) que não foram usados no Menor Número. Use-os, para poder ver a resposta.");
+		$(".modal-body").html(bodyMsg+"Use-os, para poder ver a resposta.");
 		$("#modalInfo").modal();
 		return false;
 	}
@@ -158,25 +208,25 @@ function alreadyPositionedNewDigits(){
 
 
 function checkMinorNumberAnswer(){
-	var list = $("#minorNumber").find("li");
+	var minorNumberList = $("#minorNumber").find("li");
 	var isCorrectList = true;
 
 	//console.log(list.length);
 	var i=0;
 	var k=0;
 	minorNumberSolutionHtml="";
-   	$(list).each(function () {
+   	$(minorNumberList).each(function () {
 		console.log("comparing: "+$(this).attr("value")+ " "+ minorNumber[i]);
 		minorNumberSolutionHtml+="<li class='";
 		if(originalNumber[k]!=minorNumber[i]) minorNumberSolutionHtml+="bordered";//used a new digit.
 		else k++;//used a originalNumber. Walk on it.
 
 		if($(this).attr("value")!=minorNumber[i]){
-			if(isCorrectList) minorNumberSolutionHtml+=" wrong";
+			if(isCorrectList) minorNumberSolutionHtml+=" bg-red";
 			isCorrectList=false;	
 		}
 		else{
-			if(isCorrectList) minorNumberSolutionHtml+=" correct";
+			if(isCorrectList) minorNumberSolutionHtml+=" bg-green";
 		}
 		minorNumberSolutionHtml+="'>"+minorNumber[i]+"</li>";
 		i++;
@@ -187,16 +237,53 @@ function checkMinorNumberAnswer(){
 	answerIfListIsCorrect("minorNumber", isCorrectList);
 }
 
+function checkMajorNumberAnswer(){
+	var majorNumberList = $("#majorNumber").find("li");
+	var isCorrectList = true;
+
+	//console.log(list.length);
+	var i=0;
+	var k=0;
+	majorNumberSolutionHtml="";
+   	$(majorNumberList).each(function () {
+		console.log("comparing: "+$(this).attr("value")+ " "+ majorNumber[i]);
+		majorNumberSolutionHtml+="<li class='";
+		if(originalNumber[k]!=majorNumber[i]) majorNumberSolutionHtml+="bordered";//used a new digit.
+		else k++;//used a originalNumber. Walk on it.
+
+		if($(this).attr("value")!=majorNumber[i]){
+			if(isCorrectList) majorNumberSolutionHtml+=" bg-red";
+			isCorrectList=false;	
+		}
+		else{
+			if(isCorrectList) majorNumberSolutionHtml+=" bg-green";
+		}
+		majorNumberSolutionHtml+="'>"+majorNumber[i]+"</li>";
+		i++;
+    	});
+	console.log("majorNumberSolution "+majorNumberSolutionHtml);
+	$("#majorNumberSolution").empty();
+	$("#majorNumberSolution").html(majorNumberSolutionHtml);
+	answerIfListIsCorrect("majorNumber", isCorrectList);
+}
+
 function showAnswer(){
 	if(alreadyPositionedNewDigits()){
 		calculateMinorNumber();
+		calculateMajorNumber();
 		$("#solution").removeClass("hidden");
 		$("#solution").html("<div><b>Resposta:</b></div>"+
 				"<div>"+
-				"<div class='inline'><b>Menor Número:</b></div>"+
-				"<ul id='minorNumberSolution' class='inline horizontalList spaced'></ul>");
+				"<div class='inline'><b><span class='green'>Menor</span> Número:</b></div>"+
+				"<ul id='minorNumberSolution' class='inline horizontalList spaced'></ul>"+
+				"</div>"+
+				"<div>"+
+				"<div class='inline'><b><span class='green'>Maior</span> Número:</b></div>"+
+				"<ul id='majorNumberSolution' class='inline horizontalList spaced'></ul>"+
+				"</div>");
 		$("#showAnswer").attr('disabled', true);
 		checkMinorNumberAnswer();
+		checkMajorNumberAnswer();
 	}
 }
 

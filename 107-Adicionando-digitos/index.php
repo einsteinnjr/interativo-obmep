@@ -34,13 +34,23 @@
 		<div class="spaced">
 			<div class="inline"><b>Número original:</b> <span id="originalNumber"></span></div>
 		</div>
-		<div>
+		<div class="spaced">
 			<div class="bordered inline">
 				<div class="spaced">
-					<div class="inline"><b>Novos dígitos:</b> <ul id="newDigits" class="inline horizontalList spaced connectedSortable"></ul></div>
+					<div class="inline"><b>Novos dígitos:</b> <ul id="minorNewDigits" class="inline horizontalList spaced minorConnectedSortable"></ul></div>
 				</div>
 				<div class="spaced">
-					<div class="inline"><b>Menor número:</b> <ul id="minorNumber" class="inline horizontalList spaced connectedSortable"></ul></div>
+					<div class="inline"><b><span class='green'>Menor</span> número formado:</b> <ul id="minorNumber" class="inline horizontalList spaced minorConnectedSortable"></ul></div>
+				</div>
+			</div>
+		</div>
+		<div class="spaced">
+			<div class="bordered inline">
+				<div class="spaced">
+					<div class="inline"><b>Novos dígitos:</b> <ul id="majorNewDigits" class="inline horizontalList spaced connectedSortable"></ul></div>
+				</div>
+				<div class="spaced">
+					<div class="inline"><b><span class='green'>Maior</span> número formado:</b> <ul id="majorNumber" class="inline horizontalList spaced majorConnectedSortable"></ul></div>
 				</div>
 			</div>
 		</div>
@@ -74,9 +84,13 @@
 
 	<script>
 	$(function() {
-		$( "#newDigits, #minorNumber" ).sortable({
+		$( "#minorNewDigits, #minorNumber" ).sortable({
 			cancel: ".ui-state-disabled",
-			connectWith: ".connectedSortable"
+			connectWith: ".minorConnectedSortable"
+		}).disableSelection();
+		$( "#majorNewDigits, #majorNumber" ).sortable({
+			cancel: ".ui-state-disabled",
+			connectWith: ".majorConnectedSortable"
 		}).disableSelection();
 	});
         
