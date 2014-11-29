@@ -388,9 +388,22 @@ function showAnswer(){
 	
 }
 
+function setAMinimumWidthToBody(){
+	maxWidth=getFullWidth("questionJXGBox");
+	
+	$("body").attr("style","min-width:"+maxWidth+"px");
+
+}
+
+function getFullWidth(id){
+	//console.log("fullWidth "+id+" 	"+(parseInt($("#"+id).css("width"))+parseInt($("#"+id).css("padding-left"))+parseInt($("#"+id).css("padding-right"))+3*10));
+	return (parseInt($("#"+id).css("width"))+parseInt($("#"+id).css("padding-left"))+parseInt($("#"+id).css("padding-right"))+3*10); //how #questionJXGBox has margin:auto, we can't add margin, as the way it is. put 2*10px
+}	
+
 function generateNewTriangle(tagToScroll){
 	resetUserAnswersAndTheirValidations();
 	cleanValidationsAndAnswerExplanations();
+	setAMinimumWidthToBody();
 	generateRandomSides();
 	generateSidesTable();
 	generateMaxValues();
