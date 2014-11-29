@@ -245,8 +245,14 @@ function cleanValidationsAndAnswerExplanations(){
 	$("#solution").empty();
 }
 
+function setAMinimumWidthToBody(){
+	maxWidth=300; //try-and-error width
+	$("body").attr("style","min-width:"+maxWidth+"px");
+}
+
 function generateNewGame(){
 	cleanValidationsAndAnswerExplanations();
+	setAMinimumWidthToBody();
 	decideGameLevel();
 	fillFractionsListHtml();
 	compileMathJaxCode();

@@ -30,7 +30,7 @@
 			<button id="newFractionList" type="button" class="btn btn-default btn-primary" onClick="generateNewGame();">Nova Lista</button>	
 		</div>
 	</div>
-	<div class="bordered spaced	">	
+	<div class="bordered spaced">	
 		<div class="spaced">
 		<ul id="fractionsList" class="horizontalList spaced"></ul>
 		</div>
