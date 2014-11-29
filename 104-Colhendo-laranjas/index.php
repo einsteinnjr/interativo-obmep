@@ -28,14 +28,11 @@
 	</div>	
 
 	<div class="spaced bordered">
-		<div id="orchard"></div>
-	</div>
-
-	<div class="spaced bordered">	
+		<div id="orchard"></div>	
 		<div class="spaced">
 			<label id="lActualSum"><b>Soma Atual: <span id="actualSum" class="actual">0</span> </b></label>
 		</div>
-		<div class="spaced">
+		<div id="pathButtons" class="spaced">
 			<button id="testPath" type="button" class="btn btn-default" onClick="validateIfItIsMaxPath();">Testar Caminho</button>
 			<button id="showMaxPath" type="button" class="btn btn-default btn-success" onClick="showMaxPath();">Mostrar Solução</button>	
 		</div>	

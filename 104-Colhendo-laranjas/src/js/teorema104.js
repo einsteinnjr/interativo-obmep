@@ -300,8 +300,22 @@ function setDisabledStatusToPathButtons(bool){
 	document.getElementById("showMaxPath").disabled=bool;
 }
 
+function setAMinimumWidthToBody(){
+	maxWidth=getFullWidth("pathButtons");
+	
+	$("body").attr("style","min-width:"+maxWidth+"px");
+
+}
+
+function getFullWidth(id){
+	//console.log("fullWidth "+id+" 	"+(parseInt($("#"+id).css("width"))+parseInt($("#"+id).css("padding-left"))+parseInt($("#"+id).css("padding-right"))+2*10));
+	return (parseInt($("#"+id).css("width"))+parseInt($("#"+id).css("padding-left"))+parseInt($("#"+id).css("padding-right"))+3*10); //Not relying on margins. put 3*10px
+}
+
+
 function generateNewGame(){
 	decideGameLevel();
+	setAMinimumWidthToBody();
 	generateOrchard();
 	actionsWhenClickingANumber();
 	actualSum=0;
