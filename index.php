@@ -81,7 +81,8 @@
 	<div class="col-xs-6 col-sm-3 sidebar-offcanvas accordion" id="sidebar" role="navigation">
 	<h3>Novembro 2014</h3> 
   	 <div class="list-group">
-		<a href="106-Balanca-de-pratos/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">106 - Balança de Pratos</a>            
+		<a href="107-Adicionando-digitos/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">107 - Adicionando digitos</a> 
+		<a href="106-Balanca-de-pratos/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">106 - Balança de pratos</a>            
 		<a href="105-Ordenando-fracoes/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">105 - Ordenando frações</a>
 	    
           </div>         
@@ -89,7 +90,7 @@
   	 <div class="list-group">
 		<a href="104-Colhendo-laranjas/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">104 - Colhendo laranjas</a>
 		<a href="103-Descubra-o-numero/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">103 - Descubra o número</a>
-		<a href="102-Colecao-de-triangulos/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">102 - Coleção de Triângulos</a>
+		<a href="102-Colecao-de-triangulos/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">102 - Coleção de triângulos</a>
 		<a href="101-Caca-primos/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">101 - Caça-primos</a>
           </div>
 	  
