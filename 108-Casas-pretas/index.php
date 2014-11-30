@@ -31,33 +31,7 @@
 		</div>	
 	</div>
 	<div class="bordered spaced">	
-		<div class="spaced">
-			<div class="inline"><b>Número original:</b> <span id="originalNumber"></span></div>
-		</div>
-		<div class="spaced">
-			<div id="minorBordered" class="bordered inline width-medium">
-				<div class="spaced">
-					<div class="inline"><b>Dígitos a adicionar:</b></div> 
-					<div><ul id="minorNewDigits" class="inline horizontalList spaced minorConnectedSortable"></ul></div>
-				</div>
-				<div class="spaced">
-					<div class="inline"><b><span class='green'>Menor</span> número formado:</b> </div>
-					<div> <ul id="minorNumber" class="inline horizontalList spaced minorConnectedSortable"></ul></div>
-				</div>
-			</div>
-		</div>
-		<div class="spaced">
-			<div id="majorBordered" class="bordered inline width-medium">
-				<div class="spaced">
-					<div class="inline"><b>Dígitos a adicionar:</b> </div>
-					<div><ul id="majorNewDigits" class="inline horizontalList spaced connectedSortable"></ul></div>
-				</div>
-				<div class="spaced">
-					<div class="inline"><b><span class='green'>Maior</span> número formado:</b></div>
-					<div> <ul id="majorNumber" class="inline horizontalList spaced majorConnectedSortable"></ul></div>
-				</div>
-			</div>
-		</div>
+		<div id="neighborsTable"></div>
 		<div class="spaced">
 			<button id="showAnswer" type="button" class="btn btn-default btn-success" onClick="checkAnswer();">Mostrar Resposta</button>
 		</div>	
@@ -87,18 +61,7 @@
         <script type="text/javascript" src="src/js/teorema108.js"></script>
 
 	<script>
-	$(function() {
-		$( "#minorNewDigits, #minorNumber" ).sortable({
-			cancel: ".ui-state-disabled",
-			connectWith: ".minorConnectedSortable"
-		}).disableSelection();
-		$( "#majorNewDigits, #majorNumber" ).sortable({
-			cancel: ".ui-state-disabled",
-			connectWith: ".majorConnectedSortable"
-		}).disableSelection();
-	});
-        
-	
+
 	$(document).ready(function () {
 		generateNewGame();
 	});
