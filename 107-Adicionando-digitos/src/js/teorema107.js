@@ -173,8 +173,8 @@ function calculateMajorNumber(){
 	}	
 }
 
-function answerIfListIsCorrect(id, isCorrectList){
-	if(isCorrectList){
+function answerIfListIsCorrect(id, idx){
+	if(idx === -1){
 		$("#"+id).after("<i class='glyphicon glyphicon-ok green checks'>Correto!</i>");
 	}
 	else $("#"+id).after("<i class='glyphicon glyphicon-remove red checks'>Errado!</i>");
@@ -183,8 +183,8 @@ function answerIfListIsCorrect(id, isCorrectList){
 function alreadyPositionedNewDigits(){
 	var minorList = $("#minorNewDigits").find("li");
 	var majorList = $("#majorNewDigits").find("li");
-	console.log("minorList "+minorList.length);
-	console.log("majorList "+majorList.length);
+	//console.log("minorList "+minorList.length);
+	//console.log("majorList "+majorList.length);
 	bodyMsg="";
 	showModal=false;	
 	if(minorList.length>0){
@@ -197,15 +197,12 @@ function alreadyPositionedNewDigits(){
 	}
 	if(showModal){
 		$(".modal-title").html("Atenção:");
-		$("#yesButton").addClass("hidden");
-		$("#noButton").html("Ok");
-		$(".modal-body").html(bodyMsg+"Use-os, para poder ver a resposta.");
+		$(".modal-body").html(bodyMsg+"Você pode continuar a jogar ou mostrar a resposta assim mesmo.");
 		$("#modalInfo").modal();
 		return false;
 	}
 	return true;
 }
-
 
 function checkMinorNumberAnswer(){
 	var minorNumberList = $("#minorNumber").find("li");
@@ -213,28 +210,36 @@ function checkMinorNumberAnswer(){
 
 	//console.log(list.length);
 	var i=0;
+	idx=-1;
+   	$(minorNumberList).each(function () {
+		//console.log("comparing: "+$(this).attr("value")+ " "+ minorNumber[i]);
+		if($(this).attr("value")!=minorNumber[i]){
+			if(idx===-1) idx=i;	
+		}
+		i++;
+	});
 	var k=0;
 	minorNumberSolutionHtml="";
-   	$(minorNumberList).each(function () {
-		console.log("comparing: "+$(this).attr("value")+ " "+ minorNumber[i]);
+	toColor=true;
+	for(i=0; i<minorNumber.length; i++){
+
 		minorNumberSolutionHtml+="<li class='";
-		if(originalNumber[k]!=minorNumber[i]) minorNumberSolutionHtml+="bordered";//used a new digit.
+		if( k === originalNumber.length || //end of array
+			originalNumber[k]!=minorNumber[i]) minorNumberSolutionHtml+="bordered";//used a new digit.
 		else k++;//used a originalNumber. Walk on it.
 
-		if($(this).attr("value")!=minorNumber[i]){
-			if(isCorrectList) minorNumberSolutionHtml+=" bg-red";
-			isCorrectList=false;	
-		}
-		else{
-			if(isCorrectList) minorNumberSolutionHtml+=" bg-green";
-		}
+		if(i===idx) {
+			minorNumberSolutionHtml+=" bg-red";
+			toColor=false;
+		}	
+		else if(toColor) minorNumberSolutionHtml+=" bg-green";
+
 		minorNumberSolutionHtml+="'>"+minorNumber[i]+"</li>";
-		i++;
-    	});
-	console.log("minorNumberSolution "+minorNumberSolutionHtml);
+    	};
+	//console.log("minorNumberSolution "+minorNumberSolutionHtml);
 	$("#minorNumberSolution").empty();
 	$("#minorNumberSolution").html(minorNumberSolutionHtml);
-	answerIfListIsCorrect("minorNumber", isCorrectList);
+	answerIfListIsCorrect("minorNumber", idx);
 }
 
 function checkMajorNumberAnswer(){
@@ -243,48 +248,58 @@ function checkMajorNumberAnswer(){
 
 	//console.log(list.length);
 	var i=0;
+	idx=-1;
+   	$(majorNumberList).each(function () {
+		//console.log("comparing: "+$(this).attr("value")+ " "+ majorNumber[i]);
+		if($(this).attr("value")!=majorNumber[i]){
+			if(idx===-1) idx=i;	
+		}
+		i++;
+	});
 	var k=0;
 	majorNumberSolutionHtml="";
-   	$(majorNumberList).each(function () {
-		console.log("comparing: "+$(this).attr("value")+ " "+ majorNumber[i]);
+	toColor=true;
+	for(i=0; i<majorNumber.length; i++){
+
 		majorNumberSolutionHtml+="<li class='";
-		if(originalNumber[k]!=majorNumber[i]) majorNumberSolutionHtml+="bordered";//used a new digit.
+		if( k === originalNumber.length || //end of array
+			originalNumber[k]!=majorNumber[i]) majorNumberSolutionHtml+="bordered";//used a new digit.
 		else k++;//used a originalNumber. Walk on it.
 
-		if($(this).attr("value")!=majorNumber[i]){
-			if(isCorrectList) majorNumberSolutionHtml+=" bg-red";
-			isCorrectList=false;	
-		}
-		else{
-			if(isCorrectList) majorNumberSolutionHtml+=" bg-green";
-		}
+		if(i===idx) {
+			majorNumberSolutionHtml+=" bg-red";
+			toColor=false;
+		}	
+		else if(toColor) majorNumberSolutionHtml+=" bg-green";
+
 		majorNumberSolutionHtml+="'>"+majorNumber[i]+"</li>";
-		i++;
-    	});
-	console.log("majorNumberSolution "+majorNumberSolutionHtml);
+    	};
+	//console.log("majorNumberSolution "+majorNumberSolutionHtml);
 	$("#majorNumberSolution").empty();
 	$("#majorNumberSolution").html(majorNumberSolutionHtml);
-	answerIfListIsCorrect("majorNumber", isCorrectList);
+	answerIfListIsCorrect("majorNumber", idx);
+}
+
+function checkAnswer(){
+	if(alreadyPositionedNewDigits()) showAnswer();
 }
 
 function showAnswer(){
-	if(alreadyPositionedNewDigits()){
-		calculateMinorNumber();
-		calculateMajorNumber();
-		$("#solution").removeClass("hidden");
-		$("#solution").html("<div><b>Resposta:</b></div>"+
-				"<div>"+
-				"<div class='inline'><b><span class='green'>Menor</span> Número:</b></div>"+
-				"<ul id='minorNumberSolution' class='inline horizontalList spaced'></ul>"+
-				"</div>"+
-				"<div>"+
-				"<div class='inline'><b><span class='green'>Maior</span> Número:</b></div>"+
-				"<ul id='majorNumberSolution' class='inline horizontalList spaced'></ul>"+
-				"</div>");
-		$("#showAnswer").attr('disabled', true);
-		checkMinorNumberAnswer();
-		checkMajorNumberAnswer();
-	}
+	calculateMinorNumber();
+	calculateMajorNumber();
+	$("#solution").removeClass("hidden");
+	$("#solution").html("<div><b>Resposta:</b></div>"+
+			"<div>"+
+			"<div class='inline'><b><span class='green'>Menor</span> Número:</b></div>"+
+			"<div><ul id='minorNumberSolution' class='horizontalList spaced'></ul></div>"+
+			"</div>"+
+			"<div>"+
+			"<div class='inline'><b><span class='green'>Maior</span> Número:</b></div>"+
+			"<div><ul id='majorNumberSolution' class='horizontalList spaced'></ul></div>"+
+			"</div>");
+	$("#showAnswer").attr('disabled', true);
+	checkMinorNumberAnswer();
+	checkMajorNumberAnswer();
 }
 
 function cleanAnswer(){
@@ -293,9 +308,22 @@ function cleanAnswer(){
 	$("#showAnswer").attr('disabled', false);
 }
 
+function setAMinimumWidthToBody(){
+	maxWidth = getFullWidth("minorBordered");
+	
+	$("body").attr("style","min-width:"+maxWidth+"px");
+
+}
+
+function getFullWidth(id){
+	//console.log("fullWidth "+id+" "+(parseInt($("#"+id).css("width"))+parseInt($("#"+id).css("padding-left"))+parseInt($("#"+id).css("padding-right"))+3*10));
+	return (parseInt($("#"+id).css("width"))+parseInt($("#"+id).css("padding-left"))+parseInt($("#"+id).css("padding-right"))+3*10); //Can't rely on margins. put 3*10px
+}
+
 function generateNewGame(){
 	cleanAnswer();
 	decideGameLevel();
+	setAMinimumWidthToBody();
 	generateOriginalNumber();
 	generateNewDigits();
 	

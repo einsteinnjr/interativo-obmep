@@ -35,27 +35,31 @@
 			<div class="inline"><b>Número original:</b> <span id="originalNumber"></span></div>
 		</div>
 		<div class="spaced">
-			<div class="bordered inline">
+			<div id="minorBordered" class="bordered inline width-medium">
 				<div class="spaced">
-					<div class="inline"><b>Novos dígitos:</b> <ul id="minorNewDigits" class="inline horizontalList spaced minorConnectedSortable"></ul></div>
+					<div class="inline"><b>Dígitos a adicionar:</b></div> 
+					<div><ul id="minorNewDigits" class="inline horizontalList spaced minorConnectedSortable"></ul></div>
 				</div>
 				<div class="spaced">
-					<div class="inline"><b><span class='green'>Menor</span> número formado:</b> <ul id="minorNumber" class="inline horizontalList spaced minorConnectedSortable"></ul></div>
-				</div>
-			</div>
-		</div>
-		<div class="spaced">
-			<div class="bordered inline">
-				<div class="spaced">
-					<div class="inline"><b>Novos dígitos:</b> <ul id="majorNewDigits" class="inline horizontalList spaced connectedSortable"></ul></div>
-				</div>
-				<div class="spaced">
-					<div class="inline"><b><span class='green'>Maior</span> número formado:</b> <ul id="majorNumber" class="inline horizontalList spaced majorConnectedSortable"></ul></div>
+					<div class="inline"><b><span class='green'>Menor</span> número formado:</b> </div>
+					<div> <ul id="minorNumber" class="inline horizontalList spaced minorConnectedSortable"></ul></div>
 				</div>
 			</div>
 		</div>
 		<div class="spaced">
-			<button id="showAnswer" type="button" class="btn btn-default btn-success" onClick="showAnswer();">Mostrar Resposta</button>
+			<div id="majorBordered" class="bordered inline width-medium">
+				<div class="spaced">
+					<div class="inline"><b>Dígitos a adicionar:</b> </div>
+					<div><ul id="majorNewDigits" class="inline horizontalList spaced connectedSortable"></ul></div>
+				</div>
+				<div class="spaced">
+					<div class="inline"><b><span class='green'>Maior</span> número formado:</b></div>
+					<div> <ul id="majorNumber" class="inline horizontalList spaced majorConnectedSortable"></ul></div>
+				</div>
+			</div>
+		</div>
+		<div class="spaced">
+			<button id="showAnswer" type="button" class="btn btn-default btn-success" onClick="checkAnswer();">Mostrar Resposta</button>
 		</div>	
 	</div>
 	<div id="solution" class="spaced hidden bordered"> </div>	
@@ -70,8 +74,8 @@
 	      <div class="modal-body">
 	      </div>
 	      <div class="modal-footer">
-		<button id='noButton' type="button" class="btn btn-default" data-dismiss="modal"></button>
-		<button id='yesButton' type="button" class="btn btn-primary" data-dismiss="modal" onclick="generateNewGame()">Sim</button>
+		<button id='noButton' type="button" class="btn btn-default" data-dismiss="modal">Não, continuar jogando.</button>
+		<button id='yesButton' type="button" class="btn btn-primary" data-dismiss="modal" onclick="showAnswer()">Sim, mostrar resposta.</button>
 	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->

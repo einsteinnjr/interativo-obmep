@@ -18,6 +18,7 @@ body{
 	padding: 2px; 
 	width: auto; 
 	cursor:pointer;
+	margin:1px;
 }
 
 #minorNumber{
@@ -32,7 +33,6 @@ body{
 
 .ui-state-disabled{
 	opacity: 1;
-	margin:1px;
 }
 
 .spaced{
@@ -49,10 +49,13 @@ body{
 	border-radius:5px;
 }
 
+.width-medium{
+	width:400px;
+}
+
 .inline{
 	display: inline-block; 
 }
-
 
 .lgray{
 	background-color: #f6f6f6; /*light-gray*/
