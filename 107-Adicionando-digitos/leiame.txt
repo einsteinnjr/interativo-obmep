@@ -55,6 +55,6 @@ teorema107.js
 index.php
 
 ## minimum height ##
-580px;
+720px;
 
 
