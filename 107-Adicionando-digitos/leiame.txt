@@ -1,0 +1,60 @@
+## name ##
+107 - Adicionando dígitos
+
+
+## module to be inserted ##
+Série:EF7
+Módulo: Números inteiros e números racionais/sétimo ano
+aula: Operações com números inteiros
+http://matematica.obmep.org.br/index.php/modulo/ver?modulo=22
+
+
+## libraries used, on folder "assets" ##
+assets:
+bootstrap
+jquery
+jquery-ui
+
+assets/bootstrap/css:
+bootstrap.css.map
+bootstrap.min.css
+bootstrap-theme.css.map
+bootstrap-theme.min.css
+
+assets/bootstrap/fonts:
+glyphicons-halflings-regular.eot
+glyphicons-halflings-regular.svg
+glyphicons-halflings-regular.ttf
+glyphicons-halflings-regular.woff
+
+assets/bootstrap/js:
+bootstrap.min.js
+
+assets/jquery:
+jquery-1.10.2.min.js
+jquery-1.10.2.min.map
+
+assets/jquery-ui/css:
+images
+jquery-ui.min.css
+
+assets/jquery-ui/css/images:
+ui-bg_glass_100_f6f6f6_1x400.png
+
+assets/jquery-ui/js:
+jquery-ui.min.js
+
+
+## specific files for that interactive, on folder "src" ##
+src/css:
+teorema107.css
+
+src/js:
+teorema107.js
+
+index.php
+
+## minimum height ##
+580px;
+
+
