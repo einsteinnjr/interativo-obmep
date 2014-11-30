@@ -7,21 +7,20 @@ body{
 }
 
 #requisites{
-	width:250px;
+	width:320px;
 	margin-top:4px;
 }
 
-#columns{
-	min-width:520px;
+.reqValues{
+	width:100px;
 }
 
+#columns{
+	min-width:580px;
+}
 
 #dRequisites{
 	float:right;
-}
-
-.reqValues{
-	width:80px;
 }
 
 .spaced{
@@ -56,16 +55,16 @@ td{
 }
 
 .weight{
-	width:40px;
-	height:60px;
+	width:45px;
+	height:65px;
 	border: solid 1px gray;
 	cursor:pointer;
 }
 
 .side{
 	text-align:center;
-	width:250px;
-	height:250px;	
+	width:270px;
+	height:270px;	
 }
 
 .plate_label{
@@ -80,34 +79,34 @@ td{
 	background-color: #2ECCFA; /*light-blue*/
 }
 
+.small-w{
+	width:190px;
+}
+
+.medium-w{
+	width:235px;
+}
+
+.large-w{
+	width:280px;
+}
+
+#balance{
+	width:580px;
+	margin:0 auto;
+}
+
 #weights{
-	height:70px;
+	height:75px;
 	padding:0px;
 	margin-right:10px;
 	margin-bottom:0px;
 	border:5px solid yellow;
 }
 
-.small-w{
-	width:170px;
-}
-
-.medium-w{
-	width:210px;
-}
-
-.large-w{
-	width:250px;
-}
-
-#balance{
-	width:520px;
-	margin:0 auto;
-}
-
 .plate{
-	width:250px;
-	height:80px;
+	width:270px;
+	height:85px;
 	padding-left:5px;
 	border-bottom: solid 20px #909090;
 	border-bottom-left-radius:20px; 
@@ -117,7 +116,7 @@ td{
 .column{
 	background-color: #909090; /*gray*/
 	width:10px;
-	height:250px;
+	height:270px;
 }
 
 

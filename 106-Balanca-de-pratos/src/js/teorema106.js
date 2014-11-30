@@ -153,9 +153,24 @@ function fillConditions(){
 	weightPlates();
 }
 
+function setAMinimumWidthToBody(){
+	maxWidth = getFullWidth("weights")+getFullWidth("requisites")>getFullWidth("columns")?getFullWidth("weights")+getFullWidth("requisites"):getFullWidth("columns");
+	console.log("one "+(getFullWidth("weights")+getFullWidth("requisites"))+" other "+getFullWidth("columns"));
+	
+	$("body").attr("style","min-width:"+maxWidth+"px");
+
+}
+
+function getFullWidth(id){
+	//console.log("fullWidth "+id+" "+(parseInt($("#"+id).css("width"))+parseInt($("#"+id).css("padding-left"))+parseInt($("#"+id).css("padding-right"))+2*10));
+	return (parseInt($("#"+id).css("width"))+parseInt($("#"+id).css("padding-left"))+parseInt($("#"+id).css("padding-right"))+3*10); //how #gameTable has margin:auto, we can't add margin, as the way it is. put 2*10px
+}
+	
+
 function generateNewGame(){
 	resetConditions();
 	decideGameLevel();
+	setAMinimumWidthToBody();
 	generateBlockWeight();	
 	fillConditions();
 };
