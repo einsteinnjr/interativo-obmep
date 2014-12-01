@@ -1,0 +1,4 @@
+Foram escolhidas secretamente um conjunto de casas e pintadas de preto. O número escrito em uma casa X do tabuleiro Gabarito representa quantas casas pretas escolhidas são vizinhas de X. Uma casa é vizinha de outra, caso divida um lado (vertical ou horizontal) ou divida um vértice com ela (diagonal).
+As casas do 2o tabuleiro, o interativo, são clicáveis. Enquanto selecionadas, se tornam escuras, atualizando os números do mesmo.
+Quais as casas devem ser selecionadas para que os números do tabuleiro interativo sejam os mesmos do gabarito? É possível escolher diversos tamanhos de tabuleiro e jogá-los clicando em "Novo Tabuleiro". Caso deseje descobrir a solução, basta clicar em "Mostrar Resposta."
+
