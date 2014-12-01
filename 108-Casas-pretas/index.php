@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
 	<meta charset="utf-8" />
-        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/css/jquery-ui.min.css">
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
         <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
 	<link rel="stylesheet" type="text/css" href="src/css/teorema108.css">
@@ -50,7 +49,7 @@
 	</div>	
 	<div id="solution" class="spaced hidden bordered"> 
 		<div class="spaced"><b>Solução:</b></div>
-		<div class="spaced">Uma forma de resolver o problema é montar um sistema de equações onde as variáveis a <sub>i,j</sub> representam se a casa [i,j] do tabuleiro é uma casa preta ou não, valendo 1 ou 0, respectivamente. Cada um dos números nas casas do Tabuleiro Gabarito gera uma equação. Resolvendo, temos a solução abaixo:</div>
+		<div class="spaced">Uma forma de resolver o problema é montar um sistema de equações onde as variáveis a <sub>i,j</sub> representam se a casa [i,j] do tabuleiro é uma casa preta ou não, valendo 1 ou 0, respectivamente. Cada um dos números nas casas do tabuleiro Gabarito gera uma equação. Resolvendo, temos a solução abaixo:</div>
 		<div id="dSolutionTable"><table id="solutionTable" class="margin-a"></table></div>
 		
 	</div>	
@@ -73,7 +72,6 @@
 	</div><!-- /.modal -->	
 
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
-	<script src="assets/jquery-ui/js/jquery-ui.min.js"></script>
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="src/js/teorema108.js"></script>
 
