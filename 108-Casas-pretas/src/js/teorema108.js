@@ -1,18 +1,31 @@
 
-var sideLength=4;
-var blackSquares=[], neighbors=[], auxArray1, auxArray2;
+var SIDE_LENGTH_SMALL = 3;
+var SIDE_LENGTH_MEDIUM = 4;
+var SIDE_LENGTH_LARGE = 5;
 
-function generateTable(){
+var sideLength=3;
+var blackSquares=[], neighbors=[], userBlackSquares=[], auxArray1, auxArray2, auxArray3;
+
+function decideSideLength(myRadio){
+	if(myRadio.value==="small") sideLength = SIDE_LENGTH_SMALL;
+	else if(myRadio.value==="medium") sideLength = SIDE_LENGTH_MEDIUM;
+	else if(myRadio.value==="large") sideLength = SIDE_LENGTH_LARGE;
+}
+
+function generateTables(){
 	var i,j;
 	for(i=0; i<sideLength; i++){
 		auxArray1=[];
 		auxArray2=[];
+		auxArray3=[];
 		for(j=0; j<sideLength; j++){
 			auxArray1.push(Math.floor(Math.random()*2));//1 means black.
 			auxArray2.push(0);
+			auxArray3.push(0);
 		}
 		blackSquares.push(auxArray1);
 		neighbors.push(auxArray2);
+		userBlackSquares.push(auxArray3);
 	}
 	fillNeighborsArray();
 };
@@ -66,12 +79,144 @@ function printTable(array){
 	}
 }
 
-function generateNewGame(){
-	generateTable();
-	console.log("blackSquares");
-	printTable(blackSquares);
-	console.log("neighbors");
-	printTable(neighbors);
+function fillArrayTableHtml(array, id, isClickable, needsColoring){
+	var i, j, aux, html, clickableClass, toBeColored;
+	html="";
+	clickableClass="";
+	if(isClickable) clickableClass = "clickable ";
+	for(j=0; j<sideLength; j++){//line
+		html+="<tr>";
+		for(i=0; i<sideLength; i++){//column
+			toBeColored = "";
+			if(needsColoring && 
+				blackSquares[i][j]===1) toBeColored = "black ";
+			html+="<td id='"+id[0]+"_"+i+"_"+j+"' class='"+clickableClass+toBeColored+"' value="+array[i][j]+" ><b><i class='glyphicon glyphicon-ok hidden'></i> "+array[i][j]+"</b></td>";			
+		}
+		html+="</tr>";
+	}
+	$("#"+id+"Table").html(html);
+}
+
+function updateSquare(id, delta){
+	console.log(id);
+	value = parseInt($(id).attr("value")); 
+	$(id).attr("value",(value+delta));
+	$(id).html("<b>"+(value+delta)+"</b>");
+}
+
+function checkIfNumberIsCorrect(_id){
+	$i = $("#u"+_id).find("i");
+	if($("#n"+_id).attr("value") === $("#u"+_id).attr("value")){//correct value on square.
+		$("#n"+_id).addClass("bg-green");
+		$i = $("#n"+_id).find("i");
+		$i.removeClass("hidden");
+	}
+	else{
+		$("#n"+_id).removeClass("bg-green");
+		$i = $("#n"+_id).find("i");
+		$i.addClass("hidden");
+	}
 	
+}
+
+function checkInitiallyWholeTableForCorrectNumbers(){
+	var i,j;
+	for(j=0; j<sideLength; j++){//line
+		for(i=0; i<sideLength; i++){//column
+			_id = "_"+i+"_"+j;
+			checkIfNumberIsCorrect(_id);
+		}
+	}
+}
+
+function updateUserBlackSquaresNeighbors(i, j){
+	var value=0, delta=0, _id;
+	_id="_"+i+"_"+j;
+
+	if($("#u"+_id).hasClass("black")) delta=-1;
+	else delta=1;
+
+	$("#u"+_id).toggleClass("black");
+
+	if(i > 0){//can go left
+		if(j > 0){//can go up
+			_id= "_"+(i-1)+"_"+(j-1); //up-left
+			updateSquare("#u"+_id, delta);
+			checkIfNumberIsCorrect(_id);
+		}
+		{
+			_id= "_"+(i-1)+"_"+(j); //left
+			updateSquare("#u"+_id, delta);
+			checkIfNumberIsCorrect(_id);
+		}
+		if(j < sideLength-1){//can go down
+			_id= "_"+(i-1)+"_"+(j+1); //down-left
+			updateSquare("#u"+_id, delta);
+			checkIfNumberIsCorrect(_id);
+		}
+	}
+
+	if(j > 0){//can go up
+		_id= "_"+(i)+"_"+(j-1); //up
+		updateSquare("#u"+_id, delta);
+		checkIfNumberIsCorrect(_id);
+	}
+
+	if(j < sideLength-1){//can go down
+		_id= "_"+(i)+"_"+(j+1); //down
+		updateSquare("#u"+_id, delta);
+		checkIfNumberIsCorrect(_id);
+	}
+
+	if(i < sideLength-1){//can go right
+		if(j > 0){//can go up
+			_id= "_"+(i+1)+"_"+(j-1); //up-right
+			updateSquare("#u"+_id, delta);
+			checkIfNumberIsCorrect(_id);
+		}
+		{
+			_id= "_"+(i+1)+"_"+(j); //right
+			updateSquare("#u"+_id, delta);
+			checkIfNumberIsCorrect(_id);
+		}
+		if(j < sideLength-1){//can go down
+			_id= "_"+(i+1)+"_"+(j+1); //down-right
+			updateSquare("#u"+_id, delta);
+			checkIfNumberIsCorrect(_id);
+		}
+	}
+};
+
+function clickableSquareSetup(){
+	$(".clickable").click(function(){
+		coords = $(this).attr("id").split("_");
+		updateUserBlackSquaresNeighbors(parseInt(coords[1]), parseInt(coords[2]));
+	});
+}
+
+function showAnswer(){
+	fillArrayTableHtml(neighbors,"solution", false, true);//neighbors has the whole data.
+	$("#solution").removeClass("hidden");
+	$("#showAnswer").attr("disabled", true);
+}
+
+function resetState(){
+	$("#neighborsTable").empty();
+	$("#userBlackSquaresTable").empty();
+	$("#solutionTable").empty();
+	blackSquares=[]; 
+	neighbors=[]; 
+	userBlackSquares=[];
+	$("#solution").addClass("hidden");
+	$("#showAnswer").attr("disabled", false);
+}
+
+function generateNewGame(){
+	resetState();	
+	generateTables();
+	fillArrayTableHtml(neighbors,"neighbors", false, false);
+	fillArrayTableHtml(userBlackSquares,"userBlackSquares", true, false);
+	clickableSquareSetup();
+	checkInitiallyWholeTableForCorrectNumbers();
 };
 

@@ -6,41 +6,70 @@ body{
   font-size: 15px;
 }
 
-.horizontalList { 
-	list-style-type: none; 
-	margin: 0; 
-	padding: 0;
+td{
+	padding:10px;
+	text-align: center;
+	border: 1px solid gray; /*light-gray*/
+	min-width:59px;
+	min-height:42px;
+	background-color:white;
+	color:black;
 }
 
-.horizontalList li { 
-	display: inline-block; 
-	text-align: center; 
-	padding: 2px; 
-	width: auto; 
+.clickable{
 	cursor:pointer;
-	margin:1px;
 }
 
-#minorNumber{
-	padding: 3px;
-	border: 1px solid black;
-}
-
-#majorNumber{
-	padding: 3px;
-	border: 1px solid black;
-}
-
-.ui-state-disabled{
-	opacity: 1;
+.black{
+	background-color:#BDBDBD;
 }
 
 .spaced{
 	margin:5px;
 }
 
+.spaced-h-large{
+	margin-right:40px;
+}
+
+.margin-a{
+	margin:auto;
+}
+
+.wrapper{
+	position:relative;
+}
+
+.right,.left{
+ position:absolute;
+}
+
+.right{
+	right:0;
+}
+
+.left{
+	left:0;
+}
+
+.width-half{
+	width:45%;
+}	
+
 .hidden{
     visibility: hidden;
+}
+
+.float-l{
+	float:left;
+}
+
+.float-r{
+	float:right;
+}
+
+.clear-b{
+	clear:both;
 }
 
 .bordered{

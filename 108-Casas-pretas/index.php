@@ -13,30 +13,47 @@
 <body>	
 	<div class="spaced bordered">	
 		<div class="spaced">
-			<strong>- Escolha o nivel desejado: </strong>
+			<strong>- Escolha o tamanho do tabuleiro: </strong>
 			<div>
 				<label class="radio-inline">
-				  <input type="radio" name="gameLevel" value="easy" checked> Fácil
+				  <input type="radio" name="sideLengthRadio" value="small" onclick="decideSideLength(this)" checked> Pequeno
 				</label>
 				<label class="radio-inline">
-				  <input type="radio" name="gameLevel" value="medium"> Médio
+				  <input type="radio" name="sideLengthRadio" value="medium" onclick="decideSideLength(this)"> Médio
 				</label>
 				<label class="radio-inline">
-				  <input type="radio" name="gameLevel" value="hard"> Difícil
+				  <input type="radio" name="sideLengthRadio" value="large" onclick="decideSideLength(this)"> Grande
 				</label>
 			</div>
 		</div>	
 		<div class="spaced">
-			<button id="newNumberButton" type="button" class="btn btn-default btn-primary" onClick="generateNewGame();">Novo Número</button>
+			<button id="newTableButton" type="button" class="btn btn-default btn-primary" onClick="generateNewGame();">Novo Tabuleiro</button>
 		</div>	
 	</div>
-	<div class="bordered spaced">	
-		<div id="neighborsTable"></div>
-		<div class="spaced">
-			<button id="showAnswer" type="button" class="btn btn-default btn-success" onClick="checkAnswer();">Mostrar Resposta</button>
-		</div>	
+	<div class="bordered spaced clear-b">
+		<div class="spaced inline width-half">
+			<div>
+				<div class="spaced"><b>Gabarito:</b></div>
+				<table id="neighborsTable"></table>
+			</div>
+		</div>
+		<div class="spaced inline width-half">
+			<div>
+				<div class="spaced"><b>Tabuleiro interativo:</b></div>
+				<table id="userBlackSquaresTable"></table>
+			</div>
+		</div>
+
 	</div>
-	<div id="solution" class="spaced hidden bordered"> </div>	
+	<div class="spaced clear-b">
+			<button id="showAnswer" type="button" class="btn btn-default btn-success" onClick="showAnswer();">Mostrar Resposta</button>
+	</div>	
+	<div id="solution" class="spaced hidden bordered"> 
+		<div class="spaced"><b>Solução:</b></div>
+		<div class="spaced">Uma forma de resolver o problema é montar um sistema de equações onde as variáveis a <sub>i,j</sub> representam se a casa [i,j] do tabuleiro é uma casa preta ou não, valendo 1 ou 0, respectivamente. Cada um dos números nas casas do Tabuleiro Gabarito gera uma equação. Resolvendo, temos a solução abaixo:</div>
+		<div id="dSolutionTable"><table id="solutionTable" class="margin-a"></table></div>
+		
+	</div>	
 
 	<div id="modalInfo" class="modal fade">
 	  <div class="modal-dialog">
