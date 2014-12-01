@@ -211,12 +211,24 @@ function resetState(){
 	$("#showAnswer").attr("disabled", false);
 }
 
+function setAMinimumWidthToBody(){
+	maxWidth = getFullWidth("neighborsTable")+getFullWidth("userBlackSquaresTable");
+	console.log("maximum "+maxWidth);
+	$("body").attr("style","min-width:"+maxWidth+"px");
+}
+
+function getFullWidth(id){
+	//console.log("fullWidth "+id+" "+(parseInt($("#"+id).css("width"))+parseInt($("#"+id).css("padding-left"))+parseInt($("#"+id).css("padding-right"))+3*10));
+	return (parseInt($("#"+id).css("width"))+parseInt($("#"+id).css("padding-left"))+parseInt($("#"+id).css("padding-right"))+3*10); //Can't rely on margins. put 3*10px
+}
+
 function generateNewGame(){
 	resetState();	
 	generateTables();
 	fillArrayTableHtml(neighbors,"neighbors", false, false);
 	fillArrayTableHtml(userBlackSquares,"userBlackSquares", true, false);
 	clickableSquareSetup();
+	setAMinimumWidthToBody();
 	checkInitiallyWholeTableForCorrectNumbers();
 };
 

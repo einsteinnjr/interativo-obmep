@@ -1,0 +1,49 @@
+## name ##
+108 - Casas pretas
+
+
+## module to be inserted ##
+Série:EF8
+Módulo: Sistemas de Equações do Primeiro Grau/outavo ano
+aula: Sistemas de Equações do Primeiro Grau
+http://matematica.obmep.org.br/index.php/modulo/ver?modulo=24
+
+
+## libraries used, on folder "assets" ##
+assets:
+bootstrap
+jquery
+
+assets/bootstrap/css:
+bootstrap.css.map
+bootstrap.min.css
+bootstrap-theme.css.map
+bootstrap-theme.min.css
+
+assets/bootstrap/fonts:
+glyphicons-halflings-regular.eot
+glyphicons-halflings-regular.svg
+glyphicons-halflings-regular.ttf
+glyphicons-halflings-regular.woff
+
+assets/bootstrap/js:
+bootstrap.min.js
+
+assets/jquery:
+jquery-1.10.2.min.js
+jquery-1.10.2.min.map
+
+
+## specific files for that interactive, on folder "src" ##
+src/css:
+teorema108.css
+
+src/js:
+teorema108.js
+
+index.php
+
+## minimum height ##
+810px;
+
+
