@@ -1,4 +1,4 @@
-Dado um número, devemos adicionar os novos dígitos para montar o menor e o maior número possíveis (os dígitos do número original devem aparecer na ordem inicial, podendo ter dígitos entre eles).
-Para isso, basta clicar e arrastarmos os novos dígitos para a posição que queiramos no novo número formado.
-Assim que montado os 2 números, com todos os dígitos novos, podemos verificá-los clicando em "Mostrar Resposta".
+Dado um número, devemos adicionar os novos dígitos para montarmos o Menor e o Maior número possíveis (os dígitos do número original devem aparecer na ordem inicial, podendo ter dígitos entre eles).
+Para isso, basta clicarmos e arrastarmos os novos dígitos para a posição que queiramos, agregando-o ao novo número formado.
+Após inserir todos os novos dígitos do Menor e Maior número a formar, podemos conferir a solução clicando em "Mostrar Resposta".
 É possível escolher outros níveis de dificuldade e jogá-los clicando em "Novo Número".
