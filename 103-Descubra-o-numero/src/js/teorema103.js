@@ -30,7 +30,7 @@ function decideGameLevel(){
 }
 
 function thinkNumber(){
-	thinkedNumber=Math.floor(Math.random()*maxNumber);
+	thinkedNumber=1+Math.floor(Math.random()*(maxNumber));
 	//alert("thinked "+thinkedNumber);
 };
 
