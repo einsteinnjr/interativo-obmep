@@ -75,7 +75,7 @@ function printTable(array){
 		for(i=0; i<sideLength; i++){//column
 			aux += array[i][j]+" ";
 		}
-		console.log(aux);
+		//console.log(aux);
 	}
 }
 
@@ -98,7 +98,7 @@ function fillArrayTableHtml(array, id, isClickable, needsColoring){
 }
 
 function updateSquare(id, delta){
-	console.log(id);
+	//console.log(id);
 	value = parseInt($(id).attr("value")); 
 	$(id).attr("value",(value+delta));
 	$(id).html("<b>"+(value+delta)+"</b>");
@@ -213,7 +213,7 @@ function resetState(){
 
 function setAMinimumWidthToBody(){
 	maxWidth = getFullWidth("neighborsTable")+getFullWidth("userBlackSquaresTable");
-	console.log("maximum "+maxWidth);
+	//console.log("maximum "+maxWidth);
 	$("body").attr("style","min-width:"+maxWidth+"px");
 }
 
