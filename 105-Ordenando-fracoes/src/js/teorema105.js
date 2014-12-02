@@ -230,7 +230,7 @@ function answerIfListIsCorrect(isCorrectList){
 function fillSolution(){
 	$("#solution").removeClass("hidden");
 	$("#solution").html("<div> <strong> Solução:</strong> </br>A lista em ordem crescente é: <ul id='sortedList' class='horizontalList'></ul></div>"+
-	"<div>O que pode ser constatado ao escrevermos todas as frações com um mesmo denominador, que pode ser qualquer múltiplo comum dos denominadores, por exemplo, mmc = "+lcm+" :<ul id='reducedSortedList' class='horizontalList'></ul></div>");
+	"<div>O que pode ser constatado ao escrevermos todas as frações com um mesmo denominador, que pode ser <b>qualquer</b> múltiplo comum dos denominadores, por exemplo, "+lcm+" :<ul id='reducedSortedList' class='horizontalList'></ul></div>");
 }
 
 function toggleDisableOnListAndButtons(bool){
