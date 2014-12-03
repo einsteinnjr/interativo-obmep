@@ -43,7 +43,7 @@
 		</div>
 	</div>	
 	<div class="bordered clear-b spaced-v min-width">
-		<table id="questions" class="table table-striped bordered width center-img">
+		<table id="questions" class="table table-striped bordered center-img table-responsive">
 		</table>
 	</div>
 	<div>
