@@ -4,7 +4,7 @@
 
 ## module to be inserted ##
 Série:EF8
-Módulo: Sistemas de Equações do Primeiro Grau/outavo ano
+Módulo: Sistemas de Equações do Primeiro Grau/oitavo ano
 aula: Sistemas de Equações do Primeiro Grau
 http://matematica.obmep.org.br/index.php/modulo/ver?modulo=24
 
