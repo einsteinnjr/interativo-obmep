@@ -6,9 +6,6 @@
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
         <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
 	<link rel="stylesheet" type="text/css" href="src/css/teorema106.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</script>
-	
 </head>
 <body>	
 	<div class="spaced bordered">	

@@ -6,8 +6,6 @@
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
         <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
 	<link rel="stylesheet" type="text/css" href="src/css/teorema102.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script type="text/javascript" src="src/js/teorema102.js"></script>
 </head>
 <body>
 <div class="spaced-v">
@@ -68,6 +66,7 @@
 
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
 	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
+        <script type="text/javascript" src="src/js/teorema102.js"></script>
 	
 	<div>
 		<div id="dAnswerJXGBox" class="spaced-v bordered">		
