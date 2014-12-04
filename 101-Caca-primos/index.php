@@ -33,14 +33,12 @@
 			  <input type="radio" name="tableSize" value="large" onclick="decideSideLength(this)" > Grande
 			</label>
 		</div>
+		<div>
+			<button type="button" class="btn btn-default btn-primary spaced" onClick="generateNewGame();">Novo Jogo</button>
+		</div>	
 	</div>
-	<div>
-		<button type="button" class="btn btn-default btn-primary spaced" onClick="generateNewGame();">Novo Jogo</button>
-	</div>	
 	<div id="dGameTable" class="spaced  bordered">	
 		<table id="gameTable" class="table-striped" ></table>			
-	</div>
-	<div class="spaced bordered">
 		<div id="result" class="form-inline">
 			<div>
 				<label id="lPrimesFound"><b>Primos achados: <span id="numberOfPrimesFound" class="correct">0</span> </b></label>
