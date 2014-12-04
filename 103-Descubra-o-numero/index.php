@@ -41,12 +41,12 @@
 		</div>
 	</div>	
 	<div class="bordered clear-b spaced-v min-width">
-		<table id="questions" class="table table-striped bordered center-img table-responsive">
+		<table id="questions" class="table table-striped bordered center-img">
 		</table>
 	</div>
 	<div>
 	  <button id="showExplanation" type="button" class="btn btn-default hidden spaced-v" onClick="showExplanation();">Mostrar Explicação</button> 
-	  <div id="explanation"></div>
+	  <div id="explanation" class="min-width"></div>
 	</div>	
 
 	<div id="modalInfo" class="modal fade">

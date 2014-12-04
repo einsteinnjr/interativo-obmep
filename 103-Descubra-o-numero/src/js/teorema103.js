@@ -213,6 +213,7 @@ $("#showExplanation").after("<div id='explanation' class='bordered justify'><p>A
 	document.getElementById("showExplanation").disabled=true;
 }
 
+/*
 function setAMinimumWidthToBody(){
 	maxWidth=getFullWidth("questions");
 	$("body").attr("style","min-width:"+maxWidth+"px");
@@ -222,11 +223,11 @@ function getFullWidth(id){
 	//console.log("fullWidth "+id+" 	"+(parseInt($("#"+id).css("width"))+parseInt($("#"+id).css("padding-left"))+parseInt($("#"+id).css("padding-right"))+2*10));
 	return (parseInt($("#"+id).css("width"))+parseInt($("#"+id).css("padding-left"))+parseInt($("#"+id).css("padding-right"))+3*10); //Margins can be computed in a wrong way. So we put 3*10px
 }	
-
+*/
 function generateNewGame(){
 	actualQuestion=1;
 	decideGameLevel();
-	setAMinimumWidthToBody();
+	//setAMinimumWidthToBody();
 	thinkNumber();
 	generateInterval();
 	generateNumberOfQuestions();
