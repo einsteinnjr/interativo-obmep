@@ -90,7 +90,7 @@ function fillArrayTableHtml(array, id, isClickable, needsColoring){
 			toBeColored = "";
 			if(needsColoring && 
 				blackSquares[i][j]===1) toBeColored = "black ";
-			html+="<td id='"+id[0]+"_"+i+"_"+j+"' class='"+clickableClass+toBeColored+"' value="+array[i][j]+" ><b><i class='glyphicon glyphicon-ok hidden'></i> "+array[i][j]+"</b></td>";			
+			html+="<td id='"+id[0]+"_"+i+"_"+j+"' class='"+clickableClass+toBeColored+"' value="+array[i][j]+" ><i class='glyphicon glyphicon-ok hidden'></i> "+array[i][j]+"</td>";			
 		}
 		html+="</tr>";
 	}
@@ -101,7 +101,7 @@ function updateSquare(id, delta){
 	//console.log(id);
 	value = parseInt($(id).attr("value")); 
 	$(id).attr("value",(value+delta));
-	$(id).html("<b>"+(value+delta)+"</b>");
+	$(id).html((value+delta));
 }
 
 function checkIfNumberIsCorrect(_id){

@@ -66,6 +66,10 @@ td{
 	border-radius:5px;
 }
 
+.justify{
+	text-align:justify;
+}
+
 .inline{
 	display: inline-block; 
 }

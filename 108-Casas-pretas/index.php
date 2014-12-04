@@ -42,8 +42,8 @@
 	</div>	
 	<div id="solution" class="spaced hidden bordered"> 
 		<div class="spaced"><b>Solução:</b></div>
-		<div class="spaced">Uma forma de resolver o problema é montar um sistema de equações onde as variáveis a <sub>i,j</sub> representam se a casa [i,j] do tabuleiro é uma casa preta ou não, valendo 1 ou 0, respectivamente. Cada um dos números nas casas do tabuleiro Gabarito gera uma equação. Resolvendo, temos a solução abaixo:</div>
-		<div id="dSolutionTable"><table id="solutionTable" class="spaced margin-a"></table></div>
+		<div class="spaced justify">Uma forma de resolver o problema é montar um sistema de equações onde as variáveis a <sub>i,j</sub> representam se a casa [i,j] do tabuleiro é uma casa preta ou não, valendo 1 ou 0, respectivamente. Cada um dos números nas casas do tabuleiro Gabarito gera uma equação. Resolvendo, temos a solução abaixo:</div>
+		<div id="dSolutionTable" class="spaced padding"><table id="solutionTable" class="spaced padding margin-a"></table></div>
 		
 	</div>	
 
