@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+body{
+  padding:5px;
+  font-family: "PT Serif", serif;
+  font-size: 15px;
+}
+
+.horizontalList { 
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0;
+}
+
+.horizontalList li { 
+	display: inline-block; 
+	text-align: center; 
+	padding: 2px; 
+	width: auto; 
+	cursor:pointer;
+	margin:1px;
+}
+
+#minorNumber{
+	padding: 3px;
+	border: 1px solid black;
+}
+
+#majorNumber{
+	padding: 3px;
+	border: 1px solid black;
+}
+
+.ui-state-disabled{
+	opacity: 1;
+}
+
+.spaced{
+	margin:5px;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.bordered{
+	padding:5px;
+	border:1px solid gray;
+	border-radius:5px;
+}
+
+.width-medium{
+	width:420px;
+}
+
+.inline{
+	display: inline-block; 
+}
+
+.lgray{
+	background-color: #f6f6f6; /*light-gray*/
+}
+
+.blue{
+	background-color: #2ECCFA; /*light-blue*/
+}
+
+#solution{
+	background-color: #fbf0cc; /*light-orange*/
+}
+
+.bg-red{
+    background-color: #F5A9A9; /*red*/ 
+}
+
+.bg-green{ 
+    background-color: #58FAAC; /*green*/
+}
+
+.green{
+    color: #04B431; /*dark green*/
+}
+
+.red{
+    color: #FE2E2E; /*dark red*/
+}
+
+
