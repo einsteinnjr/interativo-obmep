@@ -86,10 +86,16 @@
 	<script>
 	$(function() {
 		$( "#minorNewDigits, #minorNumber" ).sortable({
+			distance: 5,
+			tolerance: "pointer",
+			forcePlaceholderSize: true,
 			cancel: ".ui-state-disabled",
 			connectWith: ".minorConnectedSortable"
 		}).disableSelection();
 		$( "#majorNewDigits, #majorNumber" ).sortable({
+			distance: 5,
+			tolerance: "pointer",
+			forcePlaceholderSize: true,
 			cancel: ".ui-state-disabled",
 			connectWith: ".majorConnectedSortable"
 		}).disableSelection();
