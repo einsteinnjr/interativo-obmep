@@ -1,0 +1,2 @@
+Dado um conjunto de números inteiros, devemos arrastá-los aos retângulos amarelos, formando uma expressão numérica onde devemos obter o maior valor possível. Caso deseje, pode-se clicar em "Mostrar dica" a fim de saber o maior valor procurado. É possível escolher o nível de dificuldade do interativo e clicar em "Nova Expressão" para outro desafio.
+

@@ -1,0 +1,1 @@
+Números inteiros se diferenciam entre si em grandeza e sinal. Dependendo de como os combinamos em uma expressão, podem resultar vários valores. Qual é o maior?
