@@ -66,8 +66,8 @@ function generateExpressionPlaceholders(){
 	var newInteger;
 	var ids="";
 	for(i=0; i< numberOfIntegers/2; i++){
-		partHtml="<ul id='p"+i+"' class='inline horizontalList connectedSortable placeholder'></ul>x";
-		partHtml+="<ul id='p"+i+"_' class='inline horizontalList connectedSortable placeholder'></ul>";
+		partHtml="<div class='inline'><ul id='p"+i+"' class='inline horizontalList connectedSortable placeholder'></ul>x";
+		partHtml+="<ul id='p"+i+"_' class='inline horizontalList connectedSortable placeholder'></ul></div>";
 		ids+="#p"+i+", #p"+i+"_";
 		expressionHtml+=partHtml;
 		if(i< numberOfIntegers/2 -1) {
@@ -75,7 +75,7 @@ function generateExpressionPlaceholders(){
 			ids+=", ";
 		}
 	}
-	expressionHtml+=" = <span id='result'>0</span>"
+	expressionHtml+=" <div class='inline'> = <span id='result'>0</span></div>"
 	$("#expression").html(expressionHtml);
 	console.log("#integers"+ids );
 	$( "#integers, "+ids ).sortable({
@@ -150,15 +150,15 @@ function calculateGreedyAnswer(){//sorted, group in pairs : (1,2),(3,4)...(n-1,n
 	result=0
 	for(i=0; i< numberOfIntegers/2; i++){
 		pair = getNextRandomNotUsedPair();
-		partHtml="<ul id='s"+i+"' class='inline horizontalList'><li class='inline ui-state-default'>"+integers[2*pair]+"</li></ul>x";
-		partHtml+="<ul id='s"+i+"_' class='inline horizontalList'><li class='ui-state-default'>"+integers[2*pair+1]+"</il></ul>";
+		partHtml="<div class='inline'><ul id='s"+i+"' class='inline horizontalList'><li class='inline ui-state-default'>"+integers[2*pair]+"</li></ul>x";
+		partHtml+="<ul id='s"+i+"_' class='inline horizontalList'><li class='ui-state-default'>"+integers[2*pair+1]+"</il></ul></div>";
 		result+=integers[2*pair]*integers[2*pair+1];
 		solutionExpressionHtml+=partHtml;
 		if(i< numberOfIntegers/2 -1) {
 			solutionExpressionHtml+=" + ";
 		}
 	}
-	solutionExpressionHtml+=" = <span id='solutionResult'>"+result+"</span>";
+	solutionExpressionHtml+=" <div class='inline'> = <span id='solutionResult'>"+result+"</span></div>";
 	maxSum = result;
 	$("#solutionExpression").html(solutionExpressionHtml);
 }

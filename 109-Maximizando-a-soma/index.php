@@ -30,7 +30,7 @@
 	<div class="bordered spaced">	
 		<div class="spaced">
 			<div class="inline"><b>Números Inteiros:</b></div> 
-			<div id="dintegers"><ul id="integers" class="horizontalList spaced connectedSortable"></ul></div>
+			<div id="dintegers"><ul id="integers" class="horizontalList spaced connectedSortable numbers-1line"></ul></div>
 		</div>
 		<div class="spaced">
 			<div class="inline"><b>Expressão de maior valor:</b> </div>

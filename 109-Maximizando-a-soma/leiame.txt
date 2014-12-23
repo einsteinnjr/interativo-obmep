@@ -1,5 +1,5 @@
 ## name ##
-107 - Adicionando dígitos
+109 - Maximizando a soma
 
 
 ## module to be inserted ##
@@ -47,12 +47,13 @@ jquery-ui.min.js
 
 ## specific files for that interactive, on folder "src" ##
 src/css:
-teorema107.css
+teorema109.css
 
 src/js:
-teorema107.js
+teorema109.js
 
 index.php
+
 
 ## minimum height ##
 720px;

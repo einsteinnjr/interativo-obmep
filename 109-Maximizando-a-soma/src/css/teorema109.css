@@ -23,13 +23,19 @@ body{
 	margin:2px;
 }
 
-#integers{
+.numbers-1line{
 	width:240px;/* n*width+(n-1)*2*margin */
 	height:27px;
 }
 
+.numbers-2lines{
+	width:196px;/* n*width+(n-1)*2*margin */
+	height:54px;/* in 2 columns */
+}
+
 .placeholder{
 	padding:0;
+	margin-bottom:4px;
 	width:24px; /* width+2*margin */
 	height:31px; /* height+2*margin */
 	background-color:yellow;
