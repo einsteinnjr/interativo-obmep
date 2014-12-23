@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="src/css/teorema109.css">
 </head>
 <body>	
-	<div class="spaced bordered">	
+	<div class="spaced bordered">
 		<div class="spaced">
 			<strong>- Escolha o nivel desejado: </strong>
 			<div>
@@ -22,44 +22,32 @@
 				  <input type="radio" name="gameLevel" value="hard"> Difícil
 				</label>
 			</div>
-		</div>	
+		</div>			
 		<div class="spaced">
-			<button id="newNumberButton" type="button" class="btn btn-default btn-primary" onClick="generateNewGame();">Novo Número</button>
+			<button id="newGameButton" type="button" class="btn btn-default btn-primary" onClick="generateNewGame();">Nova Expressão</button>
 		</div>	
 	</div>
 	<div class="bordered spaced">	
 		<div class="spaced">
-			<div class="inline"><b>Número original:</b> <span id="originalNumber"></span></div>
+			<div class="inline"><b>Números Inteiros:</b></div> 
+			<div id="dintegers"><ul id="integers" class="horizontalList spaced connectedSortable"></ul></div>
 		</div>
 		<div class="spaced">
-			<div id="minorBordered" class="bordered inline width-medium">
-				<div class="spaced">
-					<div class="inline"><b>Dígitos a adicionar:</b></div> 
-					<div><ul id="minorNewDigits" class="inline horizontalList spaced minorConnectedSortable"></ul></div>
-				</div>
-				<div class="spaced">
-					<div class="inline"><b><span class='green'>Menor</span> número formado:</b> </div>
-					<div> <ul id="minorNumber" class="inline horizontalList spaced minorConnectedSortable"></ul></div>
-				</div>
-			</div>
+			<div class="inline"><b>Expressão de maior valor:</b> </div>
+			<div class="spaced"> <div id="expression" class="spaced"></div></div>
 		</div>
-		<div class="spaced">
-			<div id="majorBordered" class="bordered inline width-medium">
-				<div class="spaced">
-					<div class="inline"><b>Dígitos a adicionar:</b> </div>
-					<div><ul id="majorNewDigits" class="inline horizontalList spaced connectedSortable"></ul></div>
-				</div>
-				<div class="spaced">
-					<div class="inline"><b><span class='green'>Maior</span> número formado:</b></div>
-					<div> <ul id="majorNumber" class="inline horizontalList spaced majorConnectedSortable"></ul></div>
-				</div>
-			</div>
+		<div class="big-spaced">
+			<button id="hintButton" type="button" class="btn btn-default" onClick="tellMaximumExpressionValue();">Mostrar Dica</button>		
+			<span id="hint"> </span>
 		</div>
-		<div class="spaced">
-			<button id="showAnswer" type="button" class="btn btn-default btn-success" onClick="checkAnswer();">Mostrar Resposta</button>
+		<div class="big-spaced">
+			<button id="showAnswer" type="button" class="btn btn-default btn-success" onClick="showAnswer();">Mostrar Resposta</button>
 		</div>	
 	</div>
-	<div id="solution" class="spaced hidden bordered"> </div>	
+	<div id="solution" class="spaced hidden bordered"> 
+		<div class="inline"><b>Solução:</b> </div>
+		<div class="spaced"> <div id="solutionExpression" class="spaced"></div></div>
+	</div>	
 
 	<div id="modalInfo" class="modal fade">
 	  <div class="modal-dialog">
@@ -83,25 +71,7 @@
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="src/js/teorema109.js"></script>
 
-	<script>
-	$(function() {
-		$( "#minorNewDigits, #minorNumber" ).sortable({
-			distance: 5,
-			tolerance: "pointer",
-			forcePlaceholderSize: true,
-			cancel: ".ui-state-disabled",
-			connectWith: ".minorConnectedSortable"
-		}).disableSelection();
-		$( "#majorNewDigits, #majorNumber" ).sortable({
-			distance: 5,
-			tolerance: "pointer",
-			forcePlaceholderSize: true,
-			cancel: ".ui-state-disabled",
-			connectWith: ".majorConnectedSortable"
-		}).disableSelection();
-	});
-        
-	
+	<script>	
 	$(document).ready(function () {
 		generateNewGame();
 	});
