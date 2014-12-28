@@ -80,6 +80,7 @@
 	<div class="col-xs-6 col-sm-3 sidebar-offcanvas accordion" id="sidebar" role="navigation">
 	<h3>Dezembro 2014</h3> 
   	 <div class="list-group">
+		<a href="110-Comparando-retangulos/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">110 - Comparando retangulos</a>     
 		<a href="109-Maximizando-a-soma/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">109 - Maximizando a soma</a>     
           </div>  
 	<h3>Novembro 2014</h3> 
