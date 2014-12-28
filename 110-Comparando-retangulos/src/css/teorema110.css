@@ -6,11 +6,6 @@ body{
   font-size: 15px;
 }
 
-#sidesTable {
-    width: 430px;
-    text-align:center;
-}
-
 td{
     padding:4px;
     border: 1px solid #356AA0;
@@ -64,8 +59,7 @@ p{
    text-align:center;
 }
 
-#answerExplanation{
-	min-width:430px;
+.answer-bg{
 	background-color: #fbf0cc; /*light-orange*/
 }
 

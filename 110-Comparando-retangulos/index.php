@@ -14,30 +14,32 @@
 <div class="spaced-v bordered">
 	<div id="questionJXGBox" class="jxgbox center-img"></div>
 </div>	
+<div><b>Fonte do Problema:</b> <a href="http://clubes.obmep.org.br/blog/probleminha-divisao-justa/">Clubes Obmep - Problema Divisão Justa</a>
+</div>
 
 <div class="spaced-v">
-  <button id="showAnswer" type="button" class="btn btn-default btn-success spaced-h" onClick="showAnswer();">Mostrar Resposta</button> <div class="inline"> <span id="validationUserAnswered" class='warning'></span></div>
+  <button id="showAnswer" type="button" class="btn btn-default btn-success spaced-h" onClick="showAnswer();">Mostrar Explicação</button> 
 </div> 
 
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
 	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
         <script type="text/javascript" src="src/js/teorema110.js"></script>
+	<script type="text/javascript" src="assets/MathJax/MathJax.js"></script>
 	
-	<div>
-		<div id="dAnswerJXGBox" class="spaced-v bordered">		
-		<div id="answerJXGBox" class="center-img"></div>
-		</div>		
-		<div id="answerExplanation" class="height-auto">
-				<div id="answerTriangleConstructable" class="spaced-v"></div>
-				<div id="answerSidesRelationship" class="spaced-v"></div>
-				<div id="answerGreaterAngle" class="spaced-v"></div>
+	<div>	
+		<div id="answerExplanation" class="bordered answer-bg hidden height-auto">
 		</div>
 	</div>
 	<script>
-		$(document).ready(function () {
-			generateNewTriangle();
-			scrollTo("body");
-		});
+	$(document).ready(function () {
+		generateNewGame();
+	});
+	MathJax.Hub.Config({
+	  config: ["MMLorHTML.js"],
+	  jax: ["input/AsciiMath","output/HTML-CSS","output/NativeMML"],
+	  extensions: ["asciimath2jax.js","MathMenu.js","MathZoom.js"],
+	  imageFont: null
+	});
 	</script>
 </body>
 </html>
