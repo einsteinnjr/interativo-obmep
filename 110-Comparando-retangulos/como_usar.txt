@@ -1,0 +1,2 @@
+Nesse exemplo, a medida que se move o ponto vermelho M, os retângulos A e B podem tomar diferentes formas. Para descobrir como mostrar que as áreas de A e B são iguais, basta clicar em "Mostrar Explicação".
+

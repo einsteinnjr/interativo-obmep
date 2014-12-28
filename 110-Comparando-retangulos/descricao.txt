@@ -1,0 +1,1 @@
+Figuras geométricas sempre têm relações interessantes entre elas para se descobrir. Mostre que a área dos retângulos em questão sempre são iguais.
