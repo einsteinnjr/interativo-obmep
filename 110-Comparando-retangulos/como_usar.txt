@@ -1,2 +1,2 @@
-Nesse exemplo, é possivel mover o ponto vermelho M, alterando a forma dos retângulos A e B. Tente mostrar que as áreas A e B são sempre iguais. Para ver a solução, basta clicar em "Mostrar Explicação".
+Nesse exemplo, é possivel mover o ponto vermelho M pertencente a diagonal PR, alterando a forma dos retângulos A e B. XZ e WY são as retas paralelas aos lados do retângulo PQRS passando por M. Tente mostrar que as áreas A e B são sempre iguais. Para ver a solução, basta clicar em "Mostrar Explicação".
 
