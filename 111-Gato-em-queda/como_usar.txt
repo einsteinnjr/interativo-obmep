@@ -1,0 +1,7 @@
+Renato, desde criança, sempre gostou de geometria. E, por isso, faz coleção de armações triangulares. Seu tio, sabendo da paixão do sobrinho, permitiu que ele fosse a seu galpão antigo e recolhesse varetas de metais para construir mais triângulos para sua coleção. 
+
+Para cada conjunto de 3 varetas, Renato deseja descobrir se é possível construir um triângulo com eles. Caso seja, você deve classificar o triângulo quanto a relação de seus lados ou ângulos, nas questões abaixo.
+Os pontos vermelhos da figura são móveis e permitem que você movimente as varetas de maneira a montar o triângulo.
+Depois de respondidas as questões, você pode solicitar as respostas corretas clicando em "Mostrar Resposta".
+Para classificar um novo conjunto de varetas, basta clicar em "Novo Triângulo".
+  
