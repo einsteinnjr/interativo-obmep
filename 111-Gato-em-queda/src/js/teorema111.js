@@ -1,58 +1,62 @@
 
 var p=3, q=5, min=0.1;
-var x=1, alfa;
+var x=1, alpha;
 
+var qboard, O, M, A, B;
 
-function generateRectangle(){
+function generateLadder(){
 
-	alfa = min+Math.random()*(1-2*min);
+	alpha = min+Math.random()*(1-2*min);
 
-	var qboard = JXG.JSXGraph.initBoard('questionJXGBox', {boundingbox: [-x, p+x, q+x, -x],  keepaspectratio: true, showcopyright: false});
+	qboard = JXG.JSXGraph.initBoard('questionJXGBox', {boundingbox: [-x, p+x, p+x, -x],  keepaspectratio: true, showcopyright: false, axis:true});
 
 	//vertices
-	var P = qboard.create('point', [0, p], {name: "P", color:'blue', fixed:true});
-	var Q = qboard.create('point', [q, p], {name: "Q", color:'blue', fixed:true});
-	var R = qboard.create('point', [q, 0], {name: "R", color:'blue', fixed:true});	
-	var S = qboard.create('point', [0, 0], {name: "S", color:'blue', fixed:true});
+	var Y = qboard.create('point', [0, p], {color:'blue', withLabel:false, fixed:true});
+	O = qboard.create('point', [0, 0], {color:'blue', withLabel:false, fixed:true});
+	var X = qboard.create('point', [p, 0], {color:'blue', withLabel:false, fixed:true});
+	var t1 =qboard.create('text',[p, p, "MA = MB = p"]);
+
+	//hide useless points.
+	Y.hideElement();
+	X.hideElement();
 
 	//sides
-	var PQ = qboard.create('segment', [P, Q], {color:'black', fixed:true});
-	var QR = qboard.create('segment', [Q, R], {color:'black', fixed:true});
-	var RS = qboard.create('segment', [R, S], {color:'black', fixed:true});
-	var SP = qboard.create('segment', [S, P], {color:'black', fixed:true});
+	var OX = qboard.create('segment', [O, X], {color:'black', fixed:true});
+	var OY = qboard.create('segment', [O, Y], {color:'black', fixed:true});
 
-	//diagonal
-	var PR = qboard.create('segment', [P, R], {color:'black', fixed:true});
+	//B will be the sliding point
+	B = qboard.create('point', [p*alpha, 0], {name: "B", color:'blue'});	
+	B.makeGlider(OX);
 
-	//make M run only above diagonal PR
-	var M = qboard.create('point', [q*alfa, p*(1-alfa)], {name: "M", color:'red'});	
-	M.makeGlider(PR);
+	A = qboard.create('point', [0, function(){return Math.sqrt(p*p-B.X()*B.X());}] , {name: "A", color:'blue'});
+	M = qboard.create('midpoint', [A, B], {name: "M", withLabel:true, color:'red'});
 
-	//projections of M on sides
-	var X = qboard.create('perpendicularpoint', [M, PQ], {name:"X", withLabel:true, color:'yellow'});
-	var Y = qboard.create('perpendicularpoint', [M, QR], {name:"Y", withLabel:true, color:'yellow'});
-	var Z = qboard.create('perpendicularpoint', [M, RS], {name:"Z", withLabel:true, color:'yellow'});
-	var W = qboard.create('perpendicularpoint', [M, SP], {name:"W", withLabel:true, color:'yellow'});
+	//translation of the cat
+	xm0=M.X();
+	ym0=M.Y();
+	var im = qboard.create('image', ['src/images/cat.png', [M.X(),M.Y()], [0.5,0.5]]);
+	var tOff = qboard.create('transform', [function(){return M.X()-xm0},function(){return M.Y()-ym0}], {type:'translate'}); 
+  	tOff.bindTo(im);
 
-	//rectangles in question
-	var rectangleA = qboard.create('polygon', [M, Z, S, W], {name: "A",withLabel:true});
-	var rectangleB = qboard.create('polygon', [M, X, Q, Y], {name: "B",withLabel:true});
+	var AB = qboard.create('segment', [A, B], {color:'black'});
 		
+}
+
+function generateSolutionOnGraph(){
+	var OM = qboard.create('segment', [O, M], {name:"p", withLabel:true, color:'green', dash:2});
+	var c = qboard.create('circle', [O, p/2], {fillColor:'white', strokeColor:'green', dash:2});
+	var AM = qboard.create('segment', [A, M], {name:"p", withLabel:true, color:'black'});
+	var BM = qboard.create('segment', [M, B], {name:"p", withLabel:true, color:'black'});
 }
 
 function showAnswer(){
 	$("#showAnswer").attr("disabled",true);
 	$("#answerExplanation").removeClass("hidden");
 	$("#answerExplanation").html("<b>Solução:</b><br/>"+
-	"Note que os triângulos PXM e MYN são semelhantes (triângulos retângulos com lados paralelos). O que signfica que seus lados correspondentes são proporcionais:<br/>"+
-	"<div class='center'>`(PX)/(XM)` = `(MY)/(YR)` => `PX * YR = MY * XM`</div><br/>"+
-	"Note ainda que: <br/>"+
-	"<div class='center'>`PX = WM`, `YR = MZ`</div><br/>"+
-	"Assim: <br/>"+
-	"<div class='center'>`[WMZS] = WM*MZ = MY*XM = [MYQX]`</div><br/>"+
-	"Onde [ABCD] é a área do retângulo formado pelos pontos A, B, C e D.<br/>"+
-	"Assim, a área do retângulo A é igual a área do retângulo B, para qualquer que seja o ponto M na diagonal PR.");
-	compileMathJaxCode();
+	"Note que em qualquer momento da queda da escada AB, OAB forma um triângulo retângulo de hipotenusa AB, já que AÔB é ângulo reto.<br/>"+
+	"Como AÔB é reto, por definição, o Circumcentro X, forma um ângulo AXB que é dobro de AÔB, ou seja, 180 graus. O que significa, que X pertence a AB e é ponto médio M do segmento AB. Por ser ponto médio, AM=MB. Como M é circuncentro de AOB, temos que AM=MB=OM=p.<br/>"+
+	"Assim, em qualquer momento da queda da escada AB, M sempre vai estar a uma distancia p da origem O. Isto é, M pertence a circunferência de centro O e raio p.<br/>");
+	generateSolutionOnGraph();
 }
 
 function resetAnswer(){
@@ -60,11 +64,7 @@ function resetAnswer(){
 	$("#answerExplanation").addClass("hidden");
 }	
 
-function compileMathJaxCode(){
-	MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-}
-
 function generateNewGame(){
 	resetAnswer();
-	generateRectangle();
+	generateLadder();
 }

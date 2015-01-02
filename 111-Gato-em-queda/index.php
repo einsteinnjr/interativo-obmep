@@ -9,12 +9,12 @@
 </head>
 <body>
 <div class="spaced-v">
-  <button type="button" class="btn btn-default  btn-primary" onClick="generateNewGame()">Novos Retângulos</button>
+  <button type="button" class="btn btn-default  btn-primary" onClick="generateNewGame()">Novo Ângulo</button>
 </div>
 <div class="spaced-v bordered">
 	<div id="questionJXGBox" class="jxgbox center-img"></div>
 </div>	
-<div><b>Fonte do Problema:</b> <a href="http://clubes.obmep.org.br/blog/probleminha-divisao-justa/">Clubes Obmep - Problema Divisão Justa</a>
+<div><b>Fonte do Problema:</b> <a href="http://clubes.obmep.org.br/blog/desafio-gato-em-queda/">Clubes Obmep - Desafio Gato em queda</a>
 </div>
 
 <div class="spaced-v">
@@ -26,7 +26,7 @@
         <script type="text/javascript" src="src/js/teorema111.js"></script>
 	
 	<div>	
-		<div id="answerExplanation" class="bordered answer-bg hidden height-auto">
+		<div id="answerExplanation" class="bordered answer-bg hidden height-auto justify">
 		</div>
 	</div>
 	<script>
