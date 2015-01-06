@@ -1,8 +1,76 @@
 
 var p=3, q=5, min=0.1;
-var x=1, alpha;
+var x=5, alpha;
 
 var qboard, O, M, A, B;
+
+function generateRectangle(){
+
+	alfa = min+Math.random()*(1-2*min);
+
+	var qboard = JXG.JSXGraph.initBoard('questionJXGBox', {boundingbox: [-x, p+x, q+x, -x],  keepaspectratio: true, showcopyright: false});
+
+	//vertices
+	var A = qboard.create('point', [0, 0], {name: "A", color:'blue', fixed:false});	
+	var A1 = qboard.create('point', [0, 0], {showLabel:false, color:'blue', fixed:false});	
+	var B = qboard.create('point', [0, p], {name: "B", color:'blue', fixed:false});
+	var B1 = qboard.create('point', [0, p], {showLabel:false, color:'blue', fixed:false});
+	var C = qboard.create('point', [q, p], {name: "C", color:'blue', fixed:false});
+	var C1 = qboard.create('point', [q, p], {showLabel:false, color:'blue', fixed:false});
+	var D = qboard.create('point', [q, 0], {name: "D", color:'blue', fixed:true});	
+	
+	
+	//vertices
+	var X = qboard.create('point', [0, p/2], {name: "X", color:'red', fixed:true});
+	var Y = qboard.create('point', [q/2, p], {name: "Y", color:'red', fixed:true});
+	var Z = qboard.create('point', [q/2, 0], {name: "Z", color:'red', fixed:true});	
+
+
+	//sides
+	var AB = qboard.create('segment', [A, B], {color:'black', fixed:true});
+	var BC = qboard.create('segment', [B, C], {color:'black', fixed:true});
+	var AC = qboard.create('segment', [A, C], {color:'black', fixed:true});
+
+	var a_, b_, c_;
+
+	A1.hideElement();
+	B1.hideElement();
+	C1.hideElement();
+
+	a_ = qboard.create('parallel', [A1, BC]);
+	b_ = qboard.create('parallel', [B1, AC]);
+	c_ = qboard.create('parallel', [C1, AB]);	
+	
+	A.makeGlider(a_);
+	B.makeGlider(b_);
+	C.makeGlider(c_);	
+	
+	a_.hideElement();
+	b_.hideElement();
+	c_.hideElement();
+/*
+	B.on("mouseover", function(){
+		b_.showElement();
+		console.log("over b");
+	});
+
+	B.on("mouseup", function(){		
+		b_.hideElement();
+		console.log("out b");
+	});
+	
+	C.on("mouseover", function(){
+		c_.showElement();
+		console.log("over c");
+	});
+
+	C.on("mouseup", function(){		
+		c_.hideElement();
+		console.log("out c");
+	});*/
+		
+}
+
 
 function generateLadder(){
 
@@ -66,5 +134,5 @@ function resetAnswer(){
 
 function generateNewGame(){
 	resetAnswer();
-	generateLadder();
+	generateRectangle();
 }
