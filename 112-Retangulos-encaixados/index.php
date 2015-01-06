@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/jsxgraph/css/jsxgraph.css">
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
         <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
-	<link rel="stylesheet" type="text/css" href="src/css/teorema110.css">
+	<link rel="stylesheet" type="text/css" href="src/css/teorema112.css">
 </head>
 <body>
 <div class="spaced-v">
@@ -14,8 +14,6 @@
 <div class="spaced-v bordered">
 	<div id="questionJXGBox" class="jxgbox center-img"></div>
 </div>	
-<div><b>Fonte do Problema:</b> <a href="http://clubes.obmep.org.br/blog/probleminha-divisao-justa/">Clubes Obmep - Problema Divisão Justa</a>
-</div>
 
 <div class="spaced-v">
   <button id="showAnswer" type="button" class="btn btn-default btn-success spaced-h" onClick="showAnswer();">Mostrar Explicação</button> 
@@ -23,7 +21,7 @@
 
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
 	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
-        <script type="text/javascript" src="src/js/teorema110.js"></script>
+        <script type="text/javascript" src="src/js/teorema112.js"></script>
 	<script type="text/javascript" src="assets/MathJax/MathJax.js"></script>
 	
 	<div>	
