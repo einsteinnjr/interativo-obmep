@@ -9,6 +9,10 @@ var E, F, G, H;
 var EF, FG, GH, HE;
 var AE, BF, CG, DH;
 var s1, s2;
+var X, Y, Z, W;
+var EX, FY, GZ, HW;
+
+var showingSolution
 
 
 function generateVariablesInitialValues(){
@@ -16,6 +20,7 @@ function generateVariablesInitialValues(){
 	a=2, b=5, max_ab=5;
 	d=3;
 	d1=10, d2=20, d3=30;
+	showingSolution=false;
 }
 
 function generateRectangle(){
@@ -79,6 +84,20 @@ function generateBoardAndItsElements(){
 	CG = qboard.create('segment', [C, G], {name:'p', withLabel:true, color:'green', fixed:true});
 	DH = qboard.create('segment', [D, H], {name:d3, withLabel:true, color:'green', fixed:true,  label:{position:'lft', offset:[40,40]}});
 
+	if(showingSolution){
+		//projections of E on sides
+		X = qboard.create('perpendicularpoint', [E, DA], {name:"X", withLabel:true, color:'yellow'});
+		Y = qboard.create('perpendicularpoint', [F, AB], {name:"Y", withLabel:true, color:'yellow'});
+		Z = qboard.create('perpendicularpoint', [G, BC], {name:"Z", withLabel:true, color:'yellow'});
+		W = qboard.create('perpendicularpoint', [H, CD], {name:"W", withLabel:true, color:'yellow'});
+	
+		//projections heights from E to sides
+		EX = qboard.create('segment', [E, X], {name:"x", withLabel:true, color:'yellow'});
+		FY = qboard.create('segment', [F, Y], {name:"y", withLabel:true, color:'yellow'});
+		GZ = qboard.create('segment', [G, Z], {name:"z", withLabel:true, color:'yellow'});
+		HW = qboard.create('segment', [H, W], {name:"w", withLabel:true, color:'yellow'});
+	}
+
 }
 
 function cleanElements(){
@@ -106,6 +125,20 @@ function cleanElements(){
 	BF.remove();
 	CG.remove();
 	DH.remove();
+
+	if(showingSolution){
+		//projections of E on sides
+		X.remove();
+		Y.remove();
+		Z.remove();
+		W.remove();
+	
+		//projections heights from E to sides
+		EX.remove();
+		FY.remove();
+		GZ.remove();
+		HW.remove();
+	}
 }
 
 function generateSolution(){
@@ -115,19 +148,9 @@ function generateSolution(){
 	a=s1.Value();
 	b=s2.Value();
 	cleanElements();
-	generateBoardAndItsElements();
 
-	//projections of E on sides
-	var X = qboard.create('perpendicularpoint', [E, DA], {name:"X", withLabel:true, color:'yellow'});
-	var Y = qboard.create('perpendicularpoint', [E, AB], {name:"Y", withLabel:true, color:'yellow'});
-	var Z = qboard.create('perpendicularpoint', [E, BC], {name:"Z", withLabel:true, color:'yellow'});
-	var W = qboard.create('perpendicularpoint', [E, CD], {name:"W", withLabel:true, color:'yellow'});
-	
-	//projections heights from E to sides
-	var EX = qboard.create('segment', [E, X], {name:"x", withLabel:true, color:'yellow'});
-	var EY = qboard.create('segment', [E, Y], {name:"y", withLabel:true, color:'yellow'});
-	var EZ = qboard.create('segment', [E, Z], {name:"z", withLabel:true, color:'yellow'});
-	var EW = qboard.create('segment', [E, W], {name:"w", withLabel:true, color:'yellow'});
+	showingSolution=true;
+	generateBoardAndItsElements();
 	
 }
 

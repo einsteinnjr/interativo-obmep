@@ -59,6 +59,10 @@ p{
    text-align:center;
 }
 
+.justify{
+   text-align:justify;
+}
+
 .answer-bg{
 	background-color: #fbf0cc; /*light-orange*/
 }
