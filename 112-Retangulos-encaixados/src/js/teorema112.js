@@ -28,8 +28,8 @@ function generateRectangle(){
 	qboard = JXG.JSXGraph.initBoard('questionJXGBox', {boundingbox: [-d, x+y+max_ab+d, z+w+max_ab+d, -2*d],  keepaspectratio: true, showcopyright: false});
 		
 	// sliders a, b
-	s1 = qboard.create('slider', [[1, -1], [3, -1], [0, a, max_ab]], {name:"a", snapWidth: 1});
-	s2 = qboard.create('slider', [[1, -2], [3, -2], [0, b, max_ab]], {name:"b", snapWidth: 1});
+	s1 = qboard.create('slider', [[1, -2], [5, -2], [0, a, max_ab]], {name:"a", snapWidth: 1});
+	s2 = qboard.create('slider', [[1, -4], [5, -4], [0, b, max_ab]], {name:"b", snapWidth: 1});
 
 	generateBoardAndItsElements();
 

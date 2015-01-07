@@ -1,2 +1,2 @@
-Nesse exemplo, é possivel mover o ponto vermelho M pertencente a diagonal PR, alterando a forma dos retângulos A e B. XZ e WY são as retas paralelas aos lados do retângulo PQRS passando por M. Tente mostrar que as áreas A e B são sempre iguais. Para ver a solução, basta clicar em "Mostrar Explicação".
-
+Nesse interativo, é possivel alterar o tamanho dos lados dos retângulos sem alterar as distâncias relativas a vértices correspondentes. Isso pode ser feito movendo o ponteiro dos sliders a (referente a vertical) e b (referente a horizontal). Dadas 3 das distâncias relativas, ache a distância faltante p.
+Caso deseje saber a solução, basta clicar em "Mostrar Explicação". Para iniciar o problema novamente, clique em "Novo Retângulo".
