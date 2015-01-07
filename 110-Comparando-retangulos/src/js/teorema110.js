@@ -1,6 +1,7 @@
 
 var p=3, q=5, min=0.1;
-var x=1, alfa;
+var x=2, alfa;
+var t1, t2;
 
 
 function generateRectangle(){
@@ -37,21 +38,43 @@ function generateRectangle(){
 	//rectangles in question
 	var rectangleA = qboard.create('polygon', [M, Z, S, W], {name: "A",withLabel:true});
 	var rectangleB = qboard.create('polygon', [M, X, Q, Y], {name: "B",withLabel:true});
-		
+
+	t1 =qboard.create('text',[0, -1, "A = "+rectangleA.Area().toFixed(2)]);
+	t2 =qboard.create('text',[q-1, -1, "B = "+rectangleB.Area().toFixed(2)]);
+	
+	M.on('drag', function(){
+		t1.remove();
+		t2.remove();
+		t1 =qboard.create('text',[0, -1, "A = "+rectangleA.Area().toFixed(2)]);
+		t2 =qboard.create('text',[q-1, -1, "B = "+rectangleB.Area().toFixed(2)]);
+	});	
+
 }
 
 function showAnswer(){
 	$("#showAnswer").attr("disabled",true);
 	$("#answerExplanation").removeClass("hidden");
 	$("#answerExplanation").html("<b>Solução:</b><br/>"+
-	"Note que os triângulos PXM e MYN são semelhantes (triângulos retângulos com lados paralelos). O que signfica que seus lados correspondentes são proporcionais:<br/>"+
-	"<div class='center'>`(PX)/(XM)` = `(MY)/(YR)` => `PX * YR = MY * XM`</div><br/>"+
+	"<div class='justify'>Note que os triângulos PXM e MYR são semelhantes (triângulos retângulos com lados paralelos). O que signfica que seus lados correspondentes são proporcionais:</div>"+
+	"<div class='center'>`(PX)/(XM) = (MY)/(YR) => PX * YR = MY * XM`</div><br/>"+
+	"Daí:<br/>"+
+	"<div class='center'>`PX * YR = MY * XM`</div><br/>"+
 	"Note ainda que: <br/>"+
 	"<div class='center'>`PX = WM`, `YR = MZ`</div><br/>"+
 	"Assim: <br/>"+
 	"<div class='center'>`[WMZS] = WM*MZ = MY*XM = [MYQX]`</div><br/>"+
-	"Onde [ABCD] é a área do retângulo formado pelos pontos A, B, C e D.<br/>"+
-	"Assim, a área do retângulo A é igual a área do retângulo B, para qualquer que seja o ponto M na diagonal PR.");
+	"<div class='justify'>Onde [ABCD] denota a área do retângulo formado pelos pontos A, B, C e D.</div>"+
+	"<div class='justify'>Assim, a área do retângulo A é igual a área do retângulo B, para qualquer que seja o ponto M na diagonal PR.</div><br/>"+
+	"<b>Solução Alternativa:</b><br/>"+
+	"<div class='justify'>Note que a diagonal de um retângulo o divide em 2 triângulos congruentes, pelo caso (LLL).</div>"+
+	"<div class='justify'>-Pela diagonal PR dividindo o retângulo PQRS: [PQR] = [PSR] = S</div>"+
+	"<div class='justify'>-Pela diagonal PM dividindo o retângulo PXMW: [PXM] = [PWM] = S1</div>"+
+	"<div class='justify'>-Pela diagonal MR dividindo o retângulo MYRZ: [MYR] = [MZR] = S2</div>"+
+	"<div class='justify'>Note que:</div>"+
+	"<div class='center'>S = [PQR] = [PXM] + [XQYM] + [MYR] = S1 + B + S2</div>"+
+	"<div class='center'>S = [PSR] = [PWM] + [WMZS] + [MYR] = S1 + A + S2</div>"+
+	"<div class='justify'>Assim:</div>"+
+	"<div class='center'>A = S - S1 - S2 = B</div>");
 	compileMathJaxCode();
 }
 
