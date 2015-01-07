@@ -56,7 +56,7 @@ function generateBoardAndItsElements(){
 	
 	//vertices outer rectangle
 	A = qboard.create('point', [0, x+a+y], {name: "A", color:'blue', fixed:true});
-	B = qboard.create('point', [0, 0], {name: "B", color:'blue', fixed:true});
+	B = qboard.create('point', [0, 0], {name: "B", color:'blue', fixed:true, label:{offset:[-15,-15]}});
 	C = qboard.create('point', [z+b+w, 0], {name: "C", color:'blue', fixed:true});	
 	D = qboard.create('point', [z+b+w, x+a+y], {name: "D", color:'blue', fixed:true});
 
@@ -67,10 +67,10 @@ function generateBoardAndItsElements(){
 	DA = qboard.create('segment', [D, A], {color:'black', fixed:true});
 
 	//vertices inner rectangle
-	E = qboard.create('point', [z, a+y], {name: "E", color:'blue', fixed:true});
-	F = qboard.create('point', [z, y], {name: "F", color:'blue', fixed:true});
-	G = qboard.create('point', [z+b, y], {name: "G", color:'blue', fixed:true});	
-	H = qboard.create('point', [z+b, a+y], {name: "H", color:'blue', fixed:true, label:{offset:[-10,10]}});
+	E = qboard.create('point', [z, a+y], {name: "E", color:'blue', fixed:true, label:{offset:[-15,-2]}});
+	F = qboard.create('point', [z, y], {name: "F", color:'blue', fixed:true, label:{offset:[2,-15]}});
+	G = qboard.create('point', [z+b, y], {name: "G", color:'blue', fixed:true, label:{offset:[10,2]}});	
+	H = qboard.create('point', [z+b, a+y], {name: "H", color:'blue', fixed:true, label:{offset:[2,12]}});
 
 	//sides inner rectangle
 	EF = qboard.create('segment', [E, F], {color:'black', fixed:true});
@@ -79,23 +79,28 @@ function generateBoardAndItsElements(){
 	HE = qboard.create('segment', [H, E], {color:'black', fixed:true});
 
 	//segments
-	AE = qboard.create('segment', [A, E], {name:d1, withLabel:true, color:'green', fixed:true});
-	BF = qboard.create('segment', [B, F], {name:d2, withLabel:true, color:'green', fixed:true});
-	CG = qboard.create('segment', [C, G], {name:'p', withLabel:true, color:'green', fixed:true});
-	DH = qboard.create('segment', [D, H], {name:d3, withLabel:true, color:'green', fixed:true,  label:{position:'lft', offset:[40,40]}});
+	AE = qboard.create('segment', [A, E], {name:d1, withLabel:true, color:'black', fixed:true});
+	BF = qboard.create('segment', [B, F], {name:d2, withLabel:true, color:'black', fixed:true, label:{offset:[-10,10]}});
+	CG = qboard.create('segment', [C, G], {name:'p', withLabel:true, color:'black', fixed:true});
+	DH = qboard.create('segment', [D, H], {name:d3, withLabel:true, color:'black', fixed:true,  label:{position:'lft', offset:[40,40]}});
 
 	if(showingSolution){
 		//projections of E on sides
-		X = qboard.create('perpendicularpoint', [E, DA], {name:"X", withLabel:true, color:'yellow'});
-		Y = qboard.create('perpendicularpoint', [F, AB], {name:"Y", withLabel:true, color:'yellow'});
-		Z = qboard.create('perpendicularpoint', [G, BC], {name:"Z", withLabel:true, color:'yellow'});
-		W = qboard.create('perpendicularpoint', [H, CD], {name:"W", withLabel:true, color:'yellow'});
+		X = qboard.create('perpendicularpoint', [E, DA], {name:"X", withLabel:true, color:'green'});
+		Y = qboard.create('perpendicularpoint', [F, AB], {name:"Y", withLabel:true, color:'green'});
+		Z = qboard.create('perpendicularpoint', [G, BC], {name:"Z", withLabel:true, color:'green'});
+		W = qboard.create('perpendicularpoint', [H, CD], {name:"W", withLabel:true, color:'green'});
 	
 		//projections heights from E to sides
-		EX = qboard.create('segment', [E, X], {name:"x", withLabel:true, color:'yellow'});
-		FY = qboard.create('segment', [F, Y], {name:"y", withLabel:true, color:'yellow'});
-		GZ = qboard.create('segment', [G, Z], {name:"z", withLabel:true, color:'yellow'});
-		HW = qboard.create('segment', [H, W], {name:"w", withLabel:true, color:'yellow'});
+		EX = qboard.create('segment', [E, X], {name:"x", withLabel:true, color:'green'});
+		FY = qboard.create('segment', [F, Y], {name:"y", withLabel:true, color:'green'});
+		GZ = qboard.create('segment', [G, Z], {name:"z", withLabel:true, color:'green'});
+		HW = qboard.create('segment', [H, W], {name:"w", withLabel:true, color:'green'});
+
+		E.setAttribute({withLabel: false});
+		F.setAttribute({withLabel: false});
+		G.setAttribute({withLabel: false});
+		H.setAttribute({name: 'P'});
 	}
 
 }
