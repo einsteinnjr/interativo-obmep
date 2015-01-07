@@ -53,9 +53,8 @@ function showAnswer(){
 	$("#showAnswer").attr("disabled",true);
 	$("#answerExplanation").removeClass("hidden");
 	$("#answerExplanation").html("<b>Solução:</b><br/>"+
-	"Note que em qualquer momento da queda da escada AB, OAB forma um triângulo retângulo de hipotenusa AB, já que AÔB é ângulo reto.<br/>"+
-	"Como AÔB é reto, por definição, o Circumcentro X, forma um ângulo AXB que é dobro de AÔB, ou seja, 180 graus. O que significa, que X pertence a AB e é ponto médio M do segmento AB. Por ser ponto médio, AM=MB. Como M é circuncentro de AOB, temos que AM=MB=OM=p.<br/>"+
-	"Assim, em qualquer momento da queda da escada AB, M sempre vai estar a uma distancia p da origem O. Isto é, M pertence a circunferência de centro O e raio p.<br/>");
+	"<div class='justify'>Note que em qualquer momento da queda da escada AB, OÂB forma um triângulo retângulo de hipotenusa AB, já que AÔB é ângulo reto. Assim, M é o centro do circuncírculo do triângulo OAB e sua distância até O coincide com o raio. Como AB é diâmetro e seu comprimento mede 2p, o raio mede p. Portanto, o gato sempre dista p do vértice O e sua trajetória é um arco de circunferência.</div>"+
+	"<div class='justify'>Veja na figura a trajetória realizada pelo gato. Movimente o ponto B, agora com a trajetória explícita.</div>");
 	generateSolutionOnGraph();
 }
 

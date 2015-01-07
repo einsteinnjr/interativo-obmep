@@ -1,4 +1,4 @@
 No interativo, AB é uma escada de tamanho 2p, que possui um gato no seu ponto médio M. Como o piso estava bastante escorregadio, a escada AB começou a escorregar no chão pelo ponto B. Se o gato permaneceu no mesmo lugar na escada, que trajetória ele percorreu durante a queda da escada até o chão?
 No interativo, é possivel movimentar o ponto B da escada pelo eixo OX, para saber a trajetória da escada.
-Caso queira descobrir a solução do desafio, basta clicar em "Mostrar Explicação". Caso deseje uma nova ângulação para a escada, clique em "Novo Ângulo". 
+Caso queira descobrir a solução do desafio, basta clicar em "Mostrar Explicação". Caso deseje uma nova configuração inicial para a escada, clique em "Novo Ângulo". 
 
