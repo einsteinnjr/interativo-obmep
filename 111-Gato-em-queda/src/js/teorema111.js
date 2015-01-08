@@ -53,8 +53,8 @@ function showAnswer(){
 	$("#showAnswer").attr("disabled",true);
 	$("#answerExplanation").removeClass("hidden");
 	$("#answerExplanation").html("<b>Solução:</b><br/>"+
-	"<div class='justify'>Note que em qualquer momento da queda da escada AB, OÂB forma um triângulo retângulo de hipotenusa AB, já que AÔB é ângulo reto. Assim, M é o centro do circuncírculo do triângulo OAB e sua distância até O coincide com o raio. Como AB é diâmetro e seu comprimento mede 2p, o raio mede p. Portanto, o gato sempre dista p do vértice O e sua trajetória é um arco de circunferência.</div>"+
-	"<div class='justify'>Veja na figura a trajetória realizada pelo gato. Movimente o ponto B, agora com a trajetória explícita.</div>");
+	"<div class='justify'>Note que em qualquer momento da queda da escada AB, OAB forma um triângulo retângulo de hipotenusa AB, já que AÔB é ângulo reto. Assim, M é o centro do circuncírculo do triângulo OAB e sua distância até O coincide com o raio. Como AB é diâmetro e seu comprimento mede 2p, o raio mede p. Portanto, o gato sempre dista p do vértice O e sua trajetória é um arco de circunferência.</div>"+
+	"<div class='justify'>Veja na figura a trajetória realizada pelo gato. Movimente o ponto B, agora, com a trajetória explícita.</div>");
 	generateSolutionOnGraph();
 }
 
