@@ -16,10 +16,25 @@ var showingSolution
 
 
 function generateVariablesInitialValues(){
-	x=4, y=5, z=4, w=6;
-	a=2, b=5, max_ab=5;
-	d=3;
-	d1=10, d2=20, d3=30;
+	
+	//random factor
+	alpha = 1+Math.floor(Math.random()*9);// 10 random values - (1-10)	
+
+	d=3*alpha;//padding of the graph
+
+	//d1=10, d2=20, d3=30;
+	//multiply by alpha to get a diversity of answers
+	d1=1*alpha, d2=4*alpha, d3=7*alpha;
+
+	//multiply by alpha to get the image proportional to the answer.
+	x=4*alpha, y=5*alpha, z=4*alpha, w=6*alpha;
+
+	//random inner sides. Begin in 2, to not be so small.
+	betaA = 2+Math.floor(Math.random()*7);// 7 random values - (2-8)
+	betaB = 2+Math.floor(Math.random()*7);// 7 random values - (2-8)
+
+	a=betaA*alpha, b=betaB*alpha, max_ab=8*alpha;
+
 	showingSolution=false;
 }
 
@@ -33,8 +48,8 @@ function generateRectangle(){
 	qboard = JXG.JSXGraph.initBoard('questionJXGBox', {boundingbox: [-d, x+y+max_ab+d, z+w+max_ab+d, -2*d],  keepaspectratio: true, showcopyright: false});
 		
 	// sliders a, b
-	s1 = qboard.create('slider', [[1, -2], [5, -2], [0, a, max_ab]], {name:"a", snapWidth: 1});
-	s2 = qboard.create('slider', [[1, -4], [5, -4], [0, b, max_ab]], {name:"b", snapWidth: 1});
+	s1 = qboard.create('slider', [[1, -2*alpha], [5*alpha, -2*alpha], [0, a, max_ab]], {name:"a", snapWidth: 1});
+	s2 = qboard.create('slider', [[1, -4*alpha], [5*alpha, -4*alpha], [0, b, max_ab]], {name:"b", snapWidth: 1});
 
 	generateBoardAndItsElements();
 
@@ -85,13 +100,13 @@ function generateBoardAndItsElements(){
 	DH = qboard.create('segment', [D, H], {name:d3, withLabel:true, color:'black', fixed:true,  label:{position:'lft', offset:[40,40]}});
 
 	if(showingSolution){
-		//projections of E on sides
+		//projections of inner rectangle vertices on sides
 		X = qboard.create('perpendicularpoint', [E, DA], {name:"X", withLabel:true, color:'green'});
 		Y = qboard.create('perpendicularpoint', [F, AB], {name:"Y", withLabel:true, color:'green'});
 		Z = qboard.create('perpendicularpoint', [G, BC], {name:"Z", withLabel:true, color:'green'});
 		W = qboard.create('perpendicularpoint', [H, CD], {name:"W", withLabel:true, color:'green'});
 	
-		//projections heights from E to sides
+		//projections of inner rectangle vertices to the sides
 		EX = qboard.create('segment', [E, X], {name:"x", withLabel:true, color:'green'});
 		FY = qboard.create('segment', [F, Y], {name:"y", withLabel:true, color:'green'});
 		GZ = qboard.create('segment', [G, Z], {name:"z", withLabel:true, color:'green'});
@@ -132,13 +147,13 @@ function cleanElements(){
 	DH.remove();
 
 	if(showingSolution){
-		//projections of E on sides
+		//projections of inner rectangle vertices on sides
 		X.remove();
 		Y.remove();
 		Z.remove();
 		W.remove();
 	
-		//projections heights from E to sides
+		//projections of inner rectangle vertices to the sides
 		EX.remove();
 		FY.remove();
 		GZ.remove();
@@ -163,7 +178,8 @@ function showAnswer(){
 	$("#showAnswer").attr("disabled",true);
 	$("#answerExplanation").removeClass("hidden");
 	$("#answerExplanation").html("<b>Solução:</b><br/>"+
-	"<div class='justify'>Realizando algumas transformações geométricas na figura, podemos deixar o problema mais simples, sem alterar a sua essência. Ao movimentar ambos os sliders, podemos modificar o tamanho dos lados do retângulo EFGH, mantendo o problema similar. Ao zerarmos o slider 'a', fazemos o segmento EH coincidir com FG. Ao zerarmos o slider 'b', fazemos todos os vértices do retângulo EFGH coincidirem em um mesmo ponto. Sejam P o novo ponto obtido pelo colapso de E , H , G e F e x, y, z e w as suas distâncias aos lados do retângulo. Utilizando o Teorema de Pitágoras nos triângulos AEP, BFP, GCP e DHP: </div>"+
+	"<div class='justify'>Realizando algumas transformações geométricas na figura, podemos deixar o problema mais simples, sem alterar a sua essência. Ao movimentar ambos os sliders, podemos modificar o tamanho dos lados do retângulo EFGH, mantendo o problema similar. Ao zerarmos o slider 'a', fazemos o segmento EH coincidir com FG. Ao zerarmos o slider 'b', fazemos todos os vértices do retângulo EFGH coincidirem em um mesmo ponto. Sejam P o novo ponto obtido pelo colapso de E , H , G e F e x, y, z e w as suas distâncias aos lados do retângulo (como podemos ver na figura).</div>"+
+	"<div class='justify'>Utilizando o Teorema de Pitágoras nos triângulos AEP, BFP, GCP e DHP: </div>"+
 	"<div class='center'>`AE^2 = AP^2 = x^2 + z^2`</div>"+
 	"<div class='center'>`BF^2 = PB^2 = z^2 + y^2`</div>"+
 	"<div class='center'>`GC^2 = PC^2 = y^2 + w^2`</div>"+
@@ -174,7 +190,7 @@ function showAnswer(){
 	"<div class='center'>`= "+d3*d3+" + "+d2*d2+"`</div>"+
 	"Daí:<br/>"+
 	"<div class='center'>`p = GC = sqrt["+d3*d3+"+"+d2*d2+"-"+d1*d1+"]`</div>"+
-	"<div class='center'>`= "+Math.sqrt(d3*d3+d2*d2+d1*d1).toPrecision(4)+"`</div>");
+	"<div class='center'>`= "+Math.sqrt(d3*d3+d2*d2-d1*d1)+"`</div>");
 	generateSolution();
 	compileMathJaxCode();
 }
