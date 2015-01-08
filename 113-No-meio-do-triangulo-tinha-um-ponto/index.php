@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/jsxgraph/css/jsxgraph.css">
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
         <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
-	<link rel="stylesheet" type="text/css" href="src/css/teorema112.css">
+	<link rel="stylesheet" type="text/css" href="src/css/interactive113.css">
 </head>
 <body>
 <div class="spaced-v">
@@ -21,7 +21,7 @@
 
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
 	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
-        <script type="text/javascript" src="src/js/teorema112.js"></script>
+        <script type="text/javascript" src="src/js/interactive113.js"></script>
 	<script type="text/javascript" src="assets/MathJax/MathJax.js"></script>
 	
 	<div>	
