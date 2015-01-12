@@ -1,12 +1,12 @@
 ## name ##
-112 - Retângulos Encaixados
+113 - No meio do triângulo tinha um ponto
 
 
 ## module to be inserted ##
-Série: EF8
-Módulo: Elementos básicos de geometria plana - Parte 3
-aula:  Paralelogramos especiais
-http://matematica.obmep.org.br/index.php/modulo/ver?modulo=31
+Série: EF9
+Módulo: Área de Figuras Planas
+aula:  Área de Figuras Planas: Resultados Básicos
+http://matematica.obmep.org.br/index.php/modulo/ver?modulo=20
 
 
 
@@ -1862,13 +1862,13 @@ jax.js
 
 ## specific files for that interactive, on folder "src" ##
 src/css:
-teorema112.css
+interactive113.css
 
 src/js:
-teorema112.js
+interactive113.js
 
 
 ## minimum height ##
-1275px;
+900px;
 
 
