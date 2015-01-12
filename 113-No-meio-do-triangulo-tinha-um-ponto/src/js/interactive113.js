@@ -82,10 +82,10 @@ function generateProjections(){
 	if(showingSolution){
 
 		//points of the resulting sum of projection segments.
-		Q = qboard.create('point', [l+2*d, 0], {name:"Q", withLabel:true, fixed:true, color:'blue'});
-		G = qboard.create('point', [l+2*d, z], {name:"G", withLabel:true, fixed:true, color:'cyan'});
-		H = qboard.create('point', [l+2*d, z+y], {name:"H", withLabel:true, fixed:true, color:'yellow'});
-		I = qboard.create('point', [l+2*d, z+y+x], {name:"I", withLabel:true, fixed:true, color:'violet'});
+		Q = qboard.create('point', [l+2*d, 0], {name:"Q", withLabel:false, fixed:true, color:'blue'});
+		G = qboard.create('point', [l+2*d, z], {name:"G", withLabel:false, fixed:true, color:'cyan'});
+		H = qboard.create('point', [l+2*d, z+y], {name:"H", withLabel:false, fixed:true, color:'yellow'});
+		I = qboard.create('point', [l+2*d, z+y+x], {name:"I", withLabel:false, fixed:true, color:'violet'});
 
 		J = qboard.create('point', [l+2*d, h], {color:'violet', withLabel:false, fixed:true});
 
@@ -143,11 +143,11 @@ function showAnswer(){
 	"<div class='justify'>Note que:</div>"+
 	"<div class='center'>[ABC] = [PAB] + [PBC] + [PCA]</div>"+
 	"<div class='justify'>Onde [XYZ] é a área do triângulo XYZ.</div>"+
-	"<div class='justify'>Assim, </div>"+
+	"<div class='justify'>Como a área do triangulo é a metade do produto da base pela altura: </div>"+
 	"<div class='center'>`(l*h)/2` = `(l*z)/2` + `(l*x)/2` + `(l*y)/2`</div>"+
 	"<div class='justify'>Logo:</div>"+
 	"<div class='center'>`h = z + x + y`</div>"+
-	"<div class='justify'>Movimente o ponto P, na figura, agora com a solução explícita.</div>"+);
+	"<div class='justify'>Movimente o ponto P, na figura, agora com a solução explícita.</div>");
 	generateSolution();
 	compileMathJaxCode();
 }
