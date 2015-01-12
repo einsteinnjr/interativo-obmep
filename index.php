@@ -78,6 +78,10 @@
           </div><!--/row-->
         </div><!--/span-->
 	<div class="col-xs-6 col-sm-3 sidebar-offcanvas accordion" id="sidebar" role="navigation">
+	<h3>Janeiro 2015</h3> 
+  	 <div class="list-group">
+		<a href="113-No-meio-do-triangulo-tinha-um-ponto/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">113 - No meio do triângulo tinha um ponto</a>   
+          </div>  
 	<h3>Dezembro 2014</h3> 
   	 <div class="list-group">
 		<a href="112-Retangulos-encaixados/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">112 - Retângulos encaixados</a>  
