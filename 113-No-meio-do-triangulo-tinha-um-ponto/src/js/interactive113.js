@@ -1,201 +1,159 @@
-var x, y, z, w;
-var a, b, max_ab;
-var d;
-var d1, d2, d3;
+var d=1, l=5, h;
+
+var A, B, C;
+var AB, BC, CA;
+var P;
 var qboard;
-var A,B,C,D;
-var AB, BC, CD, DA;
-var E, F, G, H;
-var EF, FG, GH, HE;
-var AE, BF, CG, DH;
-var s1, s2;
-var X, Y, Z, W;
-var EX, FY, GZ, HW;
+var x,y,z;
+var a,b;
+var Q, G, H, I;
+var QG, GH, HI;
 
-var showingSolution
+var showingSolution;
 
-
-function generateVariablesInitialValues(){
+function generateTriangle(){
 	
-	//random factor
-	alpha = 1+Math.floor(Math.random()*9);// 10 random values - (1-10)	
+	h=l*Math.sqrt(3)/2;
+	qboard = JXG.JSXGraph.initBoard('questionJXGBox', {boundingbox: [-d, h+d, l+3*d, -d],  keepaspectratio: true, showcopyright: false});
 
-	d=3*alpha;//padding of the graph
-
-	//d1=10, d2=20, d3=30;
-	//multiply by alpha to get a diversity of answers
-	d1=1*alpha, d2=4*alpha, d3=7*alpha;
-
-	//multiply by alpha to get the image proportional to the answer.
-	x=4*alpha, y=5*alpha, z=4*alpha, w=6*alpha;
-
-	//random inner sides. Begin in 2, to not be so small.
-	betaA = 2+Math.floor(Math.random()*7);// 7 random values - (2-8)
-	betaB = 2+Math.floor(Math.random()*7);// 7 random values - (2-8)
-
-	a=betaA*alpha, b=betaB*alpha, max_ab=8*alpha;
-
-	showingSolution=false;
-}
-
-function generateRectangle(){
-
-	//  d1  ___|_x_   d3
-	//  _z_|__b___|___w___
-	//     |______|a
-	//  d2     |y     p
-
-	qboard = JXG.JSXGraph.initBoard('questionJXGBox', {boundingbox: [-d, x+y+max_ab+d, z+w+max_ab+d, -2*d],  keepaspectratio: true, showcopyright: false});
-		
-	// sliders a, b
-	s1 = qboard.create('slider', [[1, -2*alpha], [5*alpha, -2*alpha], [0, a, max_ab]], {name:"a", snapWidth: 1});
-	s2 = qboard.create('slider', [[1, -4*alpha], [5*alpha, -4*alpha], [0, b, max_ab]], {name:"b", snapWidth: 1});
-
-	generateBoardAndItsElements();
-
-	s1.on("drag", function(){
-		a=s1.Value();
-		cleanElements();
-		generateBoardAndItsElements();
-	});
-
-	s2.on("drag", function(){
-		b=s2.Value();
-		cleanElements();
-		generateBoardAndItsElements();
-	});
-
-}
-
-function generateBoardAndItsElements(){
+	//vertices of triangle
+	A = qboard.create('point', [0,0], {name: "A", color:'blue', fixed:true, label:{offset:[-10,-10]}});
+	B = qboard.create('point', [l, 0], {name: "B", color:'blue', fixed:true});
+	C = qboard.create('point', [l/2, h], {name: "C", color:'blue', fixed:true});	
 	
-	//vertices outer rectangle
-	A = qboard.create('point', [0, x+a+y], {name: "A", color:'blue', fixed:true});
-	B = qboard.create('point', [0, 0], {name: "B", color:'blue', fixed:true, label:{offset:[-15,-15]}});
-	C = qboard.create('point', [z+b+w, 0], {name: "C", color:'blue', fixed:true});	
-	D = qboard.create('point', [z+b+w, x+a+y], {name: "D", color:'blue', fixed:true});
-
-	//sides outer rectangle
+	//sides of triangle
 	AB = qboard.create('segment', [A, B], {color:'black', fixed:true});
 	BC = qboard.create('segment', [B, C], {color:'black', fixed:true});
-	CD = qboard.create('segment', [C, D], {color:'black', fixed:true});
-	DA = qboard.create('segment', [D, A], {color:'black', fixed:true});
-
-	//vertices inner rectangle
-	E = qboard.create('point', [z, a+y], {name: "E", color:'blue', fixed:true, label:{offset:[-15,-2]}});
-	F = qboard.create('point', [z, y], {name: "F", color:'blue', fixed:true, label:{offset:[2,-15]}});
-	G = qboard.create('point', [z+b, y], {name: "G", color:'blue', fixed:true, label:{offset:[10,2]}});	
-	H = qboard.create('point', [z+b, a+y], {name: "H", color:'blue', fixed:true, label:{offset:[2,12]}});
-
-	//sides inner rectangle
-	EF = qboard.create('segment', [E, F], {color:'black', fixed:true});
-	FG = qboard.create('segment', [F, G], {name:"b", withLabel:true, color:'black', fixed:true});
-	GH = qboard.create('segment', [G, H], {name:"a", withLabel:true, color:'black', fixed:true});
-	HE = qboard.create('segment', [H, E], {color:'black', fixed:true});
-
-	//segments
-	AE = qboard.create('segment', [A, E], {name:d1, withLabel:true, color:'black', fixed:true});
-	BF = qboard.create('segment', [B, F], {name:d2, withLabel:true, color:'black', fixed:true, label:{offset:[-10,10]}});
-	CG = qboard.create('segment', [C, G], {name:'p', withLabel:true, color:'black', fixed:true});
-	DH = qboard.create('segment', [D, H], {name:d3, withLabel:true, color:'black', fixed:true,  label:{position:'lft', offset:[40,40]}});
-
-	if(showingSolution){
-		//projections of inner rectangle vertices on sides
-		X = qboard.create('perpendicularpoint', [E, DA], {name:"X", withLabel:true, color:'green'});
-		Y = qboard.create('perpendicularpoint', [F, AB], {name:"Y", withLabel:true, color:'green'});
-		Z = qboard.create('perpendicularpoint', [G, BC], {name:"Z", withLabel:true, color:'green'});
-		W = qboard.create('perpendicularpoint', [H, CD], {name:"W", withLabel:true, color:'green'});
+	CA = qboard.create('segment', [C, A], {color:'black', fixed:true});
 	
-		//projections of inner rectangle vertices to the sides
-		EX = qboard.create('segment', [E, X], {name:"x", withLabel:true, color:'green'});
-		FY = qboard.create('segment', [F, Y], {name:"y", withLabel:true, color:'green'});
-		GZ = qboard.create('segment', [G, Z], {name:"z", withLabel:true, color:'green'});
-		HW = qboard.create('segment', [H, W], {name:"w", withLabel:true, color:'green'});
+}
 
-		E.setAttribute({withLabel: false});
-		F.setAttribute({withLabel: false});
-		G.setAttribute({withLabel: false});
-		H.setAttribute({name: 'P'});
+function generateRandomInnerPoint(){
+	minPercent = 0.2;
+	maxPercent = 0.8;
+	//random factor
+	
+	do{
+		a = Math.random();
 	}
+	while(a < minPercent||
+		a > maxPercent);
+	do{
+		b = Math.random();
+	}
+	while(b < minPercent||
+		b > maxPercent);
+
+	if(a<=1/2){
+		b=b*h*2*a;
+		a=a*l;
+	}
+	else{
+		b=b*h*2*(1-a);
+		a=a*l;
+	}
+	P = qboard.create('point', [a, b], {name: "P", color:'red', fixed:false, label:{offset:[0, 15]}});
+
+	generateProjections();
+
+	P.on("drag", function(){
+		clearElements();
+		generateProjections();
+	});
 
 }
 
-function cleanElements(){
-	A.remove();
-	B.remove();
-	C.remove();
-	D.remove();
+function generateProjections(){
+	
+	//projections to sides
+	D = qboard.create('perpendicularpoint', [P, BC], {name:"D", withLabel:true, color:'green'});
+	E = qboard.create('perpendicularpoint', [P, CA], {name:"E", withLabel:true, color:'green', label:{offset:[-15,0]}});
+	F = qboard.create('perpendicularpoint', [P, AB], {name:"F", withLabel:true, color:'green', label:{offset:[0,-15]}});
 
-	AB.remove();
-	BC.remove();
-	CD.remove();
-	DA.remove();
+	//projections of inner rectangle vertices to the sides
+	PD = qboard.create('segment', [P, D], {name:"x", withLabel:true, color:'violet', label:{offset:[0, 10]}});
+	PE = qboard.create('segment', [P, E], {name:"y", withLabel:true, color:'yellow'});
+	PF = qboard.create('segment', [P, F], {name:"z", withLabel:true, color:'cyan'});
 
-	E.remove();
-	F.remove();
-	G.remove();
-	H.remove();
-
-	EF.remove();
-	FG.remove();
-	GH.remove();
-	HE.remove();
-
-	AE.remove();
-	BF.remove();
-	CG.remove();
-	DH.remove();
+	x = distance(P, D);
+	y = distance(P, E);
+	z = distance(P, F);
 
 	if(showingSolution){
-		//projections of inner rectangle vertices on sides
-		X.remove();
-		Y.remove();
-		Z.remove();
-		W.remove();
-	
-		//projections of inner rectangle vertices to the sides
-		EX.remove();
-		FY.remove();
-		GZ.remove();
-		HW.remove();
+
+		//points of the resulting sum of projection segments.
+		Q = qboard.create('point', [l+2*d, 0], {name:"Q", withLabel:true, fixed:true, color:'blue'});
+		G = qboard.create('point', [l+2*d, z], {name:"G", withLabel:true, fixed:true, color:'cyan'});
+		H = qboard.create('point', [l+2*d, z+y], {name:"H", withLabel:true, fixed:true, color:'yellow'});
+		I = qboard.create('point', [l+2*d, z+y+x], {name:"I", withLabel:true, fixed:true, color:'violet'});
+
+		J = qboard.create('point', [l+2*d, h], {color:'violet', withLabel:false, fixed:true});
+
+		// projection segments.
+		QG = qboard.create('segment', [Q, G], {name:"z", withLabel:true, color:'cyan', label:{offset:[-20, 0]}});
+		GH = qboard.create('segment', [G, H], {name:"y", withLabel:true, color:'yellow', label:{offset:[-20, 0]}});
+		HI = qboard.create('segment', [H, I], {name:"x", withLabel:true, color:'violet', label:{offset:[-20, 0]}});
+		
+		//dashed segments limiting height
+		CJ = qboard.create('segment', [C, J], { color:'black', dash:2});
+		BQ = qboard.create('segment', [B, Q], { color:'black', dash:2});
+	}	
+}
+
+function distance (a, b){
+	dx = a.X()-b.X();
+	dy = a.Y()-b.Y();
+	return Math.sqrt(dx*dx+dy*dy);
+}
+
+function clearElements(){
+	D.remove();
+	E.remove();
+	F.remove();
+
+	PD.remove();
+	PE.remove();
+	PF.remove();
+
+	if(showingSolution){
+
+		Q.remove();
+		G.remove();
+		H.remove();
+		I.remove();
+
+		QG.remove();
+		GH.remove();
+		HI.remove();	
+
+		CJ.remove();
+		BQ.remove();
 	}
 }
 
 function generateSolution(){
-	s1.moveTo([1,-1]);
-	s2.moveTo([1,-2]);
-
-	a=s1.Value();
-	b=s2.Value();
-	cleanElements();
-
 	showingSolution=true;
-	generateBoardAndItsElements();
-	
+	generateProjections();
 }
 
 function showAnswer(){
 	$("#showAnswer").attr("disabled",true);
 	$("#answerExplanation").removeClass("hidden");
 	$("#answerExplanation").html("<b>Solução:</b><br/>"+
-	"<div class='justify'>Realizando algumas transformações geométricas na figura, podemos deixar o problema mais simples, sem alterar a sua essência. Ao movimentar ambos os sliders, podemos modificar o tamanho dos lados do retângulo EFGH, mantendo o problema similar. Ao zerarmos o slider 'a', fazemos o segmento EH coincidir com FG. Ao zerarmos o slider 'b', fazemos todos os vértices do retângulo EFGH coincidirem em um mesmo ponto. Sejam P o novo ponto obtido pelo colapso de E , H , G e F e x, y, z e w as suas distâncias aos lados do retângulo (como podemos ver na figura).</div>"+
-	"<div class='justify'>Utilizando o Teorema de Pitágoras nos triângulos AEP, BFP, GCP e DHP: </div>"+
-	"<div class='center'>`AE^2 = AP^2 = x^2 + z^2`</div>"+
-	"<div class='center'>`BF^2 = PB^2 = z^2 + y^2`</div>"+
-	"<div class='center'>`GC^2 = PC^2 = y^2 + w^2`</div>"+
-	"<div class='center'>`DH^2 = PD^2 = x^2 + w^2`</div>"+
-	"Assim:"+
-	"<div class='center'>`AE^2 + GC^2 = x^2 + z^2 + y^2+ w^2`</div>"+
-	"<div class='center'>`= DH^2 + BF^2`</div>"+
-	"<div class='center'>`= "+d3*d3+" + "+d2*d2+"`</div>"+
-	"Daí:<br/>"+
-	"<div class='center'>`p = GC = sqrt["+d3*d3+"+"+d2*d2+"-"+d1*d1+"]`</div>"+
-	"<div class='center'>`= "+Math.sqrt(d3*d3+d2*d2-d1*d1)+"`</div>");
+	"<div class='justify'>Note que:</div>"+
+	"<div class='center'>[ABC] = [PAB] + [PBC] + [PCA]</div>"+
+	"<div class='justify'>Onde [XYZ] é a área do triângulo XYZ.</div>"+
+	"<div class='justify'>Assim, </div>"+
+	"<div class='center'>`(l*h)/2` = `(l*z)/2` + `(l*x)/2` + `(l*y)/2`</div>"+
+	"<div class='justify'>Logo:</div>"+
+	"<div class='center'>`h = z + x + y`</div>"+
+	"<div class='justify'>Movimente o ponto P, na figura, agora com a solução explícita.</div>"+);
 	generateSolution();
 	compileMathJaxCode();
 }
 
 function resetAnswer(){
+	showingSolution=false;
 	$("#showAnswer").attr("disabled",false);
 	$("#answerExplanation").addClass("hidden");
 }	
@@ -206,6 +164,6 @@ function compileMathJaxCode(){
 
 function generateNewGame(){
 	resetAnswer();
-	generateVariablesInitialValues();
-	generateRectangle();
+	generateTriangle();
+	generateRandomInnerPoint()
 }
