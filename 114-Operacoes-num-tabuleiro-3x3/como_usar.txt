@@ -1,2 +1,5 @@
-Nesse interativo, é possível movimentar o ponto P interior ao triângulo equilátero ABC e analisar como suas projeções aos lados se alteram. Quanto vale a soma dos comprimentos dessas projeções?
-Caso deseje saber a solução, clique em "Mostrar Explicação". Para um novo ponto P, clique em "Novo ponto".
+Dado o tabuleiro interativo, deseja-se chegar ao Estado final desejado mostrado no 2o tabuleiro realizando determinadas operações.
+As operações permitidas são: "Somar +1" ou "Somar -1" a algumas casas do tabuleiro, de acordo com o escolhido no checkbox "Operação".
+Podemos realizar a operação desejada em uma linha, coluna ou uma das 2 diagonais principais do tabuleiro. Para isso, basta que cliquemos numa das setas desejadas. Caso cliquemos na 1a seta vertical para baixo, com a operação "Somar +1" selecionada, somaremos +1 a cada uma das casas da 1a coluna do tabuleiro interativo.
+A medida que as casas do tabuleiro fiquem iguais ao estado final desejado, elas serão sinalizadas no 2o tabuleiro.
+Caso deseje uma nova configuração de tabuleiros, basta clicar em "Nova configuração". Para ver a solução, clique em "Mostrar Explicação".
