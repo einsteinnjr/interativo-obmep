@@ -16,7 +16,7 @@ function generateSquare(){
 
 	x = (delta+ Math.random()*(1-2*delta))*l;  // 0.2l until 0.8l
 
-	qboard = JXG.JSXGraph.initBoard('questionJXGBox', {boundingbox: [-d, l+d, l+d, -d],  keepaspectratio: true, showcopyright: false});
+	qboard = JXG.JSXGraph.initBoard('questionJXGBox', {boundingbox: [-d, l+d, l+d, -2*d],  keepaspectratio: true, showcopyright: false});
 
 	//vertices of square
 	A = qboard.create('point', [0,0], {name: "A", color:'blue', fixed:true, label:{offset:[-10,-10]}});
@@ -25,6 +25,8 @@ function generateSquare(){
 	D = qboard.create('point', [l, 0], {name: "D", color:'blue', fixed:true});
 
 	t1 = qboard.create('text',[0, -d/2, "<span style='text-decoration:overline'>PB</span> + <span style='text-decoration:overline'>BQ</span> = l = <span style='text-decoration:overline'>AB</span>"]);
+
+	t2 = qboard.create('text',[0, -d, "&alpha; + &beta; + &theta; = ?"]);
 
 	//sides of square
 	AB = qboard.create('segment', [A, B], {color:'black', fixed:true});
@@ -48,32 +50,6 @@ function generateSquare(){
 	alpha = qboard.create('angle', [Q,A,P], {name: "&alpha;", color: 'blue', type:'sector', orthoType:'square', orthoSensitivity:2, radius:1}),
         beta = qboard.create('angle', [Q,D,P], {name: "&beta;", color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:1});
 	teta = qboard.create('angle', [Q,C,P], {name: "&theta;", color: 'pink', type:'sector', orthoType:'square', orthoSensitivity:2, radius:1});
-}
-
-
-function clearElements(){
-	D.remove();
-	E.remove();
-	F.remove();
-
-	PD.remove();
-	PE.remove();
-	PF.remove();
-
-	if(showingSolution){
-
-		Q.remove();
-		G.remove();
-		H.remove();
-		I.remove();
-
-		QG.remove();
-		GH.remove();
-		HI.remove();	
-
-		CJ.remove();
-		BQ.remove();
-	}
 }
 
 function generateSolutionInfosOnImage(){
@@ -111,7 +87,7 @@ function showAnswer(){
 	$("#answerExplanation").removeClass("hidden");
 	$("#answerExplanation").html("<b>Solução:</b><br/>"+
 	"<div class='justify'>Note que os triângulos &Delta;ABQ e &Delta;DAP são congruentes (caso LAL), já que: </div>"+
-	"<div class='center'><span style='text-decoration:overline'>PY</span> = l - x = y = <span style='text-decoration:overline'>BQ</span> e <span style='text-decoration:overline'>AB</span> = l = <span style='text-decoration:overline'>AD</span></div>"+
+	"<div class='center'><span style='text-decoration:overline'>PA</span> = l - x = y = <span style='text-decoration:overline'>BQ</span> e <span style='text-decoration:overline'>AB</span> = l = <span style='text-decoration:overline'>AD</span></div>"+
 	"<div class='justify'>Assim:</div>"+
 	"<div class='center'>&ang;BAQ = &alpha; = &ang;PDA</div>"+	
 	"<div class='justify'>Note também que os triângulos &Delta;BCP e &Delta;CDQ são congruentes (caso LAL), já que: </div>"+
@@ -119,7 +95,8 @@ function showAnswer(){
 	"<div class='justify'>Assim:</div>"+
 	"<div class='center'>&ang;BCP = &beta; = &ang;CDQ</div>"+
 	"<div class='justify'>Daí:</div>"+
-	"<div class='center'>&ang;PAQ + &ang;PDQ + &ang;PCQ = &alpha; + &beta; + &theta; = &ang;ADP + &ang;PDQ + &ang;QDC = 90<sup>o</dup> </div>");
+	"<div class='center'>&ang;PAQ + &ang;PDQ + &ang;PCQ = &alpha; + &beta; + &theta; = &ang;ADP + &ang;PDQ + &ang;QDC = 90<sup>o</dup> </div>"+
+	"<div class='justify'>Movimente o ponto P com as novas informações na figura.</div>");
 	generateSolution();
 }
 
@@ -130,8 +107,5 @@ function resetAnswer(){
 }	
 
 function generateNewGame(){
-	//resetAnswer();
 	generateSquare();
-	//generateTriangle();
-	//generateRandomInnerPoint()
 }

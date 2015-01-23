@@ -1,2 +1,1 @@
-Nesse interativo, é possível movimentar o ponto P interior ao triângulo equilátero ABC e analisar como suas projeções aos lados se alteram. Quanto vale a soma dos comprimentos dessas projeções?
-Caso deseje saber a solução, clique em "Mostrar Explicação". Para um novo ponto P, clique em "Novo ponto".
+Dado um quadrado ABCD, são escolhidos pontos P e Q, tais que, PB+BQ = l = AB. Descubra o valor da soma dos ângulos destacados na figura. No interativo, é possível movimentar o ponto P ao longo do lado AB. Caso deseje um novo ponto P, clique em "Nova Configuração". Caso deseje olhar a solução, clique em "Mostrar Explicação".
