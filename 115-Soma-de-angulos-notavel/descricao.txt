@@ -1,1 +1,1 @@
-Muitas vezes os ângulos de uma figura mantém relações interessantes, mesmo alterando-a. Descubra-a.
+Mesmo alterando a figura, muitas vezes seus ângulos continuam mantendo relações interessantes. Descubra a relação do interativo.
