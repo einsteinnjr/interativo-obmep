@@ -80,6 +80,7 @@
 	<div class="col-xs-6 col-sm-3 sidebar-offcanvas accordion" id="sidebar" role="navigation">
 	<h3>Janeiro 2015</h3> 
   	 <div class="list-group">
+		<a href="115-Soma-de-angulos-notavel/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">115 - Soma de ângulos notável</a> 
 		<a href="114-Operacoes-num-tabuleiro-3x3/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">114 - Operações num tabuleiro 3x3</a>   
 		<a href="113-No-meio-do-triangulo-tinha-um-ponto/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">113 - No meio do triângulo tinha um ponto</a>   
           </div>  
