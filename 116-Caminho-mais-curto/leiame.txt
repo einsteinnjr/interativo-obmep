@@ -1,11 +1,11 @@
 ## name ##
-115 - Soma de angulos notavel
+116 - Caminho mais curto
 
 
 ## module to be inserted ##
 Série: EF8
 Módulo: Elementos básicos de geometria plana - Parte 2
-aula:  Congruência de triângulos e aplicações
+aula:  Condição de alinhamento de três pontos e a desigualdade Triangular
 http://matematica.obmep.org.br/index.php/modulo/ver?modulo=30
 
 
@@ -52,13 +52,13 @@ jsxgraphcore.js
 
 ## specific files for that interactive, on folder "src" ##
 src/css:
-interactive115.css
+interactive116.css
 
 src/js:
-interactive115.js
+interactive116.js
 
 
 ## minimum height ##
-1200px;
+1500px;
 
 
