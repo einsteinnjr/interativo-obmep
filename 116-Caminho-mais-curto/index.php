@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="spaced-v">
-  <button type="button" class="btn btn-default  btn-primary" onClick="generateNewGame()">Nova configuração</button>
+  <button type="button" class="btn btn-default  btn-primary" onClick="generateNewGame()">Nova Configuração</button>
 </div>
 <div class="spaced-v bordered">
 	<div id="questionJXGBox" class="jxgbox center-img"></div>

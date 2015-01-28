@@ -1,1 +1,1 @@
-Mesmo alterando a figura, muitas vezes seus ângulos continuam mantendo relações interessantes. Descubra a relação do interativo.
+Esse interativo mostra um problema bastante conhecido. Se estou do mesmo lado de um rio que uma árvore, qual o menor caminho de ir até a árvore, tocando em algum ponto do rio?
