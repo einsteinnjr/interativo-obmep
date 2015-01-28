@@ -14,8 +14,6 @@
 <div class="spaced-v bordered">
 	<div id="questionJXGBox" class="jxgbox center-img"></div>
 </div>	
-<div><b>Fonte do Problema:</b> <a href="http://clubes.obmep.org.br/blog/probleminha-uma-soma-notavel/">Clubes Obmep - Uma soma notável</a>
-</div>
 
 <div class="spaced-v">
   <button id="showAnswer" type="button" class="btn btn-default btn-success spaced-h" onClick="showAnswer();">Mostrar Explicação</button> 
