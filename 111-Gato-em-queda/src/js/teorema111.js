@@ -14,7 +14,7 @@ function generateLadder(){
 	var Y = qboard.create('point', [0, p], {color:'blue', withLabel:false, fixed:true});
 	O = qboard.create('point', [0, 0], {color:'blue', withLabel:false, fixed:true});
 	var X = qboard.create('point', [p, 0], {color:'blue', withLabel:false, fixed:true});
-	var t1 =qboard.create('text',[p, p, "MA = MB = p"]);
+	var t1 =qboard.create('text',[p, p, "MA = MB = p"], {fixed:true});
 
 	//hide useless points.
 	Y.hideElement();

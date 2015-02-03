@@ -39,8 +39,8 @@ function generateRectangle(){
 	var rectangleA = qboard.create('polygon', [M, Z, S, W], {name: "A",withLabel:true});
 	var rectangleB = qboard.create('polygon', [M, X, Q, Y], {name: "B",withLabel:true});
 
-	t1 =qboard.create('text',[0, -1, "A = "+rectangleA.Area().toFixed(2)]);
-	t2 =qboard.create('text',[q-1, -1, "B = "+rectangleB.Area().toFixed(2)]);
+	t1 =qboard.create('text',[0, -1, "A = "+rectangleA.Area().toFixed(2)], {fixed:true});
+	t2 =qboard.create('text',[q-1, -1, "B = "+rectangleB.Area().toFixed(2)], {fixed:true});
 	
 	M.on('drag', function(){
 		t1.remove();

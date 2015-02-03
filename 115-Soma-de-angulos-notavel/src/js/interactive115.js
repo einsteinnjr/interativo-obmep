@@ -24,9 +24,9 @@ function generateSquare(){
 	C = qboard.create('point', [l, l], {name: "C", color:'blue', fixed:true});
 	D = qboard.create('point', [l, 0], {name: "D", color:'blue', fixed:true});
 
-	t1 = qboard.create('text',[0, -d/2, "<span style='text-decoration:overline'>PB</span> + <span style='text-decoration:overline'>BQ</span> = l = <span style='text-decoration:overline'>AB</span>"]);
+	t1 = qboard.create('text',[0, -d/2, "<span style='text-decoration:overline'>PB</span> + <span style='text-decoration:overline'>BQ</span> = l = <span style='text-decoration:overline'>AB</span>"], {fixed:true});
 
-	t2 = qboard.create('text',[0, -d, "&alpha; + &beta; + &theta; = ?"]);
+	t2 = qboard.create('text',[0, -d, "&alpha; + &beta; + &theta; = ?"], {fixed:true});
 
 	//sides of square
 	AB = qboard.create('segment', [A, B], {color:'black', fixed:true});
@@ -71,7 +71,7 @@ function generateSolutionInfosOnImage(){
     		withLabel: true
 	});
 	t1.remove();
-	t1 =qboard.create('text',[0, -d/2, "x + y = <span style='text-decoration:overline'>PB</span> + <span style='text-decoration:overline'>BQ</span> = l = <span style='text-decoration:overline'>AB</span>"]);
+	t1 =qboard.create('text',[0, -d/2, "x + y = <span style='text-decoration:overline'>PB</span> + <span style='text-decoration:overline'>BQ</span> = l = <span style='text-decoration:overline'>AB</span>"], {fixed:true});
 
 	alpha = qboard.create('angle', [P,D,A], {name: "&alpha;", color: 'blue', type:'sector', orthoType:'square', orthoSensitivity:2, radius:1}),
 	teta = qboard.create('angle', [C,D,Q], {name: "&theta;", color: 'pink', type:'sector', orthoType:'square', orthoSensitivity:2, radius:1});
