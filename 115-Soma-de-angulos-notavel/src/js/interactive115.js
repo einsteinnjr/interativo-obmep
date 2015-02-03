@@ -5,8 +5,8 @@ var AB, BC, CD, DA;
 var P, Q;
 var qboard;
 var PQ, AQ, DQ, CP, DP;
-var alpha, beta, teta;
-var t1;
+var alpha, beta, theta;
+var t1, t2, t3, t4, t5;
 
 
 var showingSolution;
@@ -24,10 +24,6 @@ function generateSquare(){
 	C = qboard.create('point', [l, l], {name: "C", color:'blue', fixed:true});
 	D = qboard.create('point', [l, 0], {name: "D", color:'blue', fixed:true});
 
-	t1 = qboard.create('text',[0, -d/2, "<span style='text-decoration:overline'>PB</span> + <span style='text-decoration:overline'>BQ</span> = l = <span style='text-decoration:overline'>AB</span>"], {fixed:true});
-
-	t2 = qboard.create('text',[0, -d, "&alpha; + &beta; + &theta; = ?"], {fixed:true});
-
 	//sides of square
 	AB = qboard.create('segment', [A, B], {color:'black', fixed:true});
 	BC = qboard.create('segment', [B, C], {color:'black', fixed:true});
@@ -41,6 +37,18 @@ function generateSquare(){
 	//p sliding on AB
 	P.makeGlider(AB);
 
+	P.on("drag", function(){
+		//erase former angle values
+		t1.remove();
+		t2.remove();
+		t3.remove();
+
+		//update angle values
+		t1 = qboard.create('text',[0, -d/2, "&alpha; = "+(alpha.Value()*180.0/Math.PI).toFixed(2)+"<sup>o</sup>"], {fixed:true});
+		t2 = qboard.create('text',[0, -d, "&beta; = "+(beta.Value()*180.0/Math.PI).toFixed(2)+"<sup>o</sup>"], {fixed:true});
+		t3 = qboard.create('text',[0, -3*d/2, "&theta; = "+(theta.Value()*180.0/Math.PI).toFixed(2)+"<sup>o</sup>"], {fixed:true});
+	});
+
 	PQ = qboard.create('segment', [P, Q], {color:'black'});
 	AQ = qboard.create('segment', [A, Q], {color:'black', dash:2});
 	DP = qboard.create('segment', [D, P], {color:'black', dash:2});
@@ -49,7 +57,16 @@ function generateSquare(){
 
 	alpha = qboard.create('angle', [Q,A,P], {name: "&alpha;", color: 'blue', type:'sector', orthoType:'square', orthoSensitivity:2, radius:1}),
         beta = qboard.create('angle', [Q,D,P], {name: "&beta;", color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:1});
-	teta = qboard.create('angle', [Q,C,P], {name: "&theta;", color: 'pink', type:'sector', orthoType:'square', orthoSensitivity:2, radius:1});
+	theta = qboard.create('angle', [Q,C,P], {name: "&theta;", color: 'pink', type:'sector', orthoType:'square', orthoSensitivity:2, radius:1});
+
+	//texts
+	t1 = qboard.create('text',[0, -d/2, "&alpha; = "+(alpha.Value()*180.0/Math.PI).toFixed(2)+"<sup>o</sup>"], {fixed:true});
+	t2 = qboard.create('text',[0, -d, "&beta; = "+(beta.Value()*180.0/Math.PI).toFixed(2)+"<sup>o</sup>"], {fixed:true});
+	t3 = qboard.create('text',[0, -3*d/2, "&theta; = "+(theta.Value()*180.0/Math.PI).toFixed(2)+"<sup>o</sup>"], {fixed:true});	
+
+	t4 = qboard.create('text',[l/2, -d/2, "<span style='text-decoration:overline'>PB</span> + <span style='text-decoration:overline'>BQ</span> = l = <span style='text-decoration:overline'>AB</span>"], {fixed:true});
+
+	t5 = qboard.create('text',[l/2, -d, "&alpha; + &beta; + &theta; = 90<sup>o</sup>"], {fixed:true});
 }
 
 function generateSolutionInfosOnImage(){
@@ -70,11 +87,12 @@ function generateSolutionInfosOnImage(){
 		name: 'l',
     		withLabel: true
 	});
-	t1.remove();
-	t1 =qboard.create('text',[0, -d/2, "x + y = <span style='text-decoration:overline'>PB</span> + <span style='text-decoration:overline'>BQ</span> = l = <span style='text-decoration:overline'>AB</span>"], {fixed:true});
+	
+	t4.remove();
+	t4 =qboard.create('text',[l/2, -d/2, "x + y = <span style='text-decoration:overline'>PB</span> + <span style='text-decoration:overline'>BQ</span> = l = <span style='text-decoration:overline'>AB</span>"], {fixed:true});
 
 	alpha = qboard.create('angle', [P,D,A], {name: "&alpha;", color: 'blue', type:'sector', orthoType:'square', orthoSensitivity:2, radius:1}),
-	teta = qboard.create('angle', [C,D,Q], {name: "&theta;", color: 'pink', type:'sector', orthoType:'square', orthoSensitivity:2, radius:1});
+	theta = qboard.create('angle', [C,D,Q], {name: "&theta;", color: 'pink', type:'sector', orthoType:'square', orthoSensitivity:2, radius:1});
 }
 
 function generateSolution(){
