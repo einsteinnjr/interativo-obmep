@@ -117,9 +117,9 @@ function showAnswer(){
 	$("#showAnswer").attr("disabled",true);
 	$("#answerExplanation").removeClass("hidden");
 	$("#answerExplanation").html("<b>Solução:</b><br/>"+
-	"<div class='justify'>Às vezes, uma nova construção geométrica nos ajuda a solucionar o problema. A complexidade do problema está na condição de 'tocar na reta r'. Podemos então tentar substituí-la por outra mais simples.</div>"+
-	"<div class='justify'>Note que existe um ponto interessante relacionado ao ponto B e a reta r. É o ponto B', reflexo de B em relação a reta r. (assim: <span style='text-decoration:overline'>MB</span> = <span style='text-decoration:overline'>MB'</span> e <span style='text-decoration:overline'>BB'</span> &perp; r)</div> "+
-	"<div class='justify'>B' é tal que a soma das distâncias de P a A e B é a mesma que a A e B', para todo ponto P da reta r, isto é:</div>"+
+	"<div class='justify'>Às vezes, uma construção geométrica simplifica o problema. A condição de 'tocar na reta r' pode ser reformulada:</div>"+
+	"<div class='justify'>Analisemos o ponto B', reflexo de B em relação a reta r, tal que <span style='text-decoration:overline'>MB</span> = <span style='text-decoration:overline'>MB'</span> e <span style='text-decoration:overline'>BB'</span> &perp; r.</div> "+
+	"<div class='justify'>O ponto B' é tal que a soma das distâncias de P a A e B é a mesma que a A e B', para todo ponto P da reta r, isto é:</div>"+
 	"<div class='center'><span style='text-decoration:overline'>PA</span> + <span style='text-decoration:overline'>PB</span> = <span style='text-decoration:overline'>PA</span> + <span style='text-decoration:overline'>PB'</span> <span class='tab'>(I)</span> </div>"+
 	"<div class='justify'>Isso ocorre porque &Delta;PMB &cong; &Delta;PMB' (Caso LAL).</div>"+
 	"<div class='center'><span style='text-decoration:overline'>PM</span> comum;<span class='tab'></span>  &ang;PMB = 90<sup>o</sup>=&ang;PMB' <span class='tab'></span>e <span style='text-decoration:overline'>MB</span> = <span style='text-decoration:overline'>MB'</span>;</div>"+
