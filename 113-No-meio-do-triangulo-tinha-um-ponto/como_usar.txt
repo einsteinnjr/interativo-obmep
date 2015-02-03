@@ -1,2 +1,2 @@
-Nesse interativo, é possível movimentar o ponto P interior ao triângulo equilátero ABC e analisar como suas projeções aos lados se alteram. Quanto vale a soma dos comprimentos dessas projeções?
+Nesse interativo, é possível movimentar o ponto P interior ao triângulo equilátero ABC e analisar como suas projeções aos lados se alteram. Demonstre que a soma dos comprimentos das projeções de P é sempre constante.
 Caso deseje saber a solução, clique em "Mostrar Explicação". Para um novo ponto P, clique em "Novo ponto".

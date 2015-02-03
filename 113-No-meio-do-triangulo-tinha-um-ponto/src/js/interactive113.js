@@ -8,6 +8,7 @@ var x,y,z;
 var a,b;
 var Q, G, H, I;
 var QG, GH, HI;
+var t1, t2, t3, t4;
 
 var showingSolution;
 
@@ -18,7 +19,7 @@ function generateTriangle(){
 
 	//vertices of triangle
 	A = qboard.create('point', [0,0], {name: "A", color:'blue', fixed:true, label:{offset:[-10,-10]}});
-	B = qboard.create('point', [l, 0], {name: "B", color:'blue', fixed:true});
+	B = qboard.create('point', [l, 0], {name: "B", color:'blue', fixed:true, label:{offset:[10, 10]}});
 	C = qboard.create('point', [l/2, h], {name: "C", color:'blue', fixed:true});	
 	
 	//sides of triangle
@@ -78,26 +79,46 @@ function generateProjections(){
 	x = distance(P, D);
 	y = distance(P, E);
 	z = distance(P, F);
+	
+	generateTexts();
 
 	if(showingSolution){
 
 		//points of the resulting sum of projection segments.
-		Q = qboard.create('point', [l+2*d, 0], {name:"Q", withLabel:false, fixed:true, color:'blue'});
-		G = qboard.create('point', [l+2*d, z], {name:"G", withLabel:false, fixed:true, color:'cyan'});
-		H = qboard.create('point', [l+2*d, z+y], {name:"H", withLabel:false, fixed:true, color:'yellow'});
-		I = qboard.create('point', [l+2*d, z+y+x], {name:"I", withLabel:false, fixed:true, color:'violet'});
+		Q = qboard.create('point', [l+d, 0], {withLabel:false, fixed:true, color:'blue'});
+		Q1 = qboard.create('point', [l+2*d, 0], {withLabel:false, fixed:true, color:'black'});
 
-		J = qboard.create('point', [l+2*d, h], {color:'violet', withLabel:false, fixed:true});
+		G = qboard.create('point', [l+d, z], {withLabel:false, fixed:true, color:'cyan'});
+		H = qboard.create('point', [l+d, z+y], {withLabel:false, fixed:true, color:'yellow'});
+		I = qboard.create('point', [l+d, z+y+x], {withLabel:false, fixed:true, color:'violet'});
+
+		J = qboard.create('point', [l+d, h], {color:'violet', withLabel:false, fixed:true});
+		J1 = qboard.create('point', [l+2*d, h], {color:'black', withLabel:false, fixed:true});
 
 		// projection segments.
-		QG = qboard.create('segment', [Q, G], {name:"z", withLabel:true, color:'cyan', label:{offset:[-20, 0]}});
-		GH = qboard.create('segment', [G, H], {name:"y", withLabel:true, color:'yellow', label:{offset:[-20, 0]}});
-		HI = qboard.create('segment', [H, I], {name:"x", withLabel:true, color:'violet', label:{offset:[-20, 0]}});
+		QG = qboard.create('segment', [Q, G], {name:"z", withLabel:true, color:'cyan', label:{offset:[10, 0]}});
+		GH = qboard.create('segment', [G, H], {name:"y", withLabel:true, color:'yellow', label:{offset:[10, 0]}});
+		HI = qboard.create('segment', [H, I], {name:"x", withLabel:true, color:'violet', label:{offset:[10, 0]}});
 		
+		Q1J1 = qboard.create('segment', [Q1, J1], {name:"h", withLabel:true, color:'black', label:{offset:[10, 0]}});
+
 		//dashed segments limiting height
-		CJ = qboard.create('segment', [C, J], { color:'black', dash:2});
-		BQ = qboard.create('segment', [B, Q], { color:'black', dash:2});
+		CJ1 = qboard.create('segment', [C, J1], { color:'black', dash:2});
+		BQ1 = qboard.create('segment', [B, Q1], { color:'black', dash:2});
 	}	
+}
+
+function generateTexts(){
+	//texts
+	t1 = qboard.create('text',[0, -d, "x = "+x.toFixed(2)], {fixed:true});
+	t2 = qboard.create('text',[0, -3*d/2, "y = "+y.toFixed(2)], {fixed:true});
+	t3 = qboard.create('text',[0, -2*d, "z = "+z.toFixed(2)], {fixed:true});	
+
+	
+	if(showingSolution){
+		t4 = qboard.create('text',[l/2, -d, "x + y + z = "+h.toFixed(2)+" = h"], {fixed:true});
+	}
+	else t4 = qboard.create('text',[l/2, -d, "x + y + z = "+h.toFixed(2)], {fixed:true});
 }
 
 function distance (a, b){
@@ -115,23 +136,36 @@ function clearElements(){
 	PE.remove();
 	PF.remove();
 
+	t1.remove();
+	t2.remove();
+	t3.remove();
+	t4.remove();
+
 	if(showingSolution){
 
 		Q.remove();
+		Q1.remove();
+
 		G.remove();
 		H.remove();
 		I.remove();
+
+		J.remove();
+		J1.remove();
 
 		QG.remove();
 		GH.remove();
 		HI.remove();	
 
-		CJ.remove();
-		BQ.remove();
+		Q1J1.remove();
+
+		CJ1.remove();
+		BQ1.remove();
 	}
 }
 
 function generateSolution(){
+	clearElements();
 	showingSolution=true;
 	generateProjections();
 }
@@ -142,7 +176,7 @@ function showAnswer(){
 	$("#answerExplanation").html("<b>Solução:</b><br/>"+
 	"<div class='justify'>Note que:</div>"+
 	"<div class='center'>[ABC] = [PAB] + [PBC] + [PCA]</div>"+
-	"<div class='justify'>Onde [XYZ] é a área do triângulo XYZ.</div>"+
+	"<div class='justify'>Onde [XYZ] é a área do triângulo &Delta;XYZ.</div>"+
 	"<div class='justify'>Como a área do triangulo é a metade do produto da base pela altura: </div>"+
 	"<div class='center'>`(l*h)/2` = `(l*z)/2` + `(l*x)/2` + `(l*y)/2`</div>"+
 	"<div class='justify'>Logo:</div>"+
