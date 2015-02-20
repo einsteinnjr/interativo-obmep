@@ -1,1 +1,1 @@
-Esse interativo mostra um problema bastante conhecido. Se estou do mesmo lado de um rio que uma árvore, qual o menor caminho de ir até a árvore tocando em algum ponto do rio?
+Esse interativo trata de maximizar o produto de segmentos em um arco de circunferência. Será que você consegue resolvê-lo?
