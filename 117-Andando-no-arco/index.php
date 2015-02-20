@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/jsxgraph/css/jsxgraph.css">
         <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
         <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
-	<link rel="stylesheet" type="text/css" href="src/css/interactive116.css">
+	<link rel="stylesheet" type="text/css" href="src/css/interactive117.css">
 </head>
 <body>
 <div class="spaced-v">
@@ -21,7 +21,8 @@
 
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
 	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
-        <script type="text/javascript" src="src/js/interactive116.js"></script>
+        <script type="text/javascript" src="src/js/interactive117.js"></script>
+	<script type="text/javascript" src="assets/MathJax/MathJax.js"></script>
 	
 	<div>	
 		<div id="answerExplanation" class="bordered answer-bg hidden height-auto">
@@ -30,6 +31,12 @@
 	<script>
 	$(document).ready(function () {
 		generateNewGame();
+	});
+	MathJax.Hub.Config({
+	  config: ["MMLorHTML.js"],
+	  jax: ["input/AsciiMath","output/HTML-CSS","output/NativeMML"],
+	  extensions: ["asciimath2jax.js","MathMenu.js","MathZoom.js"],
+	  imageFont: null
 	});
 	</script>
 </body>
