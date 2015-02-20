@@ -78,6 +78,10 @@
           </div><!--/row-->
         </div><!--/span-->
 	<div class="col-xs-6 col-sm-3 sidebar-offcanvas accordion" id="sidebar" role="navigation">
+	<h3>Fevereiro 2015</h3> 
+  	 <div class="list-group">
+		<a href="117-Andando-no-arco/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">117 - Andando no arco</a> 
+          </div>  	
 	<h3>Janeiro 2015</h3> 
   	 <div class="list-group">
 		<a href="116-Caminho-mais-curto/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">116 - Caminho mais curto</a> 
