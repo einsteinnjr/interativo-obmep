@@ -1,12 +1,12 @@
 ## name ##
-116 - Caminho mais curto
+118 - Triângulos num quadriculado
 
 
 ## module to be inserted ##
-Série: EF8
-Módulo: Elementos básicos de geometria plana - Parte 2
-aula:  Condição de alinhamento de três pontos e a desigualdade Triangular
-http://matematica.obmep.org.br/index.php/modulo/ver?modulo=30
+Série: EF9
+Módulo: Áreas de Figuras Planas
+aula:  Área de Figuras Planas: Resultados Básicos
+http://matematica.obmep.org.br/index.php/modulo/ver?modulo=20
 
 
 ## libraries used, on folder "assets" ##
@@ -52,13 +52,13 @@ jsxgraphcore.js
 
 ## specific files for that interactive, on folder "src" ##
 src/css:
-interactive116.css
+interactive118.css
 
 src/js:
-interactive116.js
+interactive118.js
 
 
 ## minimum height ##
-1500px;
+1000px;
 
 
