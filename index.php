@@ -80,6 +80,7 @@
 	<div class="col-xs-6 col-sm-3 sidebar-offcanvas accordion" id="sidebar" role="navigation">
 	<h3>Fevereiro 2015</h3> 
   	 <div class="list-group">
+		<a href="118-Triangulos-num-reticulado/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">118 - Triângulos num reticulado</a> 
 		<a href="117-Andando-no-arco/index.php" target="iframeA" class="list-group-item" onclick="showInIframe(this)">117 - Andando no arco</a> 
           </div>  	
 	<h3>Janeiro 2015</h3> 
