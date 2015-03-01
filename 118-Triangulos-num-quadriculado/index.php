@@ -15,6 +15,12 @@
 	<div id="questionJXGBox" class="jxgbox center-img"></div>
 </div>	
 
+<div class="spaced-v bordered">
+	<div id="actualArea" class=""><b>Área: <span id="actualAreaValue" class="dark-green">-</span></b></div>
+	<div id="minimumArea" class="hidden"><b>Área mínima: <span id="minimumAreaValue" class="dark-red"></span></b></div>
+	<button id="showHint" type="button" class="btn btn-default spaced-h" onClick="showHintField(true);">Mostrar Dica</button> 
+</div>	
+
 <div class="spaced-v">
   <button id="showAnswer" type="button" class="btn btn-default btn-success spaced-h" onClick="showAnswer();">Mostrar Explicação</button> 
 </div> 
