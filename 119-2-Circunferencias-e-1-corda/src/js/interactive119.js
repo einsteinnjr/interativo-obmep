@@ -3,81 +3,73 @@ var d1 = 2;// distance until quotes infos
 var x_A, y_A, x_B, y_B, x_P, y_P ;
 var x, y, d;
 
-var MAX_X = 20;
-var MIN_X = MAX_X * 3/4;
-var MAX_Y = 10;
-var MIN_Y = 2;
+var MIN_R = 10;
 
 var A, B, O, P, C;
 var qboard;
 var t1;
+var answer;
 
 
 var showingSolution;
 
 function generateFigure(){
 
-	qboard = JXG.JSXGraph.initBoard('questionJXGBox', {boundingbox: [-d, MAX_Y+d, MAX_X+d, -(MAX_Y+d)],  keepaspectratio: true, showcopyright: false});
+	r1 = MIN_R+ Math.floor(Math.random()*MIN_R);
+	r2 = MIN_R+ Math.floor(Math.random()*MIN_R);
+	dist = 3*(r1+r2)/4; //d is the distance between centers.
+
+	maxR = Math.max(r1,r2);
+
+	qboard = JXG.JSXGraph.initBoard('questionJXGBox', {boundingbox: [-(d+r1), maxR+d, dist+r2+d, -(maxR+d)],  keepaspectratio: true, showcopyright: false});
+
+	O1 = qboard.create('point', [0, 0], {fixed:true, visible:false});
+	O2 = qboard.create('point', [dist, 0], {fixed:true, visible:false});
+
+	//circles c1 and c2
+	c1 = qboard.create('circle', [O1, r1], {name:"c1", withLabel:"true", strokeColor:"black", strokeWidth:1, fixed:true, label:{offset:[-45, 40]}});
+	c2 = qboard.create('circle', [O2, r2], {name:"c2", withLabel:"true", strokeColor:"black", strokeWidth:1, fixed:true});
+
+	//intersection points of circles
+	A = qboard.create('intersection', [c1, c2], {name:"A", color:"blue", fixed:true, label:{offset:[0, -15]}});
+	B = qboard.create('otherintersection', [c1, c2, A], {name:"B", color:"blue", fixed:true, label:{offset:[0, 15]}});
+
+	//c2 radius related to A and B, intersection points
+	O2B = qboard.create('line', [O2, B], { fixed:true, visible:false});
+	O2A = qboard.create('line', [O2, A], { fixed:true, visible:false});
+
+	//tangent lines to c2 related to A and B
+	tangA = qboard.create('perpendicular', [O2A, A], {strokeColor:"black", fixed:true, withLabel:false,  visible:false});	
+	tangB = qboard.create('perpendicular', [O2B, B], {strokeColor:"black", fixed:true, withLabel:false,  visible:false});
 	
-	//point A = (0,y)
-	y_A = MIN_Y+ Math.floor(Math.random()*(MAX_Y +1 -MIN_Y));  // MIN_Y to MAX_Y, arbitrarily
 
-	//point B = (x_B, y_B)
-	x_B = MIN_X + Math.floor(Math.random()*(MAX_X + 1 - MIN_X)); // MIN_X to MAX_X, arbitrarily
-	do{
-		y_B = MIN_Y + Math.floor(Math.random()*(MAX_Y + 1 - MIN_Y)); // MIN_Y to MAX_Y, arbitrarily
-	} while (y_B===y_A);
+	//E and F are points on C1, that make C and D still on bigger arc AB on c2.
+	E = qboard.create('otherintersection', [tangA, c1, A], {strokeColor:"black", fixed:true, withLabel:false,  visible:false});
+	F = qboard.create('otherintersection', [tangB, c1, B], {strokeColor:"black", fixed:true, withLabel:false,  visible:false});
 
-	max_AB = Math.max(y_A+d1, y_B+d1);
+	//arc defined by EF
+	arc1 = qboard.create('arc', [O1, E, F], {strokeColor:"black", fixed:true, withLabel:false,  visible:false});
 
-	//plotting A points
-	A = qboard.create('point', [0, y_A], {name: "A", color:'blue', fixed:true, label:{offset:[-15, 0]}});
-	A1 = qboard.create('point', [-d1, y_A], { color:'black', fixed:true, label:{offset:[-15, 0]}, withLabel:false, face:"+"});
-	A2 = qboard.create('point', [0, max_AB], { color:'black', fixed:true, label:{offset:[-15, 0]}, withLabel:false, face:"+"});
-
-	//plotting B points
-	B = qboard.create('point', [x_B, y_B], {name: "B", color:'blue', fixed:true});
-	B1 = qboard.create('point', [x_B + d1, y_B], {color:'black', fixed:true, label:{offset:[-15, 0]}, withLabel:false, face:"+"});
-	B2 = qboard.create('point', [x_B, max_AB], { color:'black', fixed:true, withLabel:false, face:"+"});
-
-	//plotting origin O
-	O = qboard.create('point', [0, 0], {name: "O", color:'blue', fixed:true, visible:false});
-	O1 = qboard.create('point', [-d1, 0], {name: "O", color:'blue', fixed:true, visible:false});
-
-	//plotting Q, projection of B on x
-	Q = qboard.create('point', [x_B, 0], {name: "Q", color:'blue', fixed:true, visible:false});
-	Q1 = qboard.create('point', [x_B+d1, 0], {name: "Q", color:'blue', fixed:true, visible:false});
+	//theta between 150 and 210. Set a random angle for P to begin	
+	theta = 5*Math.PI/6+Math.random()*Math.PI/3;
 	
-	//movable point
-	P = qboard.create('point', [x_B/2, 0], {name: "P", color:'red', label:{offset:[-15,-15]}, needsRegularUpdate:true});
-
-	//path
-	AP = qboard.create('segment', [A, P], {color:'green'});
-	BP = qboard.create('segment', [B, P], {color:'green'});
+	P = qboard.create('point', [r1*Math.cos(theta), r1*Math.sin(theta)], {name:"P", color:"blue", label:{offset:[-20, 0]}});
 	
-	x = dist(O, A);
-	y = dist(Q, B);
-	d = dist(A2, B2);
+	// arc1, defined by EF on C1, that make C and D still on bigger arc AB on c2.
+	P.makeGlider(arc1);	
 
-	// heigths distances: to show distance values
-	O1A1 = qboard.create('segment', [O1, A1], {name:"x="+x, color:'black', dash:2, withLabel:true, label:{offset:[-30, 0]}});
-	B1Q1 = qboard.create('segment', [B1, Q1], {name:"y="+y, color:'black', dash:2, withLabel:true});
-	A2B2 = qboard.create('segment', [A2, B2], {name:"d="+d, color:'black', dash:2, withLabel:true});
-	
-	r = qboard.create('line', [O, Q], {name: "r", color:'black', fixed:true, withLabel:true, label:{offset:[10, -15]}});
+	//lines to define C and D
+	PB = qboard.create('line', [P, B], {color:"black", strokeWidth:1, visible: false});
+	PA = qboard.create('line', [P, A], {color:"black", strokeWidth:1, visible: false});
 
-	//p needs to be on r
-	P.makeGlider(r);
+	C = qboard.create('otherintersection', [PB, c2, B], {name:"C", withLabel:true, color:"blue"});
+	D = qboard.create('otherintersection', [PA, c2, A], {name:"D", withLabel:true, color:"blue"});
 
-	t1 = qboard.create('text',[-d1, -(MAX_Y+d1), "<span style='text-decoration:overline'>PA</span> + <span style='text-decoration:overline'>PB</span> = "+(dist(P,A)+dist(P,B)).toFixed(2)], {fixed:true});
-	t2 = qboard.create('text',[-d1, -(MAX_Y+2*d1), "min(<span style='text-decoration:overline'>PA</span> + <span style='text-decoration:overline'>PB</span>) = ?"], {fixed:true});
-	
-	//when P moves along r, recalculate PA+PB
-	P.on("drag", function(){
-		t1.remove();
-		t1 = qboard.create('text',[-d1, -(MAX_Y+d1), "<span style='text-decoration:overline'>PA</span> + <span style='text-decoration:overline'>PB</span> = "+(dist(P,A)+dist(P,B)).toFixed(2)], {fixed:true});
-	});
+	//just plot the segment for the figure to be cleaner.
+	PC = qboard.create('segment', [P, C], {color:"black", strokeWidth:1, visible: true});
+	PD = qboard.create('segment', [P, D], {color:"black", strokeWidth:1, visible: true});
 
+	CD = qboard.create('segment', [C, D], {color:"green"});
 }
 
 function dist(A, B){
@@ -87,25 +79,14 @@ function dist(A, B){
 }
 
 function generateSolutionInfosOnImage(){
+	//segments for the solution
+	AB = qboard.create('segment', [A, B], {color:"yellow"});
+	BD = qboard.create('segment', [B, D], {color:"black"});
 
-	C = qboard.create('reflection', [B, r], {name: "B'", color:'blue', fixed:true, label:{offset:[15,-15]}});
-	BC = qboard.create('segment', [B, C], {color:'blue', fixed:true, dash:2});
-
-	M = qboard.create('midpoint', [B, C], {name: "M", color:'blue', fixed:true, dash:2, label:{offset:[15,-15]}});
-
-	x_N = B.X()*A.Y()/(A.Y()+B.Y());
-	
-	N = qboard.create('point', [x_N, 0], {name: "N", color:'yellow', label:{offset:[-15,-15]}, fixed:true});
-
-	// solution path
-	AN = qboard.create('segment', [A, N], {color:'yellow'});
-	BN = qboard.create('segment', [B, N], {color:'yellow'});
-	CN = qboard.create('segment', [C, N], {color:'yellow', dash:2});
-
-	CP = qboard.create('segment', [C, P], {color:'green', dash:2});
-	
-	t2.remove();
-	t2 = qboard.create('text',[-d1, -(MAX_Y+2*d1), "min(<span style='text-decoration:overline'>PA</span> + <span style='text-decoration:overline'>PB</span>) = <span style='text-decoration:overline'>NA</span> + <span style='text-decoration:overline'>NB</span> ="+(dist(A,C).toFixed(2))], {fixed:true});
+	//angles for the solution
+	APB = qboard.create('angle', [A,P,B], {name: "&alpha;", color: 'blue', type:'sector', orthoType:'square', orthoSensitivity:2, radius:3});
+	ADB = qboard.create('angle', [B,D,A], {name: "&beta;", color: 'pink', type:'sector', orthoType:'square', orthoSensitivity:2, radius:3});
+	CBD = qboard.create('angle', [D,B,C], {name: "&theta;", color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:3});
 }
 
 function generateSolution(){
@@ -114,24 +95,20 @@ function generateSolution(){
 }
 
 function showAnswer(){
+	generateSolution();
 	$("#showAnswer").attr("disabled",true);
 	$("#answerExplanation").removeClass("hidden");
 	$("#answerExplanation").html("<b>Solução:</b><br/>"+
-	"<div class='justify'>Às vezes, uma construção geométrica simplifica o problema. A condição de 'tocar na reta r' pode ser reformulada:</div>"+
-	"<div class='justify'>Analisemos o ponto B', reflexo de B em relação a reta r, tal que <span style='text-decoration:overline'>MB</span> = <span style='text-decoration:overline'>MB'</span> e <span style='text-decoration:overline'>BB'</span> &perp; r.</div> "+
-	"<div class='justify'>O ponto B' é tal que a soma das distâncias de P a A e B é a mesma que a A e B', para todo ponto P da reta r, isto é:</div>"+
-	"<div class='center'><span style='text-decoration:overline'>PA</span> + <span style='text-decoration:overline'>PB</span> = <span style='text-decoration:overline'>PA</span> + <span style='text-decoration:overline'>PB'</span> <span class='tab'>(I)</span> </div>"+
-	"<div class='justify'>Isso ocorre porque &Delta;PMB &cong; &Delta;PMB' (Caso LAL).</div>"+
-	"<div class='center'><span style='text-decoration:overline'>PM</span> comum;<span class='tab'></span>  &ang;PMB = 90<sup>o</sup>=&ang;PMB' <span class='tab'></span>e <span style='text-decoration:overline'>MB</span> = <span style='text-decoration:overline'>MB'</span>;</div>"+
-	"<div class='justify'>Com B' e A estão de lados opostos da reta r, chamemos de N a interseção de <span style='text-decoration:overline'>AB'</span> e a reta r.</div>"+
-	"<div class='justify'>Para qualquer ponto P na reta R, pela desigualdade triangular no &Delta;PAB':</div>"+
-	"<div class='center'><span style='text-decoration:overline'>PA</span> + <span style='text-decoration:overline'>PB'</span> &ge; <span style='text-decoration:overline'>AB'</span> = <span style='text-decoration:overline'>AN</span> + <span style='text-decoration:overline'>NB'</span></div>"+
-	"<div class='justify'>Aplicando (I) para os pontos P e N:</div>"+
-	"<div class='center'><span style='text-decoration:overline'>PA</span> + <span style='text-decoration:overline'>PB</span>  = <span style='text-decoration:overline'>PA</span> + <span style='text-decoration:overline'>PB'</span> &ge; <span style='text-decoration:overline'>AB'</span> = <span style='text-decoration:overline'>AN</span> + <span style='text-decoration:overline'>NB'</span> = <span style='text-decoration:overline'>NA</span> + <span style='text-decoration:overline'>NB</span> </div>"+
-	"<div class='justify'>Assim, N é o ponto procurado.</div>"+
-	"<div class='justify'>Note que para calcular a soma desejada <span style='text-decoration:overline'>AN</span> + <span style='text-decoration:overline'>NB'</span> basta acharmos o valor de <span style='text-decoration:overline'>AB'</span>, que é hipotenusa de um triângulo retângulo de catetos d e (x+y), então:</div>"+
-	"<div class='center'><span style='text-decoration:overline'>AN</span> + <span style='text-decoration:overline'>NB'</span> = <span style='text-decoration:overline'>AB'</span> = &radic;<span style='text-decoration:overline'>h</span><sup>2</sup><span style='text-decoration:overline'>+(x+y)</span><sup>2</sup> = "+Math.sqrt(d*d+(x+y)*(x+y)).toFixed(2)+"</div>");
-	generateSolution();
+	"<div class='justify'>Observe a figura com novas informações:</div>"+
+	"<div class='justify'>Note que, &ang;APB é fixo, pois está olhando para a corda menor AB de c1:</div>"+
+	"<div class='center'>&ang;APB = &alpha; </div>"+ 
+	"<div class='justify'>Note que, &ang;BDA é fixo, pois está olhando para a corda menor AB de c2 :</div>"+
+	"<div class='center'>&ang;BDA = &beta; </div>"+
+	"<div class='justify'>Já, &ang;DBC está olhando para a corda menor CD de c2, que é a nossa corda desejada, que queremos provar ser fixa.</div>"+
+	"<div class='justify'>&ang;DBC, na figura, é ângulo externo do &Delta;PBD e por isso, vale a relação: </div>"+
+	"<div class='center'>&theta; = &ang;DBC = &ang;APB + &ang;BDA = &alpha; + &beta; = fixo</div>"+
+	"<div class='justify'>Como &theta; é, então, constante, a corda relativa a ele também o será. Movimente o ponto P, para que fique mais claro.</div>"+
+	"<div class='justify'>A corda CD, na verdade, é constante para qualquer ponto P inicial em c1. Os demais casos tem solução similares.");
 }
 
 function resetAnswer(){
@@ -141,5 +118,6 @@ function resetAnswer(){
 }	
 
 function generateNewGame(){
+	resetAnswer();
 	generateFigure();
 }
