@@ -1,12 +1,12 @@
 ## name ##
-116 - Caminho mais curto
+119 - 2 Circunferências e 1 corda
 
 
 ## module to be inserted ##
 Série: EF8
-Módulo: Elementos básicos de geometria plana - Parte 2
-aula:  Condição de alinhamento de três pontos e a desigualdade Triangular
-http://matematica.obmep.org.br/index.php/modulo/ver?modulo=30
+Módulo: Elementos básicos de geometria plana - Parte 3
+aula: Circunferência
+http://matematica.obmep.org.br/index.php/modulo/ver?modulo=31
 
 
 ## libraries used, on folder "assets" ##
@@ -52,13 +52,13 @@ jsxgraphcore.js
 
 ## specific files for that interactive, on folder "src" ##
 src/css:
-interactive116.css
+interactive119.css
 
 src/js:
-interactive116.js
+interactive119.js
 
 
 ## minimum height ##
-1500px;
+1200px;
 
 
