@@ -53,7 +53,7 @@ function generateFigure(){
 	//theta between 150 and 210. Set a random angle for P to begin	
 	theta = 5*Math.PI/6+Math.random()*Math.PI/3;
 	
-	P = qboard.create('point', [r1*Math.cos(theta), r1*Math.sin(theta)], {name:"P", color:"blue", label:{offset:[-20, 0]}});
+	P = qboard.create('point', [r1*Math.cos(theta), r1*Math.sin(theta)], {name:"P", color:"red", label:{offset:[-20, 0]}});
 	
 	// arc1, defined by EF on C1, that make C and D still on bigger arc AB on c2.
 	P.makeGlider(arc1);	
@@ -100,12 +100,12 @@ function showAnswer(){
 	$("#answerExplanation").removeClass("hidden");
 	$("#answerExplanation").html("<b>Solução:</b><br/>"+
 	"<div class='justify'>Observe a figura com novas informações:</div>"+
-	"<div class='justify'>Note que, &ang;APB é fixo, pois está olhando para a corda menor AB de c1:</div>"+
+	"<div class='justify'>Note que &ang;APB é fixo, pois está olhando para o arco menor da corda AB fixa de c1:</div>"+
 	"<div class='center'>&ang;APB = &alpha; </div>"+ 
-	"<div class='justify'>Note que, &ang;BDA é fixo, pois está olhando para a corda menor AB de c2 :</div>"+
+	"<div class='justify'>Note que &ang;BDA é fixo, pois está olhando para o arco menor da corda AB fixa de c2 :</div>"+
 	"<div class='center'>&ang;BDA = &beta; </div>"+
-	"<div class='justify'>Já, &ang;DBC está olhando para a corda menor CD de c2, que é a nossa corda desejada, que queremos provar ser fixa.</div>"+
-	"<div class='justify'>&ang;DBC, na figura, é ângulo externo do &Delta;PBD e por isso, vale a relação: </div>"+
+	"<div class='justify'>Já o &ang;DBC está olhando para o arco menor da corda CD de c2, que é a corda que queremos provar ser fixa.</div>"+
+	"<div class='justify'>&ang;DBC, na figura, é ângulo externo do &Delta;PBD e, por isso, vale a relação: </div>"+
 	"<div class='center'>&theta; = &ang;DBC = &ang;APB + &ang;BDA = &alpha; + &beta; = fixo</div>"+
 	"<div class='justify'>Como &theta; é, então, constante, a corda relativa a ele também o será. Movimente o ponto P, para que fique mais claro.</div>"+
 	"<div class='justify'>A corda CD, na verdade, é constante para qualquer ponto P inicial em c1. Os demais casos tem solução similares.");
