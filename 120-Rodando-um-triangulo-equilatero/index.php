@@ -15,6 +15,9 @@
 	<div id="questionJXGBox" class="jxgbox center-img"></div>
 </div>	
 
+<div><b>Fonte do Problema:</b> <a href="http://www.cangurudematematicabrasil.com.br/index.php/anteriores/canguru-2013/finish/9/47">Olimpíada Canguru de Matemática Brasil 2013 - Nivel J - Problema 11</a>
+</div>
+
 <div class="spaced-v">
   <button id="showAnswer" type="button" class="btn btn-default btn-success spaced-h" onClick="showAnswer();">Mostrar Explicação</button> 
 </div> 
