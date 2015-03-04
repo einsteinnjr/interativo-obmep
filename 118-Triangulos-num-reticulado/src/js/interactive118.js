@@ -240,7 +240,14 @@ function showAnswer(){
 	}
 	$("#answerExplanation").html("<b>Solução:</b><br/>"+
 	"<div class='justify'>"+answerFeedback+"</div>"+
-	"<div class='justify'>Uma possível solução é o triângulo amarelo mostrado na figura.</div> ");
+	"<div class='justify'>Uma possível solução é o triângulo amarelo mostrado na figura.</div> "+
+	"<div class='justify'>Uma forma fácil de calcular a área desses triângulos de coordenadas inteiras é utilizando o conhecido <b>Teorema de Pick</b>:</div> "+
+	"<b><div class='justify'>Dado um polígono simples (cujos lados adjacentes não se intersectam), com vértices num reticulado (pontos de coordenadas inteiras), a área do polígono é dada pela fórmula abaixo:</div> </b>"+
+	"<div class='center'><img src='src/images/picks_formula.png'/></div> "+
+	"<div class='justify'> Onde A = Área do polígono;</div> "+
+	"<div class='justify'><span class='tab'/> i = Número de pontos de coordenadas inteiras no interior do polígono;</div>"+
+	"<div class='justify'><span class='tab'/> b = Número de pontos de coordenadas inteiras no bordo do polígono;</div>"+
+	"<div class='center'><img src='src/images/lattice_poligon.png'/></div> ");
 	
 }
 
