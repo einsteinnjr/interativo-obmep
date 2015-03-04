@@ -21,7 +21,7 @@
 	<button id="showHint" type="button" class="btn btn-default spaced-h" onClick="showHintField(true);">Mostrar Dica</button> 
 </div>	
 
-<div><b>Fonte do Problema:</b> <a href="http://www.cangurudematematicabrasil.com.br/index.php/anteriores/canguru-2013/finish/9/47">Olimpíada Canguru de Matemática Brasil - Nivel J - Problema 5</a>
+<div><b>Fonte do Problema:</b> <a href="http://www.cangurudematematicabrasil.com.br/index.php/anteriores/canguru-2013/finish/9/47">Olimpíada Canguru de Matemática Brasil 2013 - Nivel J - Problema 5</a>
 </div>
 
 <div class="spaced-v">

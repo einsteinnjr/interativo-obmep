@@ -1,2 +1,2 @@
 Dado um triângulo equilátero ABC, seja CDE uma rotação do triângulo ABC em torno do ponto C. Prove que o ângulo BCD é o dobro do BAD.
-No interativo, podemos mover o ponto E, para rotacionar o triângulo CDE e podemos verificar a mudança dos ângulos BCD e BAD, abaixo da figura. Caso deseje uma nova figura, clique no botão "Nova Configuração". Para ver a solução, clique em "Mostrar Explicação".
+No interativo, podemos mover o ponto E para rotacionar o triângulo CDE e podemos verificar a mudança dos ângulos BCD e BAD, abaixo da figura. Caso deseje uma nova figura, clique no botão "Nova Configuração". Para ver a solução, clique em "Mostrar Explicação".
