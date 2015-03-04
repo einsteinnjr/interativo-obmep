@@ -1,5 +1,5 @@
 ## name ##
-118 - Triângulos num quadriculado
+118 - Triângulos num reticulado
 
 
 ## module to be inserted ##
