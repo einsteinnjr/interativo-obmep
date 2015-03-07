@@ -89,7 +89,7 @@ function showAnswer(){
 	$("#answerExplanation").html("<b>Solução:</b><br/>"+
 	"<div class='justify'>Como os &Delta;ABC e &Delta;CDE são equiláteros e congruentes, todos seus lados são iguais entre si, em particular:</div>"+
 	"<div class='center'><span style='text-decoration:overline'>CA</span> = <span style='text-decoration:overline'>CB</span> = <span style='text-decoration:overline'>CD</span> = <span style='text-decoration:overline'>CE</span> = l <span class='tab'>(I)</span> </div>"+
-	"<div class='justify'>Por isso, a circunferência com centro em C e raio l passa nos pontos A, B, D e E (como mostrado na figura). Note então que o ângulo &ang;DCB = &alpha; é um ângulo central relativo ao arco menor BD e o ângulo &ang;DAB = &beta; um ângulo inscrito referente ao mesmo arco BD. Por definição:</div>"+
+	"<div class='justify'>Por isso, a circunferência com centro em C e raio l passa nos pontos A, B, D e E (como mostrado na figura). Note então que o ângulo &ang;DCB = &alpha; é um ângulo central relativo ao arco menor BD e o ângulo &ang;DAB = &beta; um ângulo inscrito referente ao mesmo arco BD. Portanto:</div>"+
 	"<div class='center'>&ang;DCB = &alpha; = 2*&beta; = &ang;DAB. </div>"+
 	"<div class='justify'>Mova o ponto E para um melhor entendimento.</div>");
 	generateSolution();
