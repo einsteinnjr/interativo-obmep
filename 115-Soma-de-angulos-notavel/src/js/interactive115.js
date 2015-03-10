@@ -32,7 +32,7 @@ function generateSquare(){
 
 	//side points
 	P = qboard.create('point', [0, x], {name: "P", color:'red', label:{offset:[-15, 0]}});
-	Q = qboard.create('point', [function(){return P.Y();}, l], {name: "Q", color:'red'});
+	Q = qboard.create('point', [function(){return P.Y();}, l], {name: "Q", color:'blue'});
 	
 	//p sliding on AB
 	P.makeGlider(AB);

@@ -25,11 +25,11 @@ function generateLadder(){
 	var OY = qboard.create('segment', [O, Y], {color:'black', fixed:true});
 
 	//B will be the sliding point
-	B = qboard.create('point', [p*alpha, 0], {name: "B", color:'blue'});	
+	B = qboard.create('point', [p*alpha, 0], {name: "B", color:'red'});	
 	B.makeGlider(OX);
 
 	A = qboard.create('point', [0, function(){return Math.sqrt(p*p-B.X()*B.X());}] , {name: "A", color:'blue'});
-	M = qboard.create('midpoint', [A, B], {name: "M", withLabel:true, color:'red'});
+	M = qboard.create('midpoint', [A, B], {name: "M", withLabel:true, color:'blue'});
 
 	//translation of the cat
 	xm0=M.X();
