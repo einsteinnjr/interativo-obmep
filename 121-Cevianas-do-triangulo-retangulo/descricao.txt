@@ -1,1 +1,1 @@
-Esse interativo mostra um problema bastante conhecido. Se estou do mesmo lado de um rio que uma árvore, qual o menor caminho de ir até a árvore tocando em algum ponto do rio?
+As cevianas dos triângulos têm relações interessantes entre si. Você consegue provar essas relações num triângulo retângulo?
