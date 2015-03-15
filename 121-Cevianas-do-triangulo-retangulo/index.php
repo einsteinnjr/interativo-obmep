@@ -15,6 +15,9 @@
 	<div id="questionJXGBox" class="jxgbox center-img"></div>
 </div>	
 
+<div><b>Fonte do Problema:</b> <a href="http://clubes.obmep.org.br/blog/problema-cevianas/">Clubes Obmep - Cevianas</a>
+</div>
+
 <div class="spaced-v">
   <button id="showAnswer" type="button" class="btn btn-default btn-success spaced-h" onClick="showAnswer();">Mostrar Explicação</button> 
 </div> 
