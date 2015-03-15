@@ -69,14 +69,14 @@ function generateFigure(){
 	//angles
 	plotDesiredAnglesAndInfos();
 	C.on("drag", function(){
-		if(!showingSolution){
-			cleanAnglesAndInfos();
-			plotDesiredAnglesAndInfos();
-		}
-		else{
+		cleanAnglesAndInfos();
+		plotDesiredAnglesAndInfos();
+		if(showingSolution){
+			hideSomeAngles();
 			cleanSolutionAnglesAndInfos();
 			plotSolutionAnglesAndInfos();
 		}
+		
 	});
 }
 
@@ -89,16 +89,33 @@ function plotDesiredAnglesAndInfos(){
 		ECD = qboard.create('angle', [D, C, E], {withLabel:false, color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});
 		ECM = qboard.create('angle', [E, C, M], {withLabel:false, color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2.5});
 	}
+	plotInfos();
+}
+
+function plotInfos(){
 	t1 = qboard.create('text',[-r, -d1, "&ang;ECD = "+(ECD.Value()*180.0/Math.PI).toFixed(2)], {fixed:true});
 
 	t2 = qboard.create('text',[-r, -2*d1, "&ang;ECM = "+(ECD.Value()*180.0/Math.PI).toFixed(2)], {fixed:true});//some rounding error. Changed to equal ECD value.
 }
 
+function cleanInfos(){
+	t1.remove();
+	t2.remove();
+}
+
 function cleanAnglesAndInfos(){
 	ECD.remove();
 	ECM.remove();
-	t1.remove();
-	t2.remove();
+	cleanInfos();
+}
+
+function hideSomeAngles(){
+	ECD.setAttribute({
+	    visible: false
+	});
+	ECM.setAttribute({
+	    visible: false
+	});
 }
 
 function dist(A, B){
@@ -113,6 +130,8 @@ function cleanSolutionAnglesAndInfos(){
 	DCX.remove();
 	XCM.remove();
 	MXC.remove();
+
+	cleanInfos();
 }
 
 function plotSolutionAnglesAndInfos(){
@@ -130,6 +149,7 @@ function plotSolutionAnglesAndInfos(){
 		XCM = qboard.create('angle', [M, C, B], {name:"&beta;", color: 'blue', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});
 		MXC = qboard.create('angle', [C, B, M], {name:"&beta;", color: 'blue', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});
 	}
+	plotInfos();
 }
 
 function generateSolution(){
