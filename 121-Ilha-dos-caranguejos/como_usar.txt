@@ -1,0 +1,3 @@
+O triângulo ABC é retângulo em C. São traçadas a mediana CM, a altura CD e a bissetriz CE, onde M, D e E são os respectivos pontos na hipotenusa AB. Prove que CE também é bissetriz do ângulo DCM.
+No interativo, é possível mover o ponto C na semicircunferência, obtendo outros triângulos ABC possíveis.
+Caso deseje uma nova figura, clique no botão "Nova Configuração". Para ver a solução, clique em "Mostrar Explicação".
