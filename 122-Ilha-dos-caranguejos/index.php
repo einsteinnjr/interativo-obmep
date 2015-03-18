@@ -15,7 +15,7 @@
 	<div id="questionJXGBox" class="jxgbox center-img"></div>
 </div>	
 
-<div><b>Fonte do Problema:</b> <a href="http://clubes.obmep.org.br/blog/problema-cevianas/">Clubes Obmep - Cevianas</a>
+<div><b>Fonte do Problema:</b> <a href="http://clubes.obmep.org.br/blog/problemao-a-ilha-triangular/">Clubes Obmep - A Ilha Triangular</a>
 </div>
 
 <div class="spaced-v">
@@ -25,6 +25,7 @@
 	<script src="assets/jquery/jquery-1.10.2.min.js"></script>
 	<script src="assets/jsxgraph/js/jsxgraphcore.js"></script>
         <script type="text/javascript" src="src/js/interactive122.js"></script>
+	<script type="text/javascript" src="assets/MathJax/MathJax.js"></script>
 	
 	<div>	
 		<div id="answerExplanation" class="bordered answer-bg hidden height-auto">
@@ -33,6 +34,12 @@
 	<script>
 	$(document).ready(function () {
 		generateNewGame();
+	});
+	MathJax.Hub.Config({
+	  config: ["MMLorHTML.js"],
+	  jax: ["input/AsciiMath","output/HTML-CSS","output/NativeMML"],
+	  extensions: ["asciimath2jax.js","MathMenu.js","MathZoom.js"],
+	  imageFont: null
 	});
 	</script>
 </body>
