@@ -1,3 +1,2 @@
-O triângulo ABC é retângulo em C. São traçadas a mediana CM, a altura CD e a bissetriz CE, onde M, D e E são os respectivos pontos na hipotenusa AB. Prove que CE também é bissetriz do ângulo DCM.
-No interativo, é possível mover o ponto C na semicircunferência, obtendo outros triângulos ABC possíveis.
+Dada a ilha triangular ABC, em que Joana está. Qual o ponto P do interior da ilha que se encontra a uma maior distância do mar, em qualquer direção, para evitar os caranguejos? No interativo é possível movimentar o ponto P de forma a observar qual seria a menor distância de um ponto P ao mar (aos lados). Na figura, a menor distância é indicada em vermelho e o seu valor numérico na legenda.
 Caso deseje uma nova figura, clique no botão "Nova Configuração". Para ver a solução, clique em "Mostrar Explicação".
