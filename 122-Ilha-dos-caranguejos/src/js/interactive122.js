@@ -15,7 +15,7 @@ var DELTA_RATIO = 0.4
 
 var r=10;
 var qboard;
-var t1, t2, t3;
+var t1, t2, t3, t4, t5;
 var segmentName, segmentValue;
 
 var is1stSolution;
@@ -100,19 +100,22 @@ function generateProjections(){
 	PEA = qboard.create('angle', [A, E, P], {withLabel:false, color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:0.5});
 	PFB = qboard.create('angle', [B, F, P], {withLabel:false, color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:0.5});
 
-	colorTheSmalest();
+	
 	
 	generateTexts();
+
+	colorTheSmallest();
 
 	if(showingSolution){
 
 	}	
 }
 
-function colorTheSmalest(){
+function colorTheSmallest(){
 	x = distance(P, D);
 	y = distance(P, E);
 	z = distance(P, F);
+
 	if(x <= y && x <= z){
 		PD.setAttribute({
 			color:"red",
@@ -120,6 +123,9 @@ function colorTheSmalest(){
 		});
 		PDC.setAttribute({
 			color:"red"
+		});
+		t1.setAttribute({
+			labelColor:"red"
 		});
 		segmentName = PD.getName();
 		segmentValue = x;
@@ -132,6 +138,9 @@ function colorTheSmalest(){
 		PEA.setAttribute({
 			color:"red"
 		});
+		t2.setAttribute({
+			labelColor:"red"
+		});
 		segmentName = PE.getName();
 		segmentValue = y;
 	} 
@@ -143,15 +152,19 @@ function colorTheSmalest(){
 		PFB.setAttribute({
 			color:"red"
 		});
+		t3.setAttribute({
+			labelColor:"red"
+		});
 		segmentName = PF.getName();
 		segmentValue = z;
 	}
+	t4 = qboard.create('text',[0, -2*d1, "Menor distância de P ao mar = <span class='error'>"+segmentName+" = "+ segmentValue.toFixed(2)+"</span>"], {fixed:true});
 }
 
 function generateTexts(){
-
-	t1 = qboard.create('text',[0, -d1, "Menor distância de P ao mar = "+segmentValue.toFixed(2)+" (<span class='error'>"+segmentName+"</span>)"], {fixed:true});
-	
+	t1 = qboard.create('text',[0, -d1, "PD = "+distance(P, D).toFixed(2)], {fixed:true});
+	t2 = qboard.create('text',[xb/3, -d1, "PE = "+distance(P, E).toFixed(2)], {fixed:true});
+	t3 = qboard.create('text',[2*xb/3, -d1, "PF = "+distance(P, F).toFixed(2)], {fixed:true});
 }
 
 function plotIncenterAndItsProjections(){
@@ -187,9 +200,8 @@ function plotIncenterAndItsProjections(){
 
 	incircle = qboard.create('circle', [I, r], {name: "IQ", withLabel:false, strokeColor:'yellow', strokeWidth:1, dash:2});
 	
-	t2 = qboard.create('text',[0, -2*d1, "Distância do incentro I ao mar = "+r.toFixed(2)], {fixed:true});
-	
-	
+	//solution info legend
+	t5 = qboard.create('text',[0, -3*d1, "Distância do incentro I ao mar = "+r.toFixed(2)], {fixed:true});
 }
 
 function distance (a, b){
@@ -212,6 +224,9 @@ function clearElements(){
 	PFB.remove();
 
 	t1.remove();
+	t2.remove();
+	t3.remove();
+	t4.remove();
 
 	if(showingSolution){
 
@@ -229,12 +244,12 @@ function showAnswer(){
 	$("#showAnswer").attr("disabled",true);
 	$("#answerExplanation").removeClass("hidden");
 	$("#answerExplanation").html("<b>Solução:</b><br/>"+
-	"<div class='justify'>Provaremos que o ponto procurado é o incentro da Ilha Triangular. Devemos mostrar que o incentro I é o ponto cuja menor distância ao mar é a maior possível."+
+	"<div class='justify'>Provaremos que o ponto procurado é o incentro da ilha triangular. Devemos mostrar que o incentro I é o ponto cuja menor distância ao mar é a maior possível."+
 	"<div class='justify'>Note que as 3 distâncias do incentro I ao mar (aos lados) são iguais entre si e de tamanho igual ao raio do incírculo."+
 	"<div class='justify'>Supomos então, por absurdo, que haja um ponto P cuja menor distância é maior que a distância do incentro aos lados, isto é, o raio do incírculo."+
-	"<div class='center'>`d_(P, BC) > r` <span class='tab'/>(I)</div>"+
+	"<div class='center'>`d_(P, AB) > r` <span class='tab'/>(I)</div>"+
 	"<div class='center'>`d_(P, CA) > r` <span class='tab'/>(II)</div>"+
-	"<div class='center'>`d_(P, AB) > r` <span class='tab'/>(III)</div>"+
+	"<div class='center'>`d_(P, BC) > r` <span class='tab'/>(III)</div>"+
 	"<div class='justify'>Seja [&Delta;ABC] a área do triângulo &Delta;ABC.</div>"+
 	"<div class='justify'>Note que:</div>"+
 	"<div class='center'>`[&Delta;ABC]=[&Delta;PAB]+[&Delta;PCA]+[&Delta;PBC]=`</div>"+
