@@ -15,7 +15,7 @@
 	<div id="questionJXGBox" class="jxgbox center-img"></div>
 </div>	
 
-<div><b>Fonte do Problema:</b> <a href="http://clubes.obmep.org.br/blog/problema-cevianas/">Clubes Obmep - Cevianas</a>
+<div><b>Fonte do Problema:</b> <a href="http://clubes.obmep.org.br/blog/probleminha-estrela-pentagonal/">Clubes Obmep - Estrela pentagonal</a>
 </div>
 
 <div class="spaced-v">
