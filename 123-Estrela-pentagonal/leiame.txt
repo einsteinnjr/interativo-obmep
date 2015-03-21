@@ -1,12 +1,12 @@
 ## name ##
-121 - Cevianas do triângulo retângulo
+123 - Estrela pentagonal
 
 
 ## module to be inserted ##
 Série: EF8
-Módulo: Elementos básicos de geometria plana - Parte 3
-aula:  Pontos notáveis no triângulo
-http://matematica.obmep.org.br/index.php/modulo/ver?modulo=31
+Módulo: Elementos básicos de geometria plana - Parte 2
+aula:  Triângulos – Propriedades básicas e alguns problemas
+http://matematica.obmep.org.br/index.php/modulo/ver?modulo=30
 
 
 ## libraries used, on folder "assets" ##
@@ -52,13 +52,13 @@ jsxgraphcore.js
 
 ## specific files for that interactive, on folder "src" ##
 src/css:
-interactive121.css
+interactive123.css
 
 src/js:
-interactive121.js
+interactive123.js
 
 
 ## minimum height ##
-1600px;
+1200px;
 
 
