@@ -1,3 +1,2 @@
-O triângulo ABC é retângulo em C. São traçadas a mediana CM, a altura CD e a bissetriz CE, onde M, D e E são os respectivos pontos na hipotenusa AB. Prove que CE também é bissetriz do ângulo DCM.
-No interativo, é possível mover o ponto C na semicircunferência, obtendo outros triângulos ABC possíveis.
+Dada a estrela pentagonal ACEBD, você consegue provar que a soma de seus ângulos é sempre 180 graus, mesmo que os vértices sejam movidos, mantendo ainda o formato de uma estrela de 5 pontas? No interativo é possível mover os vértices, alterando os ângulos indicados, mas permanecendo constante a soma em questão.
 Caso deseje uma nova figura, clique no botão "Nova Configuração". Para ver a solução, clique em "Mostrar Explicação".
