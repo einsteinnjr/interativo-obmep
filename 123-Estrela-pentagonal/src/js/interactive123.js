@@ -14,12 +14,14 @@ function generateFigure(){
 	initialAngle = Math.PI/2; //90
 	deltaAngle = 2*Math.PI/n; //360/n
 
+	
+
 	//vertices of a regular pentagon
-	A = qboard.create('point', [r*Math.cos(initialAngle), r*Math.sin(initialAngle)], {name: "A", color:'blue', label:{offset:[0, 15]}});
-	B = qboard.create('point', [r*Math.cos(initialAngle+deltaAngle), r*Math.sin(initialAngle+deltaAngle)], {name: "B", color:'blue', label:{offset:[-20, 0]}});
-	C = qboard.create('point', [r*Math.cos(initialAngle+2*deltaAngle), r*Math.sin(initialAngle+2*deltaAngle)], {name: "C", color:'blue', label:{offset:[0, -15]}});
-	D = qboard.create('point', [r*Math.cos(initialAngle+3*deltaAngle), r*Math.sin(initialAngle+3*deltaAngle)], {name: "D", color:'blue', label:{offset:[0, -15]}});
-	E = qboard.create('point', [r*Math.cos(initialAngle+4*deltaAngle), r*Math.sin(initialAngle+4*deltaAngle)], {name: "E", color:'blue', label:{offset:[15, 0]}});
+	A = qboard.create('point', [r*Math.cos(initialAngle)+randomPart(), r*Math.sin(initialAngle)+randomPart()], {name: "A", color:'blue', label:{offset:[0, 15]}});
+	B = qboard.create('point', [r*Math.cos(initialAngle+deltaAngle)+randomPart(), r*Math.sin(initialAngle+deltaAngle)+randomPart()], {name: "B", color:'blue', label:{offset:[-20, 0]}});
+	C = qboard.create('point', [r*Math.cos(initialAngle+2*deltaAngle)+randomPart(), r*Math.sin(initialAngle+2*deltaAngle)+randomPart()], {name: "C", color:'blue', label:{offset:[0, -15]}});
+	D = qboard.create('point', [r*Math.cos(initialAngle+3*deltaAngle)+randomPart(), r*Math.sin(initialAngle+3*deltaAngle)+randomPart()], {name: "D", color:'blue', label:{offset:[0, -15]}});
+	E = qboard.create('point', [r*Math.cos(initialAngle+4*deltaAngle)+randomPart(), r*Math.sin(initialAngle+4*deltaAngle)+randomPart()], {name: "E", color:'blue', label:{offset:[15, 0]}});
 
 	//sides of pentagonal star
 	AC = qboard.create('segment', [A, C], {color:'black', strokeWidth:1});
@@ -36,6 +38,10 @@ function generateFigure(){
 	BEC = qboard.create('angle', [B, E, C], {name:"&omega;",  color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});
 	
 	
+}
+
+function randomPart(){
+	return -r/4 + Math.random()*r/2;   // between -r/4 and r/4.
 }
 
 
