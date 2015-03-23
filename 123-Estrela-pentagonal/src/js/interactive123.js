@@ -32,11 +32,11 @@ function generateFigure(){
 	DA = qboard.create('segment', [D, A], {color:'black', strokeWidth:1});
 
 	//desired angles
-	CAD = qboard.create('angle', [C, A, D], {name:"&alpha;",  color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});
-	DBE = qboard.create('angle', [D, B, E], {name:"&beta;",  color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});	
-	ECA = qboard.create('angle', [E, C, A], {name:"&theta;",  color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});
-	ADB = qboard.create('angle', [A, D, B], {name:"&delta;",  color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});
-	BEC = qboard.create('angle', [B, E, C], {name:"&omega;",  color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});
+	CAD = qboard.create('angle', [C, A, D], {withLabel:false, color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});
+	DBE = qboard.create('angle', [D, B, E], {withLabel:false,  color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});	
+	ECA = qboard.create('angle', [E, C, A], {withLabel:false,  color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});
+	ADB = qboard.create('angle', [A, D, B], {withLabel:false,  color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});
+	BEC = qboard.create('angle', [B, E, C], {withLabel:false,  color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});
 	
 	plotInfos();
 
@@ -125,8 +125,8 @@ function plotSolutionAnglesAndInfos(){
 	});
 	
 	//auxiliary angles
-	CFG = qboard.create('angle', [C, F, G], {withLabel:false, color: 'pink', type:'sector', orthoType:'square', orthoSensitivity:2, radius:1});
-	FGC = qboard.create('angle', [F, G, C], {withLabel:false, color: 'blue', type:'sector', orthoType:'square', orthoSensitivity:2, radius:1});	
+	CFG = qboard.create('angle', [C, F, G], {withLabel:false, color: 'pink', type:'sector', orthoType:'square', orthoSensitivity:2, radius:1.5});
+	FGC = qboard.create('angle', [F, G, C], {withLabel:false, color: 'blue', type:'sector', orthoType:'square', orthoSensitivity:2, radius:1.5});	
 	
 }
 
