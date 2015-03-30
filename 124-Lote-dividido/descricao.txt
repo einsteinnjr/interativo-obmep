@@ -1,1 +1,1 @@
-A culpa é das estrelas de terem ângulos difíceis de calcular... Você consegue achar o valor da soma desses?
+Ao dividir um terreno da forma de um quadrilátero em 4, ligando os pontos médios dos lados opostos, foram medidas as áreas de apenas 3 dos terrenos. É possível encontrar a área desconhecida do último terreno?

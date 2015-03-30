@@ -1,2 +1,2 @@
-Dada a estrela pentagonal ACEBD, você consegue provar que a soma de seus ângulos é sempre 180 graus, mesmo que os vértices sejam movidos, mantendo ainda o formato de uma estrela de 5 pontas? No interativo é possível mover os vértices, alterando os ângulos indicados, mas permanecendo constante a soma em questão.
+Dado o quadrilátero ABCD, ligam-se os pontos médios dos lados opostos de modo a dividí-lo em 4 menores. Dadas 3 das áreas, é possível encontrar o valor da última? No interativo é possível mover os vértices do quadrilátero ABCD, alterando as áreas dos quadriláteros menores.
 Caso deseje uma nova figura, clique no botão "Nova Configuração". Para ver a solução, clique em "Mostrar Explicação".
