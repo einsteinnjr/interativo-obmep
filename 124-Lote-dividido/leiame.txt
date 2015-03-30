@@ -1,12 +1,12 @@
 ## name ##
-123 - Estrela pentagonal
+124 - Lote dividido
 
 
 ## module to be inserted ##
-Série: EF8
-Módulo: Elementos básicos de geometria plana - Parte 2
-aula:  Triângulos – Propriedades básicas e alguns problemas
-http://matematica.obmep.org.br/index.php/modulo/ver?modulo=30
+Série: EF9
+Módulo: Áreas de Figuras Planas
+aula:  Área de Figuras Planas: Resultados Básicos
+http://matematica.obmep.org.br/index.php/modulo/ver?modulo=20
 
 
 ## libraries used, on folder "assets" ##
@@ -52,10 +52,10 @@ jsxgraphcore.js
 
 ## specific files for that interactive, on folder "src" ##
 src/css:
-interactive123.css
+interactive124.css
 
 src/js:
-interactive123.js
+interactive124.js
 
 
 ## minimum height ##
