@@ -25,10 +25,10 @@ function generateFigure(){
 	D = qboard.create('point', [r*Math.cos(initialAngle+3*deltaAngle)+randomPart(), r*Math.sin(initialAngle+3*deltaAngle)+randomPart()], {name: "D", color:'blue', label:{offset:[15, 0]}});
 
 	//sides of square
-	AB = qboard.create('segment', [A, B], {color:'black', strokeWidth:1});
-	BC = qboard.create('segment', [B, C], {color:'black', strokeWidth:1});
-	CD = qboard.create('segment', [C, D], {color:'black', strokeWidth:1});
-	DA = qboard.create('segment', [D, A], {color:'black', strokeWidth:1});
+	AB = qboard.create('segment', [A, B], {color:'black', strokeWidth:1, fixed:true});
+	BC = qboard.create('segment', [B, C], {color:'black', strokeWidth:1, fixed:true});
+	CD = qboard.create('segment', [C, D], {color:'black', strokeWidth:1, fixed:true});
+	DA = qboard.create('segment', [D, A], {color:'black', strokeWidth:1, fixed:true});
 
 	//midpoints of sides
 	M = qboard.create('midpoint', [A, B], {name:"M", withLabel:false, color:'red', fixed:true});
