@@ -1,101 +1,127 @@
 var d = 10; // padding until figure.
-var d1 = d/4; // distance until quotes infos
+var d1 = d/3; // distance until quotes infos
 
 var r=d;
 var qboard;
 
+var desiredArea;
+
 var showingSolution;
 
-var t1, t2, t3, t4, t5, t6;
+var t1;
 
 function generateFigure(){
-
-	qboard = JXG.JSXGraph.initBoard('questionJXGBox', {boundingbox: [ -(r+d), r+d, r+d, -(r+2*d)],  keepaspectratio: true, showcopyright: false});
 	
-	n = 5;
-	initialAngle = Math.PI/2; //90
+	qboard = JXG.JSXGraph.initBoard('questionJXGBox', {boundingbox: [ -(r+d1), r+d1, r+d1, -(r+2*d1)],  keepaspectratio: true, showcopyright: false});
+
+	n = 4;
+	initialAngle = 3*Math.PI/4; //135  //1st vertice A
 	deltaAngle = 2*Math.PI/n; //360/n
 
-	
-	//vertices of a regular pentagon with a randomPart deviation
-	A = qboard.create('point', [r*Math.cos(initialAngle)+randomPart(), r*Math.sin(initialAngle)+randomPart()], {name: "A", color:'blue', label:{offset:[0, 15]}});
-	B = qboard.create('point', [r*Math.cos(initialAngle+deltaAngle)+randomPart(), r*Math.sin(initialAngle+deltaAngle)+randomPart()], {name: "B", color:'blue', label:{offset:[-20, 0]}});
-	C = qboard.create('point', [r*Math.cos(initialAngle+2*deltaAngle)+randomPart(), r*Math.sin(initialAngle+2*deltaAngle)+randomPart()], {name: "C", color:'blue', label:{offset:[0, -15]}});
-	D = qboard.create('point', [r*Math.cos(initialAngle+3*deltaAngle)+randomPart(), r*Math.sin(initialAngle+3*deltaAngle)+randomPart()], {name: "D", color:'blue', label:{offset:[0, -15]}});
-	E = qboard.create('point', [r*Math.cos(initialAngle+4*deltaAngle)+randomPart(), r*Math.sin(initialAngle+4*deltaAngle)+randomPart()], {name: "E", color:'blue', label:{offset:[15, 0]}});
+	//vertices of a square with a randomPart deviation
+	A = qboard.create('point', [r*Math.cos(initialAngle)+randomPart(), r*Math.sin(initialAngle)+randomPart()], {name: "A", color:'blue', label:{offset:[-15, 0]}});
+	B = qboard.create('point', [r*Math.cos(initialAngle+deltaAngle)+randomPart(), r*Math.sin(initialAngle+deltaAngle)+randomPart()], {name: "B", color:'blue', label:{offset:[-15, 0]}});
+	C = qboard.create('point', [r*Math.cos(initialAngle+2*deltaAngle)+randomPart(), r*Math.sin(initialAngle+2*deltaAngle)+randomPart()], {name: "C", color:'blue', label:{offset:[15, 0]}});
+	D = qboard.create('point', [r*Math.cos(initialAngle+3*deltaAngle)+randomPart(), r*Math.sin(initialAngle+3*deltaAngle)+randomPart()], {name: "D", color:'blue', label:{offset:[15, 0]}});
 
-	//sides of pentagonal star
-	AC = qboard.create('segment', [A, C], {color:'black', strokeWidth:1});
-	CE = qboard.create('segment', [C, E], {color:'black', strokeWidth:1});
-	EB = qboard.create('segment', [E, B], {color:'black', strokeWidth:1});
-	BD = qboard.create('segment', [B, D], {color:'black', strokeWidth:1});
+	//sides of square
+	AB = qboard.create('segment', [A, B], {color:'black', strokeWidth:1});
+	BC = qboard.create('segment', [B, C], {color:'black', strokeWidth:1});
+	CD = qboard.create('segment', [C, D], {color:'black', strokeWidth:1});
 	DA = qboard.create('segment', [D, A], {color:'black', strokeWidth:1});
 
-	//desired angles
-	CAD = qboard.create('angle', [C, A, D], {withLabel:false, color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});
-	DBE = qboard.create('angle', [D, B, E], {withLabel:false,  color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});	
-	ECA = qboard.create('angle', [E, C, A], {withLabel:false,  color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});
-	ADB = qboard.create('angle', [A, D, B], {withLabel:false,  color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});
-	BEC = qboard.create('angle', [B, E, C], {withLabel:false,  color: 'green', type:'sector', orthoType:'square', orthoSensitivity:2, radius:2});
-	
-	plotInfos();
+	//midpoints of sides
+	M = qboard.create('midpoint', [A, B], {name:"M", withLabel:false, color:'red', fixed:true});
+	N = qboard.create('midpoint', [B, C], {name:"N", withLabel:false, color:'red', fixed:true});
+	P = qboard.create('midpoint', [C, D], {name:"P", withLabel:false, color:'red', fixed:true});
+	Q = qboard.create('midpoint', [D, A], {name:"Q", withLabel:false, color:'red', fixed:true});
 
-	A.on("drag",function(){
-		cleanInfos();
-		plotInfos();
-	});
-	B.on("drag",function(){
-		cleanInfos();
-		plotInfos();
-	});
-	C.on("drag",function(){
-		cleanInfos();
-		plotInfos();
-	});
-	D.on("drag",function(){
-		cleanInfos();
-		plotInfos();
-	});
-	E.on("drag",function(){
-		cleanInfos();
-		plotInfos();
-	});
+	//segments joining oposite midpoints
+	MP = qboard.create('segment', [M, P], {color:'black', strokeWidth:1});
+	NQ = qboard.create('segment', [N, Q], {color:'black', strokeWidth:1});
 
-	
+	//intersection
+	O = qboard.create('intersection', [MP, NQ], {name:"O", withLabel:false, color:'blue', strokeWidth:1});
+
+	//quadrilatere areas
+	quadA = qboard.create('polygon', [A, M, O, Q], {name: "A",withLabel:true});
+	quadB = qboard.create('polygon', [B, N, O, M], {name: "A",withLabel:true});
+	quadC = qboard.create('polygon', [C, P, O, N], {name: "A",withLabel:true});
+	quadD = qboard.create('polygon', [D, Q, O, P], {name: "A",withLabel:true});
+
+	calculateAreas();	
+
+	dragMovements();
+
+	//t1 =qboard.create('text',[0, -1, "A = "+rectangleA.Area().toFixed(2)], {fixed:true});
+	//t2 =qboard.create('text',[q-1, -1, "B = "+rectangleB.Area().toFixed(2)], {fixed:true});
 }
 
+
+
+function calculateAreas(){
+
+	//calculate each area. toFixed(0) for integer Area.
+	quadB.setAttribute({
+		name:quadB.Area().toFixed(0)	
+	});
+	quadC.setAttribute({
+		name:quadC.Area().toFixed(0)	
+	});
+	quadD.setAttribute({
+		name:quadD.Area().toFixed(0)	
+	});
+
+	// if showingSolution, show actual value instead of '?'. 
+	// To avoid round problems (using rouding integer areas), do not use quadA.Area() but use the formula instead.
+	
+	desiredArea = parseInt(quadB.Area().toFixed(0))+parseInt(quadD.Area().toFixed(0))-parseInt(quadC.Area().toFixed(0));
+
+	if(showingSolution) 
+		areaValue = desiredArea;
+	else areaValue = "?";
+
+	quadA.setAttribute({
+		name:areaValue
+	});
+
+	if(showingSolution){
+		cleanInfos();
+		plotInfos();
+	}
+
+}
+
+function dragMovements(){
+	A.on("drag",function(){
+		calculateAreas();
+	});
+	B.on("drag",function(){
+		calculateAreas();
+	});
+	C.on("drag",function(){
+		calculateAreas();
+	});
+	D.on("drag",function(){
+		calculateAreas();
+	});
+}
 
 function randomPart(){
 	return -d1 + Math.random()*2*d1;   // between -d1 and d1.
 }
 
 function plotInfos(){
-
-	legend_x = -r-d1;
-	legend_y = -r-2*d1;	
+	legend_x = -r;
+	legend_y = -r-d1;	
 
 	//legend texts
-
 	//1st line
-	t1 = qboard.create('text',[legend_x, legend_y, "&ang;A = "+(CAD.Value()*180.0/Math.PI).toFixed(2)+"&deg;"], {fixed:true});
-	t2 = qboard.create('text',[legend_x+(2*r+d)/3, legend_y, "&ang;B = "+(DBE.Value()*180.0/Math.PI).toFixed(2)+"&deg;"], {fixed:true});
-	t3 = qboard.create('text',[legend_x+2*(2*r+d)/3, legend_y, "&ang;C = "+(ECA.Value()*180.0/Math.PI).toFixed(2)+"&deg;"], {fixed:true});
-
-	//2nd line
-	t4 = qboard.create('text',[legend_x, legend_y-d1, "&ang;D = "+(ADB.Value()*180.0/Math.PI).toFixed(2)+"&deg;"], {fixed:true});
-	t5 = qboard.create('text',[legend_x+(2*r+d)/3, legend_y-d1, "&ang;E = "+(BEC.Value()*180.0/Math.PI).toFixed(2)+"&deg;"], {fixed:true});
-
-	//3rd line
-	t6 = qboard.create('text',[legend_x, legend_y-5*d1/2, "&ang;A + &ang;B + &ang;C + &ang;D + &ang;E = 180&deg;"], {fixed:true});
+	t1 = qboard.create('text',[legend_x, legend_y, "[AMOQ] = [BNOM] + [DQOP] - [CPON] = "+quadB.Area().toFixed(0)+" + " +quadD.Area().toFixed(0)+" - "+quadC.Area().toFixed(0)+" = " + desiredArea], {fixed:true});
 }
 
 function cleanInfos(){
 	t1.remove();
-	t2.remove();
-	t3.remove();
-	t4.remove();
-	t5.remove();
-	t6.remove();
 }
 
 function dist(A, B){
@@ -104,68 +130,97 @@ function dist(A, B){
 	return Math.sqrt(dx*dx + dy*dy);
 }
 
-function plotSolutionAnglesAndInfos(){
+function plotSolutionInfos(){
 
-	//some intersection points
-	F = qboard.create('intersection', [AC, BD], {name: "F", color:'red', strokeWidth:1, label:{offset:[-20, 0]}});
-	G = qboard.create('intersection', [BD, CE], {name: "G", color:'red', strokeWidth:1, label:{offset:[0, -15]}});
+	//hide quadrilatere areas on figure
+	quadA.setAttribute({
+		color:"white"
+	});
+	quadB.setAttribute({
+		color:"white"
+	});
+	quadC.setAttribute({
+		color:"white"
+	});
+	quadD.setAttribute({
+		color:"white"
+	});
 
-	//coloring used angles
-	CAD.setAttribute({
-		color:"pink"
-	});
-	ADB.setAttribute({
-		color:"pink"
-	});
-	BEC.setAttribute({
-		color:"blue"
-	});
-	DBE.setAttribute({
-		color:"blue"
-	});
+	//plotInfo should be before calculateAreas. To existe t1.
+	plotInfos();
+
+	//update quadA area. Instead of '?'
+	calculateAreas();
 	
-	//auxiliary angles
-	CFG = qboard.create('angle', [C, F, G], {withLabel:false, color: 'pink', type:'sector', orthoType:'square', orthoSensitivity:2, radius:1.5});
-	FGC = qboard.create('angle', [F, G, C], {withLabel:false, color: 'blue', type:'sector', orthoType:'square', orthoSensitivity:2, radius:1.5});	
+	//show valuable points names
+	M.setAttribute({
+		withLabel:true
+	});
+	N.setAttribute({
+		withLabel:true
+	});
+	P.setAttribute({
+		withLabel:true
+	});
+	Q.setAttribute({
+		withLabel:true
+	});
+
+	O.setAttribute({
+		withLabel:true
+	});
+
+	//triangle areas. Same area has same color.
+	tAMO = qboard.create('polygon', [A, M, O], {color:"yellow"});
+	tBMO = qboard.create('polygon', [B, M, O], {color:"yellow"});
+	tBNO = qboard.create('polygon', [B, N, O], {color:"pink"});
+	tCNO = qboard.create('polygon', [C, N, O], {color:"pink"});
+	tCPO = qboard.create('polygon', [C, P, O], {color:"orange"});
+	tDPO = qboard.create('polygon', [D, P, O], {color:"orange"});
+	tDQO = qboard.create('polygon', [D, Q, O], {color:"green"});
+	tAQO = qboard.create('polygon', [A, Q, O], {color:"green"});
 	
 }
 
 function generateSolution(){
 	showingSolution=true;
-	plotSolutionAnglesAndInfos();
+	plotSolutionInfos();
 }
 
 function showAnswer(){
-	//cleanAnglesAndInfos();
 	generateSolution();
 	$("#showAnswer").attr("disabled",true);
 	$("#answerExplanation").removeClass("hidden");
 	$("#answerExplanation").html("<b>Solução:</b><br/>"+
-	"<div class='justify'>Analisando o triângulo &Delta;AFD e a soma de seus ângulos: "+
-	"<div class='center'>&ang;AFD + &ang;A + &ang;D = 180&deg;</div>"+
-	"<div class='justify'>Mas &ang;AFD e &ang;GFC são suplementares: "+
-	"<div class='center'>&ang;AFD + &ang;GFC = 180&deg;</div>"+
-	"<div class='justify'>Assim: "+
-	"<div class='center'>&ang;GFC = &ang;A + &ang;D <span class='tab'></span> (I)</div>"+
-	"<div class='justify'>Analisando o triângulo &Delta;BGE e a soma de seus ângulos: "+
-	"<div class='center'>&ang;EGB + &ang;B + &ang;E = 180&deg;</div>"+
-	"<div class='justify'>Mas &ang;EGB e &ang;FGC são suplementares: "+
-	"<div class='center'>&ang;EGB + &ang;FGC = 180&deg;</div>"+
-	"<div class='justify'>Assim: "+
-	"<div class='center'>&ang;FGC = &ang;B + &ang;E <span class='tab'></span> (II)</div>"+
-	"<div class='justify'>Por último, analisando o triângulo &Delta;FGC e a soma de seus ângulos: "+
-	"<div class='center'>&ang;C + &ang;GFC + &ang;FGC = 180&deg;</div>"+
-	"<div class='justify'>Substituindo as relações (I) e (II), temos que a soma desejada vale:"+
-	"<div class='center'>&ang;C + &ang;A + &ang;D + &ang;B + &ang;E = 180&deg;</div>");
+	"<div class='justify'>Dado um triângulo qualquer, por exemplo, &Delta;AOB, ao traçarmos a mediana OM, ela o dividirá em 2 triângulos &Delta;AOM e &Delta;BOM de mesma área.</div>"+
+	"<div class='justify'>Uma maneira simples de ver isso é que as bases AM e BM são iguais (pois M é ponto médio de AB) e a altura relativa a essas bases é a mesma, partindo de O, tanto no triângulo &Delta;AOM como no &Delta;BOM. Assim:</div>"+
+	"<div class='center'>[&Delta;AOM] = [&Delta;BOM] = x</div>"+
+	"<div class='justify'>Analogamente para os triângulos &Delta;BOC, &Delta;COD e &Delta;DOA:</div>"+
+	"<div class='center'>[&Delta;BON] = [&Delta;CON] = y</div>"+
+	"<div class='center'>[&Delta;COP] = [&Delta;POD] = z</div>"+
+	"<div class='center'>[&Delta;DOQ] = [&Delta;AOQ] = w</div>"+
+	"<div class='justify'>Note que:</div>"+
+	"<div class='center'>[AMOQ] = [&Delta;AOM] + [&Delta;AOQ] = x + w</div>"+
+	"<div class='center'>[BNOM] = [&Delta;BON] + [&Delta;BOM] = y + x</div>"+
+	"<div class='center'>[CPON] = [&Delta;COP] + [&Delta;CON] = z + y</div>"+
+	"<div class='center'>[DQOP] = [&Delta;DOQ] + [&Delta;DOP] = w + z</div>"+
+	"<div class='justify'>Assim:</div>"+
+	"<div class='center'>[AMOQ] + [CPON]= x + w + z + y = [BNOM] + [DQOP]</div>"+
+	"<div class='justify'>Logo:</div>"+
+	"<div class='center'>[AMOQ] = [BNOM] + [DQOP] - [CPON]</div>");
 }
 
 function resetAnswer(){
+	//if t1 exists, clean it.
+	if(showingSolution) cleanInfos();
+
 	showingSolution=false;
 	$("#showAnswer").attr("disabled",false);
 	$("#answerExplanation").addClass("hidden");
 }		
 
 function generateNewGame(){
-	generateFigure();
 	resetAnswer();
+	generateFigure();
+
 }
